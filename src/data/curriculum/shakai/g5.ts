@@ -89,13 +89,13 @@ const U = {
 
 // 他学年/他教科の参照先 id（将来 worker が用意する前提で文字列指定）
 const G4 = {
-  prefectures: "shakai.g4.prefectures", // 都道府県のようす
+  prefectures: "shakai.g4.prefectures-of-japan", // 都道府県のようす
   disaster: "shakai.g4.disaster-prevention", // 自然災害からくらしを守る
 } as const;
 const G6 = {
-  global: "shakai.g6.global-society", // 世界の中の日本（国際）
-  politics: "shakai.g6.politics", // 政治・くらしと政治
-  environment: "shakai.g6.global-environment", // 地球環境とわたしたち
+  global: "shakai.g6.united-nations", // 世界の中の日本（国際）
+  politics: "shakai.g6.constitution", // 政治・くらしと政治
+  environment: "shakai.g6.international-cooperation", // 地球環境とわたしたち
 } as const;
 
 export const shakaiG5Units: Unit[] = [

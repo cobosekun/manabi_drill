@@ -8,7 +8,7 @@
 //
 // ── 申し送り（中央集約担当へ）─────────────────────────────
 //  1. SubjectId union（src/types/drill.ts）に "kyoyo" がまだ無いため、本ファイルでも
-//     kyoyo/g1.ts と同様 `const KYOYO = "kyoyo" as SubjectId;` で局所的に型を吸収している。
+//     kyoyo/g1.ts と同様 `const KYOYO: SubjectId = "kyoyo";` で局所的に型を吸収している。
 //     中央で union に "kyoyo" を追加したら、この as キャストは外してよい。
 //  2. kyoyoSubject（emoji 🌍 / theme emerald / grades [1..6]）は kyoyo/g1.ts が定義済みのため
 //     本ファイルでは再定義しない（重複排除 / アンチ肥大）。中央は g1 の kyoyoSubject を使う。
@@ -28,7 +28,7 @@ import type {
 } from "@/types/curriculum";
 
 // kyoyo は SubjectId 未対応 → 局所的に型を吸収（上の申し送り参照）。
-const KYOYO = "kyoyo" as SubjectId;
+const KYOYO: SubjectId = "kyoyo";
 
 // ── 領域（6領域は kyoyo/g1.ts が定義済み。g6 は新規追加なし＝空配列）──
 export const kyoyoG6Domains: Domain[] = [];

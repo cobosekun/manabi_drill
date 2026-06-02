@@ -20,7 +20,7 @@ import type {
 } from "@/types/curriculum";
 
 // SubjectId 未対応の局所吸収（type-safe な逃がし）。
-const KYOYO_ID = "kyoyo" as unknown as SubjectId;
+const KYOYO_ID: SubjectId = "kyoyo";
 
 // ── 教科 ──────────────────────────────────
 

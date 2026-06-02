@@ -67,7 +67,7 @@ export const itG5Units: Unit[] = [
     order: 2,
     realWorldUse:
       "スマホで パスワードを つくったり、SNS や ゲームで{知|し}らない人と やりとりする ときに、{自分|じぶん}を まもる ために{役|やく}だつよ。",
-    leadsTo: ["it.g6.network-security"],
+    leadsTo: ["it.g6.info-security"],
     prerequisites: [U.dataStorage],
     hasLearn: true,
     hasTest: true,
@@ -123,7 +123,7 @@ export const itG5Units: Unit[] = [
     order: 6,
     realWorldUse:
       "ゲームの キャラクターが「ボタンを おしたら ジャンプ」「{敵|てき}に あたったら ミス」と うごくのは、くり{返|かえ}しと{条件|じょうけん}の プログラムだよ。",
-    leadsTo: [U.debug, "it.g6.programming-project"],
+    leadsTo: [U.debug, "it.g6.make-work"],
     prerequisites: [U.variables, U.flowchart],
     hasLearn: true,
     hasTest: true,
@@ -137,7 +137,7 @@ export const itG5Units: Unit[] = [
     order: 7,
     realWorldUse:
       "アプリや ゲームが おかしな うごきを する とき、どこが まちがいか さがして なおす しごと（デバッグ）に つながるよ。",
-    leadsTo: ["it.g6.programming-project"],
+    leadsTo: ["it.g6.make-work"],
     prerequisites: [U.loopCondition],
     hasLearn: true,
     hasTest: true,

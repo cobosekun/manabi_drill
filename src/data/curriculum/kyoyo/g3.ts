@@ -28,7 +28,7 @@ import type {
 } from "@/types/curriculum";
 
 // 申し送り: SubjectId 未拡張のため局所吸収（中央拡張後に解消）。
-const KYOYO = "kyoyo" as unknown as SubjectId;
+const KYOYO: SubjectId = "kyoyo";
 
 // ── 教科 ──────────────────────────────────
 // ※ 教科定義は学年間で共有される単一の真実。集約(index)側で重複排除する前提。

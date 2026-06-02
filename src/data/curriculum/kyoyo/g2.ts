@@ -22,7 +22,7 @@ import type {
 } from "@/types/curriculum";
 
 // 局所吸収: "kyoyo" を SubjectId として扱う（基盤で union 追加後はこのキャストを外す）。
-const KYOYO = "kyoyo" as string as SubjectId;
+const KYOYO: SubjectId = "kyoyo";
 
 // ── 教科 ──────────────────────────────────
 

@@ -8,7 +8,7 @@
 //
 // ── 申し送り（中央集約担当へ）─────────────────────────────
 //  1. SubjectId union（src/types/drill.ts）に "oyo" がまだ無いため、本ファイルでは
-//     `const OYO = "oyo" as SubjectId;` で局所的に型を吸収している（kyoyo と同じ流儀）。
+//     `const OYO: SubjectId = "oyo";` で局所的に型を吸収している（kyoyo と同じ流儀）。
 //     中央で union に "oyo" を追加したら、この as キャストは外してよい。types は触っていない。
 //  2. 【応用4段ルール】各 Unit の learn.steps は必ず4段:
 //     ① 身近な具体 → ② 図・操作で体感 → ③ きまり発見 → ④ やってみる。
@@ -33,7 +33,7 @@ import type {
 } from "@/types/curriculum";
 
 // oyo は SubjectId 未対応 → 局所的に型を吸収（上の申し送り参照）。
-const OYO = "oyo" as SubjectId;
+const OYO: SubjectId = "oyo";
 
 // ── 教科 ──────────────────────────────────
 

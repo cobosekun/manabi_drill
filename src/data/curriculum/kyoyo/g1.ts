@@ -9,7 +9,7 @@
 //
 // ── 申し送り（中央集約担当へ）─────────────────────────────
 //  1. SubjectId union（src/types/drill.ts）に "kyoyo" がまだ無いため、本ファイルでは
-//     `const KYOYO = "kyoyo" as SubjectId;` で局所的に型を吸収している。
+//     `const KYOYO: SubjectId = "kyoyo";` で局所的に型を吸収している。
 //     中央で union に "kyoyo" を追加したら、この as キャストは外してよい（不要になる）。
 //  2. index.ts への合流（subjects/domains/units/contents への push）は中央が行う。
 //     Subject 定義（emoji 🌍 / theme emerald / grades [1..6] / testable:true）は本ファイルの
@@ -29,7 +29,7 @@ import type {
 } from "@/types/curriculum";
 
 // kyoyo は SubjectId 未対応 → 局所的に型を吸収（上の申し送り参照）。
-const KYOYO = "kyoyo" as SubjectId;
+const KYOYO: SubjectId = "kyoyo";
 
 // ── 教科 ──────────────────────────────────
 

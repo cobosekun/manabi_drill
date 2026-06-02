@@ -4,7 +4,9 @@
 // 単一の真実 = src/types(型) + src/data(データ)。UIロジックは混ぜない。
 // ID体系: 領域 = "<subject>.<domain-slug>" / 単元 = "<subject>.g<grade>.<slug>"
 // 依存(prerequisites/leadsTo)は kokugo.g1 内で自己完結させ、単独でも整合検査を通す。
-// 文言は基本ひらがな。漢字を出すのは「かんじ80字」単元など意図的箇所のみ。
+// 表記: ひらがな主体。ただし「小1配当漢字（80字）」に含まれる漢字だけ {漢字|よみ} ルビ記法で表記する。
+//      配当外の漢字は使わない（ひらがなのまま）。RubyText がルビを描画する。
+//      漢字学習単元(かんじ80字)の出題対象漢字は読みを隠すため素漢字のまま（仕様の例外）。
 // ══════════════════════════════════════════
 
 import type {
@@ -33,7 +35,7 @@ export const kokugoG1Domains: Domain[] = [
   {
     id: "kokugo.letters",
     subjectId: "kokugo",
-    name: "もじ（ひらがな・カタカナ・かんじ）",
+    name: "{文字|もじ}（ひらがな・カタカナ・かんじ）",
     formalName: "文字・表記",
   },
   {
@@ -82,7 +84,7 @@ export const kokugoG1Units: Unit[] = [
     domainId: "kokugo.letters",
     title: "ひらがな",
     order: 1,
-    realWorldUse: "なまえを かいたり、てがみを よんだり、まいにち つかう もじだよ。",
+    realWorldUse: "なまえを かいたり、てがみを よんだり、まいにち つかう {文字|もじ}だよ。",
     leadsTo: [U.dakutenYouon, U.katakana, U.wordGroups],
     prerequisites: [],
     hasLearn: true,
@@ -93,9 +95,9 @@ export const kokugoG1Units: Unit[] = [
     subjectId: "kokugo",
     grade: 1,
     domainId: "kokugo.letters",
-    title: "だくてん・ちいさいじ",
+    title: "だくてん・{小|ちい}さい{字|じ}",
     order: 2,
-    realWorldUse: "「がっこう」や「でんしゃ」のように、てんてんや ちいさいじを よむときに つかうよ。",
+    realWorldUse: "「がっこう」や「でんしゃ」のように、てんてんや {小|ちい}さい{字|じ}を よむときに つかうよ。",
     leadsTo: [U.particles],
     prerequisites: [U.hiragana],
     hasLearn: true,
@@ -119,9 +121,9 @@ export const kokugoG1Units: Unit[] = [
     subjectId: "kokugo",
     grade: 1,
     domainId: "kokugo.letters",
-    title: "かんじ80字",
+    title: "かんじ80{字|じ}",
     order: 4,
-    realWorldUse: "「山」や「川」など、ほんや かんばんに でてくる かんじを よめるように なるよ。",
+    realWorldUse: "「山」や「川」など、{本|ほん}や かんばんに {出|で}てくる かんじを よめるように なるよ。",
     leadsTo: [U.readStory],
     prerequisites: [U.katakana],
     hasLearn: true,
@@ -147,7 +149,7 @@ export const kokugoG1Units: Unit[] = [
     domainId: "kokugo.writing",
     title: "じょし「は・を・へ」",
     order: 6,
-    realWorldUse: "「ほんを よむ」「がっこうへ いく」のように、ただしい ぶんを かくときに つかうよ。",
+    realWorldUse: "「ほんを よむ」「がっこうへ いく」のように、{正|ただ}しい {文|ぶん}を かくときに つかうよ。",
     leadsTo: [U.makeSentence],
     prerequisites: [U.dakutenYouon],
     hasLearn: true,
@@ -158,9 +160,9 @@ export const kokugoG1Units: Unit[] = [
     subjectId: "kokugo",
     grade: 1,
     domainId: "kokugo.writing",
-    title: "ぶんをつくる",
+    title: "{文|ぶん}を つくる",
     order: 7,
-    realWorldUse: "にっきや おてがみで、じぶんの きもちを ぶんで かけるように なるよ。",
+    realWorldUse: "にっきや おてがみで、じぶんの きもちを {文|ぶん}で かけるように なるよ。",
     leadsTo: [U.readStory],
     prerequisites: [U.wordGroups, U.particles],
     hasLearn: true,
@@ -171,7 +173,7 @@ export const kokugoG1Units: Unit[] = [
     subjectId: "kokugo",
     grade: 1,
     domainId: "kokugo.reading",
-    title: "おはなしをよむ",
+    title: "おはなしを よむ",
     order: 8,
     realWorldUse: "えほんや きょうかしょの おはなしを よんで、ないようが わかるように なるよ。",
     leadsTo: [],
@@ -182,12 +184,14 @@ export const kokugoG1Units: Unit[] = [
 ];
 
 // ── 問題（全問 explanation 必須・4択）────────────────────
+// 注: 選択肢・answer は学習対象（かな/数字/記号）そのものなので原文のまま。
+//     プロンプト/解説の地の文のうち「小1配当漢字」だけをルビ化（配当外漢字は使わない）。
 
 const hiraganaQuestions: ChoiceQuestion[] = [
   {
     id: `${U.hiragana}.q-1`,
     unitId: U.hiragana,
-    prompt: "「いぬ」の さいしょの もじは どれ？",
+    prompt: "「いぬ」の さいしょの {文字|もじ}は どれ？",
     explanation: "「いぬ」は「い・ぬ」。さいしょは「い」だよ。",
     format: "choice",
     choices: ["い", "え", "う", "お"],
@@ -196,7 +200,7 @@ const hiraganaQuestions: ChoiceQuestion[] = [
   {
     id: `${U.hiragana}.q-2`,
     unitId: U.hiragana,
-    prompt: "「ねこ」を ただしく かいた ものは どれ？",
+    prompt: "「ねこ」を {正|ただ}しく かいた ものは どれ？",
     explanation: "「ね」と「こ」で「ねこ」。「ぬ」や「れ」と まちがえやすいよ。",
     format: "choice",
     choices: ["ねこ", "ぬこ", "れこ", "わこ"],
@@ -205,8 +209,8 @@ const hiraganaQuestions: ChoiceQuestion[] = [
   {
     id: `${U.hiragana}.q-3`,
     unitId: U.hiragana,
-    prompt: "「さかな」は なんもじ？",
-    explanation: "「さ・か・な」で 3もじ だよ。",
+    prompt: "「さかな」は なん{文字|もじ}？",
+    explanation: "「さ・か・な」で 3{文字|もじ}だよ。",
     format: "choice",
     choices: ["3もじ", "2もじ", "4もじ", "5もじ"],
     answer: "3もじ",
@@ -214,7 +218,7 @@ const hiraganaQuestions: ChoiceQuestion[] = [
   {
     id: `${U.hiragana}.q-4`,
     unitId: U.hiragana,
-    prompt: "「あ」の つぎの もじは どれ？",
+    prompt: "「あ」の つぎの {文字|もじ}は どれ？",
     explanation: "あいうえお の じゅんばん。「あ」の つぎは「い」だよ。",
     format: "choice",
     choices: ["い", "う", "え", "お"],
@@ -223,7 +227,7 @@ const hiraganaQuestions: ChoiceQuestion[] = [
   {
     id: `${U.hiragana}.q-5`,
     unitId: U.hiragana,
-    prompt: "「て」と にている もじは どれ？",
+    prompt: "「て」と にている {文字|もじ}は どれ？",
     explanation: "「て」と「で」は てんてん(゛)が つくか つかないかの ちがいだよ。",
     format: "choice",
     choices: ["で", "き", "ち", "そ"],
@@ -253,8 +257,8 @@ const dakutenYouonQuestions: ChoiceQuestion[] = [
   {
     id: `${U.dakutenYouon}.q-3`,
     unitId: U.dakutenYouon,
-    prompt: "「がっこう」の ちいさい もじは どれ？",
-    explanation: "ちいさい「っ」。すこし とまって よむよ。",
+    prompt: "「がっこう」の {小|ちい}さい {文字|もじ}は どれ？",
+    explanation: "{小|ちい}さい「っ」。すこし とまって よむよ。",
     format: "choice",
     choices: ["っ", "つ", "く", "こ"],
     answer: "っ",
@@ -262,8 +266,8 @@ const dakutenYouonQuestions: ChoiceQuestion[] = [
   {
     id: `${U.dakutenYouon}.q-4`,
     unitId: U.dakutenYouon,
-    prompt: "「でんしゃ」を ただしく かいた ものは？",
-    explanation: "「しゃ」は ちいさい「ゃ」。「しや」では ないよ。",
+    prompt: "「でんしゃ」を {正|ただ}しく かいた ものは？",
+    explanation: "「しゃ」は {小|ちい}さい「ゃ」。「しや」では ないよ。",
     format: "choice",
     choices: ["でんしゃ", "でんしや", "てんしゃ", "でんさ"],
     answer: "でんしゃ",
@@ -271,8 +275,8 @@ const dakutenYouonQuestions: ChoiceQuestion[] = [
   {
     id: `${U.dakutenYouon}.q-5`,
     unitId: U.dakutenYouon,
-    prompt: "ちいさい「ゃ」を つかう ことばは どれ？",
-    explanation: "「きゃべつ」は ちいさい「ゃ」を まえと くっつけて よむよ。",
+    prompt: "{小|ちい}さい「ゃ」を つかう ことばは どれ？",
+    explanation: "「きゃべつ」は {小|ちい}さい「ゃ」を まえと くっつけて よむよ。",
     format: "choice",
     choices: ["きゃべつ", "きやべつ", "かべつ", "きゆべつ"],
     answer: "きゃべつ",
@@ -283,7 +287,7 @@ const katakanaQuestions: ChoiceQuestion[] = [
   {
     id: `${U.katakana}.q-1`,
     unitId: U.katakana,
-    prompt: "「テレビ」を カタカナで ただしく かいた ものは？",
+    prompt: "「テレビ」を カタカナで {正|ただ}しく かいた ものは？",
     explanation: "「テ・レ・ビ」。「ビ」は てんてんつき だよ。",
     format: "choice",
     choices: ["テレビ", "テレヒ", "テルビ", "テレピ"],
@@ -301,8 +305,8 @@ const katakanaQuestions: ChoiceQuestion[] = [
   {
     id: `${U.katakana}.q-3`,
     unitId: U.katakana,
-    prompt: "「バナナ」の さいしょの もじは？",
-    explanation: "「バ」は「ハ」に てんてん(゛)を つけた もじ。",
+    prompt: "「バナナ」の さいしょの {文字|もじ}は？",
+    explanation: "「バ」は「ハ」に てんてん(゛)を つけた {文字|もじ}。",
     format: "choice",
     choices: ["バ", "パ", "ハ", "ナ"],
     answer: "バ",
@@ -310,8 +314,8 @@ const katakanaQuestions: ChoiceQuestion[] = [
   {
     id: `${U.katakana}.q-4`,
     unitId: U.katakana,
-    prompt: "のばす おとに つかう もじは どれ？",
-    explanation: "「ー」は のばす おと。「ケーキ」のように つかうよ。",
+    prompt: "のばす {音|おと}に つかう {文字|もじ}は どれ？",
+    explanation: "「ー」は のばす {音|おと}。「ケーキ」のように つかうよ。",
     format: "choice",
     choices: ["ー", "＝", "。", "、"],
     answer: "ー",
@@ -327,6 +331,7 @@ const katakanaQuestions: ChoiceQuestion[] = [
   },
 ];
 
+// かんじ80字: 出題対象の漢字（山/川/火/三/木 など）は読みを隠すため素漢字のまま（仕様の例外）。
 const kanji80Questions: ChoiceQuestion[] = [
   {
     id: `${U.kanji80}.q-1`,
@@ -341,7 +346,7 @@ const kanji80Questions: ChoiceQuestion[] = [
     id: `${U.kanji80}.q-2`,
     unitId: U.kanji80,
     prompt: "「川」の よみかたは どれ？",
-    explanation: "「川」は「かわ」。みずが ながれる かたち だよ。",
+    explanation: "「川」は「かわ」。{水|みず}が ながれる かたちだよ。",
     format: "choice",
     choices: ["かわ", "やま", "き", "ひ"],
     answer: "かわ",
@@ -350,7 +355,7 @@ const kanji80Questions: ChoiceQuestion[] = [
     id: `${U.kanji80}.q-3`,
     unitId: U.kanji80,
     prompt: "「火」の よみかたは どれ？",
-    explanation: "「火」は「ひ」。もえる ひの こと だよ。",
+    explanation: "「火」は「ひ」。もえる ひの ことだよ。",
     format: "choice",
     choices: ["ひ", "みず", "き", "つち"],
     answer: "ひ",
@@ -359,7 +364,7 @@ const kanji80Questions: ChoiceQuestion[] = [
     id: `${U.kanji80}.q-4`,
     unitId: U.kanji80,
     prompt: "「三」は いくつ？",
-    explanation: "「三」は「さん」= 3。よこぼうが 3ぼん だよ。",
+    explanation: "「三」は「さん」= 3。よこぼうが 3{本|ぼん}だよ。",
     format: "choice",
     choices: ["3", "1", "2", "5"],
     answer: "3",
@@ -427,8 +432,8 @@ const particlesQuestions: ChoiceQuestion[] = [
   {
     id: `${U.particles}.q-1`,
     unitId: U.particles,
-    prompt: "「わたし◯ がくせいです」。◯に はいる もじは？",
-    explanation: "ぶんの あいだの「は」。よみは「わ」だけど かくのは「は」だよ。",
+    prompt: "「わたし◯ がくせいです」。◯に {入|はい}る {文字|もじ}は？",
+    explanation: "{文|ぶん}の あいだの「は」。よみは「わ」だけど かくのは「は」だよ。",
     format: "choice",
     choices: ["は", "わ", "を", "へ"],
     answer: "は",
@@ -436,7 +441,7 @@ const particlesQuestions: ChoiceQuestion[] = [
   {
     id: `${U.particles}.q-2`,
     unitId: U.particles,
-    prompt: "「ほん◯ よむ」。◯に はいる もじは？",
+    prompt: "「ほん◯ よむ」。◯に {入|はい}る {文字|もじ}は？",
     explanation: "「を」は「お」と よむ じょし。なにかを する ときに つかうよ。",
     format: "choice",
     choices: ["を", "お", "は", "へ"],
@@ -445,7 +450,7 @@ const particlesQuestions: ChoiceQuestion[] = [
   {
     id: `${U.particles}.q-3`,
     unitId: U.particles,
-    prompt: "「がっこう◯ いく」。◯に はいる もじは？",
+    prompt: "「がっこう◯ いく」。◯に {入|はい}る {文字|もじ}は？",
     explanation: "「へ」は「え」と よむ。いく ばしょの まえに つかうよ。",
     format: "choice",
     choices: ["へ", "え", "を", "は"],
@@ -463,7 +468,7 @@ const particlesQuestions: ChoiceQuestion[] = [
   {
     id: `${U.particles}.q-5`,
     unitId: U.particles,
-    prompt: "ただしい ぶんは どれ？",
+    prompt: "{正|ただ}しい {文|ぶん}は どれ？",
     explanation: "「のむ」たいしょうには「を」を つかうよ。「みずを のむ」。",
     format: "choice",
     choices: ["みずを のむ", "みずお のむ", "みずへ のむ", "みずは のむ"],
@@ -475,8 +480,8 @@ const makeSentenceQuestions: ChoiceQuestion[] = [
   {
     id: `${U.makeSentence}.q-1`,
     unitId: U.makeSentence,
-    prompt: "ぶんの おわりに つける ものは どれ？",
-    explanation: "ぶんの おわりは まる「。」だよ。",
+    prompt: "{文|ぶん}の おわりに つける ものは どれ？",
+    explanation: "{文|ぶん}の おわりは まる「。」だよ。",
     format: "choice",
     choices: ["。", "、", "ー", "゛"],
     answer: "。",
@@ -484,8 +489,8 @@ const makeSentenceQuestions: ChoiceQuestion[] = [
   {
     id: `${U.makeSentence}.q-2`,
     unitId: U.makeSentence,
-    prompt: "ちょっと やすむ ところに つける ものは？",
-    explanation: "とちゅうで やすむ ところは てん「、」だよ。",
+    prompt: "ちょっと {休|やす}む ところに つける ものは？",
+    explanation: "とちゅうで {休|やす}む ところは てん「、」だよ。",
     format: "choice",
     choices: ["、", "。", "ー", "゜"],
     answer: "、",
@@ -493,7 +498,7 @@ const makeSentenceQuestions: ChoiceQuestion[] = [
   {
     id: `${U.makeSentence}.q-3`,
     unitId: U.makeSentence,
-    prompt: "「ねこ◯ ねる」を ぶんに するには ◯に なにを いれる？",
+    prompt: "「ねこ◯ ねる」を {文|ぶん}に するには ◯に なにを {入|い}れる？",
     explanation: "「だれが」を あらわす「が」。「ねこが ねる」だよ。",
     format: "choice",
     choices: ["が", "を", "へ", "。"],
@@ -502,7 +507,7 @@ const makeSentenceQuestions: ChoiceQuestion[] = [
   {
     id: `${U.makeSentence}.q-4`,
     unitId: U.makeSentence,
-    prompt: "ただしい ぶんは どれ？",
+    prompt: "{正|ただ}しい {文|ぶん}は どれ？",
     explanation: "「だれが どうする」の じゅんで、おわりに まる「。」を つけるよ。",
     format: "choice",
     choices: ["とりが とぶ。", "とりが とぶ、", "とぶ とりが。", "とりとぶが。"],
@@ -541,8 +546,8 @@ const readStoryQuestions: ChoiceQuestion[] = [
   {
     id: `${U.readStory}.q-3`,
     unitId: U.readStory,
-    prompt: "「あめが ふったので かさを さしました。」なぜ かさを さした？",
-    explanation: "「あめが ふったので」が りゆう だよ。",
+    prompt: "「{雨|あめ}が ふったので かさを さしました。」なぜ かさを さした？",
+    explanation: "「{雨|あめ}が ふったので」が りゆう だよ。",
     format: "choice",
     choices: ["あめが ふったから", "さむいから", "ねむいから", "おなかが すいたから"],
     answer: "あめが ふったから",
@@ -559,7 +564,7 @@ const readStoryQuestions: ChoiceQuestion[] = [
   {
     id: `${U.readStory}.q-5`,
     unitId: U.readStory,
-    prompt: "おはなしを よむ とき、さいしょに きを つけると よいのは どれ？",
+    prompt: "おはなしを よむ とき、さいしょに {気|き}を つけると よいのは どれ？",
     explanation: "「だれが でてくるか」を つかむと よみやすく なるよ。",
     format: "choice",
     choices: ["だれが でてくるか", "なんじか", "てんき", "ねだん"],
@@ -577,7 +582,7 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "ひらがなって なに？",
-          body: "ことばを かくときに つかう もじだよ。「あいうえお」から はじまる 46この もじが あるよ。",
+          body: "ことばを かくときに つかう {文字|もじ}だよ。「あいうえお」から はじまる 46この {文字|もじ}が あるよ。",
           visual: { kind: "emoji", value: "あいうえお", caption: "ひらがな" },
         },
         {
@@ -586,9 +591,9 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
           visual: { kind: "emoji", value: "🐜🐶", caption: "あり・いぬ" },
         },
         {
-          heading: "にている もじに きをつけて",
-          body: "「ね」と「れ」、「は」と「ほ」は かたちが にているよ。よくみて よもう。",
-          visual: { kind: "emoji", value: "👀", caption: "よくみよう" },
+          heading: "にている {文字|もじ}に {気|き}をつけて",
+          body: "「ね」と「れ」、「は」と「ほ」は かたちが にているよ。よく{見|み}て よもう。",
+          visual: { kind: "emoji", value: "👀", caption: "よく{見|み}よう" },
         },
       ],
     },
@@ -602,17 +607,17 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "てんてん(゛)と まる(゜)",
-          body: "「か」に てんてんで「が」、「は」に まるで「ぱ」。おとが かわるよ。",
+          body: "「か」に てんてんで「が」、「は」に まるで「ぱ」。{音|おと}が かわるよ。",
           visual: { kind: "emoji", value: "か→が　は→ぱ" },
         },
         {
-          heading: "ちいさい ゃ・ゅ・ょ",
-          body: "「きゃ・きゅ・きょ」は ちいさい もじを まえと くっつけて、ひとつの おとで よむよ。",
+          heading: "{小|ちい}さい ゃ・ゅ・ょ",
+          body: "「きゃ・きゅ・きょ」は {小|ちい}さい {文字|もじ}を まえと くっつけて、ひとつの {音|おと}で よむよ。",
           visual: { kind: "emoji", value: "きゃ きゅ きょ" },
         },
         {
-          heading: "ちいさい っ",
-          body: "「がっこう」の ちいさい「っ」は、すこし とまって よむよ。",
+          heading: "{小|ちい}さい っ",
+          body: "「がっこう」の {小|ちい}さい「っ」は、すこし とまって よむよ。",
           visual: { kind: "emoji", value: "🏫", caption: "がっこう" },
         },
       ],
@@ -627,17 +632,17 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "カタカナって なに？",
-          body: "そとの くにの ことばや、どうぶつの なきごえなどに つかう もじだよ。",
+          body: "そとの くにの ことばや、どうぶつの なきごえなどに つかう {文字|もじ}だよ。",
           visual: { kind: "emoji", value: "🍦", caption: "アイス" },
         },
         {
-          heading: "ひらがなと みくらべよう",
-          body: "「カ」は ひらがなの「か」と にているね。にている もじを みくらべて おぼえよう。",
+          heading: "ひらがなと {見|み}くらべよう",
+          body: "「カ」は ひらがなの「か」と にているね。にている {文字|もじ}を {見|み}くらべて おぼえよう。",
           visual: { kind: "emoji", value: "か　カ" },
         },
         {
-          heading: "のばす おと「ー」",
-          body: "「ラーメン」のように、のばす おとは「ー」で かくよ。",
+          heading: "のばす {音|おと}「ー」",
+          body: "「ラーメン」のように、のばす {音|おと}は「ー」で かくよ。",
           visual: { kind: "emoji", value: "🍜", caption: "ラーメン" },
         },
       ],
@@ -652,7 +657,7 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "かんじって なに？",
-          body: "ものの かたちから できた もじだよ。「山」は やまの かたち、「川」は かわの ながれ。",
+          body: "ものの かたちから できた {文字|もじ}だよ。「山」は やまの かたち、「川」は かわの ながれ。",
           visual: { kind: "emoji", value: "⛰️🌊", caption: "山・川" },
         },
         {
@@ -697,7 +702,7 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "「は」は「わ」と よむ",
-          body: "「わたしは」の「は」は「わ」と よむよ。ぶんの あいだに つかう とくべつな つかいかた。",
+          body: "「わたしは」の「は」は「わ」と よむよ。{文|ぶん}の あいだに つかう とくべつな つかいかた。",
           visual: { kind: "emoji", value: "🗣️", caption: "わたしは=わたしわ" },
         },
         {
@@ -717,12 +722,12 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "てん(、)と まる(。)",
-          body: "ぶんの おわりには まる「。」、ちょっと やすむ ところには てん「、」を つけるよ。",
+          body: "{文|ぶん}の おわりには まる「。」、ちょっと {休|やす}む ところには てん「、」を つけるよ。",
           visual: { kind: "emoji", value: "。 、" },
         },
         {
           heading: "だれが どうする",
-          body: "「いぬが はしる」のように「だれが」「どうする」を つなげると ぶんに なるよ。",
+          body: "「いぬが はしる」のように「だれが」「どうする」を つなげると {文|ぶん}に なるよ。",
           visual: { kind: "emoji", value: "🐶💨", caption: "いぬが はしる" },
         },
       ],
@@ -737,7 +742,7 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "だれが でてくる？",
-          body: "おはなしを よむ ときは、まず「だれが でてくるか」に きを つけて よもう。",
+          body: "おはなしを よむ ときは、まず「だれが でてくるか」に {気|き}を つけて よもう。",
           visual: { kind: "emoji", value: "📖", caption: "おはなし" },
         },
         {

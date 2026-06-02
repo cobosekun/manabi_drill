@@ -4,6 +4,13 @@
 // ID体系: 教科 = SubjectId / 領域 = "<subject>.<domain-slug>"
 //          単元 = "<subject>.g<grade>.<slug>"
 // 型は src/types/curriculum.ts を再利用（重複定義しない / アンチ肥大）。
+//
+// 【レトロフィット(2026-06-02)】全表示テキスト(title / realWorldUse / heading / body /
+//   visual caption / prompt / choices / explanation)を漢字＋全漢字ルビ記法 {漢字|よみ} に統一。
+//   小1相応の語彙のまま、出現する漢字には学年に関係なく全てルビを付す（ruby-convention 準拠）。
+//   id/依存グラフ(leadsTo/prerequisites)/order/flags/domainId/generatorId/format/answer/
+//   questionCount/Subject/Domain は不変更。clock-read の choices/answer はルビ込みで一致を維持。
+//   こ（個）等のカウンタは こども向けに かな据え置き、数字・記号はそのまま。
 // ══════════════════════════════════════════
 
 import type {
@@ -64,9 +71,9 @@ export const sansuuG1Units: Unit[] = [
     subjectId: "sansuu",
     grade: 1,
     domainId: "sansuu.number-calc",
-    title: "10までのかず",
+    title: "10までの{数|かず}",
     order: 1,
-    realWorldUse: "おかしのかずをかぞえたり、おさらにくばるときにつかうよ。",
+    realWorldUse: "おかしの{数|かず}を {数|かぞ}えたり、お{皿|さら}に {配|くば}るときに つかうよ。",
     leadsTo: [U.addWithin10, U.numbersTo20, U.clockRead],
     prerequisites: [],
     hasLearn: true,
@@ -77,9 +84,9 @@ export const sansuuG1Units: Unit[] = [
     subjectId: "sansuu",
     grade: 1,
     domainId: "sansuu.number-calc",
-    title: "10までのたしざん",
+    title: "10までの{足|た}し{算|ざん}",
     order: 2,
-    realWorldUse: "あめを 2こ と 3こ もらったら ぜんぶで なんこ？ のように、ものをあわせるときにつかうよ。",
+    realWorldUse: "あめを 2こ と 3こ もらったら {全部|ぜんぶ}で なんこ？ のように、{物|もの}を {合|あ}わせるときに つかうよ。",
     leadsTo: [U.subWithin10],
     prerequisites: [U.numbersTo10],
     hasLearn: true,
@@ -90,9 +97,9 @@ export const sansuuG1Units: Unit[] = [
     subjectId: "sansuu",
     grade: 1,
     domainId: "sansuu.number-calc",
-    title: "10までのひきざん",
+    title: "10までの{引|ひ}き{算|ざん}",
     order: 3,
-    realWorldUse: "クッキーが 7こ あって 2こ たべたら なんこ のこる？ のように、へったかずをしるときにつかうよ。",
+    realWorldUse: "クッキーが 7こ あって 2こ {食|た}べたら なんこ {残|のこ}る？ のように、{減|へ}った{数|かず}を {知|し}るときに つかうよ。",
     leadsTo: [U.numbersTo20],
     prerequisites: [U.addWithin10],
     hasLearn: true,
@@ -103,9 +110,9 @@ export const sansuuG1Units: Unit[] = [
     subjectId: "sansuu",
     grade: 1,
     domainId: "sansuu.number-calc",
-    title: "20までのかず",
+    title: "20までの{数|かず}",
     order: 4,
-    realWorldUse: "クラスのおともだちのかずや、カレンダーのひにちをかぞえるときにつかうよ。",
+    realWorldUse: "クラスの おともだちの{数|かず}や、カレンダーの{日|ひ}にちを {数|かぞ}えるときに つかうよ。",
     leadsTo: [],
     prerequisites: [U.numbersTo10, U.subWithin10],
     hasLearn: true,
@@ -116,9 +123,9 @@ export const sansuuG1Units: Unit[] = [
     subjectId: "sansuu",
     grade: 1,
     domainId: "sansuu.measurement",
-    title: "とけい（なんじなんぷん）",
+    title: "{時計|とけい}（{何|なん}{時|じ}{何|なん}{分|ぷん}）",
     order: 5,
-    realWorldUse: "あさおきるじかんや、がっこうがはじまるじかんを とけいでよむときにつかうよ。",
+    realWorldUse: "{朝|あさ} {起|お}きる{時間|じかん}や、{学校|がっこう}が はじまる{時間|じかん}を {時計|とけい}で {読|よ}むときに つかうよ。",
     leadsTo: [],
     prerequisites: [U.numbersTo10],
     hasLearn: true,
@@ -133,32 +140,32 @@ const clockQuestions: ClockReadQuestion[] = [
   {
     id: `${U.clockRead}.gen-1`,
     unitId: U.clockRead,
-    prompt: "とけいは なんじ？",
-    explanation: "みじかいはりが 3、ながいはりが 12 をさしているので「3じ」だよ。",
-    visual: { kind: "svg", name: "clock", params: { hour: 3, minute: 0 }, caption: "3じ" },
+    prompt: "{時計|とけい}は {何|なん}{時|じ}？",
+    explanation: "{短|みじか}い{針|はり}が 3、{長|なが}い{針|はり}が 12 を {指|さ}しているので「3{時|じ}」だよ。",
+    visual: { kind: "svg", name: "clock", params: { hour: 3, minute: 0 }, caption: "3{時|じ}" },
     format: "clock-read",
-    choices: ["3じ", "4じ", "2じ", "3じ30ぷん"],
-    answer: "3じ",
+    choices: ["3{時|じ}", "4{時|じ}", "2{時|じ}", "3{時|じ}30{分|ぷん}"],
+    answer: "3{時|じ}",
   },
   {
     id: `${U.clockRead}.gen-2`,
     unitId: U.clockRead,
-    prompt: "とけいは なんじなんぷん？",
-    explanation: "みじかいはりが 8 のすこしさき、ながいはりが 6 をさしているので「8じ30ぷん」だよ。",
-    visual: { kind: "svg", name: "clock", params: { hour: 8, minute: 30 }, caption: "8じ30ぷん" },
+    prompt: "{時計|とけい}は {何|なん}{時|じ}{何|なん}{分|ぷん}？",
+    explanation: "{短|みじか}い{針|はり}が 8 の すこし{先|さき}、{長|なが}い{針|はり}が 6 を {指|さ}しているので「8{時|じ}30{分|ぷん}」だよ。",
+    visual: { kind: "svg", name: "clock", params: { hour: 8, minute: 30 }, caption: "8{時|じ}30{分|ぷん}" },
     format: "clock-read",
-    choices: ["8じ30ぷん", "8じ", "9じ30ぷん", "7じ30ぷん"],
-    answer: "8じ30ぷん",
+    choices: ["8{時|じ}30{分|ぷん}", "8{時|じ}", "9{時|じ}30{分|ぷん}", "7{時|じ}30{分|ぷん}"],
+    answer: "8{時|じ}30{分|ぷん}",
   },
   {
     id: `${U.clockRead}.gen-3`,
     unitId: U.clockRead,
-    prompt: "とけいは なんじなんぷん？",
-    explanation: "みじかいはりが 6 のすこしさき、ながいはりが 3 をさしているので「6じ15ぷん」だよ。",
-    visual: { kind: "svg", name: "clock", params: { hour: 6, minute: 15 }, caption: "6じ15ぷん" },
+    prompt: "{時計|とけい}は {何|なん}{時|じ}{何|なん}{分|ぷん}？",
+    explanation: "{短|みじか}い{針|はり}が 6 の すこし{先|さき}、{長|なが}い{針|はり}が 3 を {指|さ}しているので「6{時|じ}15{分|ふん}」だよ。",
+    visual: { kind: "svg", name: "clock", params: { hour: 6, minute: 15 }, caption: "6{時|じ}15{分|ふん}" },
     format: "clock-read",
-    choices: ["6じ15ぷん", "6じ", "5じ15ぷん", "6じ30ぷん"],
-    answer: "6じ15ぷん",
+    choices: ["6{時|じ}15{分|ふん}", "6{時|じ}", "5{時|じ}15{分|ふん}", "6{時|じ}30{分|ぷん}"],
+    answer: "6{時|じ}15{分|ふん}",
   },
 ];
 
@@ -169,19 +176,19 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       unitId: U.numbersTo10,
       steps: [
         {
-          heading: "かずをかぞえてみよう",
-          body: "ものを ひとつずつ「1、2、3…」とゆびでさしながら かぞえると、いくつあるかわかるよ。",
+          heading: "{数|かず}を {数|かぞ}えてみよう",
+          body: "{物|もの}を {一|ひと}つずつ「1、2、3…」と {指|ゆび}で さしながら {数|かぞ}えると、いくつ あるか わかるよ。",
           visual: { kind: "emoji", value: "🍎🍎🍎", caption: "りんごが 3こ" },
         },
         {
-          heading: "10までのかず",
-          body: "1 から 10 まで、じゅんばんに かぞえられるかな？ ブロックをならべると かずがめでみえるよ。",
+          heading: "10までの{数|かず}",
+          body: "1 から 10 まで、{順番|じゅんばん}に {数|かぞ}えられるかな？ ブロックを {並|なら}べると {数|かず}が {目|め}で {見|み}えるよ。",
           visual: { kind: "svg", name: "number-blocks", params: { count: 10 }, caption: "10この ブロック" },
         },
         {
-          heading: "おおい・すくない",
-          body: "ふたつのかずをくらべて、どちらがおおいか みてみよう。かずがおおきいほうが「おおい」だよ。",
-          visual: { kind: "emoji", value: "🟦🟦🟦🟦🟥🟥", caption: "あおが おおい" },
+          heading: "{多|おお}い・{少|すく}ない",
+          body: "{二|ふた}つの{数|かず}を {比|くら}べて、どちらが {多|おお}いか {見|み}てみよう。{数|かず}が {大|おお}きいほうが「{多|おお}い」だよ。",
+          visual: { kind: "emoji", value: "🟦🟦🟦🟦🟥🟥", caption: "{青|あお}が {多|おお}い" },
         },
       ],
     },
@@ -198,13 +205,13 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       unitId: U.addWithin10,
       steps: [
         {
-          heading: "たしざんって なに？",
-          body: "ふたつのかずを「あわせる」ことを たしざん というよ。「＋」のきごうをつかうよ。",
+          heading: "{足|た}し{算|ざん}って なに？",
+          body: "{二|ふた}つの{数|かず}を「{合|あ}わせる」ことを {足|た}し{算|ざん}というよ。「＋」の {記号|きごう}を つかうよ。",
           visual: { kind: "emoji", value: "🍓🍓 ＋ 🍓 ＝ 🍓🍓🍓", caption: "2 ＋ 1 ＝ 3" },
         },
         {
-          heading: "ブロックであわせよう",
-          body: "3この ブロックと 2この ブロックを あわせると、ぜんぶで 5こ になるね。",
+          heading: "ブロックで {合|あ}わせよう",
+          body: "3この ブロックと 2この ブロックを {合|あ}わせると、{全部|ぜんぶ}で 5こ に なるね。",
           visual: { kind: "svg", name: "number-blocks", params: { left: 3, right: 2 }, caption: "3 ＋ 2 ＝ 5" },
         },
       ],
@@ -222,13 +229,13 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       unitId: U.subWithin10,
       steps: [
         {
-          heading: "ひきざんって なに？",
-          body: "あるかずから「へらす」ことを ひきざん というよ。「−」のきごうをつかうよ。",
+          heading: "{引|ひ}き{算|ざん}って なに？",
+          body: "ある{数|かず}から「{減|へ}らす」ことを {引|ひ}き{算|ざん}というよ。「−」の {記号|きごう}を つかうよ。",
           visual: { kind: "emoji", value: "🍪🍪🍪🍪🍪 − 🍪🍪 ＝ 🍪🍪🍪", caption: "5 − 2 ＝ 3" },
         },
         {
-          heading: "ブロックでへらそう",
-          body: "7この ブロックから 3こ とると、のこりは 4こ になるね。",
+          heading: "ブロックで {減|へ}らそう",
+          body: "7この ブロックから 3こ {取|と}ると、{残|のこ}りは 4こ に なるね。",
           visual: { kind: "svg", name: "number-blocks", params: { total: 7, remove: 3 }, caption: "7 − 3 ＝ 4" },
         },
       ],
@@ -246,13 +253,13 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       unitId: U.numbersTo20,
       steps: [
         {
-          heading: "10のかたまり",
-          body: "10こ あつまると「10のかたまり」になるよ。10と のこりのかずで 20までかぞえられるね。",
+          heading: "10の かたまり",
+          body: "10こ {集|あつ}まると「10の かたまり」に なるよ。10と {残|のこ}りの{数|かず}で 20まで {数|かぞ}えられるね。",
           visual: { kind: "svg", name: "number-blocks", params: { tens: 1, ones: 3 }, caption: "10と 3で 13" },
         },
         {
           heading: "11から20まで",
-          body: "10のつぎは 11、12、13…と つづくよ。20まで じゅんばんにかぞえてみよう。",
+          body: "10の {次|つぎ}は 11、12、13…と {続|つづ}くよ。20まで {順番|じゅんばん}に {数|かぞ}えてみよう。",
           visual: { kind: "emoji", value: "🔟➕🔟", caption: "10と 10で 20" },
         },
       ],
@@ -270,14 +277,14 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       unitId: U.clockRead,
       steps: [
         {
-          heading: "とけいのはり",
-          body: "とけいには「みじかいはり（じ）」と「ながいはり（ぷん）」があるよ。みじかいはりで なんじか わかるよ。",
-          visual: { kind: "svg", name: "clock", params: { hour: 3, minute: 0 }, caption: "3じ ちょうど" },
+          heading: "{時計|とけい}の {針|はり}",
+          body: "{時計|とけい}には「{短|みじか}い{針|はり}（{時|じ}）」と「{長|なが}い{針|はり}（{分|ぷん}）」が あるよ。{短|みじか}い{針|はり}で {何|なん}{時|じ}か わかるよ。",
+          visual: { kind: "svg", name: "clock", params: { hour: 3, minute: 0 }, caption: "3{時|じ} ちょうど" },
         },
         {
-          heading: "ながいはりをよもう",
-          body: "ながいはりが 12 をさすと「ちょうど」、6 をさすと「30ぷん（はん）」だよ。",
-          visual: { kind: "svg", name: "clock", params: { hour: 8, minute: 30 }, caption: "8じ30ぷん" },
+          heading: "{長|なが}い{針|はり}を {読|よ}もう",
+          body: "{長|なが}い{針|はり}が 12 を {指|さ}すと「ちょうど」、6 を {指|さ}すと「30{分|ぷん}（はん）」だよ。",
+          visual: { kind: "svg", name: "clock", params: { hour: 8, minute: 30 }, caption: "8{時|じ}30{分|ぷん}" },
         },
       ],
     },

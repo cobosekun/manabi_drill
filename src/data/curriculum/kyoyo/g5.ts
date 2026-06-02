@@ -15,7 +15,7 @@
 import type { Domain, Unit, UnitContent, SubjectId } from "@/types/curriculum";
 
 // SubjectId の局所吸収（types を変更しないための一点集約。中央で union 拡張後は不要）
-const KYOYO = "kyoyo" as SubjectId;
+const KYOYO: SubjectId = "kyoyo";
 
 // ── 領域（教養6領域。kyoyo/g1.ts と同一 id・同一表示名で整合させる前提） ──
 // 表示名(name)は漢字を含まないひらがな表記で統一（ルビ不要・全学年で共有しやすい）。
@@ -51,7 +51,7 @@ export const kyoyoG5Units: Unit[] = [
     order: 1,
     realWorldUse:
       "おかいものや、まちの{道路|どうろ}・{学校|がっこう}が どんな お{金|かね}で ささえられているかを{考|かんが}えるときに{役|やく}だつよ。",
-    leadsTo: ["kyoyo.g6.economy-basics"],
+    leadsTo: ["kyoyo.g6.money-economy"],
     prerequisites: ["sansuu.g5.ratio-percentage"],
     hasLearn: true,
     hasTest: true,
@@ -65,7 +65,7 @@ export const kyoyoG5Units: Unit[] = [
     order: 2,
     realWorldUse:
       "テレビや{本|ほん}で{外国|がいこく}の ニュースや りょこうを{見|み}るときに、その{国|くに}の ことを{知|し}っていると もっと たのしめるよ。",
-    leadsTo: ["kyoyo.g6.world-issues"],
+    leadsTo: ["kyoyo.g6.united-nations"],
     prerequisites: ["kyoyo.g4.world-flags"],
     hasLearn: true,
     hasTest: true,
@@ -79,8 +79,8 @@ export const kyoyoG5Units: Unit[] = [
     order: 3,
     realWorldUse:
       "{今|いま}の べんりな くらしは、むかしの 人の{発明|はつめい}や{発見|はっけん}の おかげ。それを{知|し}ると ものごとの しくみが わかるよ。",
-    leadsTo: ["kyoyo.g6.history-flow"],
-    prerequisites: ["kyoyo.g4.inventions"],
+    leadsTo: ["kyoyo.g6.history-people"],
+    prerequisites: ["kyoyo.g4.inventors"],
     hasLearn: true,
     hasTest: true,
   },
@@ -93,7 +93,7 @@ export const kyoyoG5Units: Unit[] = [
     order: 4,
     realWorldUse:
       "よぞらの ほしや、てんきの しくみを{知|し}ると、{自然|しぜん}の ふしぎが もっと おもしろく{感|かん}じられるよ。",
-    leadsTo: ["rika.g6.earth-moon-sun"],
+    leadsTo: ["rika.g6.moon-sun"],
     prerequisites: ["rika.g4.weather"],
     hasLearn: true,
     hasTest: true,
@@ -107,8 +107,8 @@ export const kyoyoG5Units: Unit[] = [
     order: 5,
     realWorldUse:
       "ことわざや{四字熟語|よじじゅくご}を{知|し}っていると、{気持|きも}ちや{考|かんが}えを みじかい ことばで うまく つたえられるよ。",
-    leadsTo: ["kyoyo.g6.classic-literature"],
-    prerequisites: ["kokugo.g4.idioms"],
+    leadsTo: ["kyoyo.g6.yojijukugo"],
+    prerequisites: ["kokugo.g4.kanyoku-koji"],
     hasLearn: true,
     hasTest: true,
   },
@@ -122,7 +122,7 @@ export const kyoyoG5Units: Unit[] = [
     realWorldUse:
       "じぶんの{体|からだ}の しくみや、{食|た}べものの えいようを{知|し}ると、{元気|げんき}に すごす くふうが できるよ。",
     leadsTo: ["rika.g6.human-body"],
-    prerequisites: ["rika.g4.body"],
+    prerequisites: ["rika.g4.body-movement"],
     hasLearn: true,
     hasTest: true,
   },

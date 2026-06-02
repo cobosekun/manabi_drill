@@ -35,7 +35,7 @@ import type {
 } from "@/types/curriculum";
 
 // 局所吸収: "oyo" を SubjectId として扱う（中央が types に追加するまでの暫定）。
-const OYO = "oyo" as unknown as SubjectId;
+const OYO: SubjectId = "oyo";
 
 // ── 教科 ──────────────────────────────────
 

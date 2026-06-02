@@ -80,18 +80,18 @@ const U = {
 
 // 前提となる小3社会の単元（将来 shakai/g3.ts が定義する想定の id。バリデータが最終解決を検査）
 const G3 = {
-  townSurvey: "shakai.g3.town-survey", // 身近な地域・市の様子
+  townSurvey: "shakai.g3.town-features", // 身近な地域・市の様子
   productionSales: "shakai.g3.production-sales", // 生産・販売の仕事
-  safetyKeeping: "shakai.g3.safety-keeping", // くらしを守る（消防・警察）
-  cityChanges: "shakai.g3.city-changes", // 市の移り変わり
+  safetyKeeping: "shakai.g3.fire-police", // くらしを守る（消防・警察）
+  cityChanges: "shakai.g3.old-tools", // 市の移り変わり
 } as const;
 
 // 後続となる小5社会の単元（将来 shakai/g5.ts が定義する想定の id）
 const G5 = {
-  landEnvironment: "shakai.g5.land-environment", // 国土の様子・自然環境
-  foodProduction: "shakai.g5.food-production", // 食料生産
-  industry: "shakai.g5.industry", // 工業生産
-  information: "shakai.g5.information", // 情報化した社会
+  landEnvironment: "shakai.g5.landforms", // 国土の様子・自然環境
+  foodProduction: "shakai.g5.rice-farming", // 食料生産
+  industry: "shakai.g5.industry-overview", // 工業生産
+  information: "shakai.g5.media-info", // 情報化した社会
 } as const;
 
 export const shakaiG4Units: Unit[] = [

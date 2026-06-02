@@ -76,8 +76,8 @@ const U = {
 // 先行参照（他学年・他教科。存在を仮定して依存グラフを張る）
 const REF = {
   sansuuNumbersTo10: "sansuu.g1.numbers-to-10", // 算数の数・順序の感覚（実在）
-  itG3InfoMoral: "it.g3.info-moral",            // 情報モラル発展（g3 で作成予定）
-  itG3VariableIntro: "it.g3.variable-intro",    // 変数の入口（g3 で作成予定）
+  itG3InfoMoral: "it.g3.info-safety",            // 情報モラル発展（g3 で作成予定）
+  itG3VariableIntro: "it.g3.commands",    // 変数の入口（g3 で作成予定）
   itG3Flowchart: "it.g3.flowchart",             // フローチャート（g3 で作成予定）
 } as const;
 
