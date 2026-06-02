@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { kanjiQuestions } from "@/data/kanji-questions";
 import { KanjiQuestion, QuestionProgress, QUESTIONS_PER_SESSION } from "@/types/question";
 import { ButtonState } from "@/types/drill";
-import { ProgressBar, ChoiceButton, ResultModal } from "@/components/drill";
+import { ProgressBar, ChoiceButton, ResultModal, RubyText } from "@/components/drill";
 import { shuffle } from "@/lib/shuffle";
 import { dailyKey, loadJSON, saveJSON } from "@/lib/storage";
 
@@ -86,9 +86,9 @@ function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestio
       )}
 
       <div className="text-center mb-6">
-        <p className="text-xl font-bold text-sky-800 leading-relaxed">{question.question}</p>
+        <p className="text-xl font-bold text-sky-800 leading-relaxed"><RubyText text={question.question} /></p>
         {question.hint && answerState === "unanswered" && (
-          <p className="text-sm text-sky-500 mt-2">💡 ヒント: {question.hint}</p>
+          <p className="text-sm text-sky-500 mt-2">💡 ヒント: <RubyText text={question.hint} /></p>
         )}
       </div>
 

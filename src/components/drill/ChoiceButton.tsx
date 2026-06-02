@@ -3,6 +3,7 @@
 import React from "react";
 import { ButtonState, ThemeName } from "@/types/drill";
 import { getTheme } from "@/lib/theme";
+import { RubyText, rubyToPlainText } from "./RubyText";
 
 interface ChoiceButtonProps {
   children: React.ReactNode;
@@ -34,19 +35,24 @@ export function ChoiceButton({
   };
   const currentState = disabled ? "disabled" : state;
 
+  // 選択肢が文字列のときはルビ記法を解釈する（{漢字|よみ}）。
+  // ノード（数式 JSX 等）はそのまま描画して既存の見た目を壊さない。
+  const isString = typeof children === "string";
+  const label = isString ? rubyToPlainText(children) : String(children);
+
   return (
     <button
       type="button"
       onClick={onClick}
       disabled={disabled || state === "correct" || state === "incorrect"}
-      aria-label={String(children)}
+      aria-label={label}
       className={`relative w-full py-4 px-6 text-xl font-bold rounded-2xl transition-all duration-200 active:scale-95 shadow-md hover:shadow-lg ${stateStyles[currentState]}`}
       style={{ borderWidth: "3px", borderStyle: "solid" }}
     >
       <span className="flex items-center justify-center gap-2">
         {state === "correct" && <span className="text-2xl">⭕</span>}
         {state === "incorrect" && <span className="text-2xl">❌</span>}
-        {children}
+        {isString ? <RubyText text={children} /> : children}
       </span>
       {state === "correct" && (
         <>

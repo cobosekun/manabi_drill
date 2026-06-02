@@ -8,7 +8,8 @@ export type Grade = 1 | 2 | 3 | 4 | 5 | 6;
 
 export type SubjectId =
   | "kokugo" | "sansuu" | "rika" | "shakai" | "seikatsu"
-  | "eigo" | "zukou" | "ongaku" | "taiiku" | "katei" | "doutoku";
+  | "eigo" | "zukou" | "ongaku" | "taiiku" | "katei" | "doutoku"
+  | "kyoyo" | "oyo" | "it";
 // とけいは sansuu 配下の単元として扱う想定（今は据え置き）
 
 // 学習/テストの2モード（後続波で各教科に載せる土台）

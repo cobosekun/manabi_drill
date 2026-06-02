@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { ClockQuestion, CLOCK_QUESTIONS_PER_SESSION } from "@/types/clock-question";
 import { ButtonState } from "@/types/drill";
 import { shuffle } from "@/lib/shuffle";
-import { ProgressBar, ChoiceButton, ResultModal } from "@/components/drill";
+import { ProgressBar, ChoiceButton, ResultModal, RubyText } from "@/components/drill";
 
 // ══════════════════════════════════════════
 // 問題生成ロジック
@@ -299,7 +299,7 @@ function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestio
       )}
 
       <div className="text-center mb-6">
-        <p className="text-xl font-bold text-sky-800 leading-relaxed">{question.question}</p>
+        <p className="text-xl font-bold text-sky-800 leading-relaxed"><RubyText text={question.question} /></p>
       </div>
 
       <div className="grid grid-cols-2 gap-3 mb-6">
