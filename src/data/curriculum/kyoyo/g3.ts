@@ -83,6 +83,13 @@ export const kyoyoG3Domains: Domain[] = [
     name: "からだ・マナー",
     formalName: "体・マナー",
   },
+  // 【新領域 2026-06-03 CEO直轄】きまり・ほうりつ（重複定義OK・index 側で id 重複排除）
+  {
+    id: "kyoyo.rules-law",
+    subjectId: "kyoyo",
+    name: "きまり・ほうりつ",
+    formalName: "きまり・法律",
+  },
 ];
 
 // ── 単元 ──────────────────────────────────
@@ -220,6 +227,33 @@ export const kyoyoG3Units: Unit[] = [
     realWorldUse: "{家|いえ}や{学校|がっこう}、でんしゃの{中|なか}など、まわりの{人|ひと}と{気持|きも}ちよく すごすのに{役立|やくだ}つよ。",
     leadsTo: [],
     prerequisites: [U.body],
+    hasLearn: true,
+    hasTest: true,
+  },
+  // 【新領域】きまり・ほうりつ（g3: ほうりつって なに / しゃかいの ルール。依存は g3 内で完結）
+  {
+    id: "kyoyo.g3.what-is-law",
+    subjectId: "kyoyo",
+    grade: 3,
+    domainId: "kyoyo.rules-law",
+    title: "ほうりつって なに？",
+    order: 10,
+    realWorldUse: "「やって よいこと・いけないこと」を{知|し}って、{安心|あんしん}して くらす ために{役立|やくだ}つよ。",
+    leadsTo: ["kyoyo.g3.social-rules"],
+    prerequisites: [],
+    hasLearn: true,
+    hasTest: true,
+  },
+  {
+    id: "kyoyo.g3.social-rules",
+    subjectId: "kyoyo",
+    grade: 3,
+    domainId: "kyoyo.rules-law",
+    title: "しゃかいの ルール",
+    order: 11,
+    realWorldUse: "でんしゃや みせ など、しらない{人|ひと}も いる ばしょで みんなが こまらない ために{役立|やくだ}つよ。",
+    leadsTo: [],
+    prerequisites: ["kyoyo.g3.what-is-law"],
     hasLearn: true,
     hasTest: true,
   },
@@ -885,5 +919,110 @@ export const kyoyoG3Contents: Record<string, UnitContent> = {
       ],
     },
     test: { unitId: U.manners, questions: mannersQuestions, questionCount: 5 },
+  },
+
+  // 【新領域】きまり・ほうりつ
+  ["kyoyo.g3.what-is-law"]: {
+    unitId: "kyoyo.g3.what-is-law",
+    learn: {
+      unitId: "kyoyo.g3.what-is-law",
+      steps: [
+        {
+          heading: "ほうりつ＝くにの きまり",
+          body: "{国|くに}に すむ みんなが まもる、いちばん おおきな きまりが「{法律|ほうりつ}」だよ。",
+          visual: { kind: "emoji", value: "📜", caption: "くにの きまり" },
+        },
+        {
+          heading: "きまりの レベル",
+          body: "{学校|がっこう}の きまり、まちの きまり、{国|くに}の{法律|ほうりつ}。だんだん おおきな はんいの やくそくに なるよ。",
+          visual: { kind: "emoji", value: "🏛️", caption: "だんだん おおきく" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g3.what-is-law",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g3.what-is-law.q-1",
+          unitId: "kyoyo.g3.what-is-law",
+          prompt: "{国|くに}じゅうの{人|ひと}が まもる いちばん おおきな きまりを なんという？",
+          explanation: "{国|くに}の みんなが まもる おおきな きまりが{法律|ほうりつ}だよ。",
+          format: "choice",
+          choices: ["{法律|ほうりつ}", "あいことば", "うた", "クイズ"],
+          answer: "{法律|ほうりつ}",
+        },
+        {
+          id: "kyoyo.g3.what-is-law.q-2",
+          unitId: "kyoyo.g3.what-is-law",
+          prompt: "{法律|ほうりつ}は なんの ために ある？",
+          explanation: "{法律|ほうりつ}は みんなが{安全|あんぜん}に{安心|あんしん}して くらす ために あるよ。",
+          format: "choice",
+          choices: ["みんなが{安心|あんしん}して くらす ため", "{一部|いちぶ}の{人|ひと}が とくする ため", "あそぶ ため", "こまらせる ため"],
+          answer: "みんなが{安心|あんしん}して くらす ため",
+        },
+        {
+          id: "kyoyo.g3.what-is-law.q-3",
+          unitId: "kyoyo.g3.what-is-law",
+          prompt: "ほかの{人|ひと}の ものを とったら どうなる？",
+          explanation: "{人|ひと}の ものを とるのは{法律|ほうりつ}で きんしされて いるよ。",
+          format: "choice",
+          choices: ["{法律|ほうりつ}いはんに なる", "ほめられる", "なにも ない", "おかねが もらえる"],
+          answer: "{法律|ほうりつ}いはんに なる",
+        },
+      ],
+    },
+  },
+
+  ["kyoyo.g3.social-rules"]: {
+    unitId: "kyoyo.g3.social-rules",
+    learn: {
+      unitId: "kyoyo.g3.social-rules",
+      steps: [
+        {
+          heading: "みんなの ルール",
+          body: "{社会|しゃかい}には、{交通|こうつう}ルールや じゅんばん など みんなで まもる ルールが たくさん あるよ。",
+          visual: { kind: "emoji", value: "🚦", caption: "みんなで まもる" },
+        },
+        {
+          heading: "まもると どうなる？",
+          body: "ルールを まもると、しらない{人|ひと}どうしでも あんぜんで きもちよく すごせるよ。",
+          visual: { kind: "emoji", value: "🚃", caption: "きもちよく すごす" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g3.social-rules",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g3.social-rules.q-1",
+          unitId: "kyoyo.g3.social-rules",
+          prompt: "でんしゃの{中|なか}での マナーは？",
+          explanation: "でんしゃは みんなの ばしょ。しずかにして こまっている{人|ひと}に せきを ゆずろう。",
+          format: "choice",
+          choices: ["しずかに する・せきを ゆずる", "{大|おお}ごえで{電話|でんわ}", "{走|はし}りまわる", "ごみを すてる"],
+          answer: "しずかに する・せきを ゆずる",
+        },
+        {
+          id: "kyoyo.g3.social-rules.q-2",
+          unitId: "kyoyo.g3.social-rules",
+          prompt: "あかしんごうを むしして わたると？",
+          explanation: "あかしんごうは とまれ。むしすると あぶないし ルールいはんだよ。",
+          format: "choice",
+          choices: ["あぶなくて ルールいはん", "はやく つける", "ほめられる", "とくを する"],
+          answer: "あぶなくて ルールいはん",
+        },
+        {
+          id: "kyoyo.g3.social-rules.q-3",
+          unitId: "kyoyo.g3.social-rules",
+          prompt: "ルールは だれの ために ある？",
+          explanation: "ルールは{自分|じぶん}を ふくむ みんなが あんぜんに すごす ための ものだよ。",
+          format: "choice",
+          choices: ["みんな（{自分|じぶん}も ふくむ）の ため", "ほかの{人|ひと}だけ", "おとなだけ", "だれの ためでもない"],
+          answer: "みんな（{自分|じぶん}も ふくむ）の ため",
+        },
+      ],
+    },
   },
 };

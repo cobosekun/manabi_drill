@@ -27,6 +27,8 @@ export const kyoyoG5Domains: Domain[] = [
   { id: "kyoyo.nature-space", subjectId: KYOYO, name: "しぜん・うちゅう", formalName: "自然・宇宙" },
   { id: "kyoyo.language-proverb", subjectId: KYOYO, name: "ことば・ことわざ", formalName: "言葉・ことわざ" },
   { id: "kyoyo.body-manner", subjectId: KYOYO, name: "からだ・マナー", formalName: "体・マナー" },
+  // 【新領域 2026-06-03 CEO直轄】きまり・ほうりつ（重複定義OK・index 側で id 重複排除）
+  { id: "kyoyo.rules-law", subjectId: "kyoyo", name: "きまり・ほうりつ", formalName: "きまり・法律" },
 ];
 
 // ── 単元 ──────────────────────────────────
@@ -123,6 +125,33 @@ export const kyoyoG5Units: Unit[] = [
       "じぶんの{体|からだ}の しくみや、{食|た}べものの えいようを{知|し}ると、{元気|げんき}に すごす くふうが できるよ。",
     leadsTo: ["rika.g6.human-body"],
     prerequisites: ["rika.g4.body-movement"],
+    hasLearn: true,
+    hasTest: true,
+  },
+  // 【新領域】きまり・ほうりつ（g5: けんりと ぎむ / けんぽうと ほうりつ。依存は g5 内で完結）
+  {
+    id: "kyoyo.g5.rights-duties",
+    subjectId: "kyoyo",
+    grade: 5,
+    domainId: "kyoyo.rules-law",
+    title: "けんりと ぎむ",
+    order: 10,
+    realWorldUse: "{自分|じぶん}にも ほかの{人|ひと}にも ある「けんり」を{知|し}ると、おたがいを{大切|たいせつ}に できるよ。",
+    leadsTo: ["kyoyo.g5.constitution-law"],
+    prerequisites: [],
+    hasLearn: true,
+    hasTest: true,
+  },
+  {
+    id: "kyoyo.g5.constitution-law",
+    subjectId: "kyoyo",
+    grade: 5,
+    domainId: "kyoyo.rules-law",
+    title: "けんぽうと ほうりつ",
+    order: 11,
+    realWorldUse: "ニュースで でて くる「{憲法|けんぽう}」や「{法律|ほうりつ}」の{意味|いみ}が わかるように なるよ。",
+    leadsTo: [],
+    prerequisites: ["kyoyo.g5.rights-duties"],
     hasLearn: true,
     hasTest: true,
   },
@@ -583,6 +612,111 @@ export const kyoyoG5Contents: Record<string, UnitContent> = {
           format: "choice",
           choices: ["いただきます", "おやすみ", "ただいま", "さようなら"],
           answer: "いただきます",
+        },
+      ],
+    },
+  },
+
+  // 【新領域】きまり・ほうりつ
+  ["kyoyo.g5.rights-duties"]: {
+    unitId: "kyoyo.g5.rights-duties",
+    learn: {
+      unitId: "kyoyo.g5.rights-duties",
+      steps: [
+        {
+          heading: "けんりって なに？",
+          body: "まなぶ・あそぶ・あんぜんに くらす など、だれもが もっている{大切|たいせつ}な ものが「{権利|けんり}」だよ。",
+          visual: { kind: "emoji", value: "🙋", caption: "だれもが もつ もの" },
+        },
+        {
+          heading: "ぎむも ある",
+          body: "{権利|けんり}が ある いっぽうで、きまりを まもる・{勉強|べんきょう}する などの「ぎむ（しなければ ならない こと）」も あるよ。",
+          visual: { kind: "emoji", value: "⚖️", caption: "けんりと ぎむ" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g5.rights-duties",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g5.rights-duties.q-1",
+          unitId: "kyoyo.g5.rights-duties",
+          prompt: "「{権利|けんり}」に いちばん{近|ちか}いのは？",
+          explanation: "{権利|けんり}は、まなぶ・あんぜんに くらす など だれもが もつ{大切|たいせつ}な ものだよ。",
+          format: "choice",
+          choices: ["だれもが もつ{大切|たいせつ}な もの", "おかねで{買|か}う もの", "つよい{人|ひと}だけの もの", "ゲームの どうぐ"],
+          answer: "だれもが もつ{大切|たいせつ}な もの",
+        },
+        {
+          id: "kyoyo.g5.rights-duties.q-2",
+          unitId: "kyoyo.g5.rights-duties",
+          prompt: "{学校|がっこう}で まなぶ ことは こどもの なに？",
+          explanation: "まなぶ ことは こどもの{大切|たいせつ}な{権利|けんり}だよ。",
+          format: "choice",
+          choices: ["{権利|けんり}（まなぶ けんり）", "ばつ", "しごと だけ", "あそび だけ"],
+          answer: "{権利|けんり}（まなぶ けんり）",
+        },
+        {
+          id: "kyoyo.g5.rights-duties.q-3",
+          unitId: "kyoyo.g5.rights-duties",
+          prompt: "{自分|じぶん}の けんりと おなじくらい{大切|たいせつ}なのは？",
+          explanation: "{自分|じぶん}と おなじように、ほかの{人|ひと}の{権利|けんり}も{大切|たいせつ}に しようね。",
+          format: "choice",
+          choices: ["ほかの{人|ひと}の けんり", "かつ こと", "おかね", "じかん"],
+          answer: "ほかの{人|ひと}の けんり",
+        },
+      ],
+    },
+  },
+
+  ["kyoyo.g5.constitution-law"]: {
+    unitId: "kyoyo.g5.constitution-law",
+    learn: {
+      unitId: "kyoyo.g5.constitution-law",
+      steps: [
+        {
+          heading: "{憲法|けんぽう}は おおもとの きまり",
+          body: "{国|くに}の いちばん おおもとの きまりが「{憲法|けんぽう}」。すべての{法律|ほうりつ}は{憲法|けんぽう}に もとづいて つくられるよ。",
+          visual: { kind: "emoji", value: "📜", caption: "いちばん おおもと" },
+        },
+        {
+          heading: "{日本国憲法|にほんこくけんぽう}の{3|みっ}つの{柱|はしら}",
+          body: "「{国民|こくみん}が きめる」「へいわ」「{基本的人権|きほんてきじんけん}（みんなの けんり）」の{3|みっ}つが{大切|たいせつ}に されているよ。",
+          visual: { kind: "emoji", value: "🏛️", caption: "{3|みっ}つの{柱|はしら}" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g5.constitution-law",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g5.constitution-law.q-1",
+          unitId: "kyoyo.g5.constitution-law",
+          prompt: "{国|くに}の いちばん おおもとの きまりを なんという？",
+          explanation: "{国|くに}の おおもとの きまりが{憲法|けんぽう}。{法律|ほうりつ}は これに もとづくよ。",
+          format: "choice",
+          choices: ["{憲法|けんぽう}", "しゅくだい", "ルールブック", "カレンダー"],
+          answer: "{憲法|けんぽう}",
+        },
+        {
+          id: "kyoyo.g5.constitution-law.q-2",
+          unitId: "kyoyo.g5.constitution-law",
+          prompt: "{法律|ほうりつ}は なにに もとづいて つくられる？",
+          explanation: "すべての{法律|ほうりつ}は{憲法|けんぽう}に もとづいて つくられるよ。",
+          format: "choice",
+          choices: ["{憲法|けんぽう}", "{天気|てんき}", "ゲーム", "うた"],
+          answer: "{憲法|けんぽう}",
+        },
+        {
+          id: "kyoyo.g5.constitution-law.q-3",
+          unitId: "kyoyo.g5.constitution-law",
+          prompt: "{日本国憲法|にほんこくけんぽう}が{大切|たいせつ}に している ものは？",
+          explanation: "{日本国憲法|にほんこくけんぽう}は へいわと{基本的人権|きほんてきじんけん}（みんなの けんり）を{大切|たいせつ}に しているよ。",
+          format: "choice",
+          choices: ["へいわと みんなの けんり", "せんそう", "おかねもち だけ", "つよい{人|ひと} だけ"],
+          answer: "へいわと みんなの けんり",
         },
       ],
     },

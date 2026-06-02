@@ -74,6 +74,13 @@ export const kyoyoG4Domains: Domain[] = [
     name: "からだ・マナー",
     formalName: "体・マナー",
   },
+  // 【新領域 2026-06-03 CEO直轄】きまり・ほうりつ（重複定義OK・index 側で id 重複排除）
+  {
+    id: "kyoyo.rules-law",
+    subjectId: "kyoyo",
+    name: "きまり・ほうりつ",
+    formalName: "きまり・法律",
+  },
 ];
 
 // ── 単元 ──────────────────────────────────
@@ -169,6 +176,21 @@ export const kyoyoG4Units: Unit[] = [
     order: 6,
     realWorldUse:
       "まいにちの {食事|しょくじ}で どの {栄養|えいよう}を とれば {元気|げんき}に なれるか えらべるよ。",
+    leadsTo: [],
+    prerequisites: [],
+    hasLearn: true,
+    hasTest: true,
+  },
+  // 【新領域】きまり・ほうりつ（g4: きまりと あんぜん。依存は g4 内で完結）
+  {
+    id: "kyoyo.g4.rules-safety",
+    subjectId: "kyoyo",
+    grade: 4,
+    domainId: "kyoyo.rules-law",
+    title: "きまりと あんぜん",
+    order: 10,
+    realWorldUse:
+      "なぜ きまりが あるのかを{考|かんが}えると、いやいやでなく{納得|なっとく}して まもれて、{自分|じぶん}や みんなの{安全|あんぜん}を まもれるよ。",
     leadsTo: [],
     prerequisites: [],
     hasLearn: true,
@@ -672,5 +694,58 @@ export const kyoyoG4Contents: Record<string, UnitContent> = {
       ],
     },
     test: { unitId: U.nutrition, questions: nutritionQuestions, questionCount: 5 },
+  },
+
+  // 【新領域】きまり・ほうりつ
+  ["kyoyo.g4.rules-safety"]: {
+    unitId: "kyoyo.g4.rules-safety",
+    learn: {
+      unitId: "kyoyo.g4.rules-safety",
+      steps: [
+        {
+          heading: "もし きまりが なかったら？",
+          body: "{道|みち}で {車|くるま}が すきかってに {走|はし}ったら あぶないよね。きまりが あるから あんぜんに くらせるんだ。",
+          visual: { kind: "emoji", value: "🚗💥", caption: "きまりが ないと あぶない" },
+        },
+        {
+          heading: "きまりの いみを{考|かんが}える",
+          body: "きまりは だれかを こまらせる ためでなく、みんなを まもる ために あるよ。おかしいと{思|おも}ったら{話|はな}し{合|あ}って かえられる。",
+          visual: { kind: "emoji", value: "🛡️", caption: "みんなを まもる" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g4.rules-safety",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g4.rules-safety.q-1",
+          unitId: "kyoyo.g4.rules-safety",
+          prompt: "もし{交通|こうつう}ルールが なかったら どうなる？",
+          explanation: "ルールが ないと{車|くるま}や{人|ひと}が ぶつかって あぶないよ。",
+          format: "choice",
+          choices: ["じこが ふえて あぶない", "べんりに なる", "たのしく なる", "なにも かわらない"],
+          answer: "じこが ふえて あぶない",
+        },
+        {
+          id: "kyoyo.g4.rules-safety.q-2",
+          unitId: "kyoyo.g4.rules-safety",
+          prompt: "きまりを まもる いちばんの りゆうは？",
+          explanation: "きまりは みんなが{安全|あんぜん}で{幸|しあわ}せに くらす ための ものだよ。",
+          format: "choice",
+          choices: ["みんなの{安全|あんぜん}と{幸|しあわ}せの ため", "しかられない ためだけ", "おとなが よろこぶ ため", "とくを する ため"],
+          answer: "みんなの{安全|あんぜん}と{幸|しあわ}せの ため",
+        },
+        {
+          id: "kyoyo.g4.rules-safety.q-3",
+          unitId: "kyoyo.g4.rules-safety",
+          prompt: "きまりが おかしいと{思|おも}ったら どう する？",
+          explanation: "きまりは{話|はな}し{合|あ}いで かえられる。やぶるのでなく{相談|そうだん}しよう。",
+          format: "choice",
+          choices: ["みんなで{話|はな}し{合|あ}って かえる", "かってに やぶる", "だまって がまんだけ", "にげる"],
+          answer: "みんなで{話|はな}し{合|あ}って かえる",
+        },
+      ],
+    },
   },
 };

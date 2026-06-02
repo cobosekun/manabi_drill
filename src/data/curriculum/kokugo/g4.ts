@@ -16,8 +16,10 @@
 //   ルビ記法で書く（RubyText が描画）。5年以上・表外漢字は配当外＝使わずひらがなにする
 //   （例: 述語→じゅつご / 修飾語→しゅうしょくご / 接続語→せつぞくご / 熟語→じゅくご /
 //    慣用句→かんようく / 故事成語→こじせいご / 心情→しんじょう / 矛盾→むじゅん）。
-//   例外: 漢字単元(kanji-grade4)の出題・学習対象漢字（愛・健康・観察・成功 等）は
-//   読みを隠すためルビ無しの素漢字にする。answer は対応 choice と完全一致させる。
+//   ルビ方針: 子どもに表示される本文（title/body/step/prompt/explanation/choices/caption）の
+//   漢字は全て {漢字|よみ} ルビ付き（bare-kanji=0）。漢字単元(kanji-grade4)の出題対象字
+//   （愛・健康・観察・成功 等）もルビ付きにする（全表示テキスト統一の方針）。
+//   data フィールドの answer（例: 書き取り answer:"愛"）と formalName は管理用のため対象外。
 // 集約(index.ts)は中央が行う＝編集しない。前提/後続は g2 と g4 内のみ参照（g3 は未作成のため張らない）。
 // ══════════════════════════════════════════
 
@@ -100,7 +102,7 @@ export const kokugoG4Units: Unit[] = [
     domainId: "kokugo.kanji",
     title: "4{年生|ねんせい}の かんじ（202{字|じ}）",
     order: 1,
-    realWorldUse: "「健康」「観察」「成功」など、ニュースや きょうかしょ、まちの かんばんで よく{目|め}にする かんじだよ。{読|よ}めると {文|ぶん}の いみが よくわかるね。",
+    realWorldUse: "「{健康|けんこう}」「{観察|かんさつ}」「{成功|せいこう}」など、ニュースや きょうかしょ、まちの かんばんで よく{目|め}にする かんじだよ。{読|よ}めると {文|ぶん}の いみが よくわかるね。",
     leadsTo: [U.jukugoKosei, U.bunNoKumitate],
     prerequisites: [G2.kanjiWrite],
     hasLearn: true,
@@ -210,8 +212,8 @@ const kanjiGrade4Questions: ChoiceQuestion[] = [
   {
     id: `${U.kanjiGrade4}.q1`,
     unitId: U.kanjiGrade4,
-    prompt: "「愛」の よみかたは どれ？",
-    explanation: "「愛」は あい と よむよ。{大切|たいせつ}に {思|おも}う {気|き}もちを あらわす かんじだね。",
+    prompt: "「{愛|あい}」の よみかたは どれ？",
+    explanation: "「{愛|あい}」は あい と よむよ。{大切|たいせつ}に {思|おも}う {気|き}もちを あらわす かんじだね。",
     format: "choice",
     choices: ["あい", "めい", "ねん", "おん"],
     answer: "あい",
@@ -219,8 +221,8 @@ const kanjiGrade4Questions: ChoiceQuestion[] = [
   {
     id: `${U.kanjiGrade4}.q2`,
     unitId: U.kanjiGrade4,
-    prompt: "「観察」の よみかたは どれ？",
-    explanation: "「観察」は かんさつ と よむよ。ものを よく{見|み}て しらべることだね。",
+    prompt: "「{観察|かんさつ}」の よみかたは どれ？",
+    explanation: "「{観察|かんさつ}」は かんさつ と よむよ。ものを よく{見|み}て しらべることだね。",
     format: "choice",
     choices: ["かんさつ", "かんさい", "けんさつ", "かんけい"],
     answer: "かんさつ",
@@ -228,8 +230,8 @@ const kanjiGrade4Questions: ChoiceQuestion[] = [
   {
     id: `${U.kanjiGrade4}.q3`,
     unitId: U.kanjiGrade4,
-    prompt: "「健康」の よみかたは どれ？",
-    explanation: "「健康」は けんこう と よむよ。{体|からだ}が じょうぶで {元気|げんき}な ようすだね。",
+    prompt: "「{健康|けんこう}」の よみかたは どれ？",
+    explanation: "「{健康|けんこう}」は けんこう と よむよ。{体|からだ}が じょうぶで {元気|げんき}な ようすだね。",
     format: "choice",
     choices: ["けんこう", "けんき", "けんぜん", "かんこう"],
     answer: "けんこう",
@@ -237,8 +239,8 @@ const kanjiGrade4Questions: ChoiceQuestion[] = [
   {
     id: `${U.kanjiGrade4}.q4`,
     unitId: U.kanjiGrade4,
-    prompt: "「成功」の よみかたは どれ？",
-    explanation: "「成功」は せいこう と よむよ。やろうとしたことが うまくいくことだね。",
+    prompt: "「{成功|せいこう}」の よみかたは どれ？",
+    explanation: "「{成功|せいこう}」は せいこう と よむよ。やろうとしたことが うまくいくことだね。",
     format: "choice",
     choices: ["せいこう", "せいく", "じょうこう", "せいきょう"],
     answer: "せいこう",
@@ -249,7 +251,7 @@ const kanjiGrade4Write: TextInputQuestion = {
   id: `${U.kanjiGrade4}.q5`,
   unitId: U.kanjiGrade4,
   prompt: "「あい」を かんじで かくと？（こたえは 1{字|じ}）",
-  explanation: "「あい」は かんじで「愛」と かくよ。",
+  explanation: "「あい」は かんじで「{愛|あい}」と かくよ。",
   format: "text-input",
   answer: "愛",
 };
@@ -618,17 +620,17 @@ export const kokugoG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "4{年生|ねんせい}は 202{字|じ}",
-          body: "4{年生|ねんせい}では あたらしく 202{字|じ}の かんじを ならうよ。「愛・健康・観察・成功」など、いみの ある {言葉|ことば}で おぼえると わすれにくいね。",
+          body: "4{年生|ねんせい}では あたらしく 202{字|じ}の かんじを ならうよ。「{愛|あい}・{健康|けんこう}・{観察|かんさつ}・{成功|せいこう}」など、いみの ある {言葉|ことば}で おぼえると わすれにくいね。",
           visual: { kind: "emoji", value: "📖✏️", caption: "202{字|じ}に ちょうせん" },
         },
         {
           heading: "{音|おん}と{訓|くん}",
-          body: "おなじ かんじにも、おんよみ と くんよみが あるよ。れい:「成」は「せい（成功）」と「なる」。",
+          body: "おなじ かんじにも、おんよみ と くんよみが あるよ。れい:「{成|せい}」は「せい（{成功|せいこう}）」と「なる」。",
           visual: { kind: "emoji", value: "🔤", caption: "おんよみ・くんよみ" },
         },
         {
           heading: "{言葉|ことば}で おぼえよう",
-          body: "{一字|いちじ}ずつより、「観察する」「健康な {体|からだ}」のように {言葉|ことば}や {文|ぶん}で おぼえると、つかいかたも {身|み}につくよ。",
+          body: "{一字|いちじ}ずつより、「{観察|かんさつ}する」「{健康|けんこう}な {体|からだ}」のように {言葉|ことば}や {文|ぶん}で おぼえると、つかいかたも {身|み}につくよ。",
           visual: { kind: "none" },
         },
       ],
@@ -652,7 +654,7 @@ export const kokugoG4Contents: Record<string, UnitContent> = {
         },
         {
           heading: "にた いみ・はんたいの いみ",
-          body: "「{岩石|がんせき}」は にた いみ、「{強弱|きょうじゃく}」は はんたいの いみの くみあわせ。いみを かんがえると {見|み}分けられるよ。",
+          body: "「{岩石|がんせき}」は にた いみ、「{強弱|きょうじゃく}」は はんたいの いみの くみあわせ。いみを かんがえると {見|み}{分|わ}けられるよ。",
           visual: { kind: "emoji", value: "⛰️↔️", caption: "{岩石|がんせき} / {強弱|きょうじゃく}" },
         },
         {

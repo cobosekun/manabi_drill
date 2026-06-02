@@ -45,6 +45,8 @@ export const kyoyoG2Domains: Domain[] = [
   { id: "kyoyo.nature", subjectId: KYOYO, name: "しぜん・うちゅう", formalName: "自然・宇宙" },
   { id: "kyoyo.language", subjectId: KYOYO, name: "ことば・ことわざ", formalName: "言葉・ことわざ" },
   { id: "kyoyo.body", subjectId: KYOYO, name: "{体|からだ}・マナー", formalName: "体・マナー" },
+  // 【新領域 2026-06-03 CEO直轄】きまり・ほうりつ（重複定義OK・index 側で id 重複排除）
+  { id: "kyoyo.rules-law", subjectId: "kyoyo", name: "きまり・ほうりつ", formalName: "きまり・法律" },
 ];
 
 // ── 単元 ──────────────────────────────────
@@ -165,6 +167,20 @@ export const kyoyoG2Units: Unit[] = [
     realWorldUse: "{家|いえ}・{学校|がっこう}・おみせで、まわりの{人|ひと}と きもちよく すごせるよ。",
     leadsTo: [],
     prerequisites: [U.moneyBasics, U.bodyFood],
+    hasLearn: true,
+    hasTest: true,
+  },
+  // 【新領域】きまり・ほうりつ（g2: みんなの やくそく。依存は g2 内で完結）
+  {
+    id: "kyoyo.g2.everyone-promise",
+    subjectId: "kyoyo",
+    grade: 2,
+    domainId: "kyoyo.rules-law",
+    title: "みんなの やくそく",
+    order: 10,
+    realWorldUse: "{公園|こうえん}や としょかん など、みんなが{使|つか}う ばしょで なかよく すごす ために{役立|やくだ}つよ。",
+    leadsTo: [],
+    prerequisites: [],
     hasLearn: true,
     hasTest: true,
   },
@@ -757,5 +773,58 @@ export const kyoyoG2Contents: Record<string, UnitContent> = {
       ],
     },
     test: { unitId: U.manners, questions: mannerQuestions, questionCount: 5 },
+  },
+
+  // 【新領域】きまり・ほうりつ
+  ["kyoyo.g2.everyone-promise"]: {
+    unitId: "kyoyo.g2.everyone-promise",
+    learn: {
+      unitId: "kyoyo.g2.everyone-promise",
+      steps: [
+        {
+          heading: "やくそく（きまり）は なぜ ある？",
+          body: "みんなが{使|つか}う ばしょで、けんかや けがを ふせいで{気持|きも}ちよく すごす ために あるよ。",
+          visual: { kind: "emoji", value: "🤝", caption: "みんなの やくそく" },
+        },
+        {
+          heading: "みんなの ばしょの きまり",
+          body: "{順番|じゅんばん}を まもる、ごみは{持|も}ち{帰|かえ}る、しずかに する。みんなで まもろう。",
+          visual: { kind: "emoji", value: "🏞️", caption: "なかよく つかう" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g2.everyone-promise",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g2.everyone-promise.q-1",
+          unitId: "kyoyo.g2.everyone-promise",
+          prompt: "ブランコで{遊|あそ}びたい{人|ひと}が ならんで いる。どう する？",
+          explanation: "みんなで つかう ものは{順番|じゅんばん}を まもると なかよく あそべるよ。",
+          format: "choice",
+          choices: ["{順番|じゅんばん}を まもる", "わりこむ", "おしのける", "ずっと はなさない"],
+          answer: "{順番|じゅんばん}を まもる",
+        },
+        {
+          id: "kyoyo.g2.everyone-promise.q-2",
+          unitId: "kyoyo.g2.everyone-promise",
+          prompt: "{公園|こうえん}で{出|で}た ごみは どう する？",
+          explanation: "ごみは{持|も}ち{帰|かえ}るか ごみばこへ。みんなの ばしょを きれいに たもとう。",
+          format: "choice",
+          choices: ["{持|も}ち{帰|かえ}る か ごみばこへ", "{地面|じめん}に すてる", "かくす", "{川|かわ}に ながす"],
+          answer: "{持|も}ち{帰|かえ}る か ごみばこへ",
+        },
+        {
+          id: "kyoyo.g2.everyone-promise.q-3",
+          unitId: "kyoyo.g2.everyone-promise",
+          prompt: "としょかんでは どう すごす？",
+          explanation: "としょかんは{本|ほん}を{読|よ}む ばしょ。しずかに するのが やくそくだよ。",
+          format: "choice",
+          choices: ["しずかに する", "{大|おお}ごえで{話|はな}す", "{走|はし}る", "うたう"],
+          answer: "しずかに する",
+        },
+      ],
+    },
   },
 };

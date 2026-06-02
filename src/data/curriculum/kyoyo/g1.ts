@@ -82,6 +82,13 @@ export const kyoyoG1Domains: Domain[] = [
     name: "からだ・マナー",
     formalName: "体・マナー",
   },
+  // 【新領域 2026-06-03 CEO直轄】きまり・ほうりつ（重複定義OK・index 側で id 重複排除）
+  {
+    id: "kyoyo.rules-law",
+    subjectId: "kyoyo",
+    name: "きまり・ほうりつ",
+    formalName: "きまり・法律",
+  },
 ];
 
 // ── 単元 ──────────────────────────────────
@@ -183,6 +190,35 @@ export const kyoyoG1Units: Unit[] = [
       "じぶんの からだを たいせつに したり、おともだちと なかよく するときに やくに たつよ。",
     leadsTo: [],
     prerequisites: [],
+    hasLearn: true,
+    hasTest: true,
+  },
+  // 【新領域】きまり・ほうりつ（g1: 学校のきまり / こうつうルール。依存は g1 内で完結）
+  {
+    id: "kyoyo.g1.school-rules",
+    subjectId: "kyoyo",
+    grade: 1,
+    domainId: "kyoyo.rules-law",
+    title: "{学校|がっこう}の きまり",
+    order: 10,
+    realWorldUse:
+      "ろうかは{歩|ある}く、{順番|じゅんばん}を まもる など、{学校|がっこう}で みんなが{安全|あんぜん}に たのしく すごす ために{役立|やくだ}つよ。",
+    leadsTo: ["kyoyo.g1.traffic-rules"],
+    prerequisites: [],
+    hasLearn: true,
+    hasTest: true,
+  },
+  {
+    id: "kyoyo.g1.traffic-rules",
+    subjectId: "kyoyo",
+    grade: 1,
+    domainId: "kyoyo.rules-law",
+    title: "こうつう ルール",
+    order: 11,
+    realWorldUse:
+      "{道|みち}を わたる ときや{歩|ある}く ときに、{自分|じぶん}の{命|いのち}を まもる ために とても{大切|たいせつ}だよ。",
+    leadsTo: [],
+    prerequisites: ["kyoyo.g1.school-rules"],
     hasLearn: true,
     hasTest: true,
   },
@@ -653,6 +689,111 @@ export const kyoyoG1Contents: Record<string, UnitContent> = {
       unitId: U.bodyManners,
       questions: bodyMannersQuestions,
       questionCount: 5,
+    },
+  },
+
+  // 【新領域】きまり・ほうりつ
+  ["kyoyo.g1.school-rules"]: {
+    unitId: "kyoyo.g1.school-rules",
+    learn: {
+      unitId: "kyoyo.g1.school-rules",
+      steps: [
+        {
+          heading: "きまりって なに？",
+          body: "みんなが{気持|きも}ちよく すごす ための やくそくが「きまり」だよ。",
+          visual: { kind: "emoji", value: "📏", caption: "みんなの やくそく" },
+        },
+        {
+          heading: "{学校|がっこう}の きまり",
+          body: "ろうかは{歩|ある}く、ごみは ごみばこへ。みんなで まもると{安全|あんぜん}だね。",
+          visual: { kind: "emoji", value: "🏫", caption: "あんぜんに すごす" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g1.school-rules",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g1.school-rules.q-1",
+          unitId: "kyoyo.g1.school-rules",
+          prompt: "ろうかでは どう する のが よい？",
+          explanation: "ろうかを{走|はし}ると ぶつかって あぶないよ。{歩|ある}くのが きまり。",
+          format: "choice",
+          choices: ["{歩|ある}く", "{走|はし}る", "ねる", "さわぐ"],
+          answer: "{歩|ある}く",
+        },
+        {
+          id: "kyoyo.g1.school-rules.q-2",
+          unitId: "kyoyo.g1.school-rules",
+          prompt: "きまりは なんの ために ある？",
+          explanation: "きまりは みんなが{気持|きも}ちよく{安全|あんぜん}に すごす ための やくそくだよ。",
+          format: "choice",
+          choices: ["みんなが{安全|あんぜん}に すごす ため", "こまらせる ため", "あそぶ ため", "ひみつに する ため"],
+          answer: "みんなが{安全|あんぜん}に すごす ため",
+        },
+        {
+          id: "kyoyo.g1.school-rules.q-3",
+          unitId: "kyoyo.g1.school-rules",
+          prompt: "ともだちの ものを つかいたい とき、どう する？",
+          explanation: "つかう まえに「かして」と{聞|き}くのが きまり（マナー）だよ。",
+          format: "choice",
+          choices: ["「かして」と{言|い}う", "だまって とる", "かくす", "なげる"],
+          answer: "「かして」と{言|い}う",
+        },
+      ],
+    },
+  },
+
+  ["kyoyo.g1.traffic-rules"]: {
+    unitId: "kyoyo.g1.traffic-rules",
+    learn: {
+      unitId: "kyoyo.g1.traffic-rules",
+      steps: [
+        {
+          heading: "しんごうの{色|いろ}",
+          body: "あおは すすめ、あかは とまれ。きいろは「とまる じゅんび」だよ。",
+          visual: { kind: "emoji", value: "🚦", caption: "しんごうを まもる" },
+        },
+        {
+          heading: "{道|みち}の わたりかた",
+          body: "{右|みぎ}を{見|み}て{左|ひだり}を{見|み}て、もう{一度|いちど}{右|みぎ}。{車|くるま}が こない ことを たしかめて わたろう。",
+          visual: { kind: "emoji", value: "🚸", caption: "{左右|さゆう}を かくにん" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g1.traffic-rules",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g1.traffic-rules.q-1",
+          unitId: "kyoyo.g1.traffic-rules",
+          prompt: "しんごうが あか の とき どう する？",
+          explanation: "あかは「とまれ」。とまって まつのが ルールだよ。",
+          format: "choice",
+          choices: ["とまる", "わたる", "{走|はし}る", "あそぶ"],
+          answer: "とまる",
+        },
+        {
+          id: "kyoyo.g1.traffic-rules.q-2",
+          unitId: "kyoyo.g1.traffic-rules",
+          prompt: "おうだんほどうを わたる まえに する ことは？",
+          explanation: "{右|みぎ}・{左|ひだり}を よく{見|み}て、{車|くるま}が こない ことを たしかめてから わたろう。",
+          format: "choice",
+          choices: ["{左右|さゆう}を よく{見|み}る", "{目|め}を つぶる", "はしりだす", "すわる"],
+          answer: "{左右|さゆう}を よく{見|み}る",
+        },
+        {
+          id: "kyoyo.g1.traffic-rules.q-3",
+          unitId: "kyoyo.g1.traffic-rules",
+          prompt: "{自転車|じてんしゃ}に のる とき{頭|あたま}を まもる ものは？",
+          explanation: "ヘルメットを かぶると、ころんでも{頭|あたま}を まもれるよ。",
+          format: "choice",
+          choices: ["ヘルメット", "ぼうし", "かさ", "タオル"],
+          answer: "ヘルメット",
+        },
+      ],
     },
   },
 };

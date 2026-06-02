@@ -23,7 +23,6 @@ import type {
   Domain,
   Unit,
   UnitContent,
-  ChoiceQuestion,
   SubjectId,
 } from "@/types/curriculum";
 
@@ -31,7 +30,10 @@ import type {
 const KYOYO: SubjectId = "kyoyo";
 
 // ── 領域（6領域は kyoyo/g1.ts が定義済み。g6 は新規追加なし＝空配列）──
-export const kyoyoG6Domains: Domain[] = [];
+// 【新領域 2026-06-03 CEO直轄】きまり・ほうりつ のみ g6 でも定義（他学年と重複OK・index で id 重複排除）。
+export const kyoyoG6Domains: Domain[] = [
+  { id: "kyoyo.rules-law", subjectId: "kyoyo", name: "きまり・ほうりつ", formalName: "きまり・法律" },
+];
 
 // ── 単元 ──────────────────────────────────
 // 依存グラフ（prerequisites を辺とする DAG。循環なし）:
@@ -174,6 +176,33 @@ export const kyoyoG6Units: Unit[] = [
       "{毎日|まいにち}の {食事|しょくじ}で バランスよく {栄養|えいよう}を とる ことや、すいみんの 大切さを {知|し}って、{元気|げんき}な {体|からだ}を つくれるよ。",
     leadsTo: [],
     prerequisites: [G1.bodyManners],
+    hasLearn: true,
+    hasTest: true,
+  },
+  // 【新領域】きまり・ほうりつ（g6: せんきょと きまり / くらしと ほうりつ。依存は g6 内で完結）
+  {
+    id: "kyoyo.g6.elections-rules",
+    subjectId: "kyoyo",
+    grade: 6,
+    domainId: "kyoyo.rules-law",
+    title: "せんきょと きまり",
+    order: 10,
+    realWorldUse: "おとなが する せんきょの しくみを{知|し}ると、ニュースや{社会|しゃかい}の うごきが わかるよ。",
+    leadsTo: ["kyoyo.g6.life-and-law"],
+    prerequisites: [],
+    hasLearn: true,
+    hasTest: true,
+  },
+  {
+    id: "kyoyo.g6.life-and-law",
+    subjectId: "kyoyo",
+    grade: 6,
+    domainId: "kyoyo.rules-law",
+    title: "くらしと ほうりつ",
+    order: 11,
+    realWorldUse: "かいものや やくそく など、まいにちの くらしが{法律|ほうりつ}で まもられて いる ことが わかるよ。",
+    leadsTo: [],
+    prerequisites: ["kyoyo.g6.elections-rules"],
     hasLearn: true,
     hasTest: true,
   },
@@ -719,6 +748,111 @@ export const kyoyoG6Contents: Record<string, UnitContent> = {
           format: "choice",
           choices: ["よく {寝|ね}る こと", "あまり {動|うご}かない こと", "{夜|よる}ふかし", "{食|た}べない こと"],
           answer: "よく {寝|ね}る こと",
+        },
+      ],
+    },
+  },
+
+  // 【新領域】きまり・ほうりつ
+  ["kyoyo.g6.elections-rules"]: {
+    unitId: "kyoyo.g6.elections-rules",
+    learn: {
+      unitId: "kyoyo.g6.elections-rules",
+      steps: [
+        {
+          heading: "せんきょって なに？",
+          body: "{国|くに}や まちの ことを きめる{代表|だいひょう}を、{投票|とうひょう}で えらぶ しくみが「せんきょ」だよ。",
+          visual: { kind: "emoji", value: "🗳️", caption: "{代表|だいひょう}を えらぶ" },
+        },
+        {
+          heading: "{一人|ひとり}{一票|いっぴょう}",
+          body: "おとなは みんな おなじ{1|いっ}{票|ぴょう}。{多|おお}くの{人|ひと}に えらばれた{人|ひと}が{代表|だいひょう}に なるよ。",
+          visual: { kind: "emoji", value: "✅", caption: "おなじ かちの{1|いっ}{票|ぴょう}" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g6.elections-rules",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g6.elections-rules.q-1",
+          unitId: "kyoyo.g6.elections-rules",
+          prompt: "せんきょは なにを する しくみ？",
+          explanation: "せんきょは{投票|とうひょう}で{代表|だいひょう}（{議員|ぎいん}など）を えらぶ しくみだよ。",
+          format: "choice",
+          choices: ["{代表|だいひょう}を えらぶ", "おかねを くばる", "ゲームを する", "あそぶ"],
+          answer: "{代表|だいひょう}を えらぶ",
+        },
+        {
+          id: "kyoyo.g6.elections-rules.q-2",
+          unitId: "kyoyo.g6.elections-rules",
+          prompt: "「{一人|ひとり}{一票|いっぴょう}」の いみは？",
+          explanation: "せんきょでは おとな{一人|ひとり}に おなじ かちの{1|いっ}{票|ぴょう}が あるよ。これが こうへいの もと。",
+          format: "choice",
+          choices: ["みんな おなじ かちの{1|いっ}{票|ぴょう}", "おかねもちは{2|に}{票|ひょう}", "こどもも なんども", "つよい{人|ひと}が{多|おお}く"],
+          answer: "みんな おなじ かちの{1|いっ}{票|ぴょう}",
+        },
+        {
+          id: "kyoyo.g6.elections-rules.q-3",
+          unitId: "kyoyo.g6.elections-rules",
+          prompt: "せんきょで えらばれた{人|ひと}は なにを する？",
+          explanation: "えらばれた{代表|だいひょう}は、みんなの ために{法律|ほうりつ}や きまりを{話|はな}し{合|あ}って つくるよ。",
+          format: "choice",
+          choices: ["みんなの ために きまりを つくる", "{自分|じぶん}だけ とくを する", "あそぶ", "なにも しない"],
+          answer: "みんなの ために きまりを つくる",
+        },
+      ],
+    },
+  },
+
+  ["kyoyo.g6.life-and-law"]: {
+    unitId: "kyoyo.g6.life-and-law",
+    learn: {
+      unitId: "kyoyo.g6.life-and-law",
+      steps: [
+        {
+          heading: "くらしを まもる{法律|ほうりつ}",
+          body: "{買|か}った ものが こわれて いた ときに とりかえて もらえる など、{法律|ほうりつ}は{消費者|しょうひしゃ}（{買|か}う{人|ひと}）を まもって いるよ。",
+          visual: { kind: "emoji", value: "🛒", caption: "{買|か}う{人|ひと}を まもる" },
+        },
+        {
+          heading: "やくそくは まもる",
+          body: "{物|もの}を{売|う}り{買|か}いする ことも ひとつの「やくそく（{契約|けいやく}）」。まもる ことが{大切|たいせつ}だよ。",
+          visual: { kind: "emoji", value: "🤝", caption: "やくそくを まもる" },
+        },
+      ],
+    },
+    test: {
+      unitId: "kyoyo.g6.life-and-law",
+      questionCount: 3,
+      questions: [
+        {
+          id: "kyoyo.g6.life-and-law.q-1",
+          unitId: "kyoyo.g6.life-and-law",
+          prompt: "{買|か}った ものが こわれて いた とき、まもって くれるのは？",
+          explanation: "{買|か}う{人|ひと}（{消費者|しょうひしゃ}）を まもる{法律|ほうりつ}が あるので、とりかえなどを たのめるよ。",
+          format: "choice",
+          choices: ["{消費者|しょうひしゃ}を まもる{法律|ほうりつ}", "だれも まもらない", "{店|みせ}の きぶん", "うんしだい"],
+          answer: "{消費者|しょうひしゃ}を まもる{法律|ほうりつ}",
+        },
+        {
+          id: "kyoyo.g6.life-and-law.q-2",
+          unitId: "kyoyo.g6.life-and-law",
+          prompt: "{物|もの}の{売|う}り{買|か}いは ひとつの なに？",
+          explanation: "{売|う}り{買|か}いは{売|う}る{人|ひと}と{買|か}う{人|ひと}の やくそく（{契約|けいやく}）だよ。",
+          format: "choice",
+          choices: ["やくそく（{契約|けいやく}）", "あそび", "けんか", "ゲーム"],
+          answer: "やくそく（{契約|けいやく}）",
+        },
+        {
+          id: "kyoyo.g6.life-and-law.q-3",
+          unitId: "kyoyo.g6.life-and-law",
+          prompt: "まいにちの くらしと{法律|ほうりつ}の かんけいは？",
+          explanation: "{法律|ほうりつ}は{安全|あんぜん}な{食|た}べ{物|もの}や かいもの など、くらしを かげで まもって いるよ。",
+          format: "choice",
+          choices: ["くらしを かげで まもって いる", "かんけい ない", "じゃまを する", "あそびの ため"],
+          answer: "くらしを かげで まもって いる",
         },
       ],
     },

@@ -5,3 +5,5 @@ export { ResultModal } from "./ResultModal";
 export { BackLink } from "./BackLink";
 export { RubyText, parseRuby, rubyToPlainText } from "./RubyText";
 export type { RubySegment } from "./RubyText";
+export { Visual } from "./Visual";
+export { ClockSvg, NumberBlocksSvg } from "./visuals";

@@ -18,7 +18,7 @@
 //   理科は generators 非対応 → 全単元 固定 questions[]（4択 choice、全問 explanation 必須）。図は emoji 中心。
 // ══════════════════════════════════════════
 
-import type { Domain, Unit, UnitContent, ChoiceQuestion } from "@/types/curriculum";
+import type { Domain, Unit, UnitContent } from "@/types/curriculum";
 
 // ── 領域（4領域は rika/g3.ts が定義済み。g4 は新規追加なし＝空配列）──
 export const rikaG4Domains: Domain[] = [];

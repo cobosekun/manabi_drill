@@ -22,9 +22,6 @@ import type {
   Domain,
   Unit,
   UnitContent,
-  ChoiceQuestion,
-  OrderingQuestion,
-  MatchingQuestion,
 } from "@/types/curriculum";
 
 // ── 教科 ──────────────────────────────────
