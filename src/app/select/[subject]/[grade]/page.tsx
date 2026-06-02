@@ -143,7 +143,10 @@ export default function SelectUnitsPage() {
           <ul className="flex flex-col gap-4">
             {units.map((unit, i) => {
               const p = progress[unit.id];
-              const base = `/${subjectId}/${grade}/${unit.id}`;
+              // learn/test ルートは [unit] に slug を期待し unitId=subject.g{grade}.{slug} を再合成する。
+              // ここでフルIDを渡すと二重接頭辞で notFound になるため slug を抽出して渡す。
+              const slug = unit.id.split(".").slice(2).join(".");
+              const base = `/${subjectId}/${grade}/${slug}`;
               return (
                 <li
                   key={unit.id}

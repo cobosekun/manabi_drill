@@ -46,6 +46,7 @@ export default function RoadmapFlow() {
 
   const [subjectId, setSubjectId] = useState<string>(subjects[0]?.id ?? "");
   const [grade, setGrade] = useState<Grade | "all">("all");
+  const [hoveredUnitId, setHoveredUnitId] = useState<string | null>(null);
 
   const subject = subjects.find((s) => s.id === subjectId) ?? subjects[0];
   const theme = getTheme(subject?.theme);
@@ -185,6 +186,17 @@ export default function RoadmapFlow() {
               >
                 <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8" />
               </marker>
+              <marker
+                id="rm-arrow-hl"
+                viewBox="0 0 10 10"
+                refX="9"
+                refY="5"
+                markerWidth="7"
+                markerHeight="7"
+                orient="auto-start-reverse"
+              >
+                <path d="M0,0 L10,5 L0,10 z" fill="#facc15" />
+              </marker>
             </defs>
 
             {/* 学年ラベル */}
@@ -223,15 +235,18 @@ export default function RoadmapFlow() {
                 const dx = Math.max(30, Math.abs(tx - fx) / 2);
                 d = `M ${fx} ${fy} C ${fx + dx} ${fy}, ${tx - dx} ${ty}, ${tx} ${ty}`;
               }
+              const highlighted =
+                hoveredUnitId !== null &&
+                (e.from === hoveredUnitId || e.to === hoveredUnitId);
               return (
                 <path
                   key={`${e.from}->${e.to}`}
                   d={d}
                   fill="none"
-                  stroke="#94a3b8"
-                  strokeWidth={2}
-                  markerEnd="url(#rm-arrow)"
-                  opacity={0.7}
+                  stroke={highlighted ? "#facc15" : "#94a3b8"}
+                  strokeWidth={highlighted ? 3 : 2}
+                  markerEnd={highlighted ? "url(#rm-arrow-hl)" : "url(#rm-arrow)"}
+                  opacity={highlighted ? 1 : 0.7}
                 />
               );
             })}
@@ -244,6 +259,10 @@ export default function RoadmapFlow() {
                 <foreignObject key={u.id} x={p.x} y={p.y} width={NODE_W} height={NODE_H}>
                   <button
                     onClick={() => goLearn(u)}
+                    onMouseEnter={() => setHoveredUnitId(u.id)}
+                    onMouseLeave={() => setHoveredUnitId(null)}
+                    onFocus={() => setHoveredUnitId(u.id)}
+                    onBlur={() => setHoveredUnitId(null)}
                     className={`flex h-full w-full items-center justify-center rounded-2xl border-2 bg-white px-2 text-center text-sm font-bold leading-tight shadow-sm transition hover:scale-[1.03] ${theme.choiceDefault}`}
                   >
                     <RubyText text={u.title} />

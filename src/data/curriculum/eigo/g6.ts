@@ -85,7 +85,7 @@ export const eigoG6Units: Unit[] = [
     title: "{過|す}ぎた {出来事|できごと}（I went / I ate）",
     order: 1,
     realWorldUse:
-      "きのうや {休日|きゅうじつ}に「どこへ {行|い}って・なにを {食|た}べたか」を {英語|えいご}で {伝|つた}えられるよ。",
+      "{昨日|きのう}や {休日|きゅうじつ}に「どこへ {行|い}って・{何|なに}を {食|た}べたか」を {英語|えいご}で {伝|つた}えられるよ。",
     leadsTo: [U.summerMemories, U.dailyFrequency],
     prerequisites: [G4.dailyRoutine],
     hasLearn: true,
@@ -113,7 +113,7 @@ export const eigoG6Units: Unit[] = [
     title: "{一日|いちにち}と ひんど（always / usually）",
     order: 3,
     realWorldUse:
-      "「いつも・たいてい・ときどき」を つけて、{自分|じぶん}の {生活|せいかつ}の {習慣|しゅうかん}を {伝|つた}えられるよ。",
+      "「いつも・たいてい・ときどき」を {付|つ}けて、{自分|じぶん}の {生活|せいかつ}の {習慣|しゅうかん}を {伝|つた}えられるよ。",
     leadsTo: [U.juniorHigh],
     prerequisites: [U.pastEvents],
     hasLearn: true,
@@ -127,7 +127,7 @@ export const eigoG6Units: Unit[] = [
     title: "{世界|せかい}と つながる {文化|ぶんか}（world cultures）",
     order: 4,
     realWorldUse:
-      "いろいろな {国|くに}の {食|た}べ{物|もの}や {有名|ゆうめい}な ものを {知|し}って、「{行|い}ってみたい{国|くに}」を {伝|つた}えられるよ。",
+      "いろいろな {国|くに}の {食|た}べ{物|もの}や {有名|ゆうめい}な {物|もの}を {知|し}って、「{行|い}ってみたい{国|くに}」を {伝|つた}えられるよ。",
     leadsTo: [U.futureDream],
     prerequisites: [],
     hasLearn: true,
@@ -212,11 +212,11 @@ const pastEventsQuestions: ChoiceQuestion[] = [
     id: `${U.pastEvents}.q-5`,
     unitId: U.pastEvents,
     prompt: "{過|す}ぎた {出来事|できごと}を {話|はな}すとき、うごきの {言葉|ことば}は どうなる かな？",
-    explanation: "{過|す}ぎた ことを いうときは {動|うご}きの {言葉|ことば}が {形|かたち}を かえるよ（go→went、eat→ate のように）。",
+    explanation: "{過|す}ぎた ことを {言|い}うときは {動|うご}きの {言葉|ことば}が {形|かたち}を {変|か}えるよ（go→went、eat→ate のように）。",
     visual: { kind: "emoji", value: "⏪", caption: "go → went" },
     format: "choice",
-    choices: ["{形|かたち}が かわる", "ずっと {同|おな}じ", "なくなる", "{二|ふた}つに なる"],
-    answer: "{形|かたち}が かわる",
+    choices: ["{形|かたち}が {変|か}わる", "ずっと {同|おな}じ", "なくなる", "{二|ふた}つに なる"],
+    answer: "{形|かたち}が {変|か}わる",
   },
 ];
 
@@ -226,7 +226,7 @@ const summerMemoriesQuestions: ChoiceQuestion[] = [
     id: `${U.summerMemories}.q-1`,
     unitId: U.summerMemories,
     prompt: "「summer vacation（サマー バケーション）」の {意味|いみ}は どれ かな？",
-    explanation: "summer は {夏|なつ}、vacation は {休|やす}み。あわせて「{夏休|なつやす}み」だよ。",
+    explanation: "summer は {夏|なつ}、vacation は {休|やす}み。{合|あ}わせて「{夏休|なつやす}み」だよ。",
     visual: { kind: "emoji", value: "🏖️☀️", caption: "summer vacation" },
     format: "choice",
     choices: ["{夏休|なつやす}み", "{冬休|ふゆやす}み", "{春休|はるやす}み", "{宿題|しゅくだい}"],
@@ -265,8 +265,8 @@ const summerMemoriesQuestions: ChoiceQuestion[] = [
   {
     id: `${U.summerMemories}.q-5`,
     unitId: U.summerMemories,
-    prompt: "{夏|なつ}の {思|おも}い{出|で}を {発表|はっぴょう}する とき、どの {形|かたち}を つかう かな？",
-    explanation: "もう {終|お}わった {出来事|できごと} だから、{過|す}ぎた {形|かたち}（went・ate・enjoyed など）を つかうよ。",
+    prompt: "{夏|なつ}の {思|おも}い{出|で}を {発表|はっぴょう}する とき、どの {形|かたち}を {使|つか}う かな？",
+    explanation: "もう {終|お}わった {出来事|できごと} だから、{過|す}ぎた {形|かたち}（went・ate・enjoyed など）を {使|つか}うよ。",
     visual: { kind: "emoji", value: "📷", caption: "{思|おも}い{出|で}＝{過|す}ぎたこと" },
     format: "choice",
     choices: ["{過|す}ぎた {形|かたち}", "これからの {形|かたち}", "{今|いま}の {形|かたち}", "{聞|き}く {形|かたち}"],
@@ -280,7 +280,7 @@ const dailyFrequencyQuestions: ChoiceQuestion[] = [
     id: `${U.dailyFrequency}.q-1`,
     unitId: U.dailyFrequency,
     prompt: "「always（オールウェイズ）」の {意味|いみ}は どれ かな？",
-    explanation: "always は「いつも」だよ。{毎回|まいかい} {必|かなら}ず する ことに つかうよ。",
+    explanation: "always は「いつも」だよ。{毎回|まいかい} {必|かなら}ず する ことに {使|つか}うよ。",
     visual: { kind: "emoji", value: "🔁", caption: "always = いつも" },
     format: "choice",
     choices: ["いつも", "ときどき", "ぜんぜん", "たまに"],
@@ -290,7 +290,7 @@ const dailyFrequencyQuestions: ChoiceQuestion[] = [
     id: `${U.dailyFrequency}.q-2`,
     unitId: U.dailyFrequency,
     prompt: "「sometimes（サムタイムズ）」の {意味|いみ}は どれ かな？",
-    explanation: "sometimes は「ときどき」だよ。たまに する ことに つかうよ。",
+    explanation: "sometimes は「ときどき」だよ。たまに する ことに {使|つか}うよ。",
     visual: { kind: "emoji", value: "🕐", caption: "sometimes = ときどき" },
     format: "choice",
     choices: ["ときどき", "いつも", "けっして〜ない", "たいてい"],
@@ -310,17 +310,17 @@ const dailyFrequencyQuestions: ChoiceQuestion[] = [
     id: `${U.dailyFrequency}.q-4`,
     unitId: U.dailyFrequency,
     prompt: "「I always get up at six.」の {意味|いみ}は どれ かな？",
-    explanation: "get up は {起|お}きる、six は 6{時|じ}。「わたしは いつも 6{時|じ}に {起|お}きる」だよ。",
+    explanation: "get up は {起|お}きる、six は 6{時|じ}。「{私|わたし}は いつも 6{時|じ}に {起|お}きる」だよ。",
     visual: { kind: "emoji", value: "⏰🌅", caption: "always get up at six" },
     format: "choice",
-    choices: ["いつも 6{時|じ}に {起|お}きる", "ときどき 6{時|じ}に ねる", "6{時|じ}に {家|いえ}を {出|で}る", "6{時|じ}が {好|す}き"],
+    choices: ["いつも 6{時|じ}に {起|お}きる", "ときどき 6{時|じ}に {寝|ね}る", "6{時|じ}に {家|いえ}を {出|で}る", "6{時|じ}が {好|す}き"],
     answer: "いつも 6{時|じ}に {起|お}きる",
   },
   {
     id: `${U.dailyFrequency}.q-5`,
     unitId: U.dailyFrequency,
-    prompt: "ひんど（どれくらい するか）を あらわす {言葉|ことば}は どれ かな？",
-    explanation: "always・usually・sometimes は どれくらい よく するかを あらわす「ひんど」の {言葉|ことば}だよ。",
+    prompt: "ひんど（どれくらい するか）を {表|あらわ}す {言葉|ことば}は どれ かな？",
+    explanation: "always・usually・sometimes は どれくらい よく するかを {表|あらわ}す「ひんど」の {言葉|ことば}だよ。",
     visual: { kind: "emoji", value: "📊", caption: "ひんどの {言葉|ことば}" },
     format: "choice",
     choices: ["always", "apple", "happy", "school"],
@@ -333,7 +333,7 @@ const worldCulturesQuestions: ChoiceQuestion[] = [
   {
     id: `${U.worldCultures}.q-1`,
     unitId: U.worldCultures,
-    prompt: "「Australia（オーストラリア）」は なにの {名前|なまえ} かな？",
+    prompt: "「Australia（オーストラリア）」は {何|なに}の {名前|なまえ} かな？",
     explanation: "Australia は {国|くに}の {名前|なまえ} だよ。コアラや カンガルーが いる {国|くに}だね。",
     visual: { kind: "emoji", value: "🇦🇺🐨", caption: "Australia" },
     format: "choice",
@@ -347,7 +347,7 @@ const worldCulturesQuestions: ChoiceQuestion[] = [
     explanation: "「Where（ウェア）」は「どこ」。「どこへ {行|い}きたい？」と {聞|き}く {言葉|ことば}だよ。",
     visual: { kind: "emoji", value: "🗺️✈️", caption: "Where do you want to go？" },
     format: "choice",
-    choices: ["どこへ {行|い}きたい？", "なにが ほしい？", "だれが {好|す}き？", "なん{時|じ}？"],
+    choices: ["どこへ {行|い}きたい？", "{何|なに}が {欲|ほ}しい？", "{誰|だれ}が {好|す}き？", "{何|なん}{時|じ}？"],
     answer: "どこへ {行|い}きたい？",
   },
   {
@@ -413,11 +413,11 @@ const futureDreamQuestions: ChoiceQuestion[] = [
     id: `${U.futureDream}.q-3`,
     unitId: U.futureDream,
     prompt: "「What do you want to be？」の {意味|いみ}は どれ かな？",
-    explanation: "「なにに なりたい？」と {将来|しょうらい}の {夢|ゆめ}を {聞|き}く {言葉|ことば}だよ。",
+    explanation: "「{何|なに}に なりたい？」と {将来|しょうらい}の {夢|ゆめ}を {聞|き}く {言葉|ことば}だよ。",
     visual: { kind: "emoji", value: "🤔💭", caption: "What do you want to be？" },
     format: "choice",
-    choices: ["なにに なりたい？", "なにが ほしい？", "どこに {行|い}きたい？", "なにが {好|す}き？"],
-    answer: "なにに なりたい？",
+    choices: ["{何|なに}に なりたい？", "{何|なに}が {欲|ほ}しい？", "どこに {行|い}きたい？", "{何|なに}が {好|す}き？"],
+    answer: "{何|なに}に なりたい？",
   },
   {
     id: `${U.futureDream}.q-4`,
@@ -432,8 +432,8 @@ const futureDreamQuestions: ChoiceQuestion[] = [
   {
     id: `${U.futureDream}.q-5`,
     unitId: U.futureDream,
-    prompt: "なりたい {仕事|しごと}を {伝|つた}える ときに つかう {言葉|ことば}は どれ かな？",
-    explanation: "なりたい ときは「I want to be 〜.」を つかうよ。「I want 〜.」は ほしい もの だよ。",
+    prompt: "なりたい {仕事|しごと}を {伝|つた}える ときに {使|つか}う {言葉|ことば}は どれ かな？",
+    explanation: "なりたい ときは「I want to be 〜.」を {使|つか}うよ。「I want 〜.」は {欲|ほ}しい {物|もの} だよ。",
     visual: { kind: "emoji", value: "🌟", caption: "I want to be …" },
     format: "choice",
     choices: ["I want to be", "I want", "I went", "I like"],
@@ -457,7 +457,7 @@ const juniorHighQuestions: ChoiceQuestion[] = [
     id: `${U.juniorHigh}.q-2`,
     unitId: U.juniorHigh,
     prompt: "「I want to join the brass band.」の join の {意味|いみ}は どれ かな？",
-    explanation: "join（ジョイン）は「{入|はい}る」だよ。brass band は すいそうがく{部|ぶ}。「すいそうがく{部|ぶ}に {入|はい}りたい」だね。",
+    explanation: "join（ジョイン）は「{入|はい}る」だよ。brass band は {吹奏楽|すいそうがく}{部|ぶ}。「{吹奏楽|すいそうがく}{部|ぶ}に {入|はい}りたい」だね。",
     visual: { kind: "emoji", value: "🎺", caption: "join the brass band" },
     format: "choice",
     choices: ["{入|はい}る", "やめる", "{作|つく}る", "{見|み}る"],
@@ -480,7 +480,7 @@ const juniorHighQuestions: ChoiceQuestion[] = [
     explanation: "club は {部活|ぶかつ}。「どの {部活|ぶかつ}に {入|はい}りたい？」と {聞|き}く {言葉|ことば}だよ。",
     visual: { kind: "emoji", value: "🏀🎨🎻", caption: "What club？" },
     format: "choice",
-    choices: ["どの {部活|ぶかつ}に {入|はい}りたい？", "なにが {好|す}き？", "どこに {行|い}きたい？", "なにに なりたい？"],
+    choices: ["どの {部活|ぶかつ}に {入|はい}りたい？", "{何|なに}が {好|す}き？", "どこに {行|い}きたい？", "{何|なに}に なりたい？"],
     answer: "どの {部活|ぶかつ}に {入|はい}りたい？",
   },
   {
@@ -503,11 +503,11 @@ export const eigoG6Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{過|す}ぎた ことを いおう",
-          body: "もう {終|お}わった {出来事|できごと}を いうときは、{動|うご}きの {言葉|ことば}が {形|かたち}を かえるよ。go（{行|い}く）→ went（{行|い}った）。",
+          body: "もう {終|お}わった {出来事|できごと}を {言|い}うときは、{動|うご}きの {言葉|ことば}が {形|かたち}を {変|か}えるよ。go（{行|い}く）→ went（{行|い}った）。",
           visual: { kind: "emoji", value: "⏪🚶", caption: "go → went" },
         },
         {
-          heading: "よく つかう {過|す}ぎた {形|かたち}",
+          heading: "よく {使|つか}う {過|す}ぎた {形|かたち}",
           body: "「went（{行|い}った）」「ate（{食|た}べた）」「saw（{見|み}た）」「enjoyed（{楽|たの}しんだ）」を {覚|おぼ}えよう。",
           visual: { kind: "emoji", value: "🍦🎬🏞️", caption: "went / ate / saw" },
         },
@@ -532,12 +532,12 @@ export const eigoG6Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{夏休|なつやす}みの {話|はなし}",
-          body: "「My summer vacation（わたしの {夏休|なつやす}み）」を テーマに、したことを {発表|はっぴょう}するよ。",
+          body: "「My summer vacation（{私|わたし}の {夏休|なつやす}み）」を テーマに、したことを {発表|はっぴょう}するよ。",
           visual: { kind: "emoji", value: "🏖️", caption: "summer vacation" },
         },
         {
-          heading: "どこへ {行|い}った？ なにを した？",
-          body: "「I went to the sea.（{海|うみ}に {行|い}った）」「I enjoyed swimming.（{泳|およ}ぐのを {楽|たの}しんだ）」のように いうよ。",
+          heading: "どこへ {行|い}った？ {何|なに}を した？",
+          body: "「I went to the sea.（{海|うみ}に {行|い}った）」「I enjoyed swimming.（{泳|およ}ぐのを {楽|たの}しんだ）」のように {言|い}うよ。",
           visual: { kind: "emoji", value: "🌊🏊", caption: "I went / I enjoyed" },
         },
         {
@@ -561,7 +561,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "どれくらい する？",
-          body: "「いつも・たいてい・ときどき」を あらわす {言葉|ことば}を つかうと、{習慣|しゅうかん}が {伝|つた}わるよ。",
+          body: "「いつも・たいてい・ときどき」を {表|あらわ}す {言葉|ことば}を {使|つか}うと、{習慣|しゅうかん}が {伝|つた}わるよ。",
           visual: { kind: "emoji", value: "📊", caption: "ひんどの {言葉|ことば}" },
         },
         {
@@ -570,8 +570,8 @@ export const eigoG6Contents: Record<string, UnitContent> = {
           visual: { kind: "emoji", value: "🔁🕐", caption: "always / usually / sometimes" },
         },
         {
-          heading: "{一日|いちにち}と あわせて",
-          body: "「I always get up at six.（いつも 6{時|じ}に {起|お}きる）」のように、{生活|せいかつ}と あわせて いえるよ。",
+          heading: "{一日|いちにち}と {合|あ}わせて",
+          body: "「I always get up at six.（いつも 6{時|じ}に {起|お}きる）」のように、{生活|せいかつ}と {合|あ}わせて {言|い}えるよ。",
           visual: { kind: "emoji", value: "⏰🌅", caption: "I always get up at six." },
         },
       ],
@@ -595,7 +595,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         },
         {
           heading: "その {国|くに}の {文化|ぶんか}",
-          body: "「You can eat pizza in Italy.（イタリアでは ピザが {食|た}べられる）」のように、できることを いえるよ。",
+          body: "「You can eat pizza in Italy.（イタリアでは ピザが {食|た}べられる）」のように、できることを {言|い}えるよ。",
           visual: { kind: "emoji", value: "🍕🇮🇹", caption: "You can …" },
         },
         {
@@ -653,7 +653,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         },
         {
           heading: "{入|はい}りたい {部活|ぶかつ}",
-          body: "「I want to join the 〜.（〜に {入|はい}りたい）」で {部活|ぶかつ}を いえるよ。brass band（すいそうがく{部|ぶ}）など。",
+          body: "「I want to join the 〜.（〜に {入|はい}りたい）」で {部活|ぶかつ}を いえるよ。brass band（{吹奏楽|すいそうがく}{部|ぶ}）など。",
           visual: { kind: "emoji", value: "🎺🏀", caption: "I want to join …" },
         },
         {

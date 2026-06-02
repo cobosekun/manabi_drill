@@ -101,7 +101,7 @@ export const sansuuG5Units: Unit[] = [
     title: "{倍数|ばいすう}と{約数|やくすう}",
     order: 2,
     realWorldUse:
-      "{同|おな}じ {間隔|かんかく}で {並|なら}ぶ ものの {時間|じかん}を そろえたり、あめを あまりなく {分|わ}けられる {人数|にんずう}を {考|かんが}えるときに {使|つか}うよ。",
+      "{同|おな}じ {間隔|かんかく}で {並|なら}ぶ ものの {時間|じかん}を {揃|そろ}えたり、{飴|あめ}を {余|あま}りなく {分|わ}けられる {人数|にんずう}を {考|かんが}えるときに {使|つか}うよ。",
     leadsTo: [U.fractionAddSub],
     prerequisites: [G4.divisionWhole],
     hasLearn: true,
@@ -185,7 +185,7 @@ export const sansuuG5Units: Unit[] = [
     title: "{単位量|たんいりょう}あたりの {大|おお}きさ",
     order: 8,
     realWorldUse:
-      "おかし 1こ {分|ぶん}の {値段|ねだん}や、{車|くるま}が 1L で {進|すす}む {距離|きょり}を {比|くら}べて、どちらが お{得|とく}か {考|かんが}えるときに {使|つか}うよ。",
+      "お{菓子|かし} 1こ {分|ぶん}の {値段|ねだん}や、{車|くるま}が 1L で {進|すす}む {距離|きょり}を {比|くら}べて、どちらが お{得|とく}か {考|かんが}えるときに {使|つか}うよ。",
     leadsTo: [U.ratioPercentage, G6.speed],
     prerequisites: [U.decimalMulDiv],
     hasLearn: true,
@@ -227,7 +227,7 @@ export const sansuuG5Units: Unit[] = [
     title: "{帯|おび}グラフと{円|えん}グラフ",
     order: 11,
     realWorldUse:
-      "クラスの {好|す}きな {教科|きょうか}や、{使|つか}った おこづかいの {内訳|うちわけ}のように、{全体|ぜんたい}に {対|たい}する {割合|わりあい}を {絵|え}で {比|くら}べるときに {使|つか}うよ。",
+      "クラスの {好|す}きな {教科|きょうか}や、{使|つか}った お{小遣|こづか}いの {内訳|うちわけ}のように、{全体|ぜんたい}に {対|たい}する {割合|わりあい}を {絵|え}で {比|くら}べるときに {使|つか}うよ。",
     leadsTo: [],
     prerequisites: [U.ratioPercentage],
     hasLearn: true,
@@ -317,12 +317,12 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
       unitId: U.multiplesDivisors,
       steps: [
         {
-          heading: "{倍数|ばいすう}って なに?",
+          heading: "{倍数|ばいすう}って {何|なに}?",
           body: "ある {数|かず}を 1{倍|ばい}・2{倍|ばい}・3{倍|ばい}… した {数|かず}を「{倍数|ばいすう}」というよ。3の {倍数|ばいすう}は 3, 6, 9, 12… だね。",
           visual: { kind: "emoji", value: "3 6 9 12 15", caption: "3の {倍数|ばいすう}" },
         },
         {
-          heading: "{約数|やくすう}って なに?",
+          heading: "{約数|やくすう}って {何|なに}?",
           body: "ある {数|かず}を {割|わ}りきれる {数|かず}を「{約数|やくすう}」というよ。12 の {約数|やくすう}は 1, 2, 3, 4, 6, 12 だよ。",
           visual: { kind: "emoji", value: "12 ÷ 1,2,3,4,6,12", caption: "12を {割|わ}りきれる {数|かず}" },
         },
@@ -341,7 +341,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
           id: `${U.multiplesDivisors}.q-1`,
           unitId: U.multiplesDivisors,
           prompt: "6 と 8 の {最小公倍数|さいしょうこうばいすう} は?",
-          explanation: "6の {倍数|ばいすう} 6,12,18,24… と 8の {倍数|ばいすう} 8,16,24… で {初|はじ}めて そろうのが 24 だよ。",
+          explanation: "6の {倍数|ばいすう} 6,12,18,24… と 8の {倍数|ばいすう} 8,16,24… で {初|はじ}めて {揃|そろ}うのが 24 だよ。",
           format: "number-input",
           answer: 24,
         },
@@ -460,7 +460,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
       unitId: U.fractionAddSub,
       steps: [
         {
-          heading: "{通分|つうぶん}って なに?",
+          heading: "{通分|つうぶん}って {何|なに}?",
           body: "{分母|ぶんぼ}（{下|した}の {数|かず}）が {違|ちが}う {分数|ぶんすう}は、そのまま {足|た}せないよ。{分母|ぶんぼ}を そろえることを「{通分|つうぶん}」というよ。",
           visual: { kind: "emoji", value: "1/2 = 3/6 , 1/3 = 2/6", caption: "{分母|ぶんぼ}を 6に そろえる" },
         },
@@ -537,7 +537,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{三角形|さんかくけい}の {面積|めんせき}",
-          body: "{三角形|さんかくけい}の {面積|めんせき}は「{底|そこ} × {高|たか}さ ÷ 2」で {求|もと}めるよ。{長四角|ながしかく}の {半分|はんぶん}と {考|かんが}えると わかりやすいね。",
+          body: "{三角形|さんかくけい}の {面積|めんせき}は「{底|そこ} × {高|たか}さ ÷ 2」で {求|もと}めるよ。{長四角|ながしかく}の {半分|はんぶん}と {考|かんが}えると {分|わ}かりやすいね。",
           visual: { kind: "emoji", value: "△ = {底|そこ} × {高|たか}さ ÷ 2", caption: "{長四角|ながしかく}の {半分|はんぶん}" },
         },
         {
@@ -607,7 +607,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
       unitId: U.regularPolygonCircle,
       steps: [
         {
-          heading: "{正多角形|せいたかくけい}って なに?",
+          heading: "{正多角形|せいたかくけい}って {何|なに}?",
           body: "{辺|へん}の {長|なが}さが {全部|ぜんぶ} {同|おな}じで、{角|かど}の {大|おお}きさも {全部|ぜんぶ} {同|おな}じ {多角形|たかくけい}を「{正多角形|せいたかくけい}」というよ。{正五角形|せいごかくけい}は {辺|へん}が 5つ だね。",
           visual: { kind: "emoji", value: "⬡ {正六角形|せいろっかくけい}", caption: "{辺|へん}も {角|かど}も {同|おな}じ" },
         },
@@ -678,7 +678,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
       unitId: U.volume,
       steps: [
         {
-          heading: "{体積|たいせき}って なに?",
+          heading: "{体積|たいせき}って {何|なに}?",
           body: "{物|もの}が {場所|ばしょ}を {取|と}る {大|おお}きさ（かさ）を「{体積|たいせき}」というよ。{単位|たんい}は cm³（{立方|りっぽう}センチメートル）だよ。",
           visual: { kind: "emoji", value: "🧊 = 1cm³", caption: "1cmの さいころ" },
         },
@@ -760,7 +760,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
         },
         {
           heading: "{込|こ}み{具合|ぐあい}の {比|くら}べ",
-          body: "{広|ひろ}さあたりの {人数|にんずう}など、{単位量|たんいりょう}あたりで {比|くら}べると どちらが {混|こ}んでいるか わかるよ。",
+          body: "{広|ひろ}さあたりの {人数|にんずう}など、{単位量|たんいりょう}あたりで {比|くら}べると どちらが {混|こ}んでいるか {分|わ}かるよ。",
           visual: { kind: "emoji", value: "👥 / m²", caption: "1m²あたりの {人数|にんずう}" },
         },
       ],
@@ -772,7 +772,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
         {
           id: `${U.perUnitQuantity}.q-1`,
           unitId: U.perUnitQuantity,
-          prompt: "3こ で 240{円|えん} の おかし。1こ {分|ぶん}の {値段|ねだん}は {何|なん}{円|えん}?",
+          prompt: "3こ で 240{円|えん} の お{菓子|かし}。1こ {分|ぶん}の {値段|ねだん}は {何|なん}{円|えん}?",
           explanation: "240 ÷ 3 = 80。1こ あたり 80{円|えん} だよ。",
           format: "number-input",
           answer: 80,
@@ -796,7 +796,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
         {
           id: `${U.perUnitQuantity}.q-4`,
           unitId: U.perUnitQuantity,
-          prompt: "あめ 30こ を 6{人|にん} で {同|おな}じ {数|かず}ずつ {分|わ}けると、1{人|にん} {何|なん}こ?",
+          prompt: "{飴|あめ} 30こ を 6{人|にん} で {同|おな}じ {数|かず}ずつ {分|わ}けると、1{人|にん} {何|なん}こ?",
           explanation: "30 ÷ 6 = 5。1{人|にん} あたり 5こ だよ。",
           format: "number-input",
           answer: 5,
@@ -820,7 +820,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
       unitId: U.ratioPercentage,
       steps: [
         {
-          heading: "{割合|わりあい}って なに?",
+          heading: "{割合|わりあい}って {何|なに}?",
           body: "{比|くら}べる {量|りょう}が {基|もと}に する {量|りょう}の {何|なん}{倍|ばい}に あたるかを「{割合|わりあい}」というよ。{割合|わりあい} = {比|くら}べる{量|りょう} ÷ {基|もと}にする{量|りょう}。",
           visual: { kind: "emoji", value: "{割合|わりあい} = {比|くら}べる ÷ {基|もと}", caption: "{何|なん}{倍|ばい}{分|ぶん}?" },
         },
@@ -891,7 +891,7 @@ export const sansuuG5Contents: Record<string, UnitContent> = {
       unitId: U.average,
       steps: [
         {
-          heading: "{平均|へいきん}って なに?",
+          heading: "{平均|へいきん}って {何|なに}?",
           body: "いくつかの {数|かず}を ならして、{同|おな}じ {大|おお}きさに したものが「{平均|へいきん}」だよ。でこぼこを {平|たい}らに する {考|かんが}えかただね。",
           visual: { kind: "emoji", value: "▮▯▮▯ → ▮▮▮▮", caption: "ならして そろえる" },
         },

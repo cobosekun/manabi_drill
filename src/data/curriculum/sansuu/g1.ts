@@ -73,7 +73,7 @@ export const sansuuG1Units: Unit[] = [
     domainId: "sansuu.number-calc",
     title: "10までの{数|かず}",
     order: 1,
-    realWorldUse: "おかしの{数|かず}を {数|かぞ}えたり、お{皿|さら}に {配|くば}るときに つかうよ。",
+    realWorldUse: "お{菓子|かし}の{数|かず}を {数|かぞ}えたり、お{皿|さら}に {配|くば}るときに {使|つか}うよ。",
     leadsTo: [U.addWithin10, U.numbersTo20, U.clockRead],
     prerequisites: [],
     hasLearn: true,
@@ -86,7 +86,7 @@ export const sansuuG1Units: Unit[] = [
     domainId: "sansuu.number-calc",
     title: "10までの{足|た}し{算|ざん}",
     order: 2,
-    realWorldUse: "あめを 2こ と 3こ もらったら {全部|ぜんぶ}で なんこ？ のように、{物|もの}を {合|あ}わせるときに つかうよ。",
+    realWorldUse: "{飴|あめ}を 2こ と 3こ もらったら {全部|ぜんぶ}で {何|なん}こ？ のように、{物|もの}を {合|あ}わせるときに {使|つか}うよ。",
     leadsTo: [U.subWithin10],
     prerequisites: [U.numbersTo10],
     hasLearn: true,
@@ -99,7 +99,7 @@ export const sansuuG1Units: Unit[] = [
     domainId: "sansuu.number-calc",
     title: "10までの{引|ひ}き{算|ざん}",
     order: 3,
-    realWorldUse: "クッキーが 7こ あって 2こ {食|た}べたら なんこ {残|のこ}る？ のように、{減|へ}った{数|かず}を {知|し}るときに つかうよ。",
+    realWorldUse: "クッキーが 7こ あって 2こ {食|た}べたら {何|なん}こ {残|のこ}る？ のように、{減|へ}った{数|かず}を {知|し}るときに {使|つか}うよ。",
     leadsTo: [U.numbersTo20],
     prerequisites: [U.addWithin10],
     hasLearn: true,
@@ -112,7 +112,7 @@ export const sansuuG1Units: Unit[] = [
     domainId: "sansuu.number-calc",
     title: "20までの{数|かず}",
     order: 4,
-    realWorldUse: "クラスの おともだちの{数|かず}や、カレンダーの{日|ひ}にちを {数|かぞ}えるときに つかうよ。",
+    realWorldUse: "クラスの お{友達|ともだち}の{数|かず}や、カレンダーの{日|ひ}にちを {数|かぞ}えるときに {使|つか}うよ。",
     leadsTo: [],
     prerequisites: [U.numbersTo10, U.subWithin10],
     hasLearn: true,
@@ -125,7 +125,7 @@ export const sansuuG1Units: Unit[] = [
     domainId: "sansuu.measurement",
     title: "{時計|とけい}（{何|なん}{時|じ}{何|なん}{分|ぷん}）",
     order: 5,
-    realWorldUse: "{朝|あさ} {起|お}きる{時間|じかん}や、{学校|がっこう}が はじまる{時間|じかん}を {時計|とけい}で {読|よ}むときに つかうよ。",
+    realWorldUse: "{朝|あさ} {起|お}きる{時間|じかん}や、{学校|がっこう}が {始|はじ}まる{時間|じかん}を {時計|とけい}で {読|よ}むときに {使|つか}うよ。",
     leadsTo: [],
     prerequisites: [U.numbersTo10],
     hasLearn: true,
@@ -177,7 +177,7 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{数|かず}を {数|かぞ}えてみよう",
-          body: "{物|もの}を {一|ひと}つずつ「1、2、3…」と {指|ゆび}で さしながら {数|かぞ}えると、いくつ あるか わかるよ。",
+          body: "{物|もの}を {一|ひと}つずつ「1、2、3…」と {指|ゆび}で {指|さ}しながら {数|かぞ}えると、{幾|いく}つ あるか {分|わ}かるよ。",
           visual: { kind: "emoji", value: "🍎🍎🍎", caption: "りんごが 3こ" },
         },
         {
@@ -187,7 +187,7 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
         },
         {
           heading: "{多|おお}い・{少|すく}ない",
-          body: "{二|ふた}つの{数|かず}を {比|くら}べて、どちらが {多|おお}いか {見|み}てみよう。{数|かず}が {大|おお}きいほうが「{多|おお}い」だよ。",
+          body: "{二|ふた}つの{数|かず}を {比|くら}べて、どちらが {多|おお}いか {見|み}てみよう。{数|かず}が {大|おお}きい{方|ほう}が「{多|おお}い」だよ。",
           visual: { kind: "emoji", value: "🟦🟦🟦🟦🟥🟥", caption: "{青|あお}が {多|おお}い" },
         },
       ],
@@ -206,7 +206,7 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{足|た}し{算|ざん}って なに？",
-          body: "{二|ふた}つの{数|かず}を「{合|あ}わせる」ことを {足|た}し{算|ざん}というよ。「＋」の {記号|きごう}を つかうよ。",
+          body: "{二|ふた}つの{数|かず}を「{合|あ}わせる」ことを {足|た}し{算|ざん}と{言|い}うよ。「＋」の {記号|きごう}を {使|つか}うよ。",
           visual: { kind: "emoji", value: "🍓🍓 ＋ 🍓 ＝ 🍓🍓🍓", caption: "2 ＋ 1 ＝ 3" },
         },
         {
@@ -230,7 +230,7 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{引|ひ}き{算|ざん}って なに？",
-          body: "ある{数|かず}から「{減|へ}らす」ことを {引|ひ}き{算|ざん}というよ。「−」の {記号|きごう}を つかうよ。",
+          body: "ある{数|かず}から「{減|へ}らす」ことを {引|ひ}き{算|ざん}と{言|い}うよ。「−」の {記号|きごう}を {使|つか}うよ。",
           visual: { kind: "emoji", value: "🍪🍪🍪🍪🍪 − 🍪🍪 ＝ 🍪🍪🍪", caption: "5 − 2 ＝ 3" },
         },
         {
@@ -278,7 +278,7 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{時計|とけい}の {針|はり}",
-          body: "{時計|とけい}には「{短|みじか}い{針|はり}（{時|じ}）」と「{長|なが}い{針|はり}（{分|ぷん}）」が あるよ。{短|みじか}い{針|はり}で {何|なん}{時|じ}か わかるよ。",
+          body: "{時計|とけい}には「{短|みじか}い{針|はり}（{時|じ}）」と「{長|なが}い{針|はり}（{分|ぷん}）」が あるよ。{短|みじか}い{針|はり}で {何|なん}{時|じ}か {分|わ}かるよ。",
           visual: { kind: "svg", name: "clock", params: { hour: 3, minute: 0 }, caption: "3{時|じ} ちょうど" },
         },
         {
