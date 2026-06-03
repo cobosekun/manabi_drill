@@ -619,7 +619,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "I want to be 〜.",
-          body: "「I want to be a 〜.（〜に なりたい）」で {将来|しょうらい}の {夢|ゆめ}を いえるよ。",
+          body: "「I want to be a 〜.（〜に なりたい）」で {将来|しょうらい}の {夢|ゆめ}を {言|い}えるよ。",
           visual: { kind: "emoji", value: "🌟", caption: "I want to be …" },
         },
         {
@@ -629,7 +629,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         },
         {
           heading: "{相手|あいて}に {聞|き}いて みよう",
-          body: "「What do you want to be？（なにに なりたい？）」と {聞|き}いて、{夢|ゆめ}を {話|はな}しあおう。",
+          body: "「What do you want to be？（{何|なに}に なりたい？）」と {聞|き}いて、{夢|ゆめ}を {話|はな}し{合|あ}おう。",
           visual: { kind: "emoji", value: "💭", caption: "What do you want to be？" },
         },
       ],
@@ -648,12 +648,12 @@ export const eigoG6Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{中学校|ちゅうがっこう}へ",
-          body: "「junior high school（{中学校|ちゅうがっこう}）」で したいことを {英語|えいご}で いえるように なろう。",
+          body: "「junior high school（{中学校|ちゅうがっこう}）」で したいことを {英語|えいご}で {言|い}えるように なろう。",
           visual: { kind: "emoji", value: "🏫", caption: "junior high school" },
         },
         {
           heading: "{入|はい}りたい {部活|ぶかつ}",
-          body: "「I want to join the 〜.（〜に {入|はい}りたい）」で {部活|ぶかつ}を いえるよ。brass band（{吹奏楽|すいそうがく}{部|ぶ}）など。",
+          body: "「I want to join the 〜.（〜に {入|はい}りたい）」で {部活|ぶかつ}を {言|い}えるよ。brass band（{吹奏楽|すいそうがく}{部|ぶ}）など。",
           visual: { kind: "emoji", value: "🎺🏀", caption: "I want to join …" },
         },
         {

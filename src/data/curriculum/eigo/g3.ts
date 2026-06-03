@@ -20,7 +20,7 @@ import type {
 
 export const eigoSubject: Subject = {
   id: "eigo",
-  name: "えいご",
+  name: "{英語|えいご}",
   formalName: "{英語|えいご}（{外国語|がいこくご}{活動|かつどう}）",
   emoji: "🔤",
   theme: "rose",
@@ -30,14 +30,14 @@ export const eigoSubject: Subject = {
 
 // ── 領域 ──────────────────────────────────
 // 外国語活動（中学年）は「言語材料・表現」を体験的に学ぶ。
-// 領域は実用テーマで分ける（あいさつ・文字・かず／いろ・きもち・すきなもの）。
+// 領域は実用テーマで分ける（{挨|あい}{拶|さつ}・文字・かず／いろ・きもち・すきなもの）。
 
 export const eigoG3Domains: Domain[] = [
   {
     id: "eigo.communication",
     subjectId: "eigo",
-    name: "あいさつとやりとり",
-    formalName: "コミュニケーション（あいさつ・{自己|じこ}{表現|ひょうげん}）",
+    name: "{挨|あい}{拶|さつ}とやりとり",
+    formalName: "コミュニケーション（{挨|あい}{拶|さつ}・{自己|じこ}{表現|ひょうげん}）",
   },
   {
     id: "eigo.letters",
@@ -48,7 +48,7 @@ export const eigoG3Domains: Domain[] = [
   {
     id: "eigo.words",
     subjectId: "eigo",
-    name: "{言葉|ことば}（かず・いろ）",
+    name: "{言葉|ことば}（{数|かず}・{色|いろ}）",
     formalName: "{語彙|ごい}（{数|かず}・{色|いろ}）",
   },
 ];
@@ -77,9 +77,9 @@ export const eigoG3Units: Unit[] = [
     subjectId: "eigo",
     grade: 3,
     domainId: "eigo.communication",
-    title: "あいさつ（Hello！）",
+    title: "{挨|あい}{拶|さつ}（Hello！）",
     order: 1,
-    realWorldUse: "{朝|あさ} {友|とも}だちや {先生|せんせい}に {会|あ}うとき「Hello！」と {英語|えいご}で あいさつできるよ。",
+    realWorldUse: "{朝|あさ} {友|とも}{達|だち}や {先生|せんせい}に {会|あ}うとき「Hello！」と {英語|えいご}で {挨|あい}{拶|さつ}できるよ。",
     leadsTo: [U.feelings, U.likes],
     prerequisites: [],
     hasLearn: true,
@@ -103,7 +103,7 @@ export const eigoG3Units: Unit[] = [
     subjectId: "eigo",
     grade: 3,
     domainId: "eigo.words",
-    title: "かず（1〜20）",
+    title: "{数|かず}（1〜20）",
     order: 3,
     realWorldUse: "{英語|えいご}の {歌|うた}や ゲームで {数|かず}を {数|かぞ}えたり、いくつ あるかを {伝|つた}えるときに {使|つか}うよ。",
     leadsTo: [],
@@ -116,9 +116,9 @@ export const eigoG3Units: Unit[] = [
     subjectId: "eigo",
     grade: 3,
     domainId: "eigo.words",
-    title: "いろ（colors）",
+    title: "{色|いろ}（colors）",
     order: 4,
-    realWorldUse: "{好|す}きな {色|いろ}を {英語|えいご}で {言|い}えると、ぬりえや お{店|みせ}で「これが ほしい」と {伝|つた}えられるよ。",
+    realWorldUse: "{好|す}きな {色|いろ}を {英語|えいご}で {言|い}えると、{塗|ぬ}り{絵|え}や お{店|みせ}で「これが {欲|ほ}しい」と {伝|つた}えられるよ。",
     leadsTo: [U.likes],
     prerequisites: [],
     hasLearn: true,
@@ -129,9 +129,9 @@ export const eigoG3Units: Unit[] = [
     subjectId: "eigo",
     grade: 3,
     domainId: "eigo.communication",
-    title: "きぶん（How are you？）",
+    title: "{気分|きぶん}（How are you？）",
     order: 5,
-    realWorldUse: "{友|とも}だちに「How are you？」と {聞|き}かれたら、{今日|きょう}の {気分|きぶん}を {答|こた}えられるよ。",
+    realWorldUse: "{友|とも}{達|だち}に「How are you？」と {聞|き}かれたら、{今日|きょう}の {気分|きぶん}を {答|こた}えられるよ。",
     leadsTo: [],
     prerequisites: [U.greetings],
     hasLearn: true,
@@ -142,9 +142,9 @@ export const eigoG3Units: Unit[] = [
     subjectId: "eigo",
     grade: 3,
     domainId: "eigo.communication",
-    title: "すきなもの（I like〜）",
+    title: "{好|す}きな{物|もの}（I like〜）",
     order: 6,
-    realWorldUse: "{自分|じぶん}の {好|す}きな {食|た}べ{物|もの}や {動物|どうぶつ}を「I like 〜.」で {友|とも}だちに {伝|つた}えられるよ。",
+    realWorldUse: "{自分|じぶん}の {好|す}きな {食|た}べ{物|もの}や {動物|どうぶつ}を「I like 〜.」で {友|とも}{達|だち}に {伝|つた}えられるよ。",
     leadsTo: [],
     prerequisites: [U.greetings, U.colors],
     hasLearn: true,
@@ -155,13 +155,13 @@ export const eigoG3Units: Unit[] = [
 // ── 単元コンテンツ（学習 learn + テスト test） ──────────────
 // テストは固定 questions[]（4択）。全問 explanation 必須。解説は漢字＋ルビの和文。
 
-// あいさつ
+// {挨|あい}{拶|さつ}
 const greetingsQuestions: ChoiceQuestion[] = [
   {
     id: `${U.greetings}.q-1`,
     unitId: U.greetings,
-    prompt: "{朝|あさ} {人|ひと}に {会|あ}うとき、{英語|えいご}で なんと {言|い}うかな？",
-    explanation: "「Hello（ハロー）」は {会|あ}うときの あいさつだよ。{朝|あさ}でも {昼|ひる}でも {使|つか}えるよ。",
+    prompt: "{朝|あさ} {人|ひと}に {会|あ}うとき、{英語|えいご}で {何|なん}と {言|い}うかな？",
+    explanation: "「Hello（ハロー）」は {会|あ}うときの {挨|あい}{拶|さつ}だよ。{朝|あさ}でも {昼|ひる}でも {使|つか}えるよ。",
     visual: { kind: "emoji", value: "🙋👋", caption: "やあ！" },
     format: "choice",
     choices: ["Hello", "Goodbye", "Sorry", "Good night"],
@@ -170,8 +170,8 @@ const greetingsQuestions: ChoiceQuestion[] = [
   {
     id: `${U.greetings}.q-2`,
     unitId: U.greetings,
-    prompt: "「さようなら」と {別|わか}れるとき、{英語|えいご}で なんと {言|い}うかな？",
-    explanation: "「Goodbye（グッバイ）」は {別|わか}れるときの あいさつだよ。{短|みじか}く「Bye（バイ）」とも {言|い}うよ。",
+    prompt: "「さようなら」と {別|わか}れるとき、{英語|えいご}で {何|なん}と {言|い}うかな？",
+    explanation: "「Goodbye（グッバイ）」は {別|わか}れるときの {挨|あい}{拶|さつ}だよ。{短|みじか}く「Bye（バイ）」とも {言|い}うよ。",
     visual: { kind: "emoji", value: "👋🚪", caption: "またね！" },
     format: "choice",
     choices: ["Goodbye", "Hello", "Thank you", "Yes"],
@@ -180,7 +180,7 @@ const greetingsQuestions: ChoiceQuestion[] = [
   {
     id: `${U.greetings}.q-3`,
     unitId: U.greetings,
-    prompt: "なにか して もらって「ありがとう」と {言|い}うとき、{英語|えいご}では？",
+    prompt: "{何|なに}か して もらって「ありがとう」と {言|い}うとき、{英語|えいご}では？",
     explanation: "「Thank you（サンキュー）」は お{礼|れい}の {言葉|ことば}だよ。{助|たす}けて もらったら {使|つか}おう。",
     visual: { kind: "emoji", value: "🎁🙏", caption: "ありがとう" },
     format: "choice",
@@ -190,7 +190,7 @@ const greetingsQuestions: ChoiceQuestion[] = [
   {
     id: `${U.greetings}.q-4`,
     unitId: U.greetings,
-    prompt: "「ごめんね」と {謝|あやま}るとき、{英語|えいご}で なんと {言|い}うかな？",
+    prompt: "「ごめんね」と {謝|あやま}るとき、{英語|えいご}で {何|なん}と {言|い}うかな？",
     explanation: "「Sorry（ソーリー）」は {謝|あやま}る {言葉|ことば}だよ。{悪|わる}いことを したら {使|つか}おう。",
     visual: { kind: "emoji", value: "🙇💦", caption: "ごめんね" },
     format: "choice",
@@ -214,7 +214,7 @@ const alphabetQuestions: ChoiceQuestion[] = [
   {
     id: `${U.alphabet}.q-1`,
     unitId: U.alphabet,
-    prompt: "アルファベットの いちばん {最初|さいしょ}の {文字|もじ}は どれ？",
+    prompt: "アルファベットの {一|いち}{番|ばん} {最初|さいしょ}の {文字|もじ}は どれ？",
     explanation: "アルファベットは A から {始|はじ}まるよ。A・B・C…と {順番|じゅんばん}に {並|なら}ぶよ。",
     visual: { kind: "emoji", value: "🅰️", caption: "{最初|さいしょ}は A" },
     format: "choice",
@@ -244,8 +244,8 @@ const alphabetQuestions: ChoiceQuestion[] = [
   {
     id: `${U.alphabet}.q-4`,
     unitId: U.alphabet,
-    prompt: "アルファベットは {全|ぜん}ぶで {何|なん}{文字|もじ} あるかな？",
-    explanation: "アルファベットは A から Z まで、{全|ぜん}ぶで 26{文字|もじ} あるよ。",
+    prompt: "アルファベットは {全|ぜん}{部|ぶ}で {何|なん}{文字|もじ} あるかな？",
+    explanation: "アルファベットは A から Z まで、{全|ぜん}{部|ぶ}で 26{文字|もじ} あるよ。",
     visual: { kind: "emoji", value: "🔡", caption: "A〜Z" },
     format: "choice",
     choices: ["26{文字|もじ}", "10{文字|もじ}", "50{文字|もじ}", "20{文字|もじ}"],
@@ -254,7 +254,7 @@ const alphabetQuestions: ChoiceQuestion[] = [
   {
     id: `${U.alphabet}.q-5`,
     unitId: U.alphabet,
-    prompt: "アルファベットの いちばん {最後|さいご}の {文字|もじ}は どれ？",
+    prompt: "アルファベットの {一|いち}{番|ばん} {最後|さいご}の {文字|もじ}は どれ？",
     explanation: "アルファベットは Z で {終|お}わるよ。…X・Y・Z が {最後|さいご}の 3つだよ。",
     visual: { kind: "emoji", value: "💤", caption: "{最後|さいご}は Z" },
     format: "choice",
@@ -278,7 +278,7 @@ const numbersQuestions: ChoiceQuestion[] = [
   {
     id: `${U.numbers}.q-2`,
     unitId: U.numbers,
-    prompt: "「5」は {英語|えいご}で なんと {言|い}うかな？",
+    prompt: "「5」は {英語|えいご}で {何|なん}と {言|い}うかな？",
     explanation: "5 は「five（ファイブ）」だよ。{手|て}を {開|ひら}くと {指|ゆび}が 5{本|ほん} だね。",
     visual: { kind: "emoji", value: "🖐️", caption: "5" },
     format: "choice",
@@ -289,7 +289,7 @@ const numbersQuestions: ChoiceQuestion[] = [
     id: `${U.numbers}.q-3`,
     unitId: U.numbers,
     prompt: "「ten（テン）」は いくつ かな？",
-    explanation: "ten は 10 のことだよ。{両手|りょうて}の {指|ゆび}を {全|ぜん}ぶ {合|あ}わせると 10 だね。",
+    explanation: "ten は 10 のことだよ。{両手|りょうて}の {指|ゆび}を {全|ぜん}{部|ぶ} {合|あ}わせると 10 だね。",
     visual: { kind: "emoji", value: "🔟", caption: "ten" },
     format: "choice",
     choices: ["10", "1", "12", "20"],
@@ -298,7 +298,7 @@ const numbersQuestions: ChoiceQuestion[] = [
   {
     id: `${U.numbers}.q-4`,
     unitId: U.numbers,
-    prompt: "「8」は {英語|えいご}で なんと {言|い}うかな？",
+    prompt: "「8」は {英語|えいご}で {何|なん}と {言|い}うかな？",
     explanation: "8 は「eight（エイト）」だよ。six・seven・eight で 6・7・8 だね。",
     visual: { kind: "emoji", value: "8️⃣", caption: "8" },
     format: "choice",
@@ -308,8 +308,8 @@ const numbersQuestions: ChoiceQuestion[] = [
   {
     id: `${U.numbers}.q-5`,
     unitId: U.numbers,
-    prompt: "「20」は {英語|えいご}で なんと {言|い}うかな？",
-    explanation: "20 は「twenty（トゥエンティ）」だよ。1〜20 の いちばん {大|おお}きい {数|かず}だね。",
+    prompt: "「20」は {英語|えいご}で {何|なん}と {言|い}うかな？",
+    explanation: "20 は「twenty（トゥエンティ）」だよ。1〜20 の {一|いち}{番|ばん} {大|おお}きい {数|かず}だね。",
     visual: { kind: "emoji", value: "🎉", caption: "20" },
     format: "choice",
     choices: ["twenty", "twelve", "ten", "two"],
@@ -332,7 +332,7 @@ const colorsQuestions: ChoiceQuestion[] = [
   {
     id: `${U.colors}.q-2`,
     unitId: U.colors,
-    prompt: "「{青|あお}」は {英語|えいご}で なんと {言|い}うかな？",
+    prompt: "「{青|あお}」は {英語|えいご}で {何|なん}と {言|い}うかな？",
     explanation: "{青|あお}は「blue（ブルー）」だよ。{空|そら}や {海|うみ}の {色|いろ}だね。",
     visual: { kind: "emoji", value: "🔵", caption: "{青|あお}" },
     format: "choice",
@@ -352,7 +352,7 @@ const colorsQuestions: ChoiceQuestion[] = [
   {
     id: `${U.colors}.q-4`,
     unitId: U.colors,
-    prompt: "「{緑|みどり}」は {英語|えいご}で なんと {言|い}うかな？",
+    prompt: "「{緑|みどり}」は {英語|えいご}で {何|なん}と {言|い}うかな？",
     explanation: "{緑|みどり}は「green（グリーン）」だよ。{葉|は}っぱや {草|くさ}の {色|いろ}だね。",
     visual: { kind: "emoji", value: "🟢", caption: "{緑|みどり}" },
     format: "choice",
@@ -380,7 +380,7 @@ const feelingsQuestions: ChoiceQuestion[] = [
     explanation: "「How are you？（ハウ アー ユー）」は「{元気|げんき}？／{調子|ちょうし}は どう？」と {聞|き}く {言葉|ことば}だよ。",
     visual: { kind: "emoji", value: "🤔💬", caption: "How are you？" },
     format: "choice",
-    choices: ["{元気|げんき}？", "{名前|なまえ}は なに？", "{何|なん}さい？", "どこに いるの？"],
+    choices: ["{元気|げんき}？", "{名前|なまえ}は {何|なに}？", "{何|なん}{歳|さい}？", "どこに いるの？"],
     answer: "{元気|げんき}？",
   },
   {
@@ -397,11 +397,11 @@ const feelingsQuestions: ChoiceQuestion[] = [
     id: `${U.feelings}.q-3`,
     unitId: U.feelings,
     prompt: "「happy（ハッピー）」は どんな {気持|きも}ち かな？",
-    explanation: "happy は「うれしい・{楽|たの}しい」{気持|きも}ち だよ。にこにこ している ときだね。",
+    explanation: "happy は「{嬉|うれ}しい・{楽|たの}しい」{気持|きも}ち だよ。にこにこ している ときだね。",
     visual: { kind: "emoji", value: "😊", caption: "happy" },
     format: "choice",
-    choices: ["うれしい", "{悲|かな}しい", "{怒|おこ}ってる", "こわい"],
-    answer: "うれしい",
+    choices: ["{嬉|うれ}しい", "{悲|かな}しい", "{怒|おこ}ってる", "{怖|こわ}い"],
+    answer: "{嬉|うれ}しい",
   },
   {
     id: `${U.feelings}.q-4`,
@@ -410,18 +410,18 @@ const feelingsQuestions: ChoiceQuestion[] = [
     explanation: "sad は「{悲|かな}しい」{気持|きも}ち だよ。{涙|なみだ}が {出|で}そうな ときだね。",
     visual: { kind: "emoji", value: "😢", caption: "sad" },
     format: "choice",
-    choices: ["{悲|かな}しい", "うれしい", "{眠|ねむ}い", "おなかすいた"],
+    choices: ["{悲|かな}しい", "{嬉|うれ}しい", "{眠|ねむ}い", "お{腹|なか}すいた"],
     answer: "{悲|かな}しい",
   },
   {
     id: `${U.feelings}.q-5`,
     unitId: U.feelings,
     prompt: "「I'm hungry.」の {意味|いみ}は どれ かな？",
-    explanation: "hungry（ハングリー）は「おなかが すいた」だよ。ごはんが {食|た}べたい ときだね。",
+    explanation: "hungry（ハングリー）は「お{腹|なか}が すいた」だよ。ご{飯|はん}が {食|た}べたい ときだね。",
     visual: { kind: "emoji", value: "🍽️😋", caption: "hungry" },
     format: "choice",
-    choices: ["おなかが すいた", "のどが かわいた", "{眠|ねむ}い", "うれしい"],
-    answer: "おなかが すいた",
+    choices: ["お{腹|なか}が すいた", "{喉|のど}が {渇|かわ}いた", "{眠|ねむ}い", "{嬉|うれ}しい"],
+    answer: "お{腹|なか}が すいた",
   },
 ];
 
@@ -431,10 +431,10 @@ const likesQuestions: ChoiceQuestion[] = [
     id: `${U.likes}.q-1`,
     unitId: U.likes,
     prompt: "「I like 〜.」の {意味|いみ}は どれ かな？",
-    explanation: "「I like（アイ ライク）〜.」は「{私|わたし}は 〜が {好|す}き」だよ。{好|す}きな ものを {言|い}えるね。",
+    explanation: "「I like（アイ ライク）〜.」は「{私|わたし}は 〜が {好|す}き」だよ。{好|す}きな {物|もの}を {言|い}えるね。",
     visual: { kind: "emoji", value: "❤️", caption: "I like…" },
     format: "choice",
-    choices: ["{私|わたし}は 〜が {好|す}き", "{私|わたし}は 〜が {嫌|きら}い", "〜は どこ？", "〜が ほしい？"],
+    choices: ["{私|わたし}は 〜が {好|す}き", "{私|わたし}は 〜が {嫌|きら}い", "〜は どこ？", "〜が {欲|ほ}しい？"],
     answer: "{私|わたし}は 〜が {好|す}き",
   },
   {
@@ -444,7 +444,7 @@ const likesQuestions: ChoiceQuestion[] = [
     explanation: "dogs（ドッグズ）は {犬|いぬ} のこと。「I like dogs.」で「{犬|いぬ}が {好|す}き」だよ。",
     visual: { kind: "emoji", value: "🐶", caption: "dogs" },
     format: "choice",
-    choices: ["{犬|いぬ}が {好|す}き", "{猫|ねこ}が {好|す}き", "{犬|いぬ}が こわい", "{犬|いぬ}が いない"],
+    choices: ["{犬|いぬ}が {好|す}き", "{猫|ねこ}が {好|す}き", "{犬|いぬ}が {怖|こわ}い", "{犬|いぬ}が いない"],
     answer: "{犬|いぬ}が {好|す}き",
   },
   {
@@ -486,12 +486,12 @@ export const eigoG3Contents: Record<string, UnitContent> = {
       unitId: U.greetings,
       steps: [
         {
-          heading: "あいさつって なに？",
+          heading: "{挨|あい}{拶|さつ}って {何|なに}？",
           body: "{人|ひと}に {会|あ}ったとき {英語|えいご}では「Hello（ハロー）」と {言|い}うよ。{笑顔|えがお}で {言|い}ってみよう。",
           visual: { kind: "emoji", value: "🙋👋", caption: "Hello！" },
         },
         {
-          heading: "いろいろな あいさつ",
+          heading: "いろいろな {挨|あい}{拶|さつ}",
           body: "{別|わか}れるときは「Goodbye（グッバイ）」、お{礼|れい}は「Thank you（サンキュー）」、{謝|あやま}るときは「Sorry（ソーリー）」だよ。",
           visual: { kind: "emoji", value: "👋🙏🙇", caption: "Goodbye / Thank you / Sorry" },
         },
@@ -515,8 +515,8 @@ export const eigoG3Contents: Record<string, UnitContent> = {
       unitId: U.alphabet,
       steps: [
         {
-          heading: "アルファベットって なに？",
-          body: "{英語|えいご}の {文字|もじ}を アルファベット と {言|い}うよ。A から Z まで、{全|ぜん}ぶで 26{文字|もじ} あるよ。",
+          heading: "アルファベットって {何|なに}？",
+          body: "{英語|えいご}の {文字|もじ}を アルファベット と {言|い}うよ。A から Z まで、{全|ぜん}{部|ぶ}で 26{文字|もじ} あるよ。",
           visual: { kind: "emoji", value: "🔤", caption: "A B C … Z" },
         },
         {
@@ -603,12 +603,12 @@ export const eigoG3Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "How are you？",
-          body: "「How are you？（ハウ アー ユー）」は「{元気|げんき}？」と {聞|き}く {言葉|ことば}だよ。あいさつの {次|つぎ}に よく {使|つか}うよ。",
+          body: "「How are you？（ハウ アー ユー）」は「{元気|げんき}？」と {聞|き}く {言葉|ことば}だよ。{挨|あい}{拶|さつ}の {次|つぎ}に よく {使|つか}うよ。",
           visual: { kind: "emoji", value: "🤔💬", caption: "How are you？" },
         },
         {
           heading: "{気分|きぶん}を {答|こた}えよう",
-          body: "「I'm fine.」{元気|げんき}、「I'm happy.」うれしい、「I'm sad.」{悲|かな}しい、「I'm sleepy.」{眠|ねむ}い だよ。",
+          body: "「I'm fine.」{元気|げんき}、「I'm happy.」{嬉|うれ}しい、「I'm sad.」{悲|かな}しい、「I'm sleepy.」{眠|ねむ}い だよ。",
           visual: { kind: "emoji", value: "😄😊😢😴", caption: "fine / happy / sad / sleepy" },
         },
         {
@@ -632,11 +632,11 @@ export const eigoG3Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "I like 〜.",
-          body: "「I like 〜.（アイ ライク）」は「{私|わたし}は 〜が {好|す}き」だよ。{好|す}きな ものを {伝|つた}えられるね。",
+          body: "「I like 〜.（アイ ライク）」は「{私|わたし}は 〜が {好|す}き」だよ。{好|す}きな {物|もの}を {伝|つた}えられるね。",
           visual: { kind: "emoji", value: "❤️", caption: "I like …" },
         },
         {
-          heading: "{好|す}きな ものを {言|い}おう",
+          heading: "{好|す}きな {物|もの}を {言|い}おう",
           body: "「I like dogs.」{犬|いぬ}が {好|す}き、「I like apples.」りんごが {好|す}き、「I like blue.」{青|あお}が {好|す}き だよ。",
           visual: { kind: "emoji", value: "🐶🍎🔵", caption: "dogs / apples / blue" },
         },
