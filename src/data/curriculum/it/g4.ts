@@ -112,7 +112,7 @@ export const itG4Units: Unit[] = [
     title: "{入力|にゅうりょく}と {出力|しゅつりょく}",
     order: 2,
     realWorldUse:
-      "キーボードで {文字|もじ}を いれて、{画面|がめん}に {表|あらわ}す——どうぐが「いれる{係|がかり}」か「だす{係|がかり}」か わかると、きかいの しくみが 見えて くるよ。",
+      "キーボードで {文字|もじ}を いれて、{画面|がめん}に {表|あらわ}す——どうぐが「いれる{係|がかり}」か「だす{係|がかり}」か わかると、きかいの しくみが {見|み}えて くるよ。",
     leadsTo: [U.internet],
     prerequisites: [U.hardwareSoftware],
     hasLearn: true,
@@ -169,7 +169,7 @@ export const itG4Units: Unit[] = [
     title: "{手順|てじゅん}と フローチャート",
     order: 6,
     realWorldUse:
-      "りょうりや {朝|あさ}の したくのように、やる ことを ただしい {順番|じゅんばん}に ならべて 図に かくと、だれが やっても 同じ けっかに なるよ。ロボットへの しじにも つかうよ。",
+      "りょうりや {朝|あさ}の したくのように、やる ことを ただしい {順番|じゅんばん}に ならべて {図|ず}に かくと、だれが やっても {同|おな}じ けっかに なるよ。ロボットへの しじにも つかうよ。",
     leadsTo: [U.sortSearch, U.blockProgramming],
     prerequisites: [],
     hasLearn: true,
@@ -198,7 +198,7 @@ export const itG4Units: Unit[] = [
     title: "ブロックで うごかす",
     order: 8,
     realWorldUse:
-      "ブロックを ならべて キャラクターを うごかす プログラミングは、ゲームや ロボットを じぶんで {作|つく}る さいしょの 一歩に なるよ。",
+      "ブロックを ならべて キャラクターを うごかす プログラミングは、ゲームや ロボットを じぶんで {作|つく}る さいしょの {一歩|いっぽ}に なるよ。",
     leadsTo: [U.variablesLoops],
     prerequisites: [U.algorithmSteps],
     hasLearn: true,
@@ -333,7 +333,7 @@ const inputOutputQuestions: (ChoiceQuestion | MatchingQuestion)[] = [
     unitId: U.inputOutput,
     prompt: "つぎの どうぐを「{入力|にゅうりょく}」か「{出力|しゅつりょく}」に わけよう。",
     explanation:
-      "いれる係＝{入力|にゅうりょく}（マウス・マイク）、だす係＝{出力|しゅつりょく}（プリンター・スピーカー）。{矢印|やじるし}の むきで かんがえると わかりやすいよ。",
+      "いれる{係|がかり}＝{入力|にゅうりょく}（マウス・マイク）、だす{係|がかり}＝{出力|しゅつりょく}（プリンター・スピーカー）。{矢印|やじるし}の むきで かんがえると わかりやすいよ。",
     format: "matching",
     left: ["マウス", "プリンター", "マイク", "スピーカー"],
     right: ["{入力|にゅうりょく}", "{出力|しゅつりょく}"],
@@ -353,7 +353,7 @@ const inputOutputQuestions: (ChoiceQuestion | MatchingQuestion)[] = [
   {
     id: `${U.inputOutput}.q-5`,
     unitId: U.inputOutput,
-    prompt: "コンピュータの しごとの ながれで、正しい じゅんは？",
+    prompt: "コンピュータの しごとの ながれで、{正|ただ}しい じゅんは？",
     explanation:
       "「{入力|にゅうりょく}（いれる）→ {処理|しょり}（かんがえる）→ {出力|しゅつりょく}（だす）」の じゅん。これが コンピュータの きほんの ながれだよ。",
     visual: { kind: "emoji", value: "⌨️➡️🧠➡️🖥️", caption: "いれる→かんがえる→だす" },
@@ -386,7 +386,7 @@ const dataStorageQuestions: ChoiceQuestion[] = [
     unitId: U.dataStorage,
     prompt: "0 か 1 の いちばん {小|ちい}さい データの たんいを なんと いう？",
     explanation:
-      "0 か 1 ひとつぶんを「1ビット」と いうよ。データの いちばん 小さな つぶだね。",
+      "0 か 1 ひとつぶんを「1ビット」と いうよ。データの いちばん {小|ちい}さな つぶだね。",
     visual: { kind: "emoji", value: "🔘", caption: "1ビット" },
     format: "choice",
     choices: ["ビット", "メートル", "グラム", "リットル"],
@@ -397,7 +397,7 @@ const dataStorageQuestions: ChoiceQuestion[] = [
     unitId: U.dataStorage,
     prompt: "ビットが 8つ あつまると なんと いう？",
     explanation:
-      "8ビットを まとめて「1バイト」と いうよ。{文字|もじ}1つぶんなどに つかう 大きさだね。",
+      "8ビットを まとめて「1バイト」と いうよ。{文字|もじ}1つぶんなどに つかう {大|おお}きさだね。",
     visual: { kind: "emoji", value: "🔘×8", caption: "8ビット＝1バイト" },
     format: "choice",
     choices: ["1バイト", "1ビット", "1メガ", "1キロ"],
@@ -417,10 +417,10 @@ const dataStorageQuestions: ChoiceQuestion[] = [
   {
     id: `${U.dataStorage}.q-5`,
     unitId: U.dataStorage,
-    prompt: "データが 大きい ほど どう なる？",
+    prompt: "データが {大|おお}きい ほど どう なる？",
     explanation:
-      "データが 大きい ほど ほぞんに ばしょ（{容量|ようりょう}）を つかい、おくるのにも {時間|じかん}が かかるよ。{動画|どうが}は {写真|しゃしん}より ずっと 大きいよ。",
-    visual: { kind: "emoji", value: "🎞️", caption: "{動画|どうが}は 大きい" },
+      "データが {大|おお}きい ほど ほぞんに ばしょ（{容量|ようりょう}）を つかい、おくるのにも {時間|じかん}が かかるよ。{動画|どうが}は {写真|しゃしん}より ずっと {大|おお}きいよ。",
+    visual: { kind: "emoji", value: "🎞️", caption: "{動画|どうが}は {大|おお}きい" },
     format: "choice",
     choices: [
       "ほぞんの ばしょを たくさん つかう",
@@ -439,7 +439,7 @@ const internetQuestions: ChoiceQuestion[] = [
     unitId: U.internet,
     prompt: "インターネットとは なに？",
     explanation:
-      "せかいじゅうの コンピュータを つないだ 大きな「あみ（ネットワーク）」だよ。だから {遠|とお}くの {人|ひと}とも つながれるんだ。",
+      "せかいじゅうの コンピュータを つないだ {大|おお}きな「あみ（ネットワーク）」だよ。だから {遠|とお}くの {人|ひと}とも つながれるんだ。",
     visual: { kind: "emoji", value: "🌐", caption: "せかいの あみ" },
     format: "choice",
     choices: [
@@ -477,16 +477,16 @@ const internetQuestions: ChoiceQuestion[] = [
     unitId: U.internet,
     prompt: "メッセージを おくると、{相手|あいて}に とどく まで データは どう うごく？",
     explanation:
-      "データは 小さく わけられ、いくつもの コンピュータを {通|とお}って {相手|あいて}に とどくよ。とちゅうで たすけあって はこぶんだ。",
+      "データは {小|ちい}さく わけられ、いくつもの コンピュータを {通|とお}って {相手|あいて}に とどくよ。とちゅうで たすけあって はこぶんだ。",
     visual: { kind: "emoji", value: "✉️➡️🌐➡️📱", caption: "つたって とどく" },
     format: "choice",
     choices: [
-      "いくつもの コンピュータを 通って とどく",
+      "いくつもの コンピュータを {通|とお}って とどく",
       "そらを とんで そのまま とどく",
       "{手紙|てがみ}で とどく",
       "とどかない",
     ],
-    answer: "いくつもの コンピュータを 通って とどく",
+    answer: "いくつもの コンピュータを {通|とお}って とどく",
   },
   {
     id: `${U.internet}.q-5`,
@@ -561,7 +561,7 @@ const infoSafetyQuestions: (ChoiceQuestion | MatchingQuestion)[] = [
     unitId: U.infoSafety,
     prompt: "メッセージを おくる ときに よい のは どれ？",
     explanation:
-      "{相手|あいて}の {顔|かお}が 見えなくても、やさしい ことばで かこう。きつい ことばは {相手|あいて}を かなしく させるよ。",
+      "{相手|あいて}の {顔|かお}が {見|み}えなくても、やさしい ことばで かこう。きつい ことばは {相手|あいて}を かなしく させるよ。",
     visual: { kind: "emoji", value: "😊💬", caption: "やさしい ことば" },
     format: "choice",
     choices: [
@@ -575,7 +575,7 @@ const infoSafetyQuestions: (ChoiceQuestion | MatchingQuestion)[] = [
   {
     id: `${U.infoSafety}.q-5`,
     unitId: U.infoSafety,
-    prompt: "ネットを つかう ときに 正しい のは どれ？",
+    prompt: "ネットを つかう ときに {正|ただ}しい のは どれ？",
     explanation:
       "つかう {時間|じかん}を きめ、こまったら すぐ おとなに そうだん。これが {安全|あんぜん}に たのしむ こつだよ。",
     format: "matching",
@@ -590,7 +590,7 @@ const algorithmStepsQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
   {
     id: `${U.algorithmSteps}.q-1`,
     unitId: U.algorithmSteps,
-    prompt: "「やる ことを 正しい じゅんに ならべた もの」を なんと いう？",
+    prompt: "「やる ことを {正|ただ}しい じゅんに ならべた もの」を なんと いう？",
     explanation:
       "もんだいを とく ための「{手順|てじゅん}」を アルゴリズムと いうよ。りょうりの レシピも アルゴリズムの なかまだね。",
     visual: { kind: "emoji", value: "📋", caption: "{手順|てじゅん}" },
@@ -601,7 +601,7 @@ const algorithmStepsQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
   {
     id: `${U.algorithmSteps}.q-2`,
     unitId: U.algorithmSteps,
-    prompt: "「カップラーメンを 作る」{手順|てじゅん}を 正しい じゅんに ならべよう。",
+    prompt: "「カップラーメンを {作|つく}る」{手順|てじゅん}を {正|ただ}しい じゅんに ならべよう。",
     explanation:
       "「ふたを あける → おゆを いれる → 3ぷん まつ → できあがり」。じゅんが ちがうと うまく できないね。",
     format: "ordering",
@@ -611,10 +611,10 @@ const algorithmStepsQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
   {
     id: `${U.algorithmSteps}.q-3`,
     unitId: U.algorithmSteps,
-    prompt: "{手順|てじゅん}を 図に かいて わかりやすく した ものを なんと いう？",
+    prompt: "{手順|てじゅん}を {図|ず}に かいて わかりやすく した ものを なんと いう？",
     explanation:
-      "{矢印|やじるし}や はこで ながれを あらわした 図を「フローチャート」と いうよ。{手順|てじゅん}が 一目で わかるね。",
-    visual: { kind: "emoji", value: "🔽", caption: "ながれの 図" },
+      "{矢印|やじるし}や はこで ながれを あらわした {図|ず}を「フローチャート」と いうよ。{手順|てじゅん}が {一目|ひとめ}で わかるね。",
+    visual: { kind: "emoji", value: "🔽", caption: "ながれの {図|ず}" },
     format: "choice",
     choices: ["フローチャート", "カレンダー", "ちず", "グラフ"],
     answer: "フローチャート",
@@ -622,9 +622,9 @@ const algorithmStepsQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
   {
     id: `${U.algorithmSteps}.q-4`,
     unitId: U.algorithmSteps,
-    prompt: "「{朝|あさ}の したく」の {手順|てじゅん}を 正しい じゅんに ならべよう。",
+    prompt: "「{朝|あさ}の したく」の {手順|てじゅん}を {正|ただ}しい じゅんに ならべよう。",
     explanation:
-      "「おきる → かおを あらう → きがえる → ごはんを たべる」。まいにちの ことも 手順で せいりできるよ。",
+      "「おきる → かおを あらう → きがえる → ごはんを たべる」。まいにちの ことも {手順|てじゅん}で せいりできるよ。",
     format: "ordering",
     items: ["おきる", "かおを あらう", "きがえる", "ごはんを たべる"],
     answerOrder: [0, 1, 2, 3],
@@ -634,16 +634,16 @@ const algorithmStepsQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
     unitId: U.algorithmSteps,
     prompt: "{手順|てじゅん}を きちんと きめる よさは どれ？",
     explanation:
-      "{手順|てじゅん}が はっきり して いれば、だれが やっても・コンピュータが やっても 同じ けっかに なるよ。",
-    visual: { kind: "emoji", value: "✅", caption: "だれでも 同じ" },
+      "{手順|てじゅん}が はっきり して いれば、だれが やっても・コンピュータが やっても {同|おな}じ けっかに なるよ。",
+    visual: { kind: "emoji", value: "✅", caption: "だれでも {同|おな}じ" },
     format: "choice",
     choices: [
-      "だれが やっても 同じ けっかに なる",
+      "だれが やっても {同|おな}じ けっかに なる",
       "まいかい けっかが かわる",
       "おそく なる",
       "むずかしく なる",
     ],
-    answer: "だれが やっても 同じ けっかに なる",
+    answer: "だれが やっても {同|おな}じ けっかに なる",
   },
 ];
 
@@ -652,9 +652,9 @@ const sortSearchQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
   {
     id: `${U.sortSearch}.q-1`,
     unitId: U.sortSearch,
-    prompt: "5, 1, 3, 2, 4 を 小さい じゅんに ならべよう。",
+    prompt: "5, 1, 3, 2, 4 を {小|ちい}さい じゅんに ならべよう。",
     explanation:
-      "小さい じゅんは 1, 2, 3, 4, 5。データを じゅんに ならべる ことを「ソート（ならべかえ）」と いうよ。",
+      "{小|ちい}さい じゅんは 1, 2, 3, 4, 5。データを じゅんに ならべる ことを「ソート（ならべかえ）」と いうよ。",
     format: "ordering",
     items: ["5", "1", "3", "2", "4"],
     answerOrder: [1, 3, 2, 4, 0],
@@ -664,7 +664,7 @@ const sortSearchQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
     unitId: U.sortSearch,
     prompt: "{本|ほん}を {番号|ばんごう}じゅんに ならべて おくと、どんな よさが ある？",
     explanation:
-      "じゅんに ならんで いれば、目あての {本|ほん}を はやく さがせるよ。ばらばらだと さがすのに {時間|じかん}が かかるね。",
+      "じゅんに ならんで いれば、{目|め}あての {本|ほん}を はやく さがせるよ。ばらばらだと さがすのに {時間|じかん}が かかるね。",
     visual: { kind: "emoji", value: "📚", caption: "じゅんに ならべる" },
     format: "choice",
     choices: [
@@ -680,24 +680,24 @@ const sortSearchQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
     unitId: U.sortSearch,
     prompt: "1〜100の カードから「50」を さがすとき、はやい さがしかたは？",
     explanation:
-      "じゅんに ならんで いれば、まん中を 見て「もっと 大きい？小さい？」と はんぶんずつ へらすと はやく 見つかるよ。",
+      "じゅんに ならんで いれば、まん{中|なか}を {見|み}て「もっと {大|おお}きい？{小|ちい}さい？」と はんぶんずつ へらすと はやく {見|み}つかるよ。",
     visual: { kind: "emoji", value: "🔍", caption: "はんぶんずつ" },
     format: "choice",
     choices: [
-      "まん中を 見て はんぶんずつ さがす",
-      "1から じゅんに ぜんぶ 見る",
-      "100から じゅんに ぜんぶ 見る",
+      "まん{中|なか}を {見|み}て はんぶんずつ さがす",
+      "1から じゅんに ぜんぶ {見|み}る",
+      "100から じゅんに ぜんぶ {見|み}る",
       "てきとうに めくる",
     ],
-    answer: "まん中を 見て はんぶんずつ さがす",
+    answer: "まん{中|なか}を {見|み}て はんぶんずつ さがす",
   },
   {
     id: `${U.sortSearch}.q-4`,
     unitId: U.sortSearch,
-    prompt: "おなじ こたえでも、ステップが 少ない 手順は どう いえる？",
+    prompt: "おなじ こたえでも、ステップが {少|すく}ない {手順|てじゅん}は どう いえる？",
     explanation:
-      "やる ことが 少ない ほど はやく おわるね。これを「{効率|こうりつ}が よい」と いうよ。",
-    visual: { kind: "emoji", value: "⚡", caption: "はやい 手順" },
+      "やる ことが {少|すく}ない ほど はやく おわるね。これを「{効率|こうりつ}が よい」と いうよ。",
+    visual: { kind: "emoji", value: "⚡", caption: "はやい {手順|てじゅん}" },
     format: "choice",
     choices: [
       "{効率|こうりつ}が よい",
@@ -710,9 +710,9 @@ const sortSearchQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
   {
     id: `${U.sortSearch}.q-5`,
     unitId: U.sortSearch,
-    prompt: "3, 9, 1, 7 を 大きい じゅんに ならべよう。",
+    prompt: "3, 9, 1, 7 を {大|おお}きい じゅんに ならべよう。",
     explanation:
-      "大きい じゅんは 9, 7, 3, 1。「大きい じゅん」と「小さい じゅん」を まちがえないように しよう。",
+      "{大|おお}きい じゅんは 9, 7, 3, 1。「{大|おお}きい じゅん」と「{小|ちい}さい じゅん」を まちがえないように しよう。",
     format: "ordering",
     items: ["3", "9", "1", "7"],
     answerOrder: [1, 3, 0, 2],
@@ -737,7 +737,7 @@ const blockProgrammingQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
     unitId: U.blockProgramming,
     prompt: "ブロックを「うえから じゅんに」つむと、どう うごく？",
     explanation:
-      "プログラムは うえから したへ じゅんばんに 1つずつ 実こうされるよ。これを「じゅんじ（じゅんばん）」と いうよ。",
+      "プログラムは うえから したへ じゅんばんに 1つずつ {実|じっ}こうされるよ。これを「じゅんじ（じゅんばん）」と いうよ。",
     visual: { kind: "emoji", value: "⬇️", caption: "うえから じゅんに" },
     format: "choice",
     choices: [
@@ -752,11 +752,11 @@ const blockProgrammingQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
     id: `${U.blockProgramming}.q-3`,
     unitId: U.blockProgramming,
     prompt:
-      "ネコを「右に すすむ → ジャンプ → ニャーと なく」と うごかす ブロックの じゅんは？",
+      "ネコを「{右|みぎ}に すすむ → ジャンプ → ニャーと なく」と うごかす ブロックの じゅんは？",
     explanation:
-      "ならべた じゅんに 1つずつ うごくよ。「右に すすむ → ジャンプ → なく」の じゅんで 実こうされるね。",
+      "ならべた じゅんに 1つずつ うごくよ。「{右|みぎ}に すすむ → ジャンプ → なく」の じゅんで {実|じっ}こうされるね。",
     format: "ordering",
-    items: ["右に すすむ", "ジャンプ", "ニャーと なく"],
+    items: ["{右|みぎ}に すすむ", "ジャンプ", "ニャーと なく"],
     answerOrder: [0, 1, 2],
   },
   {
@@ -780,7 +780,7 @@ const blockProgrammingQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
     unitId: U.blockProgramming,
     prompt: "プログラムの とおりに キャラクターが うごくのは なぜ？",
     explanation:
-      "コンピュータは かかれた しじを その とおりに 実こうするよ。だから しじが ちがえば うごきも かわるんだ。",
+      "コンピュータは かかれた しじを その とおりに {実|じっ}こうするよ。だから しじが ちがえば うごきも かわるんだ。",
     visual: { kind: "emoji", value: "🤖", caption: "しじの とおり" },
     format: "choice",
     choices: [
@@ -800,7 +800,7 @@ const variablesLoopsQuestions: ChoiceQuestion[] = [
     unitId: U.variablesLoops,
     prompt: "とくてんなど、かわる {数|かず}を おぼえて おく いれものを なんと いう？",
     explanation:
-      "あたいを 入れて おぼえる いれものを「{変数|へんすう}」と いうよ。とくてんや のこり{回数|かいすう}を おぼえるのに つかうね。",
+      "あたいを {入|い}れて おぼえる いれものを「{変数|へんすう}」と いうよ。とくてんや のこり{回数|かいすう}を おぼえるのに つかうね。",
     visual: { kind: "emoji", value: "📦", caption: "あたいの いれもの" },
     format: "choice",
     choices: ["{変数|へんすう}", "プリンター", "サーバー", "マウス"],
@@ -809,9 +809,9 @@ const variablesLoopsQuestions: ChoiceQuestion[] = [
   {
     id: `${U.variablesLoops}.q-2`,
     unitId: U.variablesLoops,
-    prompt: "「同じ うごきを 10かい する」とき べんりな しくみは どれ？",
+    prompt: "「{同|おな}じ うごきを 10かい する」とき べんりな しくみは どれ？",
     explanation:
-      "同じ しじを なんども 書かずに すむ「くりかえし（ループ）」を つかうと、みじかく かけて わかりやすいよ。",
+      "{同|おな}じ しじを なんども {書|か}かずに すむ「くりかえし（ループ）」を つかうと、みじかく かけて わかりやすいよ。",
     visual: { kind: "emoji", value: "🔁", caption: "くりかえし" },
     format: "choice",
     choices: ["くりかえし（ループ）", "{変数|へんすう}", "{入力|にゅうりょく}", "サーバー"],
@@ -820,7 +820,7 @@ const variablesLoopsQuestions: ChoiceQuestion[] = [
   {
     id: `${U.variablesLoops}.q-3`,
     unitId: U.variablesLoops,
-    prompt: "「もし ボタンが おされたら 音を ならす」のような しくみを なんと いう？",
+    prompt: "「もし ボタンが おされたら {音|おと}を ならす」のような しくみを なんと いう？",
     explanation:
       "「もし〜なら」で うごきを えらぶ しくみを「じょうけん（{分岐|ぶんき}）」と いうよ。ばあいに よって うごきを かえられるね。",
     visual: { kind: "emoji", value: "❓", caption: "もし〜なら" },
@@ -850,7 +850,7 @@ const variablesLoopsQuestions: ChoiceQuestion[] = [
     unitId: U.variablesLoops,
     prompt: "「☆を かく」を 4かい くりかえすと、☆は いくつ かける？",
     explanation:
-      "くりかえす {回数|かいすう}ぶん 実こうされるよ。4かい くりかえせば ☆は 4つ かけるね。",
+      "くりかえす {回数|かいすう}ぶん {実|じっ}こうされるよ。4かい くりかえせば ☆は 4つ かけるね。",
     visual: { kind: "emoji", value: "⭐⭐⭐⭐", caption: "4かい くりかえし" },
     format: "choice",
     choices: ["4つ", "1つ", "8つ", "0こ"],
@@ -865,7 +865,7 @@ const debugQuestions: (ChoiceQuestion | OrderingQuestion)[] = [
     unitId: U.debug,
     prompt: "プログラムの まちがいを なんと いう？",
     explanation:
-      "プログラムの まちがいを「バグ」と いうよ。バグを 見つけて 直す ことを「デバッグ」と いうんだ。",
+      "プログラムの まちがいを「バグ」と いうよ。バグを {見|み}つけて {直|なお}す ことを「デバッグ」と いうんだ。",
     visual: { kind: "emoji", value: "🐛", caption: "バグ" },
     format: "choice",
     choices: ["バグ", "サーバー", "ビット", "ループ"],
@@ -876,7 +876,7 @@ const debugQuestions: (ChoiceQuestion | OrderingQuestion)[] = [
     unitId: U.debug,
     prompt: "プログラムが おもいどおりに うごかない とき、まず する ことは？",
     explanation:
-      "どこで おかしく なるか、上から 1つずつ たしかめるよ。やみくもに 直さず、げんいんを さがすのが こつだね。",
+      "どこで おかしく なるか、{上|うえ}から 1つずつ たしかめるよ。やみくもに {直|なお}さず、げんいんを さがすのが こつだね。",
     visual: { kind: "emoji", value: "🔎", caption: "1つずつ たしかめる" },
     format: "choice",
     choices: [
@@ -891,49 +891,49 @@ const debugQuestions: (ChoiceQuestion | OrderingQuestion)[] = [
     id: `${U.debug}.q-3`,
     unitId: U.debug,
     prompt:
-      "「右に すすむ」を 入れわすれた プログラム。直すには どう する？",
+      "「{右|みぎ}に すすむ」を {入|い}れわすれた プログラム。{直|なお}すには どう する？",
     explanation:
-      "たりない しじを 入れれば 直るよ。バグは「ぬけて いる」「じゅんが ちがう」など いろいろ あるんだ。",
-    visual: { kind: "emoji", value: "➕", caption: "たりない しじを 入れる" },
+      "たりない しじを {入|い}れれば {直|なお}るよ。バグは「ぬけて いる」「じゅんが ちがう」など いろいろ あるんだ。",
+    visual: { kind: "emoji", value: "➕", caption: "たりない しじを {入|い}れる" },
     format: "choice",
     choices: [
-      "「右に すすむ」の しじを 入れる",
+      "「{右|みぎ}に すすむ」の しじを {入|い}れる",
       "ぜんぶ けす",
       "そのままに する",
-      "電げんを きる",
+      "{電|でん}げんを きる",
     ],
-    answer: "「右に すすむ」の しじを 入れる",
+    answer: "「{右|みぎ}に すすむ」の しじを {入|い}れる",
   },
   {
     id: `${U.debug}.q-4`,
     unitId: U.debug,
-    prompt: "デバッグの 正しい じゅんに ならべよう。",
+    prompt: "デバッグの {正|ただ}しい じゅんに ならべよう。",
     explanation:
-      "「うごかして みる → まちがいを 見つける → 直す → もう一ど うごかして たしかめる」。直したら かならず たしかめよう。",
+      "「うごかして みる → まちがいを {見|み}つける → {直|なお}す → もう{一|いち}ど うごかして たしかめる」。{直|なお}したら かならず たしかめよう。",
     format: "ordering",
     items: [
       "うごかして みる",
-      "まちがいを 見つける",
-      "直す",
-      "もう一ど たしかめる",
+      "まちがいを {見|み}つける",
+      "{直|なお}す",
+      "もう{一|いち}ど たしかめる",
     ],
     answerOrder: [0, 1, 2, 3],
   },
   {
     id: `${U.debug}.q-5`,
     unitId: U.debug,
-    prompt: "プログラムを 直したら、さいごに する ことは？",
+    prompt: "プログラムを {直|なお}したら、さいごに する ことは？",
     explanation:
-      "直した あとは もう一ど うごかして、ちゃんと なおったか たしかめよう。たしかめないと まだ バグが のこって いる かも しれないよ。",
-    visual: { kind: "emoji", value: "✅", caption: "もう一ど たしかめる" },
+      "{直|なお}した あとは もう{一|いち}ど うごかして、ちゃんと なおったか たしかめよう。たしかめないと まだ バグが のこって いる かも しれないよ。",
+    visual: { kind: "emoji", value: "✅", caption: "もう{一|いち}ど たしかめる" },
     format: "choice",
     choices: [
-      "もう一ど うごかして たしかめる",
+      "もう{一|いち}ど うごかして たしかめる",
       "すぐ おわりに する",
-      "電げんを きる",
+      "{電|でん}げんを きる",
       "ほかの プログラムを けす",
     ],
-    answer: "もう一ど うごかして たしかめる",
+    answer: "もう{一|いち}ど うごかして たしかめる",
   },
 ];
 
@@ -945,7 +945,7 @@ export const itG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "コンピュータは 2つで できて いる",
-          body: "スマホや ゲームきは、さわれる「{機械|きかい}（ハードウェア）」と、その中で うごく「しじ・アプリ（ソフトウェア）」で できて いるよ。",
+          body: "スマホや ゲームきは、さわれる「{機械|きかい}（ハードウェア）」と、その{中|なか}で うごく「しじ・アプリ（ソフトウェア）」で できて いるよ。",
           visual: { kind: "emoji", value: "🖥️➕📀", caption: "ハード＋ソフト" },
         },
         {
@@ -980,12 +980,12 @@ export const itG4Contents: Record<string, UnitContent> = {
         {
           heading: "{入力|にゅうりょく}＝いれる どうぐ",
           body: "キーボード・マウス・マイク・カメラは、{情報|じょうほう}を コンピュータに いれる どうぐだよ。",
-          visual: { kind: "emoji", value: "⌨️🖱️🎤", caption: "いれる係" },
+          visual: { kind: "emoji", value: "⌨️🖱️🎤", caption: "いれる{係|がかり}" },
         },
         {
           heading: "{出力|しゅつりょく}＝だす どうぐ",
           body: "{画面|がめん}・プリンター・スピーカーは、けっかを そとに だす どうぐだよ。{矢印|やじるし}の むきで かんがえると わかりやすいね。",
-          visual: { kind: "emoji", value: "🖥️🖨️🔊", caption: "だす係" },
+          visual: { kind: "emoji", value: "🖥️🖨️🔊", caption: "だす{係|がかり}" },
         },
       ],
     },
@@ -1008,12 +1008,12 @@ export const itG4Contents: Record<string, UnitContent> = {
         },
         {
           heading: "ビットと バイト",
-          body: "0 か 1 ひとつを「1ビット」、8ビットを まとめて「1バイト」と いうよ。データの 大きさを はかる たんいだね。",
+          body: "0 か 1 ひとつを「1ビット」、8ビットを まとめて「1バイト」と いうよ。データの {大|おお}きさを はかる たんいだね。",
           visual: { kind: "emoji", value: "🔘", caption: "1ビット" },
         },
         {
           heading: "おぼえて おく ばしょ",
-          body: "{写真|しゃしん}や {動画|どうが}を ほぞんする ところが「{記憶|きおく}そうち」。{動画|どうが}は データが 大きいので ばしょを たくさん つかうよ。",
+          body: "{写真|しゃしん}や {動画|どうが}を ほぞんする ところが「{記憶|きおく}そうち」。{動画|どうが}は データが {大|おお}きいので ばしょを たくさん つかうよ。",
           visual: { kind: "emoji", value: "💾", caption: "{記憶|きおく}そうち" },
         },
       ],
@@ -1032,7 +1032,7 @@ export const itG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "せかいを つなぐ あみ",
-          body: "インターネットは せかいじゅうの コンピュータを つないだ 大きな「あみ」だよ。だから {遠|とお}くの {人|ひと}とも つながれるんだ。",
+          body: "インターネットは せかいじゅうの コンピュータを つないだ {大|おお}きな「あみ」だよ。だから {遠|とお}くの {人|ひと}とも つながれるんだ。",
           visual: { kind: "emoji", value: "🌐", caption: "せかいの あみ" },
         },
         {
@@ -1042,7 +1042,7 @@ export const itG4Contents: Record<string, UnitContent> = {
         },
         {
           heading: "データは つたって とどく",
-          body: "おくった データは 小さく わけられ、いくつもの コンピュータを 通って {相手|あいて}に とどくよ。べんりだけど つかいすぎには {気|き}を つけよう。",
+          body: "おくった データは {小|ちい}さく わけられ、いくつもの コンピュータを {通|とお}って {相手|あいて}に とどくよ。べんりだけど つかいすぎには {気|き}を つけよう。",
           visual: { kind: "emoji", value: "✉️➡️🌐➡️📱", caption: "つたって とどく" },
         },
       ],
@@ -1071,7 +1071,7 @@ export const itG4Contents: Record<string, UnitContent> = {
         },
         {
           heading: "ネットでも やさしく",
-          body: "{相手|あいて}の {顔|かお}が 見えなくても、やさしい ことばで つたえよう。こまった ことが あったら すぐ おとなに そうだんしてね。",
+          body: "{相手|あいて}の {顔|かお}が {見|み}えなくても、やさしい ことばで つたえよう。こまった ことが あったら すぐ おとなに そうだんしてね。",
           visual: { kind: "emoji", value: "😊💬", caption: "やさしい ことば" },
         },
       ],
@@ -1090,18 +1090,18 @@ export const itG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{手順|てじゅん}＝アルゴリズム",
-          body: "やる ことを 正しい じゅんに ならべた ものを「アルゴリズム（{手順|てじゅん}）」と いうよ。りょうりの レシピも なかまだね。",
+          body: "やる ことを {正|ただ}しい じゅんに ならべた ものを「アルゴリズム（{手順|てじゅん}）」と いうよ。りょうりの レシピも なかまだね。",
           visual: { kind: "emoji", value: "📋", caption: "{手順|てじゅん}" },
         },
         {
           heading: "じゅんが だいじ",
-          body: "「おゆを いれる」まえに「ふたを あける」——じゅんが ちがうと うまく できないよ。だから 正しい じゅんを かんがえるんだ。",
+          body: "「おゆを いれる」まえに「ふたを あける」——じゅんが ちがうと うまく できないよ。だから {正|ただ}しい じゅんを かんがえるんだ。",
           visual: { kind: "emoji", value: "🍜", caption: "じゅんばん" },
         },
         {
-          heading: "フローチャートで 見える化",
-          body: "{矢印|やじるし}や はこで ながれを かいた 図を「フローチャート」と いうよ。{手順|てじゅん}が 一目で わかるね。",
-          visual: { kind: "emoji", value: "🔽", caption: "ながれの 図" },
+          heading: "フローチャートで {見|み}える{化|か}",
+          body: "{矢印|やじるし}や はこで ながれを かいた {図|ず}を「フローチャート」と いうよ。{手順|てじゅん}が {一目|ひとめ}で わかるね。",
+          visual: { kind: "emoji", value: "🔽", caption: "ながれの {図|ず}" },
         },
       ],
     },
@@ -1119,18 +1119,18 @@ export const itG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "ならべかえ（ソート）",
-          body: "データを 小さい じゅんや 大きい じゅんに ならべる ことを「ソート」と いうよ。{番号|ばんごう}じゅんに そろえるんだ。",
+          body: "データを {小|ちい}さい じゅんや {大|おお}きい じゅんに ならべる ことを「ソート」と いうよ。{番号|ばんごう}じゅんに そろえるんだ。",
           visual: { kind: "emoji", value: "🔢", caption: "じゅんに ならべる" },
         },
         {
           heading: "ならべると さがしやすい",
-          body: "じゅんに ならんで いれば、目あての ものを はやく さがせるよ。ばらばらだと さがすのに {時間|じかん}が かかるね。",
+          body: "じゅんに ならんで いれば、{目|め}あての ものを はやく さがせるよ。ばらばらだと さがすのに {時間|じかん}が かかるね。",
           visual: { kind: "emoji", value: "📚", caption: "さがしやすい" },
         },
         {
-          heading: "はやい 手順＝{効率|こうりつ}が よい",
-          body: "まん中から はんぶんずつ へらして さがすと、ぜんぶ 見るより ずっと はやいよ。ステップが 少ない 手順を「{効率|こうりつ}が よい」と いうよ。",
-          visual: { kind: "emoji", value: "⚡", caption: "はやい 手順" },
+          heading: "はやい {手順|てじゅん}＝{効率|こうりつ}が よい",
+          body: "まん{中|なか}から はんぶんずつ へらして さがすと、ぜんぶ {見|み}るより ずっと はやいよ。ステップが {少|すく}ない {手順|てじゅん}を「{効率|こうりつ}が よい」と いうよ。",
+          visual: { kind: "emoji", value: "⚡", caption: "はやい {手順|てじゅん}" },
         },
       ],
     },
@@ -1158,7 +1158,7 @@ export const itG4Contents: Record<string, UnitContent> = {
         },
         {
           heading: "うえから じゅんに うごく",
-          body: "プログラムは うえから したへ 1つずつ 実こうされるよ。「右に すすむ → ジャンプ → なく」の じゅんで キャラクターが うごくんだ。",
+          body: "プログラムは うえから したへ 1つずつ {実|じっ}こうされるよ。「{右|みぎ}に すすむ → ジャンプ → なく」の じゅんで キャラクターが うごくんだ。",
           visual: { kind: "emoji", value: "🐱", caption: "じゅんに うごく" },
         },
       ],
@@ -1182,12 +1182,12 @@ export const itG4Contents: Record<string, UnitContent> = {
         },
         {
           heading: "くりかえし（ループ）",
-          body: "同じ うごきを なんども する ときは「くりかえし」を つかうよ。10かい 書かなくても 1つに まとめられて べんりだね。",
+          body: "{同|おな}じ うごきを なんども する ときは「くりかえし」を つかうよ。10かい {書|か}かなくても 1つに まとめられて べんりだね。",
           visual: { kind: "emoji", value: "🔁", caption: "くりかえし" },
         },
         {
           heading: "じょうけん（もし〜なら）",
-          body: "「もし ボタンが おされたら 音を ならす」のように、ばあいに よって うごきを かえる しくみが「じょうけん」だよ。",
+          body: "「もし ボタンが おされたら {音|おと}を ならす」のように、ばあいに よって うごきを かえる しくみが「じょうけん」だよ。",
           visual: { kind: "emoji", value: "❓", caption: "もし〜なら" },
         },
       ],
@@ -1206,17 +1206,17 @@ export const itG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "バグと デバッグ",
-          body: "プログラムの まちがいを「バグ」、それを 見つけて 直す ことを「デバッグ」と いうよ。だれの プログラムにも バグは おこるんだ。",
+          body: "プログラムの まちがいを「バグ」、それを {見|み}つけて {直|なお}す ことを「デバッグ」と いうよ。だれの プログラムにも バグは おこるんだ。",
           visual: { kind: "emoji", value: "🐛", caption: "バグ" },
         },
         {
           heading: "1つずつ たしかめる",
-          body: "おもいどおりに うごかない ときは、上から 1つずつ どこで おかしく なるか たしかめよう。やみくもに 直さないのが こつだよ。",
+          body: "おもいどおりに うごかない ときは、{上|うえ}から 1つずつ どこで おかしく なるか たしかめよう。やみくもに {直|なお}さないのが こつだよ。",
           visual: { kind: "emoji", value: "🔎", caption: "1つずつ" },
         },
         {
-          heading: "直したら もう一ど たしかめる",
-          body: "「うごかす → 見つける → 直す → もう一ど たしかめる」。直した あとに たしかめると、ちゃんと なおったか わかるよ。",
+          heading: "{直|なお}したら もう{一|いち}ど たしかめる",
+          body: "「うごかす → {見|み}つける → {直|なお}す → もう{一|いち}ど たしかめる」。{直|なお}した あとに たしかめると、ちゃんと なおったか わかるよ。",
           visual: { kind: "emoji", value: "✅", caption: "たしかめる" },
         },
       ],
