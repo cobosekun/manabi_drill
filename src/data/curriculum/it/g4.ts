@@ -302,6 +302,174 @@ const hardwareSoftwareQuestions: (ChoiceQuestion | MatchingQuestion)[] = [
     choices: ["ソフト", "ハード", "でんち", "{画面|がめん}の {大|おお}きさ"],
     answer: "ソフト",
   },
+  {
+    id: `${U.hardwareSoftware}.q-6`,
+    unitId: U.hardwareSoftware,
+    prompt: "「マウス」は ハードと ソフトの どっち？",
+    explanation:
+      "マウスは {手|て}で さわれる {機械|きかい}なので「ハード」だよ。",
+    format: "choice",
+    choices: ["ハード", "ソフト", "でんき", "データ"],
+    answer: "ハード",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-7`,
+    unitId: U.hardwareSoftware,
+    prompt: "インターネットを {見|み}る「ブラウザ」は どっち？",
+    explanation:
+      "ブラウザは さわれない アプリなので「ソフト」だよ。",
+    format: "choice",
+    choices: ["ソフト", "ハード", "でんち", "ケーブル"],
+    answer: "ソフト",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-8`,
+    unitId: U.hardwareSoftware,
+    prompt: "コンピュータの {中|なか}で けいさんや かんがえる しごとを する ぶぶんを なんと いう？",
+    explanation:
+      "けいさんを する あたまの ぶぶんを「CPU（シーピーユー）」と いうよ。コンピュータの {中心|ちゅうしん}だね。",
+    visual: { kind: "emoji", value: "🧠", caption: "けいさんの あたま" },
+    format: "choice",
+    choices: ["CPU（シーピーユー）", "マウス", "スピーカー", "でんち"],
+    answer: "CPU（シーピーユー）",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-9`,
+    unitId: U.hardwareSoftware,
+    prompt: "つぎの うち「ハードウェア」は どれ？",
+    explanation:
+      "プリンターは {手|て}で さわれる {機械|きかい}なので ハードだよ。ほかは アプリ（ソフト）だね。",
+    format: "choice",
+    choices: ["プリンター", "ゲームアプリ", "{音楽|おんがく}アプリ", "ブラウザ"],
+    answer: "プリンター",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-10`,
+    unitId: U.hardwareSoftware,
+    prompt: "つぎの うち「ソフトウェア」は どれ？",
+    explanation:
+      "おえかきアプリは さわれない しじ（ソフト）だよ。ほかは さわれる ハードだね。",
+    format: "choice",
+    choices: ["おえかきアプリ", "キーボード", "マウス", "スピーカー"],
+    answer: "おえかきアプリ",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-11`,
+    unitId: U.hardwareSoftware,
+    prompt: "スマホを かった だけでは ゲームが できない。ゲームを する には なにが いる？",
+    explanation:
+      "ゲームの アプリ（ソフト）を いれて はじめて あそべるよ。{本体|ほんたい}（ハード）だけでは うごかないんだ。",
+    visual: { kind: "emoji", value: "📱🎮", caption: "アプリを いれる" },
+    format: "choice",
+    choices: [
+      "ゲームの アプリ（ソフト）を いれる",
+      "{画面|がめん}を {大|おお}きく する",
+      "でんちを ふやす",
+      "なにも しなくて よい",
+    ],
+    answer: "ゲームの アプリ（ソフト）を いれる",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-12`,
+    unitId: U.hardwareSoftware,
+    prompt: "「ハードが こわれた」と いえる のは どれ？",
+    explanation:
+      "{画面|がめん}が われるのは さわれる {機械|きかい}（ハード）の こしょう。アプリの もんだいは ソフトの こしょうだよ。",
+    format: "choice",
+    choices: [
+      "{画面|がめん}が われた",
+      "アプリが きえた",
+      "パスワードを わすれた",
+      "おとを 0に した",
+    ],
+    answer: "{画面|がめん}が われた",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-13`,
+    unitId: U.hardwareSoftware,
+    prompt: "アプリ（ソフト）を あたらしく する ことを なんと いう？",
+    explanation:
+      "ソフトを あたらしく して よく する ことを「アップデート」と いうよ。あんぜんにも なるんだ。",
+    visual: { kind: "emoji", value: "⬆️", caption: "あたらしく する" },
+    format: "choice",
+    choices: ["アップデート", "シャットダウン", "ログアウト", "コピー"],
+    answer: "アップデート",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-14`,
+    unitId: U.hardwareSoftware,
+    prompt: "コンピュータの でんげんを {入|い}れて うごきはじめる ことを なんと いう？",
+    explanation:
+      "でんげんを {入|い}れて うごきはじめる ことを「きどう（スタート）」と いうよ。",
+    format: "choice",
+    choices: ["きどう（スタート）", "ほぞん", "いんさつ", "けす"],
+    answer: "きどう（スタート）",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-15`,
+    unitId: U.hardwareSoftware,
+    prompt: "つぎの うち「さわれない」もの（ソフト）は どれ？",
+    explanation:
+      "アプリは さわれない ソフト。マウス・キーボード・{画面|がめん}は さわれる ハードだね。",
+    format: "choice",
+    choices: ["アプリ", "マウス", "キーボード", "{画面|がめん}"],
+    answer: "アプリ",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-16`,
+    unitId: U.hardwareSoftware,
+    prompt: "タブレットの「{画面|がめん}」は ハードと ソフトの どっち？",
+    explanation:
+      "{画面|がめん}は さわれる {機械|きかい}なので ハードだよ。そこに うつる アプリは ソフトだね。",
+    format: "choice",
+    choices: ["ハード", "ソフト", "でんき", "データ"],
+    answer: "ハード",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-17`,
+    unitId: U.hardwareSoftware,
+    prompt: "{同|おな}じ パソコンでも、いれる アプリを かえると できる ことが かわる。これは なにの おかげ？",
+    explanation:
+      "アプリ＝ソフトを かえると できる しごとが かわるよ。これが ソフトの べんりな ところだね。",
+    format: "choice",
+    choices: ["ソフト（アプリ）", "ハード", "でんち", "ケーブル"],
+    answer: "ソフト（アプリ）",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-18`,
+    unitId: U.hardwareSoftware,
+    prompt: "けいさんアプリや おえかきアプリを まとめて なんと いう？",
+    explanation:
+      "アプリや しじは ぜんぶ まとめて「ソフトウェア」と いうよ。",
+    format: "choice",
+    choices: ["ソフトウェア", "ハードウェア", "{記憶|きおく}そうち", "ネットワーク"],
+    answer: "ソフトウェア",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-19`,
+    unitId: U.hardwareSoftware,
+    prompt: "コンピュータが しごとを する には、ハードと なにが いる？",
+    explanation:
+      "ハード（{機械|きかい}）に ソフト（しじ）が あって はじめて しごとが できるよ。",
+    format: "choice",
+    choices: ["ソフト", "もう1つの {画面|がめん}", "おおきな つくえ", "なにも いらない"],
+    answer: "ソフト",
+  },
+  {
+    id: `${U.hardwareSoftware}.q-20`,
+    unitId: U.hardwareSoftware,
+    prompt: "つぎの {文|ぶん}で {正|ただ}しい のは どれ？",
+    explanation:
+      "コンピュータは ハード（{機械|きかい}）と ソフト（しじ）の {両方|りょうほう}が そろって うごくよ。",
+    format: "choice",
+    choices: [
+      "ハードと ソフトの {両方|りょうほう}が いる",
+      "ハードだけで うごく",
+      "ソフトだけで うごく",
+      "どちらも いらない",
+    ],
+    answer: "ハードと ソフトの {両方|りょうほう}が いる",
+  },
 ];
 
 // 2. 入力と出力 ───────────────────────────
@@ -366,6 +534,178 @@ const inputOutputQuestions: (ChoiceQuestion | MatchingQuestion)[] = [
     ],
     answer: "{入力|にゅうりょく}→{処理|しょり}→{出力|しゅつりょく}",
   },
+  {
+    id: `${U.inputOutput}.q-6`,
+    unitId: U.inputOutput,
+    prompt: "「マイク」は {入力|にゅうりょく}と {出力|しゅつりょく}の どっち？",
+    explanation:
+      "マイクは こえ（{音|おと}）を コンピュータに いれる ので「{入力|にゅうりょく}」だよ。",
+    visual: { kind: "emoji", value: "🎤", caption: "{音|おと}を いれる" },
+    format: "choice",
+    choices: ["{入力|にゅうりょく}", "{出力|しゅつりょく}", "{記憶|きおく}", "{処理|しょり}"],
+    answer: "{入力|にゅうりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-7`,
+    unitId: U.inputOutput,
+    prompt: "「スピーカー」は どっち？",
+    explanation:
+      "スピーカーは {音|おと}を そとに だす ので「{出力|しゅつりょく}」だよ。",
+    visual: { kind: "emoji", value: "🔊", caption: "{音|おと}を だす" },
+    format: "choice",
+    choices: ["{出力|しゅつりょく}", "{入力|にゅうりょく}", "{記憶|きおく}", "でんげん"],
+    answer: "{出力|しゅつりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-8`,
+    unitId: U.inputOutput,
+    prompt: "「カメラ」は どっち？",
+    explanation:
+      "カメラは {絵|え}（{画像|がぞう}）を コンピュータに いれる ので「{入力|にゅうりょく}」だよ。",
+    visual: { kind: "emoji", value: "📷", caption: "{絵|え}を いれる" },
+    format: "choice",
+    choices: ["{入力|にゅうりょく}", "{出力|しゅつりょく}", "{記憶|きおく}", "{処理|しょり}"],
+    answer: "{入力|にゅうりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-9`,
+    unitId: U.inputOutput,
+    prompt: "「プリンター」は どっち？",
+    explanation:
+      "プリンターは かみに けっかを だす ので「{出力|しゅつりょく}」だよ。",
+    visual: { kind: "emoji", value: "🖨️", caption: "かみに だす" },
+    format: "choice",
+    choices: ["{出力|しゅつりょく}", "{入力|にゅうりょく}", "{記憶|きおく}", "でんげん"],
+    answer: "{出力|しゅつりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-10`,
+    unitId: U.inputOutput,
+    prompt: "ゲームの「コントローラー」は どっち？",
+    explanation:
+      "コントローラーは ボタンの {命令|めいれい}を いれる ので「{入力|にゅうりょく}」だよ。",
+    visual: { kind: "emoji", value: "🎮", caption: "そうさを いれる" },
+    format: "choice",
+    choices: ["{入力|にゅうりょく}", "{出力|しゅつりょく}", "{記憶|きおく}", "{処理|しょり}"],
+    answer: "{入力|にゅうりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-11`,
+    unitId: U.inputOutput,
+    prompt: "「ヘッドホン」は どっち？",
+    explanation:
+      "ヘッドホンは {音|おと}を みみに だす ので「{出力|しゅつりょく}」だよ。",
+    format: "choice",
+    choices: ["{出力|しゅつりょく}", "{入力|にゅうりょく}", "{記憶|きおく}", "でんげん"],
+    answer: "{出力|しゅつりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-12`,
+    unitId: U.inputOutput,
+    prompt: "いれた {情報|じょうほう}を コンピュータが かんがえる ことを なんと いう？",
+    explanation:
+      "いれた {情報|じょうほう}を けいさん・かんがえる ことを「{処理|しょり}」と いうよ。",
+    visual: { kind: "emoji", value: "🧠", caption: "かんがえる" },
+    format: "choice",
+    choices: ["{処理|しょり}", "{入力|にゅうりょく}", "{出力|しゅつりょく}", "{記憶|きおく}"],
+    answer: "{処理|しょり}",
+  },
+  {
+    id: `${U.inputOutput}.q-13`,
+    unitId: U.inputOutput,
+    prompt: "「{画面|がめん}に {絵|え}を だす」のは {入力|にゅうりょく}と {出力|しゅつりょく}の どっち？",
+    explanation:
+      "{画面|がめん}に だして {見|み}せる ので「{出力|しゅつりょく}」だよ。",
+    format: "choice",
+    choices: ["{出力|しゅつりょく}", "{入力|にゅうりょく}", "{記憶|きおく}", "{処理|しょり}"],
+    answer: "{出力|しゅつりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-14`,
+    unitId: U.inputOutput,
+    prompt: "「キーボードで {名前|なまえ}を うつ」のは どっち？",
+    explanation:
+      "{文字|もじ}を コンピュータに いれる ので「{入力|にゅうりょく}」だよ。",
+    format: "choice",
+    choices: ["{入力|にゅうりょく}", "{出力|しゅつりょく}", "{記憶|きおく}", "{処理|しょり}"],
+    answer: "{入力|にゅうりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-15`,
+    unitId: U.inputOutput,
+    prompt: "つぎの うち「{入力|にゅうりょく}そうち」だけ あつめた ものは どれ？",
+    explanation:
+      "キーボード・マウス・マイクは ぜんぶ いれる どうぐ（{入力|にゅうりょく}）だよ。",
+    format: "choice",
+    choices: [
+      "キーボード・マウス・マイク",
+      "{画面|がめん}・プリンター",
+      "スピーカー・{画面|がめん}",
+      "プリンター・スピーカー",
+    ],
+    answer: "キーボード・マウス・マイク",
+  },
+  {
+    id: `${U.inputOutput}.q-16`,
+    unitId: U.inputOutput,
+    prompt: "つぎの うち「{出力|しゅつりょく}そうち」だけ あつめた ものは どれ？",
+    explanation:
+      "{画面|がめん}・プリンター・スピーカーは ぜんぶ だす どうぐ（{出力|しゅつりょく}）だよ。",
+    format: "choice",
+    choices: [
+      "{画面|がめん}・プリンター・スピーカー",
+      "キーボード・マウス",
+      "マイク・カメラ",
+      "マウス・キーボード",
+    ],
+    answer: "{画面|がめん}・プリンター・スピーカー",
+  },
+  {
+    id: `${U.inputOutput}.q-17`,
+    unitId: U.inputOutput,
+    prompt: "カメラで しゃしんを とる とき、コンピュータに なにを いれて いる？",
+    explanation:
+      "しゃしん＝{絵|え}の {情報|じょうほう}を いれて いるよ。だから カメラは {入力|にゅうりょく}そうちだね。",
+    format: "choice",
+    choices: ["{絵|え}の {情報|じょうほう}（しゃしん）", "{音|おと}だけ", "でんき だけ", "なにも いれない"],
+    answer: "{絵|え}の {情報|じょうほう}（しゃしん）",
+  },
+  {
+    id: `${U.inputOutput}.q-18`,
+    unitId: U.inputOutput,
+    prompt: "タッチパネルで「{画面|がめん}を {指|ゆび}で さわる」のは {入力|にゅうりょく}・{出力|しゅつりょく} どっち？",
+    explanation:
+      "さわって {命令|めいれい}を いれる ので「{入力|にゅうりょく}」。{画面|がめん}に だす ところは {出力|しゅつりょく}で、{両方|りょうほう}を もつ どうぐだよ。",
+    format: "choice",
+    choices: ["{入力|にゅうりょく}", "{出力|しゅつりょく}", "{記憶|きおく}", "でんげん"],
+    answer: "{入力|にゅうりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-19`,
+    unitId: U.inputOutput,
+    prompt: "コンピュータの ながれ「◯ → {処理|しょり} → {出力|しゅつりょく}」の ◯に {入|はい}るのは？",
+    explanation:
+      "さいしょは「{入力|にゅうりょく}（いれる）」だよ。いれて → かんがえて → だす、の じゅんだね。",
+    visual: { kind: "emoji", value: "⌨️➡️🧠➡️🖥️", caption: "いれる→かんがえる→だす" },
+    format: "choice",
+    choices: ["{入力|にゅうりょく}", "{出力|しゅつりょく}", "{記憶|きおく}", "でんげん"],
+    answer: "{入力|にゅうりょく}",
+  },
+  {
+    id: `${U.inputOutput}.q-20`,
+    unitId: U.inputOutput,
+    prompt: "つぎの うち、コンピュータが「だす（{出力|しゅつりょく}）」もの は どれ？",
+    explanation:
+      "{画面|がめん}の {絵|え}や スピーカーの {音|おと}は コンピュータが だす もの（{出力|しゅつりょく}）だよ。",
+    format: "choice",
+    choices: [
+      "{画面|がめん}の {絵|え}や {音|おと}",
+      "{指|ゆび}の うごき",
+      "マイクへの こえ",
+      "キーボードで うつ {文字|もじ}",
+    ],
+    answer: "{画面|がめん}の {絵|え}や {音|おと}",
+  },
 ];
 
 // 3. データと記憶 ───────────────────────────
@@ -429,6 +769,191 @@ const dataStorageQuestions: ChoiceQuestion[] = [
       "{色|いろ}が かわる",
     ],
     answer: "ほぞんの ばしょを たくさん つかう",
+  },
+  {
+    id: `${U.dataStorage}.q-6`,
+    unitId: U.dataStorage,
+    prompt: "1バイトは なんビット あつまった もの？",
+    explanation:
+      "ビットが 8つ あつまると「1バイト」だよ。",
+    visual: { kind: "emoji", value: "🔘×8", caption: "8ビット＝1バイト" },
+    format: "choice",
+    choices: ["8ビット", "2ビット", "10ビット", "100ビット"],
+    answer: "8ビット",
+  },
+  {
+    id: `${U.dataStorage}.q-7`,
+    unitId: U.dataStorage,
+    prompt: "つぎの うち データを ほぞんできる ものは どれ？",
+    explanation:
+      "USBメモリは データを ほぞんできる どうぐだよ。SDカードも なかまだね。",
+    visual: { kind: "emoji", value: "💾", caption: "ほぞんできる" },
+    format: "choice",
+    choices: ["USBメモリ", "えんぴつ", "ものさし", "けしゴム"],
+    answer: "USBメモリ",
+  },
+  {
+    id: `${U.dataStorage}.q-8`,
+    unitId: U.dataStorage,
+    prompt: "{文字|もじ}1つと しゃしん1まい、ふつう データが {大|おお}きいのは どっち？",
+    explanation:
+      "しゃしんは たくさんの {点|てん}（いろ）で できて いるので、{文字|もじ}1つより ずっと データが {大|おお}きいよ。",
+    format: "choice",
+    choices: ["しゃしん", "{文字|もじ}1つ", "どちらも 0", "おなじ"],
+    answer: "しゃしん",
+  },
+  {
+    id: `${U.dataStorage}.q-9`,
+    unitId: U.dataStorage,
+    prompt: "しゃしん1まいと {動画|どうが}、ふつう データが {大|おお}きいのは どっち？",
+    explanation:
+      "{動画|どうが}は たくさんの しゃしんが つながった ものなので、しゃしん1まいより ずっと {大|おお}きいよ。",
+    visual: { kind: "emoji", value: "🎞️", caption: "{動画|どうが}は {大|おお}きい" },
+    format: "choice",
+    choices: ["{動画|どうが}", "しゃしん1まい", "どちらも 0", "くらべられない"],
+    answer: "{動画|どうが}",
+  },
+  {
+    id: `${U.dataStorage}.q-10`,
+    unitId: U.dataStorage,
+    prompt: "コンピュータが すべてを 0と1で あらわす しくみを なんと いう？",
+    explanation:
+      "0と1の 2つだけで あらわす しくみを「2しんすう」と いうよ。",
+    visual: { kind: "emoji", value: "0️⃣1️⃣", caption: "0 と 1" },
+    format: "choice",
+    choices: ["2しんすう", "10しんすう", "アルゴリズム", "サーバー"],
+    answer: "2しんすう",
+  },
+  {
+    id: `${U.dataStorage}.q-11`,
+    unitId: U.dataStorage,
+    prompt: "SDカードは なにを する ための もの？",
+    explanation:
+      "SDカードは しゃしんや {動画|どうが}などの データを ほぞんする ための {記憶|きおく}そうちだよ。",
+    format: "choice",
+    choices: [
+      "データを ほぞんする",
+      "{音|おと}を だす",
+      "{文字|もじ}を いれる",
+      "でんきを つくる",
+    ],
+    answer: "データを ほぞんする",
+  },
+  {
+    id: `${U.dataStorage}.q-12`,
+    unitId: U.dataStorage,
+    prompt: "データが {大|おお}きい ほど、おくる のに かかる {時間|じかん}は どう なる？",
+    explanation:
+      "データが {大|おお}きい ほど、おくるのに {時間|じかん}が ながく かかるよ。{動画|どうが}は とくに {大|おお}きいね。",
+    format: "choice",
+    choices: ["ながく かかる", "みじかく なる", "0に なる", "かわらない"],
+    answer: "ながく かかる",
+  },
+  {
+    id: `${U.dataStorage}.q-13`,
+    unitId: U.dataStorage,
+    prompt: "データの {大|おお}きさは「ビット」と「バイト」、{小|ちい}さいのは どっち？",
+    explanation:
+      "1ビットが いちばん {小|ちい}さく、8ビット あつまって 1バイト。だから ビットの ほうが {小|ちい}さいよ。",
+    format: "choice",
+    choices: ["ビット", "バイト", "おなじ", "きめられない"],
+    answer: "ビット",
+  },
+  {
+    id: `${U.dataStorage}.q-14`,
+    unitId: U.dataStorage,
+    prompt: "スマホの ほぞんが いっぱいに なった とき、できる ことは どれ？",
+    explanation:
+      "いらない しゃしんや アプリを けすと、ほぞんの ばしょ（{容量|ようりょう}）が あくよ。",
+    format: "choice",
+    choices: [
+      "いらない しゃしんを けす",
+      "でんげんを ずっと きる",
+      "{画面|がめん}を わる",
+      "{音|おと}を けす",
+    ],
+    answer: "いらない しゃしんを けす",
+  },
+  {
+    id: `${U.dataStorage}.q-15`,
+    unitId: U.dataStorage,
+    prompt: "つぎの うち「データ」と いえる ものは どれ？",
+    explanation:
+      "しゃしん・{音楽|おんがく}・{文章|ぶんしょう}は コンピュータの {中|なか}の データだよ。つくえや いすは ものだね。",
+    format: "choice",
+    choices: [
+      "しゃしん・{音楽|おんがく}・{文章|ぶんしょう}",
+      "つくえ",
+      "いす",
+      "えんぴつ",
+    ],
+    answer: "しゃしん・{音楽|おんがく}・{文章|ぶんしょう}",
+  },
+  {
+    id: `${U.dataStorage}.q-16`,
+    unitId: U.dataStorage,
+    prompt: "0 か 1 の しるし 1つぶんを なんと いう？",
+    explanation:
+      "0 か 1 ひとつぶんが「1ビット」。データの いちばん {小|ちい}さな つぶだよ。",
+    format: "choice",
+    choices: ["1ビット", "1バイト", "1ギガ", "1キロ"],
+    answer: "1ビット",
+  },
+  {
+    id: `${U.dataStorage}.q-17`,
+    unitId: U.dataStorage,
+    prompt: "データの {大|おお}きさで、いちばん {大|おお}きいのは どれ？",
+    explanation:
+      "キロ より メガ、メガ より ギガの ほうが {大|おお}きいよ。1ギガは とても {大|おお}きい たんいだね。",
+    format: "choice",
+    choices: ["ギガ", "メガ", "キロ", "ぜんぶ おなじ"],
+    answer: "ギガ",
+  },
+  {
+    id: `${U.dataStorage}.q-18`,
+    unitId: U.dataStorage,
+    prompt: "でんげんを きっても データを のこす には どう する？",
+    explanation:
+      "「ほぞん（セーブ）」して おくと、でんげんを きっても データが きえないよ。",
+    visual: { kind: "emoji", value: "💾", caption: "ほぞん（セーブ）" },
+    format: "choice",
+    choices: [
+      "ほぞん（セーブ）する",
+      "なにも しない",
+      "{音|おと}を だす",
+      "{画面|がめん}を けす",
+    ],
+    answer: "ほぞん（セーブ）する",
+  },
+  {
+    id: `${U.dataStorage}.q-19`,
+    unitId: U.dataStorage,
+    prompt: "コンピュータは {文字|もじ}や {絵|え}を、なにに かえて おぼえて いる？",
+    explanation:
+      "コンピュータは すべてを 0と1の {数|かず}に かえて おぼえて いるよ。",
+    format: "choice",
+    choices: [
+      "0と1の {数|かず}",
+      "{絵|え}の まま",
+      "こえの まま",
+      "なにも かえない",
+    ],
+    answer: "0と1の {数|かず}",
+  },
+  {
+    id: `${U.dataStorage}.q-20`,
+    unitId: U.dataStorage,
+    prompt: "つぎの {文|ぶん}で {正|ただ}しい のは どれ？",
+    explanation:
+      "コンピュータは すべての データを 0と1で あらわすよ。これが きほんの しくみだね。",
+    format: "choice",
+    choices: [
+      "コンピュータは 0と1で データを あらわす",
+      "コンピュータは {文字|もじ}を そのまま おぼえる",
+      "データに {大|おお}きさは ない",
+      "{動画|どうが}は しゃしんより {小|ちい}さい",
+    ],
+    answer: "コンピュータは 0と1で データを あらわす",
   },
 ];
 
@@ -503,6 +1028,201 @@ const internetQuestions: ChoiceQuestion[] = [
       "{絵|え}の ぐで かく こと",
     ],
     answer: "しらべもの・メッセージ・{動画|どうが}",
+  },
+  {
+    id: `${U.internet}.q-6`,
+    unitId: U.internet,
+    prompt: "ホームページを {見|み}る ための アプリを なんと いう？",
+    explanation:
+      "インターネットの ホームページを {見|み}る アプリを「ブラウザ」と いうよ。",
+    visual: { kind: "emoji", value: "🌐", caption: "ブラウザ" },
+    format: "choice",
+    choices: ["ブラウザ", "プリンター", "マウス", "スピーカー"],
+    answer: "ブラウザ",
+  },
+  {
+    id: `${U.internet}.q-7`,
+    unitId: U.internet,
+    prompt: "しらべたい ことばを {入|い}れて さがす しくみを なんと いう？",
+    explanation:
+      "ことばを {入|い}れて ホームページを さがす ことを「けんさく」と いうよ。",
+    visual: { kind: "emoji", value: "🔎", caption: "けんさく" },
+    format: "choice",
+    choices: ["けんさく", "ほぞん", "いんさつ", "さいきどう"],
+    answer: "けんさく",
+  },
+  {
+    id: `${U.internet}.q-8`,
+    unitId: U.internet,
+    prompt: "ホームページの ばしょを あらわす もじれつ（https://… など）を なんと いう？",
+    explanation:
+      "ホームページの ばしょ（じゅうしょ）を あらわす もじれつを「URL（ユーアールエル）」と いうよ。",
+    format: "choice",
+    choices: ["URL（ユーアールエル）", "バグ", "ビット", "サーバー"],
+    answer: "URL（ユーアールエル）",
+  },
+  {
+    id: `${U.internet}.q-9`,
+    unitId: U.internet,
+    prompt: "ホームページや {動画|どうが}を おいて おく コンピュータを なんと いう？",
+    explanation:
+      "{情報|じょうほう}を わたす がわの コンピュータを「サーバー」と いうよ。",
+    visual: { kind: "emoji", value: "🗄️", caption: "サーバー" },
+    format: "choice",
+    choices: ["サーバー", "マウス", "プリンター", "でんち"],
+    answer: "サーバー",
+  },
+  {
+    id: `${U.internet}.q-10`,
+    unitId: U.internet,
+    prompt: "ケーブル（{線|せん}）が なくても つなげる しくみを なんと いう？",
+    explanation:
+      "{電波|でんぱ}で つなぐ しくみを「Wi-Fi（ワイファイ）」と いうよ。",
+    visual: { kind: "emoji", value: "📶", caption: "Wi-Fi" },
+    format: "choice",
+    choices: ["Wi-Fi", "USB", "えんぴつ", "じしゃく"],
+    answer: "Wi-Fi",
+  },
+  {
+    id: `${U.internet}.q-11`,
+    unitId: U.internet,
+    prompt: "メール（メッセージ）で できる ことは どれ？",
+    explanation:
+      "メールは {文字|もじ}や {写真|しゃしん}を {遠|とお}くの {人|ひと}に おくれるよ。",
+    format: "choice",
+    choices: [
+      "{文字|もじ}や {写真|しゃしん}を おくる",
+      "ごはんを やく",
+      "そうじを する",
+      "でんきを つくる",
+    ],
+    answer: "{文字|もじ}や {写真|しゃしん}を おくる",
+  },
+  {
+    id: `${U.internet}.q-12`,
+    unitId: U.internet,
+    prompt: "おくった データは どのように {相手|あいて}に とどく？",
+    explanation:
+      "データは {小|ちい}さく わけられ、いくつもの コンピュータを {通|とお}って とどくよ。",
+    format: "choice",
+    choices: [
+      "{小|ちい}さく わけて いくつもの コンピュータを {通|とお}って",
+      "そらを とんで そのまま",
+      "{手紙|てがみ}で",
+      "とどかない",
+    ],
+    answer: "{小|ちい}さく わけて いくつもの コンピュータを {通|とお}って",
+  },
+  {
+    id: `${U.internet}.q-13`,
+    unitId: U.internet,
+    prompt: "インターネットに つながらない とき、まず たしかめると よいのは どれ？",
+    explanation:
+      "Wi-Fiや {線|せん}が ちゃんと つながって いるか たしかめると よいよ。",
+    format: "choice",
+    choices: [
+      "Wi-Fiが つながって いるか",
+      "{画面|がめん}の {色|いろ}",
+      "{音|おと}の {大|おお}きさ",
+      "でんちの {色|いろ}",
+    ],
+    answer: "Wi-Fiが つながって いるか",
+  },
+  {
+    id: `${U.internet}.q-14`,
+    unitId: U.internet,
+    prompt: "せかいじゅうの コンピュータを つないだ {大|おお}きな しくみを なんと いう？",
+    explanation:
+      "せかいの コンピュータを つないだ あみを「インターネット」と いうよ。",
+    format: "choice",
+    choices: ["インターネット", "サーバー", "ブラウザ", "Wi-Fi"],
+    answer: "インターネット",
+  },
+  {
+    id: `${U.internet}.q-15`,
+    unitId: U.internet,
+    prompt: "データを じぶんの きかいでは なく、インターネットの さきの サーバーに ほぞんする しくみを なんと いう？",
+    explanation:
+      "インターネットの さきの サーバーに ほぞんする しくみを「クラウド」と いうよ。べつの きかいからも {見|み}られるんだ。",
+    visual: { kind: "emoji", value: "☁️", caption: "クラウド" },
+    format: "choice",
+    choices: [
+      "クラウド",
+      "じぶんの あたまの {中|なか}",
+      "つくえの {中|なか}",
+      "えんぴつ",
+    ],
+    answer: "クラウド",
+  },
+  {
+    id: `${U.internet}.q-16`,
+    unitId: U.internet,
+    prompt: "つぎの うち インターネットで「できない」ことは どれ？",
+    explanation:
+      "{動画|どうが}を {見|み}る・しらべる・メッセージは できるけど、ごはんを たべるのは じぶんの からだで する ことだね。",
+    format: "choice",
+    choices: [
+      "ごはんを たべる",
+      "{動画|どうが}を {見|み}る",
+      "しらべものを する",
+      "メッセージを おくる",
+    ],
+    answer: "ごはんを たべる",
+  },
+  {
+    id: `${U.internet}.q-17`,
+    unitId: U.internet,
+    prompt: "たくさんの {人|ひと}が {見|み}る ホームページの サーバーは、いつ うごいて いる？",
+    explanation:
+      "みんなが いつ アクセスしても {見|み}られる ように、サーバーは ずっと（24{時間|じかん}）うごいて いるよ。",
+    format: "choice",
+    choices: ["ずっと うごいて いる", "よるだけ", "ひるだけ", "うごいて いない"],
+    answer: "ずっと うごいて いる",
+  },
+  {
+    id: `${U.internet}.q-18`,
+    unitId: U.internet,
+    prompt: "しらない ホームページの「ここを おして」を むやみに おさない ほうが よい りゆうは？",
+    explanation:
+      "あぶない ものや うその {情報|じょうほう}が ある かも しれないから、むやみに おさないのが {安全|あんぜん}だよ。",
+    format: "choice",
+    choices: [
+      "あぶない ものが ある かも しれないから",
+      "はやく なるから",
+      "{音|おと}が でるから",
+      "でんちが へるから",
+    ],
+    answer: "あぶない ものが ある かも しれないから",
+  },
+  {
+    id: `${U.internet}.q-19`,
+    unitId: U.internet,
+    prompt: "インターネットを つかうのに ひつような しくみは どれ？",
+    explanation:
+      "インターネットへの つながり（せつぞく）が ないと、ホームページは {見|み}られないよ。",
+    format: "choice",
+    choices: [
+      "インターネットへの つながり",
+      "えんぴつ",
+      "ものさし",
+      "のり",
+    ],
+    answer: "インターネットへの つながり",
+  },
+  {
+    id: `${U.internet}.q-20`,
+    unitId: U.internet,
+    prompt: "つぎの {文|ぶん}で {正|ただ}しい のは どれ？",
+    explanation:
+      "インターネットは せかいじゅうの コンピュータが つながった しくみだよ。1だいの きかいでは ないんだ。",
+    format: "choice",
+    choices: [
+      "せかいじゅうの コンピュータが つながった しくみ",
+      "1だいの きかいの こと",
+      "テレビと おなじ もの",
+      "でんちの しゅるい",
+    ],
+    answer: "せかいじゅうの コンピュータが つながった しくみ",
   },
 ];
 
@@ -583,6 +1303,229 @@ const infoSafetyQuestions: (ChoiceQuestion | MatchingQuestion)[] = [
     right: ["ひみつに する", "おとなに そうだん", "やさしく かく", "{出|だ}さない"],
     answerPairs: [0, 3, 1, 2],
   },
+  {
+    id: `${U.infoSafety}.q-6`,
+    unitId: U.infoSafety,
+    prompt: "パスワードを ともだちに きかれたら どう する？",
+    explanation:
+      "パスワードは じぶんだけの ひみつ。なかよしの ともだちにも おしえないのが やくそくだよ。",
+    visual: { kind: "emoji", value: "🤐", caption: "ひみつ" },
+    format: "choice",
+    choices: [
+      "おしえない（ひみつに する）",
+      "すぐ おしえる",
+      "こくばんに かく",
+      "みんなに いう",
+    ],
+    answer: "おしえない（ひみつに する）",
+  },
+  {
+    id: `${U.infoSafety}.q-7`,
+    unitId: U.infoSafety,
+    prompt: "ネットで {見|み}つけた {絵|え}や {写真|しゃしん}は どう あつかう？",
+    explanation:
+      "{絵|え}や {写真|しゃしん}は つくった {人|ひと}の たいせつな もの。かってに じぶんの ものに しては だめだよ。",
+    format: "choice",
+    choices: [
+      "かってに つかわない",
+      "ぜんぶ じぶんの ものに する",
+      "うって よい",
+      "{名前|なまえ}を けせば つかってよい",
+    ],
+    answer: "かってに つかわない",
+  },
+  {
+    id: `${U.infoSafety}.q-8`,
+    unitId: U.infoSafety,
+    prompt: "しらない {人|ひと}から「プレゼントを おくるので じゅうしょを おしえて」と きたら？",
+    explanation:
+      "しらない {人|ひと}に じゅうしょを おしえては だめ。すぐ おうちの {人|ひと}に そうだんしよう。",
+    format: "choice",
+    choices: [
+      "おしえないで おとなに そうだんする",
+      "すぐ おしえる",
+      "{学校|がっこう}の {名前|なまえ}を おしえる",
+      "{写真|しゃしん}を おくる",
+    ],
+    answer: "おしえないで おとなに そうだんする",
+  },
+  {
+    id: `${U.infoSafety}.q-9`,
+    unitId: U.infoSafety,
+    prompt: "ともだちの はずかしい {写真|しゃしん}を かってに みんなに おくっても よい？",
+    explanation:
+      "{相手|あいて}が いやがる {写真|しゃしん}を かってに ひろめては だめ。{相手|あいて}の きもちを かんがえようね。",
+    format: "choice",
+    choices: [
+      "だめ（おくらない）",
+      "おもしろければ よい",
+      "ひとりになら よい",
+      "みんなに おくる",
+    ],
+    answer: "だめ（おくらない）",
+  },
+  {
+    id: `${U.infoSafety}.q-10`,
+    unitId: U.infoSafety,
+    prompt: "ネットに かいて ある {情報|じょうほう}は ぜんぶ {正|ただ}しい？",
+    explanation:
+      "ネットには まちがいや うそも あるよ。ぜんぶ しんじず、ほかでも たしかめる ことが だいじだね。",
+    format: "choice",
+    choices: [
+      "ぜんぶ {正|ただ}しいとは かぎらない",
+      "ぜんぶ {正|ただ}しい",
+      "ぜんぶ うそ",
+      "かんがえなくて よい",
+    ],
+    answer: "ぜんぶ {正|ただ}しいとは かぎらない",
+  },
+  {
+    id: `${U.infoSafety}.q-11`,
+    unitId: U.infoSafety,
+    prompt: "ゲームや {動画|どうが}を ながい {時間|じかん} つづけない ために どう する？",
+    explanation:
+      "つかう {時間|じかん}を きめて まもると、{目|め}や からだに よくて、ほかの ことも できるよ。",
+    visual: { kind: "emoji", value: "⏰", caption: "{時間|じかん}を きめる" },
+    format: "choice",
+    choices: [
+      "つかう {時間|じかん}を きめる",
+      "ずっと つづける",
+      "よる ねないで する",
+      "ごはんを たべないで する",
+    ],
+    answer: "つかう {時間|じかん}を きめる",
+  },
+  {
+    id: `${U.infoSafety}.q-12`,
+    unitId: U.infoSafety,
+    prompt: "ともだちが だれかの わるぐちを ネットに かいて いた。どう する？",
+    explanation:
+      "わるぐちは {人|ひと}を かなしく させるよ。いっしょに しないで、こまったら おとなに そうだんしよう。",
+    format: "choice",
+    choices: [
+      "いっしょに しない",
+      "じぶんも かく",
+      "みんなに ひろめる",
+      "わらう",
+    ],
+    answer: "いっしょに しない",
+  },
+  {
+    id: `${U.infoSafety}.q-13`,
+    unitId: U.infoSafety,
+    prompt: "じぶんの {顔|かお}の {写真|しゃしん}を ネットに のせる まえに する ことは？",
+    explanation:
+      "{写真|しゃしん}は いちど のせると ひろがる ことが あるよ。のせる まえに おうちの {人|ひと}に そうだんしよう。",
+    format: "choice",
+    choices: [
+      "おうちの {人|ひと}に そうだんする",
+      "すぐ のせる",
+      "じゅうしょも かく",
+      "みんなに おくる",
+    ],
+    answer: "おうちの {人|ひと}に そうだんする",
+  },
+  {
+    id: `${U.infoSafety}.q-14`,
+    unitId: U.infoSafety,
+    prompt: "しらない ところから きた ファイルや リンクは どう する？",
+    explanation:
+      "しらない ファイルや リンクには あぶない ものが ある かも。あけずに おとなに そうだんしよう。",
+    format: "choice",
+    choices: [
+      "あけずに おとなに そうだん",
+      "すぐ あける",
+      "ともだちに おくる",
+      "ぜんぶ ほぞんする",
+    ],
+    answer: "あけずに おとなに そうだん",
+  },
+  {
+    id: `${U.infoSafety}.q-15`,
+    unitId: U.infoSafety,
+    prompt: "つよい（あんぜんな）パスワードは どんな もの？",
+    explanation:
+      "あてられにくい ながい ことばが よい パスワード。{名前|なまえ}や たんじょうびは すぐ ばれるよ。",
+    format: "choice",
+    choices: [
+      "あてられにくい ながい もの",
+      "じぶんの {名前|なまえ}",
+      "1234",
+      "たんじょうび",
+    ],
+    answer: "あてられにくい ながい もの",
+  },
+  {
+    id: `${U.infoSafety}.q-16`,
+    unitId: U.infoSafety,
+    prompt: "ネットの つかいかたで、ただしい くみあわせに しよう。",
+    explanation:
+      "パスワードは ひみつ、{個人|こじん}じょうほうは {出|だ}さない、わるぐちは かかない、こまったら そうだん。これが {安全|あんぜん}の きほんだよ。",
+    format: "matching",
+    left: ["パスワード", "{個人|こじん}じょうほう", "わるぐち", "こまった とき"],
+    right: ["ひみつに する", "{出|だ}さない", "かかない", "おとなに そうだん"],
+    answerPairs: [0, 1, 2, 3],
+  },
+  {
+    id: `${U.infoSafety}.q-17`,
+    unitId: U.infoSafety,
+    prompt: "ネットで しらない {人|ひと}に「ともだちに なって {会|あ}おう」と いわれたら？",
+    explanation:
+      "ネットの しらない {人|ひと}を すぐ しんようせず、かならず おうちの {人|ひと}に そうだんしよう。",
+    format: "choice",
+    choices: [
+      "すぐ しんようせず おとなに そうだん",
+      "ひとりで {会|あ}いに いく",
+      "じゅうしょを おしえる",
+      "{写真|しゃしん}を おくる",
+    ],
+    answer: "すぐ しんようせず おとなに そうだん",
+  },
+  {
+    id: `${U.infoSafety}.q-18`,
+    unitId: U.infoSafety,
+    prompt: "ネットの かいものページで「かう」ボタンを かるい きもちで おしても よい？",
+    explanation:
+      "かいものは おかねが かかるよ。かう まえに かならず おうちの {人|ひと}に きいてからね。",
+    format: "choice",
+    choices: [
+      "おうちの {人|ひと}に きいてから",
+      "すきに おして よい",
+      "なんども おす",
+      "ともだちに おしてもらう",
+    ],
+    answer: "おうちの {人|ひと}に きいてから",
+  },
+  {
+    id: `${U.infoSafety}.q-19`,
+    unitId: U.infoSafety,
+    prompt: "ネットで じぶんが いやな ことを されたら どう する？",
+    explanation:
+      "ひとりで なやまないで、すぐ おうちの {人|ひと}や せんせいに そうだんしよう。",
+    format: "choice",
+    choices: [
+      "ひとりで なやまず おとなに そうだん",
+      "がまんして だまって いる",
+      "やりかえす",
+      "けして わすれる",
+    ],
+    answer: "ひとりで なやまず おとなに そうだん",
+  },
+  {
+    id: `${U.infoSafety}.q-20`,
+    unitId: U.infoSafety,
+    prompt: "つぎの うち、やっては いけない のは どれ？",
+    explanation:
+      "{人|ひと}の わるぐちを かくのは いけない こと。やさしい ことばで つたえようね。",
+    format: "choice",
+    choices: [
+      "{人|ひと}の わるぐちを かく",
+      "やさしい ことばを かく",
+      "パスワードを ひみつに する",
+      "こまったら そうだんする",
+    ],
+    answer: "{人|ひと}の わるぐちを かく",
+  },
 ];
 
 // 6. 手順とフローチャート ───────────────────────────
@@ -644,6 +1587,184 @@ const algorithmStepsQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
       "むずかしく なる",
     ],
     answer: "だれが やっても {同|おな}じ けっかに なる",
+  },
+  {
+    id: `${U.algorithmSteps}.q-6`,
+    unitId: U.algorithmSteps,
+    prompt: "りょうりの レシピは なにの なかま？",
+    explanation:
+      "レシピは やる ことを じゅんに ならべた「アルゴリズム（{手順|てじゅん}）」の なかまだよ。",
+    format: "choice",
+    choices: ["アルゴリズム（{手順|てじゅん}）", "サーバー", "ビット", "バグ"],
+    answer: "アルゴリズム（{手順|てじゅん}）",
+  },
+  {
+    id: `${U.algorithmSteps}.q-7`,
+    unitId: U.algorithmSteps,
+    prompt: "「{歯|は}を みがく」{手順|てじゅん}を {正|ただ}しい じゅんに ならべよう。",
+    explanation:
+      "「コップに {水|みず} → はブラシに はみがきこ → みがく → {口|くち}を ゆすぐ」。じゅんが だいじだね。",
+    format: "ordering",
+    items: ["コップに {水|みず}を くむ", "はブラシに はみがきこ", "みがく", "{口|くち}を ゆすぐ"],
+    answerOrder: [0, 1, 2, 3],
+  },
+  {
+    id: `${U.algorithmSteps}.q-8`,
+    unitId: U.algorithmSteps,
+    prompt: "「もし {雨|あめ}なら かさを もつ」のように、ばあいで わかれる ことを なんと いう？",
+    explanation:
+      "「もし〜なら」で わかれる ことを「じょうけん（{分岐|ぶんき}）」と いうよ。",
+    visual: { kind: "emoji", value: "☔", caption: "もし〜なら" },
+    format: "choice",
+    choices: ["じょうけん（{分岐|ぶんき}）", "くりかえし", "じゅんじ", "ソート"],
+    answer: "じょうけん（{分岐|ぶんき}）",
+  },
+  {
+    id: `${U.algorithmSteps}.q-9`,
+    unitId: U.algorithmSteps,
+    prompt: "「{同|おな}じ ことを なんども する」を まとめる しくみを なんと いう？",
+    explanation:
+      "{同|おな}じ ことを まとめて する しくみを「くりかえし（ループ）」と いうよ。",
+    visual: { kind: "emoji", value: "🔁", caption: "くりかえし" },
+    format: "choice",
+    choices: ["くりかえし（ループ）", "じょうけん", "じゅんじ", "バグ"],
+    answer: "くりかえし（ループ）",
+  },
+  {
+    id: `${U.algorithmSteps}.q-10`,
+    unitId: U.algorithmSteps,
+    prompt: "{手順|てじゅん}を {上|うえ}から じゅんばんに する ことを なんと いう？",
+    explanation:
+      "{上|うえ}から じゅんに 1つずつ する ことを「じゅんじ（じゅんばん）」と いうよ。",
+    format: "choice",
+    choices: ["じゅんじ（じゅんばん）", "{分岐|ぶんき}", "くりかえし", "バグ"],
+    answer: "じゅんじ（じゅんばん）",
+  },
+  {
+    id: `${U.algorithmSteps}.q-11`,
+    unitId: U.algorithmSteps,
+    prompt: "フローチャートの「やじるし（→）」は なにを あらわす？",
+    explanation:
+      "やじるしは つぎに すすむ むき（ながれ）を あらわすよ。",
+    visual: { kind: "emoji", value: "➡️", caption: "ながれの むき" },
+    format: "choice",
+    choices: [
+      "つぎに すすむ むき（ながれ）",
+      "{音|おと}の {大|おお}きさ",
+      "{時間|じかん}の ながさ",
+      "{色|いろ}",
+    ],
+    answer: "つぎに すすむ むき（ながれ）",
+  },
+  {
+    id: `${U.algorithmSteps}.q-12`,
+    unitId: U.algorithmSteps,
+    prompt: "「おにぎりを {作|つく}る」{手順|てじゅん}を {正|ただ}しい じゅんに ならべよう。",
+    explanation:
+      "「ごはんを よういする → しおを つける → にぎる → のりを まく」の じゅんだね。",
+    format: "ordering",
+    items: ["ごはんを よういする", "しおを つける", "にぎる", "のりを まく"],
+    answerOrder: [0, 1, 2, 3],
+  },
+  {
+    id: `${U.algorithmSteps}.q-13`,
+    unitId: U.algorithmSteps,
+    prompt: "{手順|てじゅん}が はっきり して いると、だれが やっても どう なる？",
+    explanation:
+      "{手順|てじゅん}が はっきり して いれば、だれが やっても {同|おな}じ けっかに なるよ。",
+    format: "choice",
+    choices: [
+      "{同|おな}じ けっかに なる",
+      "まいかい かわる",
+      "できなく なる",
+      "おそく なる",
+    ],
+    answer: "{同|おな}じ けっかに なる",
+  },
+  {
+    id: `${U.algorithmSteps}.q-14`,
+    unitId: U.algorithmSteps,
+    prompt: "つぎの うち アルゴリズム（{手順|てじゅん}）と いえる ものは どれ？",
+    explanation:
+      "カレーの レシピは やる ことを じゅんに ならべた {手順|てじゅん}＝アルゴリズムだよ。",
+    format: "choice",
+    choices: ["カレーの レシピ", "つくえ", "えんぴつ", "いし"],
+    answer: "カレーの レシピ",
+  },
+  {
+    id: `${U.algorithmSteps}.q-15`,
+    unitId: U.algorithmSteps,
+    prompt: "ロボットや コンピュータに しごとを させる には、まず なにが ひつよう？",
+    explanation:
+      "{正|ただ}しい {手順|てじゅん}（プログラム）が ないと、ロボットは うまく うごけないよ。",
+    format: "choice",
+    choices: [
+      "{正|ただ}しい {手順|てじゅん}",
+      "{大|おお}きな こえ",
+      "おかし",
+      "なにも いらない",
+    ],
+    answer: "{正|ただ}しい {手順|てじゅん}",
+  },
+  {
+    id: `${U.algorithmSteps}.q-16`,
+    unitId: U.algorithmSteps,
+    prompt: "「もし はれなら そとで あそぶ、ちがえば {中|なか}で あそぶ」これは なに？",
+    explanation:
+      "ばあいに よって うごきを かえて いるので「じょうけん（{分岐|ぶんき}）」だよ。",
+    format: "choice",
+    choices: ["じょうけん（{分岐|ぶんき}）", "くりかえし", "じゅんじ", "ソート"],
+    answer: "じょうけん（{分岐|ぶんき}）",
+  },
+  {
+    id: `${U.algorithmSteps}.q-17`,
+    unitId: U.algorithmSteps,
+    prompt: "{手順|てじゅん}を {図|ず}（フローチャート）に する よさは どれ？",
+    explanation:
+      "{図|ず}に すると ながれが {一目|ひとめ}で わかり、ほかの {人|ひと}にも つたえやすいよ。",
+    format: "choice",
+    choices: [
+      "ながれが {一目|ひとめ}で わかる",
+      "おもく なる",
+      "むずかしく なる",
+      "おそく なる",
+    ],
+    answer: "ながれが {一目|ひとめ}で わかる",
+  },
+  {
+    id: `${U.algorithmSteps}.q-18`,
+    unitId: U.algorithmSteps,
+    prompt: "ゲームの「スタート → あそぶ → おわり」で、いちばん さいしょに くるのは？",
+    explanation:
+      "さいしょは「スタート」だね。{手順|てじゅん}には はじめと おわりが あるよ。",
+    format: "choice",
+    choices: ["スタート", "あそぶ", "おわり", "じょうけん"],
+    answer: "スタート",
+  },
+  {
+    id: `${U.algorithmSteps}.q-19`,
+    unitId: U.algorithmSteps,
+    prompt: "「{朝|あさ}の したく」を {正|ただ}しい じゅんに ならべよう。",
+    explanation:
+      "「おきる → かおを あらう → ふくを きる → {学校|がっこう}へ いく」の じゅんだね。",
+    format: "ordering",
+    items: ["おきる", "かおを あらう", "ふくを きる", "{学校|がっこう}へ いく"],
+    answerOrder: [0, 1, 2, 3],
+  },
+  {
+    id: `${U.algorithmSteps}.q-20`,
+    unitId: U.algorithmSteps,
+    prompt: "{手順|てじゅん}（じゅんばん）を まちがえると どう なる？",
+    explanation:
+      "じゅんが ちがうと、おもった けっかに ならない ことが あるよ。だから じゅんが だいじなんだ。",
+    format: "choice",
+    choices: [
+      "おもった けっかに ならない ことが ある",
+      "かならず うまく いく",
+      "はやく なる",
+      "なにも かわらない",
+    ],
+    answer: "おもった けっかに ならない ことが ある",
   },
 ];
 
@@ -716,6 +1837,198 @@ const sortSearchQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
     format: "ordering",
     items: ["3", "9", "1", "7"],
     answerOrder: [1, 3, 0, 2],
+  },
+  {
+    id: `${U.sortSearch}.q-6`,
+    unitId: U.sortSearch,
+    prompt: "データを じゅんに ならべる ことを なんと いう？",
+    explanation:
+      "{小|ちい}さい じゅんや {大|おお}きい じゅんに ならべる ことを「ソート（ならべかえ）」と いうよ。",
+    format: "choice",
+    choices: ["ソート（ならべかえ）", "バグ", "サーバー", "ループ"],
+    answer: "ソート（ならべかえ）",
+  },
+  {
+    id: `${U.sortSearch}.q-7`,
+    unitId: U.sortSearch,
+    prompt: "2, 8, 5, 1 を {小|ちい}さい じゅんに ならべよう。",
+    explanation:
+      "{小|ちい}さい じゅんは 1, 2, 5, 8 だね。",
+    format: "ordering",
+    items: ["2", "8", "5", "1"],
+    answerOrder: [3, 0, 2, 1],
+  },
+  {
+    id: `${U.sortSearch}.q-8`,
+    unitId: U.sortSearch,
+    prompt: "6, 4, 9, 2 を {大|おお}きい じゅんに ならべよう。",
+    explanation:
+      "{大|おお}きい じゅんは 9, 6, 4, 2 だね。",
+    format: "ordering",
+    items: ["6", "4", "9", "2"],
+    answerOrder: [2, 0, 1, 3],
+  },
+  {
+    id: `${U.sortSearch}.q-9`,
+    unitId: U.sortSearch,
+    prompt: "1〜100で まん{中|なか}の 50を {見|み}て「もっと {大|おお}きい」と わかった。つぎは どこを さがす？",
+    explanation:
+      "50より {大|おお}きい ので、つぎは 51〜100を さがすよ。はんぶんに へらせるんだ。",
+    visual: { kind: "emoji", value: "🔍", caption: "はんぶんに へらす" },
+    format: "choice",
+    choices: ["51〜100", "1〜49", "1〜10", "ぜんぶ もう{一|いち}ど"],
+    answer: "51〜100",
+  },
+  {
+    id: `${U.sortSearch}.q-10`,
+    unitId: U.sortSearch,
+    prompt: "ならんで いない データから {目|め}あての ものを さがす ときは、どう する？",
+    explanation:
+      "ばらばらの ときは、はじめから 1つずつ じゅんに {見|み}て さがす しか ないよ。だから ならべて おくと はやいんだ。",
+    format: "choice",
+    choices: [
+      "はじめから 1つずつ さがす",
+      "まん{中|なか}だけ {見|み}る",
+      "さいごだけ {見|み}る",
+      "さがさない",
+    ],
+    answer: "はじめから 1つずつ さがす",
+  },
+  {
+    id: `${U.sortSearch}.q-11`,
+    unitId: U.sortSearch,
+    prompt: "クラスの {名簿|めいぼ}を あいうえおじゅんに ならべる よさは どれ？",
+    explanation:
+      "じゅんに ならんで いれば、{目|め}あての {名前|なまえ}を はやく さがせるよ。",
+    format: "choice",
+    choices: [
+      "さがしやすく なる",
+      "さがしにくく なる",
+      "{人|ひと}が ふえる",
+      "{重|おも}く なる",
+    ],
+    answer: "さがしやすく なる",
+  },
+  {
+    id: `${U.sortSearch}.q-12`,
+    unitId: U.sortSearch,
+    prompt: "おなじ こたえでも、ステップが {少|すく}ない {手順|てじゅん}を なんと いう？",
+    explanation:
+      "やる ことが {少|すく}なく はやく おわる {手順|てじゅん}を「{効率|こうりつ}が よい」と いうよ。",
+    visual: { kind: "emoji", value: "⚡", caption: "はやい {手順|てじゅん}" },
+    format: "choice",
+    choices: [
+      "{効率|こうりつ}が よい",
+      "{効率|こうりつ}が わるい",
+      "まちがって いる",
+      "つかえない",
+    ],
+    answer: "{効率|こうりつ}が よい",
+  },
+  {
+    id: `${U.sortSearch}.q-13`,
+    unitId: U.sortSearch,
+    prompt: "7, 3, 5 を {小|ちい}さい じゅんに ならべよう。",
+    explanation:
+      "{小|ちい}さい じゅんは 3, 5, 7 だね。",
+    format: "ordering",
+    items: ["7", "3", "5"],
+    answerOrder: [1, 2, 0],
+  },
+  {
+    id: `${U.sortSearch}.q-14`,
+    unitId: U.sortSearch,
+    prompt: "じしょ（ことばの {本|ほん}）で ことばが はやく ひける のは なぜ？",
+    explanation:
+      "じしょは あいうえおじゅんに ならんで いるので、{目|め}あての ことばを はやく さがせるんだ。",
+    format: "choice",
+    choices: [
+      "あいうえおじゅんに ならんで いるから",
+      "ばらばらだから",
+      "{絵|え}が あるから",
+      "{重|おも}いから",
+    ],
+    answer: "あいうえおじゅんに ならんで いるから",
+  },
+  {
+    id: `${U.sortSearch}.q-15`,
+    unitId: U.sortSearch,
+    prompt: "トランプを {数|かず}の じゅんに ならべる ことを なんと いう？",
+    explanation:
+      "{数|かず}の じゅんに ならべる ことも「ソート（ならべかえ）」だよ。",
+    format: "choice",
+    choices: ["ソート（ならべかえ）", "けんさく", "バグ", "ループ"],
+    answer: "ソート（ならべかえ）",
+  },
+  {
+    id: `${U.sortSearch}.q-16`,
+    unitId: U.sortSearch,
+    prompt: "100まいの カードを ばらばらの まま さがすと、ならべて さがすより どう なる？",
+    explanation:
+      "ばらばらだと 1まいずつ {見|み}る ことに なり、{時間|じかん}が かかるよ。ならべて おくと はやいね。",
+    format: "choice",
+    choices: [
+      "{時間|じかん}が かかる",
+      "はやく なる",
+      "かわらない",
+      "さがせる ように なる",
+    ],
+    answer: "{時間|じかん}が かかる",
+  },
+  {
+    id: `${U.sortSearch}.q-17`,
+    unitId: U.sortSearch,
+    prompt: "10, 1, 100 を {大|おお}きい じゅんに ならべよう。",
+    explanation:
+      "{大|おお}きい じゅんは 100, 10, 1 だね。",
+    format: "ordering",
+    items: ["10", "1", "100"],
+    answerOrder: [2, 0, 1],
+  },
+  {
+    id: `${U.sortSearch}.q-18`,
+    unitId: U.sortSearch,
+    prompt: "としょかんの {本|ほん}に {番号|ばんごう}が ついて いる りゆうは どれ？",
+    explanation:
+      "{番号|ばんごう}じゅんに ならべて おくと、{目|め}あての {本|ほん}を はやく さがせるからだよ。",
+    format: "choice",
+    choices: [
+      "はやく さがせる ように する ため",
+      "{本|ほん}を {重|おも}く する ため",
+      "{色|いろ}を つける ため",
+      "いみは ない",
+    ],
+    answer: "はやく さがせる ように する ため",
+  },
+  {
+    id: `${U.sortSearch}.q-19`,
+    unitId: U.sortSearch,
+    prompt: "おなじ こたえに なる 2つの やりかた。よい のは どっち？",
+    explanation:
+      "ステップが {少|すく}なく はやく おわる ほう（{効率|こうりつ}が よい）が べんりだよ。",
+    format: "choice",
+    choices: [
+      "はやく おわる ほう",
+      "おそく おわる ほう",
+      "どちらも だめ",
+      "きめられない",
+    ],
+    answer: "はやく おわる ほう",
+  },
+  {
+    id: `${U.sortSearch}.q-20`,
+    unitId: U.sortSearch,
+    prompt: "つぎの {文|ぶん}で {正|ただ}しい のは どれ？",
+    explanation:
+      "じゅんに ならべて おくと、{目|め}あての ものを はやく さがせるよ。",
+    format: "choice",
+    choices: [
+      "ならべて おくと はやく さがせる",
+      "ばらばらの ほうが はやい",
+      "ならべると さがせなく なる",
+      "じゅんは かんけいない",
+    ],
+    answer: "ならべて おくと はやく さがせる",
   },
 ];
 
@@ -791,6 +2104,183 @@ const blockProgrammingQuestions: (OrderingQuestion | ChoiceQuestion)[] = [
     ],
     answer: "しじ（プログラム）の とおりに うごくから",
   },
+  {
+    id: `${U.blockProgramming}.q-6`,
+    unitId: U.blockProgramming,
+    prompt: "ブロックを はめこんで プログラムを つくる やりかたを なんと いう？",
+    explanation:
+      "ブロックを はめこんで くみたてる やりかたを「ブロックプログラミング」と いうよ。",
+    visual: { kind: "emoji", value: "🧱", caption: "ブロックを はめこむ" },
+    format: "choice",
+    choices: ["ブロックプログラミング", "けんさく", "ソート", "デバッグ"],
+    answer: "ブロックプログラミング",
+  },
+  {
+    id: `${U.blockProgramming}.q-7`,
+    unitId: U.blockProgramming,
+    prompt: "つみあげた ブロックは どの じゅんに じっこうされる？",
+    explanation:
+      "プログラムは {上|うえ}から {下|した}へ じゅんばんに 1つずつ じっこうされるよ。",
+    visual: { kind: "emoji", value: "⬇️", caption: "{上|うえ}から {下|した}へ" },
+    format: "choice",
+    choices: [
+      "{上|うえ}から {下|した}へ じゅんに",
+      "{下|した}から {上|うえ}へ",
+      "ばらばらに",
+      "うごかない",
+    ],
+    answer: "{上|うえ}から {下|した}へ じゅんに",
+  },
+  {
+    id: `${U.blockProgramming}.q-8`,
+    unitId: U.blockProgramming,
+    prompt: "ネコを「すすむ → まわる → すすむ」と うごかす ブロックの じゅんは？",
+    explanation:
+      "ならべた じゅんに 1つずつ うごくよ。「すすむ → まわる → すすむ」の じゅんだね。",
+    format: "ordering",
+    items: ["すすむ", "まわる", "すすむ"],
+    answerOrder: [0, 1, 2],
+  },
+  {
+    id: `${U.blockProgramming}.q-9`,
+    unitId: U.blockProgramming,
+    prompt: "ブロックプログラミングで {文字|もじ}の うちまちがいが おきにくい のは なぜ？",
+    explanation:
+      "ブロックを えらんで はめこむ だけなので、{文字|もじ}を うちまちがえないんだ。",
+    format: "choice",
+    choices: [
+      "ブロックを はめこむ だけだから",
+      "でんきが いらないから",
+      "{画面|がめん}が {大|おお}きいから",
+      "{音|おと}が でるから",
+    ],
+    answer: "ブロックを はめこむ だけだから",
+  },
+  {
+    id: `${U.blockProgramming}.q-10`,
+    unitId: U.blockProgramming,
+    prompt: "キャラクターを {右|みぎ}に 3ぽ うごかしたい。どの ブロックを つかう？",
+    explanation:
+      "「{右|みぎ}に すすむ」ブロックを つかうと、キャラクターが {右|みぎ}へ うごくよ。",
+    format: "choice",
+    choices: [
+      "「{右|みぎ}に すすむ」ブロック",
+      "「{音|おと}を ならす」ブロック",
+      "「いろを かえる」ブロック",
+      "「とまる」ブロック",
+    ],
+    answer: "「{右|みぎ}に すすむ」ブロック",
+  },
+  {
+    id: `${U.blockProgramming}.q-11`,
+    unitId: U.blockProgramming,
+    prompt: "プログラムの とおりに キャラクターが うごく のは なぜ？",
+    explanation:
+      "コンピュータは かかれた しじを その とおりに じっこうするからだよ。",
+    format: "choice",
+    choices: [
+      "かかれた しじの とおりに うごくから",
+      "きもちで うごくから",
+      "ぐうぜん うごくから",
+      "{人|ひと}が おすから",
+    ],
+    answer: "かかれた しじの とおりに うごくから",
+  },
+  {
+    id: `${U.blockProgramming}.q-12`,
+    unitId: U.blockProgramming,
+    prompt: "ブロックの じゅんばんを いれかえると、うごきは どう なる？",
+    explanation:
+      "じゅんが かわると うごきも かわるよ。だから ならべる じゅんが だいじなんだ。",
+    format: "choice",
+    choices: ["かわる", "かわらない", "とまる", "きえる"],
+    answer: "かわる",
+  },
+  {
+    id: `${U.blockProgramming}.q-13`,
+    unitId: U.blockProgramming,
+    prompt: "「10ぽ すすむ」ブロックを 1つ おくと、キャラクターは どう うごく？",
+    explanation:
+      "「10ぽ すすむ」と かいた とおり、10ぽ すすむよ。",
+    format: "choice",
+    choices: ["10ぽ すすむ", "うごかない", "1ぽ すすむ", "もどる"],
+    answer: "10ぽ すすむ",
+  },
+  {
+    id: `${U.blockProgramming}.q-14`,
+    unitId: U.blockProgramming,
+    prompt: "ゲームや ロボットを じぶんで {作|つく}る さいしょの {一歩|いっぽ}に なるのは どれ？",
+    explanation:
+      "プログラミングを おぼえると、ゲームや ロボットを じぶんで {作|つく}れる ように なるよ。",
+    format: "choice",
+    choices: ["プログラミング", "そうじ", "けんさく", "いんさつ"],
+    answer: "プログラミング",
+  },
+  {
+    id: `${U.blockProgramming}.q-15`,
+    unitId: U.blockProgramming,
+    prompt: "「{音|おと}を ならす」ブロックを じっこうすると どう なる？",
+    explanation:
+      "かいた しじの とおり、{音|おと}が なるよ。",
+    format: "choice",
+    choices: ["{音|おと}が なる", "{画面|がめん}が きえる", "とまる", "もどる"],
+    answer: "{音|おと}が なる",
+  },
+  {
+    id: `${U.blockProgramming}.q-16`,
+    unitId: U.blockProgramming,
+    prompt: "ブロックを なにも つなげない と、キャラクターは どう なる？",
+    explanation:
+      "しじが ないので、キャラクターは うごかないよ。",
+    format: "choice",
+    choices: ["うごかない", "かってに うごく", "きえる", "ふえる"],
+    answer: "うごかない",
+  },
+  {
+    id: `${U.blockProgramming}.q-17`,
+    unitId: U.blockProgramming,
+    prompt: "「すすむ → ジャンプ → なく」を ぎゃくの じゅんに したら、さいしょに する のは？",
+    explanation:
+      "ぎゃくに すると「なく → ジャンプ → すすむ」。さいしょは「なく」に なるね。",
+    format: "choice",
+    choices: ["なく", "すすむ", "ジャンプ", "とまる"],
+    answer: "なく",
+  },
+  {
+    id: `${U.blockProgramming}.q-18`,
+    unitId: U.blockProgramming,
+    prompt: "コンピュータに させたい ことを かいた しじの あつまりを なんと いう？",
+    explanation:
+      "しじの あつまりを「プログラム」と いうよ。",
+    format: "choice",
+    choices: ["プログラム", "サーバー", "ビット", "バグ"],
+    answer: "プログラム",
+  },
+  {
+    id: `${U.blockProgramming}.q-19`,
+    unitId: U.blockProgramming,
+    prompt: "「ジャンプ → まえに すすむ → とまる」の じゅんに ブロックを ならべよう。",
+    explanation:
+      "ならべた じゅんに うごくよ。「ジャンプ → まえに すすむ → とまる」の じゅんだね。",
+    format: "ordering",
+    items: ["ジャンプ", "まえに すすむ", "とまる"],
+    answerOrder: [0, 1, 2],
+  },
+  {
+    id: `${U.blockProgramming}.q-20`,
+    unitId: U.blockProgramming,
+    prompt: "プログラミングで だいじな ことは どれ？",
+    explanation:
+      "しじを {正|ただ}しい じゅんで ならべる ことが だいじだよ。じゅんが ちがうと おもった ように うごかないんだ。",
+    format: "choice",
+    choices: [
+      "しじを {正|ただ}しい じゅんで ならべる",
+      "てきとうに ならべる",
+      "{大|おお}きな こえを だす",
+      "はやく うごく",
+    ],
+    answer: "しじを {正|ただ}しい じゅんで ならべる",
+  },
 ];
 
 // 9. 変数とくりかえし・じょうけん ───────────────────────────
@@ -855,6 +2345,177 @@ const variablesLoopsQuestions: ChoiceQuestion[] = [
     format: "choice",
     choices: ["4つ", "1つ", "8つ", "0こ"],
     answer: "4つ",
+  },
+  {
+    id: `${U.variablesLoops}.q-6`,
+    unitId: U.variablesLoops,
+    prompt: "「☆を かく」を 5かい くりかえすと、☆は いくつ かける？",
+    explanation:
+      "くりかえす {回数|かいすう}ぶん かけるよ。5かいなら ☆は 5つだね。",
+    visual: { kind: "emoji", value: "⭐⭐⭐⭐⭐", caption: "5かい" },
+    format: "choice",
+    choices: ["5つ", "1つ", "10こ", "0こ"],
+    answer: "5つ",
+  },
+  {
+    id: `${U.variablesLoops}.q-7`,
+    unitId: U.variablesLoops,
+    prompt: "とくてんの {変数|へんすう}が 2。そこに 3てん ふえると いくつ？",
+    explanation:
+      "2 に 3を たすと 5。{変数|へんすう}の あたいは かわって いくよ。",
+    visual: { kind: "emoji", value: "🔢", caption: "2 ＋ 3" },
+    format: "choice",
+    choices: ["5", "2", "3", "6"],
+    answer: "5",
+  },
+  {
+    id: `${U.variablesLoops}.q-8`,
+    unitId: U.variablesLoops,
+    prompt: "とくてんの {変数|へんすう}が 10。そこから 4てん へると いくつ？",
+    explanation:
+      "10 から 4を ひくと 6だね。",
+    format: "choice",
+    choices: ["6", "14", "4", "10"],
+    answer: "6",
+  },
+  {
+    id: `${U.variablesLoops}.q-9`,
+    unitId: U.variablesLoops,
+    prompt: "「もし 100てん なら はなまるを だす」のような しくみを なんと いう？",
+    explanation:
+      "「もし〜なら」で うごきを えらぶ しくみを「じょうけん」と いうよ。",
+    visual: { kind: "emoji", value: "❓", caption: "もし〜なら" },
+    format: "choice",
+    choices: ["じょうけん", "くりかえし", "{変数|へんすう}", "ソート"],
+    answer: "じょうけん",
+  },
+  {
+    id: `${U.variablesLoops}.q-10`,
+    unitId: U.variablesLoops,
+    prompt: "「{同|おな}じ うごきを なんども する」しくみを なんと いう？",
+    explanation:
+      "{同|おな}じ うごきを まとめて する しくみを「くりかえし（ループ）」と いうよ。",
+    visual: { kind: "emoji", value: "🔁", caption: "くりかえし" },
+    format: "choice",
+    choices: ["くりかえし", "じょうけん", "{変数|へんすう}", "デバッグ"],
+    answer: "くりかえし",
+  },
+  {
+    id: `${U.variablesLoops}.q-11`,
+    unitId: U.variablesLoops,
+    prompt: "とくてんなど、かわる {数|かず}を おぼえて おく いれものを なんと いう？",
+    explanation:
+      "あたいを おぼえて おく いれものを「{変数|へんすう}」と いうよ。",
+    visual: { kind: "emoji", value: "📦", caption: "あたいの いれもの" },
+    format: "choice",
+    choices: ["{変数|へんすう}", "くりかえし", "じょうけん", "サーバー"],
+    answer: "{変数|へんすう}",
+  },
+  {
+    id: `${U.variablesLoops}.q-12`,
+    unitId: U.variablesLoops,
+    prompt: "くりかえしを つかう よさは どれ？",
+    explanation:
+      "{同|おな}じ しじを なんども {書|か}かずに すむ ので、みじかく わかりやすく かけるよ。",
+    format: "choice",
+    choices: [
+      "みじかく かける",
+      "ながく なる",
+      "うごかなく なる",
+      "むずかしく なる",
+    ],
+    answer: "みじかく かける",
+  },
+  {
+    id: `${U.variablesLoops}.q-13`,
+    unitId: U.variablesLoops,
+    prompt: "{変数|へんすう}「のこり」が 5。1つ つかうと いくつに なる？",
+    explanation:
+      "5 から 1 つかうと、のこりは 4だね。{変数|へんすう}の あたいは かわるよ。",
+    format: "choice",
+    choices: ["4", "5", "6", "1"],
+    answer: "4",
+  },
+  {
+    id: `${U.variablesLoops}.q-14`,
+    unitId: U.variablesLoops,
+    prompt: "「ボタンを おしたら {音|おと}を ならす」これは くりかえし？ じょうけん？",
+    explanation:
+      "「もし おされたら」で うごきが きまる ので「じょうけん」だよ。",
+    format: "choice",
+    choices: ["じょうけん", "くりかえし", "{変数|へんすう}", "{入力|にゅうりょく}"],
+    answer: "じょうけん",
+  },
+  {
+    id: `${U.variablesLoops}.q-15`,
+    unitId: U.variablesLoops,
+    prompt: "「ジャンプ」を 3かい くりかえすと、ジャンプは {何|なん}かい する？",
+    explanation:
+      "くりかえす {回数|かいすう}ぶん するので、3かい ジャンプするよ。",
+    format: "choice",
+    choices: ["3かい", "1かい", "6かい", "0かい"],
+    answer: "3かい",
+  },
+  {
+    id: `${U.variablesLoops}.q-16`,
+    unitId: U.variablesLoops,
+    prompt: "{変数|へんすう}に「とくてん」などの {名前|なまえ}を つける りゆうは どれ？",
+    explanation:
+      "{名前|なまえ}を つけると、どの あたいの ことか わかりやすく なるよ。",
+    format: "choice",
+    choices: [
+      "なんの あたいか わかりやすく する ため",
+      "{重|おも}く する ため",
+      "けす ため",
+      "いみは ない",
+    ],
+    answer: "なんの あたいか わかりやすく する ため",
+  },
+  {
+    id: `${U.variablesLoops}.q-17`,
+    unitId: U.variablesLoops,
+    prompt: "とくてんの {変数|へんすう}が 0。リンゴを 2こ、また 2こ とった（1こ1てん）。とくてんは？",
+    explanation:
+      "2こ ＋ 2こ で 4こ。1こ 1てんなので とくては 4だね。",
+    visual: { kind: "emoji", value: "🍎🍎🍎🍎", caption: "2 ＋ 2" },
+    format: "choice",
+    choices: ["4", "2", "0", "8"],
+    answer: "4",
+  },
+  {
+    id: `${U.variablesLoops}.q-18`,
+    unitId: U.variablesLoops,
+    prompt: "「もし {雨|あめ}なら かさ、ちがえば ぼうし」。{雨|あめ}の とき もつ のは？",
+    explanation:
+      "「もし {雨|あめ}なら かさ」だから、{雨|あめ}の ときは かさを もつよ。じょうけんで うごきが かわるね。",
+    format: "choice",
+    choices: ["かさ", "ぼうし", "なにも もたない", "{両方|りょうほう}"],
+    answer: "かさ",
+  },
+  {
+    id: `${U.variablesLoops}.q-19`,
+    unitId: U.variablesLoops,
+    prompt: "くりかえしの {回数|かいすう}を 0かいに すると、その うごきは {何|なん}かい する？",
+    explanation:
+      "0かいなので、1かいも しないよ。",
+    format: "choice",
+    choices: ["1かいも しない", "1かい する", "ずっと する", "10かい する"],
+    answer: "1かいも しない",
+  },
+  {
+    id: `${U.variablesLoops}.q-20`,
+    unitId: U.variablesLoops,
+    prompt: "つぎの {文|ぶん}で {正|ただ}しい のは どれ？",
+    explanation:
+      "{変数|へんすう}は あたいを おぼえて おく いれもの。さわれる {機械|きかい}では ないよ。",
+    format: "choice",
+    choices: [
+      "{変数|へんすう}は あたいを おぼえる いれもの",
+      "{変数|へんすう}は さわれる {機械|きかい}",
+      "くりかえしは いつも 1かいだけ",
+      "じょうけんは いつも {同|おな}じ うごき",
+    ],
+    answer: "{変数|へんすう}は あたいを おぼえる いれもの",
   },
 ];
 
@@ -935,6 +2596,218 @@ const debugQuestions: (ChoiceQuestion | OrderingQuestion)[] = [
     ],
     answer: "もう{一|いち}ど うごかして たしかめる",
   },
+  {
+    id: `${U.debug}.q-6`,
+    unitId: U.debug,
+    prompt: "プログラムの バグを {見|み}つけて {直|なお}す ことを なんと いう？",
+    explanation:
+      "バグを {見|み}つけて {直|なお}す ことを「デバッグ」と いうよ。",
+    visual: { kind: "emoji", value: "🐛", caption: "デバッグ" },
+    format: "choice",
+    choices: ["デバッグ", "ソート", "けんさく", "セーブ"],
+    answer: "デバッグ",
+  },
+  {
+    id: `${U.debug}.q-7`,
+    unitId: U.debug,
+    prompt: "プログラムが おもいどおりに うごかない とき、まず する ことは？",
+    explanation:
+      "どこで おかしく なるか、{上|うえ}から 1つずつ たしかめるのが こつだよ。",
+    format: "choice",
+    choices: [
+      "どこが おかしいか 1つずつ たしかめる",
+      "ぜんぶ けす",
+      "なにも しない",
+      "コンピュータを たたく",
+    ],
+    answer: "どこが おかしいか 1つずつ たしかめる",
+  },
+  {
+    id: `${U.debug}.q-8`,
+    unitId: U.debug,
+    prompt: "「{右|みぎ}に すすむ」の しじが ぬけて いた。これは どんな バグ？",
+    explanation:
+      "ひつような しじが「ぬけて いる（たりない）」バグだよ。たりない しじを {入|い}れれば {直|なお}るね。",
+    format: "choice",
+    choices: [
+      "しじが たりない（ぬけて いる）",
+      "しじが {多|おお}すぎる",
+      "バグでは ない",
+      "{画面|がめん}の もんだい",
+    ],
+    answer: "しじが たりない（ぬけて いる）",
+  },
+  {
+    id: `${U.debug}.q-9`,
+    unitId: U.debug,
+    prompt: "しじの じゅんばんが ぎゃくに なって いた。これも バグ？",
+    explanation:
+      "じゅんが ちがうのも バグの 1つ。ただしい じゅんに ならべなおせば {直|なお}るよ。",
+    format: "choice",
+    choices: ["バグ（まちがい）", "バグでは ない", "アルゴリズム", "{変数|へんすう}"],
+    answer: "バグ（まちがい）",
+  },
+  {
+    id: `${U.debug}.q-10`,
+    unitId: U.debug,
+    prompt: "プログラムを {直|なお}したら、さいごに する ことは？",
+    explanation:
+      "{直|なお}した あとは もう{一|いち}ど うごかして、ちゃんと なおったか たしかめようね。",
+    visual: { kind: "emoji", value: "✅", caption: "たしかめる" },
+    format: "choice",
+    choices: [
+      "もう{一|いち}ど うごかして たしかめる",
+      "すぐ おわりに する",
+      "でんげんを きる",
+      "ほかを けす",
+    ],
+    answer: "もう{一|いち}ど うごかして たしかめる",
+  },
+  {
+    id: `${U.debug}.q-11`,
+    unitId: U.debug,
+    prompt: "デバッグの {正|ただ}しい じゅんに ならべよう。",
+    explanation:
+      "「うごかして みる → まちがいを {見|み}つける → {直|なお}す → もう{一|いち}ど たしかめる」の じゅんだよ。",
+    format: "ordering",
+    items: [
+      "うごかして みる",
+      "まちがいを {見|み}つける",
+      "{直|なお}す",
+      "もう{一|いち}ど たしかめる",
+    ],
+    answerOrder: [0, 1, 2, 3],
+  },
+  {
+    id: `${U.debug}.q-12`,
+    unitId: U.debug,
+    prompt: "バグは だれの プログラムにも おこる？",
+    explanation:
+      "バグは だれの プログラムにも おこる ふつうの ことだよ。だから デバッグが だいじなんだ。",
+    format: "choice",
+    choices: [
+      "だれにも おこる ふつうの こと",
+      "へたな {人|ひと}だけ おこる",
+      "ぜったいに おこらない",
+      "コンピュータの こしょう",
+    ],
+    answer: "だれにも おこる ふつうの こと",
+  },
+  {
+    id: `${U.debug}.q-13`,
+    unitId: U.debug,
+    prompt: "バグを さがす とき、やみくもに あちこち {直|なお}すのは よい？",
+    explanation:
+      "やみくもに {直|なお}すと もっと わからなく なる ことが あるよ。1つずつ たしかめるのが こつだね。",
+    format: "choice",
+    choices: [
+      "よくない（1つずつ たしかめる）",
+      "よい（どんどん {直|なお}す）",
+      "ぜんぶ けす",
+      "なにも しない",
+    ],
+    answer: "よくない（1つずつ たしかめる）",
+  },
+  {
+    id: `${U.debug}.q-14`,
+    unitId: U.debug,
+    prompt: "「ジャンプ」の しじを よけいに 2かい {書|か}いて いた。{直|なお}すには？",
+    explanation:
+      "よけいな しじを けせば {直|なお}るよ。バグは「ぬけ」だけでなく「よけい」も あるんだ。",
+    format: "choice",
+    choices: [
+      "よけいな しじを けす",
+      "もっと ふやす",
+      "そのままに する",
+      "でんげんを きる",
+    ],
+    answer: "よけいな しじを けす",
+  },
+  {
+    id: `${U.debug}.q-15`,
+    unitId: U.debug,
+    prompt: "プログラムが とちゅうで とまる とき、どこを しらべると よい？",
+    explanation:
+      "とまった ところの すぐ まえを しらべると、げんいんが {見|み}つかりやすいよ。",
+    format: "choice",
+    choices: [
+      "とまった ところの まえ",
+      "いちばん さいご",
+      "{画面|がめん}の {色|いろ}",
+      "でんちの {数|かず}",
+    ],
+    answer: "とまった ところの まえ",
+  },
+  {
+    id: `${U.debug}.q-16`,
+    unitId: U.debug,
+    prompt: "{直|なお}した つもりでも、たしかめないと どう なる かも しれない？",
+    explanation:
+      "たしかめないと、まだ バグが のこって いる かも しれないよ。だから かならず たしかめよう。",
+    format: "choice",
+    choices: [
+      "バグが のこって いる かも",
+      "ぜったい なおって いる",
+      "はやく なる",
+      "かわらない",
+    ],
+    answer: "バグが のこって いる かも",
+  },
+  {
+    id: `${U.debug}.q-17`,
+    unitId: U.debug,
+    prompt: "バグが なかなか {見|み}つからない とき、よい ほうほうは どれ？",
+    explanation:
+      "1つずつ ゆっくり たしかめたり、ほかの {人|ひと}に きいたり すると {見|み}つかりやすいよ。",
+    format: "choice",
+    choices: [
+      "1つずつ たしかめる・{人|ひと}に きく",
+      "ぜんぶ けして やめる",
+      "コンピュータを たたく",
+      "そのままに する",
+    ],
+    answer: "1つずつ たしかめる・{人|ひと}に きく",
+  },
+  {
+    id: `${U.debug}.q-18`,
+    unitId: U.debug,
+    prompt: "ためしに うごかして みる（テスト）のは なんの ため？",
+    explanation:
+      "じっさいに うごかすと、バグ（まちがい）が ある か どうか たしかめられるよ。",
+    format: "choice",
+    choices: [
+      "バグを {見|み}つける ため",
+      "でんちを へらす ため",
+      "{音|おと}を だす ため",
+      "いみは ない",
+    ],
+    answer: "バグを {見|み}つける ため",
+  },
+  {
+    id: `${U.debug}.q-19`,
+    unitId: U.debug,
+    prompt: "プログラムづくりの {正|ただ}しい じゅんに ならべよう。",
+    explanation:
+      "「プログラムを {書|か}く → うごかして みる → バグを {直|なお}す」の じゅんで かんせいに ちかづくよ。",
+    format: "ordering",
+    items: ["プログラムを {書|か}く", "うごかして みる", "バグを {直|なお}す"],
+    answerOrder: [0, 1, 2],
+  },
+  {
+    id: `${U.debug}.q-20`,
+    unitId: U.debug,
+    prompt: "つぎの {文|ぶん}で {正|ただ}しい のは どれ？",
+    explanation:
+      "バグは {見|み}つけて {直|なお}せるよ。{直|なお}したら かならず たしかめる ことが だいじだね。",
+    format: "choice",
+    choices: [
+      "バグは {見|み}つけて {直|なお}せる",
+      "バグは {直|なお}せない",
+      "{直|なお}したら たしかめなくてよい",
+      "バグは だれも おこさない",
+    ],
+    answer: "バグは {見|み}つけて {直|なお}せる",
+  },
 ];
 
 export const itG4Contents: Record<string, UnitContent> = {
@@ -963,7 +2836,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.hardwareSoftware,
       questions: hardwareSoftwareQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -992,7 +2865,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.inputOutput,
       questions: inputOutputQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -1021,7 +2894,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.dataStorage,
       questions: dataStorageQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -1050,7 +2923,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.internet,
       questions: internetQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -1079,7 +2952,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.infoSafety,
       questions: infoSafetyQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -1108,7 +2981,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.algorithmSteps,
       questions: algorithmStepsQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -1137,7 +3010,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.sortSearch,
       questions: sortSearchQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -1166,7 +3039,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.blockProgramming,
       questions: blockProgrammingQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -1195,7 +3068,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.variablesLoops,
       questions: variablesLoopsQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 
@@ -1224,7 +3097,7 @@ export const itG4Contents: Record<string, UnitContent> = {
     test: {
       unitId: U.debug,
       questions: debugQuestions,
-      questionCount: 5,
+      questionCount: 20,
     },
   },
 };
