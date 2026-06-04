@@ -1849,7 +1849,7 @@ export const itG2Contents: Record<string, UnitContent> = {
         {
           heading: "コンピュータは なにが とくい？",
           body: "コンピュータは とても はやい けいさんの たつじん。100まいの カードを かぞえるのも、あっという まに できる。それを なんかいでも、つかれずに できるんだ。",
-          visual: { kind: "emoji", value: "💻⚡", caption: "はやく けいさん" },
+          visual: { kind: "anim", name: "count-up", params: { to: 100 }, caption: "はやく けいさん" },
         },
         {
           heading: "かってには うごかない",
@@ -1936,7 +1936,7 @@ export const itG2Contents: Record<string, UnitContent> = {
         {
           heading: "てじゅんって なに？",
           body: "なにかを する ときの「やる じゅんばん」を てじゅんと いうよ。りょうりも したくも てじゅんが あるね。",
-          visual: { kind: "emoji", value: "1️⃣2️⃣3️⃣", caption: "じゅんばん" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3 }, caption: "じゅんばん" },
         },
         {
           heading: "じゅんばんが たいせつ",
@@ -1960,7 +1960,7 @@ export const itG2Contents: Record<string, UnitContent> = {
         {
           heading: "おなじ ことを なんども",
           body: "「ジャンプ・ジャンプ・ジャンプ」のように おなじ ことを なんども する とき「くりかえし」を つかうよ。",
-          visual: { kind: "emoji", value: "🦘🦘🦘", caption: "3かい くりかえし" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "🦘" }, caption: "3かい くりかえし" },
         },
         {
           heading: "くりかえしは べんり",

@@ -1687,7 +1687,7 @@ export const seikatsuG1Contents: Record<string, UnitContent> = {
         {
           heading: "がっこうは おおきな いえみたい",
           body: "{学校|がっこう}は おおきな いえみたいに、いろいろな へやが あつまって できて いるよ。じぶんの きょうしつだけでなく、{保健室|ほけんしつ}・{図書室|としょしつ}・{音楽室|おんがくしつ}・こうてい…ぜんぶで ひとつの {学校|がっこう}だね。まずは どこに なにが あるか、さんぽする みたいに さがして みよう。",
-          visual: { kind: "emoji", value: "🏫", caption: "わたしたちの {学校|がっこう}" },
+          visual: { kind: "anim", name: "count-up", params: { to: 4, emoji: "🚪" }, caption: "へやが あつまって ひとつの {学校|がっこう}" },
         },
         {
           heading: "へやには やくわりが ある",
@@ -1721,7 +1721,7 @@ export const seikatsuG1Contents: Record<string, UnitContent> = {
         {
           heading: "あいさつは なかよしの だいいっぽ",
           body: "あいさつは ともだちが ふえる まほうの ことばだよ。あさは「おはよう」、かえりは「さようなら」、ごはんの まえは「いただきます」、たべおわったら「ごちそうさま」。あいさつ されると、だれでも あかるい きもちに なるんだ。じぶんから こえを かけて みよう。",
-          visual: { kind: "emoji", value: "👋😊", caption: "おはよう！" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "🧒" }, caption: "あいさつで ともだちが ふえる" },
         },
         {
           heading: "「ありがとう」と「ごめんね」",
@@ -1794,7 +1794,7 @@ export const seikatsuG1Contents: Record<string, UnitContent> = {
         {
           heading: "じゅんばんを まもる",
           body: "ブランコや すべりだいは ひとりじめ しないで じゅんばんこ。わりこみを せず、ならんで まつと みんなが あそべるよ。ベンチも つめて すわって ゆずりあうと、たくさんの ひとが すわれるね。",
-          visual: { kind: "emoji", value: "🧍🧍🧍", caption: "ならんで じゅんばん" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "🧍" }, caption: "ひとりずつ ならんで じゅんばん" },
         },
         {
           heading: "つかったら もとに もどす・きれいに",
@@ -1823,7 +1823,7 @@ export const seikatsuG1Contents: Record<string, UnitContent> = {
         {
           heading: "きせつは 4つ ある",
           body: "いちねんは「はる・なつ・あき・ふゆ」の 4つの きせつに わかれて いるよ。けいとを 4つに わけた みたいに、てんきや しぜんが だんだん かわって いくんだ。この 4つは じゅんばんに めぐって、ふゆの つぎは また はるに もどるよ。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 4 }, caption: "きせつは 4つ" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌸", "☀️", "🍁", "⛄"] }, caption: "はる→なつ→あき→ふゆと めぐる" },
         },
         {
           heading: "はると なつ",
@@ -1862,12 +1862,12 @@ export const seikatsuG1Contents: Record<string, UnitContent> = {
         {
           heading: "まいにち あさ {水|みず}を やろう",
           body: "たねを まいたら、まいにち あさ {水|みず}を やるのが だいじな せわだよ。あさ おきて がっこうへ いく まえ、たとえば 7じごろに あげると わすれにくいね。{水|みず}を もらった あさがおは、めを だして はを ふやして いくよ。",
-          visual: { kind: "svg", name: "clock", params: { hour: 7, minute: 0 }, caption: "あさ 7じ・みずやり" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 7, minute: 0, fromHour: 6, fromMinute: 0 }, caption: "あさ 7じに みずやり" },
         },
         {
           heading: "すこしずつ そだって いく",
           body: "あさがおは じゅんばんに そだつよ。さいしょに「め」が でて、つぎに はが ふえ、つるが ぼうや ネットに くるくる まきついて たかく のびる。やがて つぼみが できて、なつに はなが さくんだ。せわを する たいせつさが わかるね。",
-          visual: { kind: "emoji", value: "🌱🌿🌸", caption: "め→は→つる→はな" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌱", "🌿", "🌸"] }, caption: "め→は→つる→はな" },
         },
         {
           heading: "はなが さいて たねが できる",
@@ -1891,7 +1891,7 @@ export const seikatsuG1Contents: Record<string, UnitContent> = {
         {
           heading: "いきものを さがそう",
           body: "こうえんや はらっぱを よく {見|み}ると、たくさんの いきものが いるよ。はっぱの うらの ちょうちょ、いしの した の だんごむし、つちの うえの あり…。おおきな こえを ださず、そっと しゃがんで さがすと よく みつかるよ。",
-          visual: { kind: "emoji", value: "🐛🦋🐜", caption: "いろいろな いきもの" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "🐛" }, caption: "そっと さがすと たくさん みつかる" },
         },
         {
           heading: "いきものには すみかが ある",
@@ -1940,7 +1940,7 @@ export const seikatsuG1Contents: Record<string, UnitContent> = {
         {
           heading: "じぶんの ことは じぶんで",
           body: "おてつだいの ほかに、じぶんの ことを じぶんで やるのも たいせつな やくわりだよ。じぶんの ふくを たたむ、はを みがく、ぬいだ くつを そろえる。すこしずつ じぶんで できる ことが ふえると、とても かっこいいね。",
-          visual: { kind: "emoji", value: "🪥🧦", caption: "じぶんで できる" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "⭐" }, caption: "じぶんで できる ことが ふえて いく" },
         },
       ],
     },

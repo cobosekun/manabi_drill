@@ -1449,7 +1449,7 @@ export const itG1Contents: Record<string, UnitContent> = {
         {
           heading: "コンピュータって なに？",
           body: "コンピュータは「すごく はやく {計算|けいさん}したり、たくさんの ことを おぼえたり する {機械|きかい}」だよ。にんげんが {何|なん}じかんも かかる {計算|けいさん}でも、コンピュータなら あっという まに できるんだ。",
-          visual: { kind: "emoji", value: "💻", caption: "{計算|けいさん}が とくいな {機械|きかい}" },
+          visual: { kind: "anim", name: "count-up", params: { to: 100 }, caption: "あっという まに {計算|けいさん}" },
         },
         {
           heading: "みのまわりに いっぱい",
@@ -1493,7 +1493,7 @@ export const itG1Contents: Record<string, UnitContent> = {
         {
           heading: "いれる → かんがえる → だす",
           body: "コンピュータは「いれた」じょうほうを なかの ぶひん（CPU）で かんがえて、けっかを「だす」。じゃぐちの みず（いれる）が ホースを とおって でてくる（だす）のに にて いるね。",
-          visual: { kind: "emoji", value: "➡️🧠➡️", caption: "いれて・かんがえて・だす" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["⌨️", "🧠", "🖥️"] }, caption: "いれて→かんがえて→だす" },
         },
         {
           heading: "みのまわりの れい",
@@ -1551,17 +1551,17 @@ export const itG1Contents: Record<string, UnitContent> = {
         {
           heading: "じゅんばんが だいじ",
           body: "ものごとには「やる じゅんばん」が あるよ。この じゅんばん（やりかた）を {手順|てじゅん}（アルゴリズム）と いうんだ。じゅんばんを まちがえると、うまく いかない ことが あるよ。",
-          visual: { kind: "emoji", value: "1️⃣2️⃣3️⃣", caption: "やる じゅんばん" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["1️⃣", "2️⃣", "3️⃣"] }, caption: "じゅんばんに すすむ" },
         },
         {
           heading: "てを あらう てじゅん",
           body: "「みずで ぬらす → せっけんを つける → あわで あらう → みずで ながす」。もし せっけんを つける まえに ながして しまうと、てが きれいに ならないね。",
-          visual: { kind: "emoji", value: "🚰🧼🙌💧", caption: "ただしい じゅんばんで" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🚰", "🧼", "🙌", "💧"] }, caption: "ただしい じゅんばんで" },
         },
         {
           heading: "あさの したく",
           body: "あさは「おきる → かおを あらう → ごはん → がっこう」の じゅんばん。たとえば 7じに おきて じゅんばんどおり したくすれば、ちこくしないよ。",
-          visual: { kind: "svg", name: "clock", params: { hour: 7, minute: 0 }, caption: "7じに おきる" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 7, minute: 0 }, caption: "7じに おきる" },
         },
         {
           heading: "コンピュータも おなじ",
@@ -1585,12 +1585,12 @@ export const itG1Contents: Record<string, UnitContent> = {
         {
           heading: "くりかえし",
           body: "「ジャンプを 3かい する」のように、おなじ ことを なんども するのを「くりかえし」と いうよ。「ジャンプ・ジャンプ・ジャンプ」と かかずに、「ジャンプを 3かい」と みじかく かけて べんりだよ。",
-          visual: { kind: "emoji", value: "🔁", caption: "おなじ ことを なんども" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "🤸" }, caption: "ジャンプを 3かい" },
         },
         {
           heading: "なんかい くりかえす？",
           body: "「★を かく」を 3かい くりかえすと、★は 3こに なるよ。くりかえす かいすうを きめると、その かずだけ じっこうされるんだ。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 3 }, caption: "3かい くりかえす" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "⭐" }, caption: "★が 3こに なる" },
         },
         {
           heading: "もしも（じょうけん）",
@@ -1624,7 +1624,7 @@ export const itG1Contents: Record<string, UnitContent> = {
         {
           heading: "ゴールまで はこぶ",
           body: "たとえば「まえ → まえ → みぎ → まえ」と ならべると、ロボットは みちの とおりに すすんで ★に たどりつくよ。{命令|めいれい}が 1つ たりないと、とちゅうで とまって しまうんだ。",
-          visual: { kind: "emoji", value: "🤖🎯", caption: "みちの とおりに {命令|めいれい}" },
+          visual: { kind: "anim", name: "count-up", params: { to: 4, emoji: "👣" }, caption: "4つの めいれいで ゴール" },
         },
         {
           heading: "ブロックを つなげる",

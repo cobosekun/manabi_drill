@@ -3420,17 +3420,17 @@ export const kokugoG2Contents: Record<string, UnitContent> = {
         {
           heading: "ようびの かんじ",
           body: "{月|げつ}・{火|か}・{水|すい}・{木|もく}・{金|きん}・{土|ど}・{日|にち} の 7つで「ようび」をあらわすよ。「{月|げつ}よう{日|び}」から はじまって「{日|にち}よう{日|び}」まで、1しゅうかんは この 7つだね。きょうは なにようびか、カレンダーで たしかめてみよう。",
-          visual: { kind: "emoji", value: "📅 月火水木金土日", caption: "ようびは 7つ" },
+          visual: { kind: "anim", name: "count-up", params: { to: 7, emoji: "📅" }, caption: "ようびは 7つ" },
         },
         {
           heading: "{午前|ごぜん}と{午後|ごご}",
           body: "おひるの 12{時|じ}を さかいに、まえが「{午前|ごぜん}」、あとが「{午後|ごご}」だよ。あさ{起|お}きてから おひるまでが {午前|ごぜん}、おひるから よるまでが {午後|ごご}。「{午前|ごぜん}9{時|じ}」は あさ、「{午後|ごご}3{時|じ}」は ひるすぎだね。",
-          visual: { kind: "svg", name: "clock", params: { hour: 9, minute: 0 }, caption: "{午前|ごぜん}9{時|じ}＝あさ" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 9, minute: 0 }, caption: "{午前|ごぜん}9{時|じ}＝あさ" },
         },
         {
           heading: "{時|じ}・{分|ふん}・{半|はん}",
           body: "とけいの じかんは「{時|じ}」と「{分|ふん}」で{言|い}うよ。みじかい はりが {時|じ}、ながい はりが {分|ふん}。ながい はりが ちょうど はんぶん（6のところ）まで まわると「{半|はん}」、つまり 30{分|ぷん}のこと。「3{時|じ}{半|はん}」は「3{時|じ}30{分|ぷん}」と おなじだよ。",
-          visual: { kind: "svg", name: "clock", params: { hour: 3, minute: 30 }, caption: "3{時|じ}{半|はん}＝3{時|じ}30{分|ぷん}" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 3, minute: 30, fromHour: 3, fromMinute: 0 }, caption: "3{時|じ}{半|はん}＝3{時|じ}30{分|ぷん}" },
         },
       ],
     },
@@ -3517,12 +3517,12 @@ export const kokugoG2Contents: Record<string, UnitContent> = {
         {
           heading: "{書|か}きじゅんの きほん",
           body: "かんじは{書|か}く じゅんばんが きまっているよ。きほんは「うえから した」と「ひだりから みぎ」。「三」なら うえの せんから じゅんに、「川」なら ひだりの せんから じゅんに{書|か}くよ。じゅんばんを まもると、きれいに、はやく{書|か}けるんだ。",
-          visual: { kind: "emoji", value: "⬆️➡️", caption: "うえ→した・ひだり→みぎ" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["一", "二", "三"] }, caption: "うえ→した・ひだり→みぎ" },
         },
         {
           heading: "{画数|かくすう}って なに？",
           body: "かんじを{書|か}く せんの{数|かず}を「{画数|かくすう}」というよ。1ぽんの せんが「1{画|かく}」。「一」は よこせん1ぽんで 1{画|かく}、「二」は 2{画|かく}、「三」は 3{画|かく}。「川」も たてせん3ぼんで 3{画|かく}だね。",
-          visual: { kind: "emoji", value: "✏️ 一＝1 二＝2 三＝3", caption: "せんの{数|かず}を かぞえる" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "➖" }, caption: "せんの{数|かず}を かぞえる" },
         },
         {
           heading: "じぶんで かぞえてみよう",
@@ -3721,12 +3721,12 @@ export const kokugoG2Contents: Record<string, UnitContent> = {
         {
           heading: "かんさつきろく{文|ぶん}って？",
           body: "そだてている やさいや{虫|むし}を よく{見|み}て、「いつ・なにを・どうだったか」を{書|か}きのこす{文|ぶん}だよ。あとで{見|み}かえすと、どんなふうに そだったかが よくわかるんだ。",
-          visual: { kind: "emoji", value: "🍅🔍", caption: "よく{見|み}て{書|か}く" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌱", "🌿", "🌼", "🍅"] }, caption: "よく{見|み}て{書|か}く" },
         },
         {
           heading: "ようすを くわしく",
           body: "{大|おお}きさ・いろ・かたち・{数|かず}を くわしく{書|か}こう。「{赤|あか}い みが 3つ」「は が{大|おお}きく なった」のように、{見|み}たままを ことばに すると、よくわかる きろくに なるよ。",
-          visual: { kind: "emoji", value: "📏", caption: "{大|おお}きさ・いろ・かたち・{数|かず}" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "🍅" }, caption: "{大|おお}きさ・いろ・かたち・{数|かず}" },
         },
         {
           heading: "じゅんばんに{書|か}く",

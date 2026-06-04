@@ -1394,7 +1394,7 @@ export const eigoG4Contents: Record<string, UnitContent> = {
         {
           heading: "a から z まで 26{文字|もじ}",
           body: "{小文字|こもじ}も a・b・c…と {並|なら}んで、{最後|さいご}は z だよ。{順番|じゅんばん}は {大文字|おおもじ}と {同|おな}じで {全部|ぜんぶ}で 26{文字|もじ}。{歌|うた}に して {口|くち}で {言|い}いながら おぼえると はやいよ。",
-          visual: { kind: "emoji", value: "🔡", caption: "a b c … x y z" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["a", "b", "c", "…", "z"] }, caption: "a b c … x y z" },
         },
         {
           heading: "{似|に}ている {文字|もじ}に {注意|ちゅうい}",
@@ -1423,17 +1423,17 @@ export const eigoG4Contents: Record<string, UnitContent> = {
         {
           heading: "{曜日|ようび}の {英語|えいご}",
           body: "にち=Sunday、げつ=Monday、か=Tuesday…と {続|つづ}くよ。どれも {最後|さいご}が「day（デイ）」で おわるのが {目印|めじるし}だね。カレンダーを {見|み}ながら {言|い}ってみよう。",
-          visual: { kind: "emoji", value: "📅", caption: "Sunday … Saturday" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] }, caption: "Sunday … Saturday" },
         },
         {
           heading: "{月|つき}の {英語|えいご}",
           body: "1{月|がつ}=January、2{月|がつ}=February…と {続|つづ}いて、12{月|がつ}=December で おわるよ。{自分|じぶん}の {誕生日|たんじょうび}の {月|つき}を {英語|えいご}で {言|い}えると かっこいいね。",
-          visual: { kind: "emoji", value: "🗓️", caption: "January … December" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["Jan", "Feb", "Mar", "…", "Dec"] }, caption: "January … December" },
         },
         {
           heading: "{何|なん}{日|にち}・{何|なん}か{月|げつ} あるかな",
           body: "1{週間|しゅうかん}は Sunday から Saturday までの 7{日|にち}、1{年|ねん}は January から December までの 12か{月|げつ} だよ。ブロックで {数|かぞ}えて かくにん しよう。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 7 }, caption: "1しゅうかん = 7にち" },
+          visual: { kind: "anim", name: "count-up", params: { to: 7, emoji: "📅" }, caption: "1しゅうかん = 7にち" },
         },
         {
           heading: "{聞|き}いて {答|こた}えよう",
@@ -1501,7 +1501,7 @@ export const eigoG4Contents: Record<string, UnitContent> = {
         {
           heading: "いくつ {欲|ほ}しい？",
           body: "{数|かず}も いっしょに {言|い}えるよ。two は 2、「I want two apples.」で「りんごが 2{個|こ} {欲|ほ}しい」だね。ブロックで {数|かぞ}えて {言|い}ってみよう。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 2 }, caption: "two = 2" },
+          visual: { kind: "anim", name: "count-up", params: { to: 2, emoji: "🍎" }, caption: "two = 2" },
         },
         {
           heading: "{丁寧|ていねい}に {頼|たの}もう",
@@ -1525,17 +1525,17 @@ export const eigoG4Contents: Record<string, UnitContent> = {
         {
           heading: "{朝|あさ}の {日課|にっか}",
           body: "「I get up.」{起|お}きる、「I eat breakfast.」{朝|あさ}ごはんを {食|た}べる、「I go to school.」{学校|がっこう}へ {行|い}く だよ。{朝|あさ}に する ことを {順番|じゅんばん}に {言|い}ってみよう。",
-          visual: { kind: "emoji", value: "🌅🍞🏫", caption: "get up → breakfast → school" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌅", "🍞", "🏫"] }, caption: "get up → breakfast → school" },
         },
         {
           heading: "{夜|よる}の {日課|にっか}",
           body: "「I eat dinner.」{晩|ばん}ごはんを {食|た}べる、「I take a bath.」お{風呂|ふろ}に {入|はい}る、「I go to bed.」{寝|ね}る だよ。{夜|よる}に する ことも つなげて {言|い}えるね。",
-          visual: { kind: "emoji", value: "🍛🛁🛌", caption: "dinner → bath → bed" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🍛", "🛁", "🛌"] }, caption: "dinner → bath → bed" },
         },
         {
           heading: "{時刻|じこく}と いっしょに",
           body: "「at（アット）」の あとに {時刻|じこく}を つけると、「I get up at seven.」で「7{時|じ}に {起|お}きる」だよ。{自分|じぶん}が {起|お}きる {時間|じかん}を {言|い}ってみよう。",
-          visual: { kind: "svg", name: "clock", params: { hour: 7, minute: 0 }, caption: "at seven = 7:00" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 7, minute: 0, fromHour: 6, fromMinute: 0 }, caption: "at seven = 7:00" },
         },
         {
           heading: "{自分|じぶん}の {一日|いちにち}を {言|い}おう",
@@ -1569,7 +1569,7 @@ export const eigoG4Contents: Record<string, UnitContent> = {
         {
           heading: "いくつ あるかな",
           body: "{物|もの}の {数|かず}も {英語|えいご}で {言|い}えるよ。「I have two pencils.」で「{鉛筆|えんぴつ}を 2{本|ほん} {持|も}っている」だね。ブロックで {数|かぞ}えてみよう。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 2 }, caption: "two pencils" },
+          visual: { kind: "anim", name: "count-up", params: { to: 2, emoji: "✏️" }, caption: "two pencils" },
         },
         {
           heading: "{伝|つた}えて みよう",

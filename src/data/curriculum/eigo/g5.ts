@@ -1637,7 +1637,7 @@ export const eigoG5Contents: Record<string, UnitContent> = {
         {
           heading: "たんじょうび・としを いおう",
           body: "「When is your birthday？＝たんじょうびは いつ？」には「My birthday is May 5th.」のように こたえるよ。「How old are you？＝なんさい？」には「I'm eleven.＝11さいです」だね。さいごに「And you？＝あなたは？」と あいてにも きくと、はなしが つづくよ。",
-          visual: { kind: "emoji", value: "🎂", caption: "When is your birthday？" },
+          visual: { kind: "anim", name: "count-up", params: { to: 11, emoji: "🎈" }, caption: "When is your birthday？" },
         },
       ],
     },
@@ -1763,12 +1763,12 @@ export const eigoG5Contents: Record<string, UnitContent> = {
         {
           heading: "ねだんを こたえる",
           body: "「It's 〜 yen.＝〜えんです」で こたえるよ。yen は えん。「It's 500 yen.」で「500えん」だね。g3で ならった 1〜20の {数|かず}が ここで やくに たつよ。",
-          visual: { kind: "emoji", value: "🪙", caption: "It's 500 yen." },
+          visual: { kind: "anim", name: "count-up", params: { to: 500 }, caption: "It's 500 yen." },
         },
         {
           heading: "いくつ ほしい？",
           body: "「How many？＝いくつ？」と きかれたら、ほしい {数|かず}を いうよ。「Two, please.＝2つ ください」のように ね。したの ブロックは 2つぶん。{数|かず}を ゆびで さしながら いうと つたわるよ。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 2 }, caption: "two, please" },
+          visual: { kind: "anim", name: "count-up", params: { to: 2, emoji: "🛍️" }, caption: "two, please" },
         },
         {
           heading: "かいものの やりとり",
