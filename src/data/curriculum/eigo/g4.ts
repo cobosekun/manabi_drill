@@ -1388,18 +1388,23 @@ export const eigoG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{大文字|おおもじ}と {小文字|こもじ}",
-          body: "アルファベットには {大文字|おおもじ}(A)と {小文字|こもじ}(a)が あるよ。{同|おな}じ {文字|もじ}でも {形|かたち}が ちがうんだ。",
-          visual: { kind: "emoji", value: "🔠🔡", caption: "A a / B b / C c" },
+          body: "アルファベットには {大文字|おおもじ}(A)と {小文字|こもじ}(a)の {2|ふた}つの {形|かたち}が あるよ。{文|ぶん}の {始|はじ}まりや {名前|なまえ}には {大文字|おおもじ}、それ {以外|いがい}は {小文字|こもじ}を {使|つか}う ことが {多|おお}いんだ。たとえば「Dog」は {最初|さいしょ}だけ {大文字|おおもじ}だね。",
+          visual: { kind: "emoji", value: "🔠🔡", caption: "A→a / B→b / C→c" },
         },
         {
-          heading: "a から z まで",
-          body: "{小文字|こもじ}も a・b・c…z と {順番|じゅんばん}は {大文字|おおもじ}と {同|おな}じだよ。{全部|ぜんぶ}で 26{文字|もじ} だね。",
-          visual: { kind: "emoji", value: "🔡", caption: "a b c … z" },
+          heading: "a から z まで 26{文字|もじ}",
+          body: "{小文字|こもじ}も a・b・c…と {並|なら}んで、{最後|さいご}は z だよ。{順番|じゅんばん}は {大文字|おおもじ}と {同|おな}じで {全部|ぜんぶ}で 26{文字|もじ}。{歌|うた}に して {口|くち}で {言|い}いながら おぼえると はやいよ。",
+          visual: { kind: "emoji", value: "🔡", caption: "a b c … x y z" },
         },
         {
           heading: "{似|に}ている {文字|もじ}に {注意|ちゅうい}",
-          body: "b と d、p と q は {形|かたち}が {似|に}ているよ。{棒|ぼう}の {向|む}きを よく {見|み}て {見分|みわ}けよう。",
-          visual: { kind: "emoji", value: "🔍", caption: "b d / p q" },
+          body: "b と d、p と q は {鏡|かがみ}に {映|うつ}した みたいに {似|に}ているよ。{丸|まる}が {右|みぎ}なら b、{左|ひだり}なら d。{棒|ぼう}の {向|む}きを ゆびで なぞって {見分|みわ}けよう。",
+          visual: { kind: "emoji", value: "🔍", caption: "b ↔ d / p ↔ q" },
+        },
+        {
+          heading: "{単語|たんご}の {中|なか}で {見|み}つけよう",
+          body: "{身|み}の まわりの {単語|たんご}は {小文字|こもじ}で {書|か}いて あるよ。「dog（{犬|いぬ}）」は d から、「cat（ねこ）」は c から {始|はじ}まるね。{最初|さいしょ}の {文字|もじ}を {見|み}つける {練習|れんしゅう}を しよう。",
+          visual: { kind: "emoji", value: "🐶🐱", caption: "dog / cat" },
         },
       ],
     },
@@ -1417,18 +1422,23 @@ export const eigoG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{曜日|ようび}の {英語|えいご}",
-          body: "にち=Sunday、げつ=Monday、か=Tuesday…と {続|つづ}くよ。{全|すべ}て {最後|さいご}が「day」だね。",
+          body: "にち=Sunday、げつ=Monday、か=Tuesday…と {続|つづ}くよ。どれも {最後|さいご}が「day（デイ）」で おわるのが {目印|めじるし}だね。カレンダーを {見|み}ながら {言|い}ってみよう。",
           visual: { kind: "emoji", value: "📅", caption: "Sunday … Saturday" },
         },
         {
           heading: "{月|つき}の {英語|えいご}",
-          body: "1{月|がつ}=January、2{月|がつ}=February…12{月|がつ}=December だよ。1{年|ねん}で 12の {月|つき}が あるね。",
+          body: "1{月|がつ}=January、2{月|がつ}=February…と {続|つづ}いて、12{月|がつ}=December で おわるよ。{自分|じぶん}の {誕生日|たんじょうび}の {月|つき}を {英語|えいご}で {言|い}えると かっこいいね。",
           visual: { kind: "emoji", value: "🗓️", caption: "January … December" },
         },
         {
-          heading: "{聞|き}いて みよう",
-          body: "「What day is it？」は「{何曜日|なんようび}？」。{今日|きょう}の {曜日|ようび}を {英語|えいご}で {答|こた}えてみよう。",
-          visual: { kind: "emoji", value: "🤔📅", caption: "What day？" },
+          heading: "{何|なん}{日|にち}・{何|なん}か{月|げつ} あるかな",
+          body: "1{週間|しゅうかん}は Sunday から Saturday までの 7{日|にち}、1{年|ねん}は January から December までの 12か{月|げつ} だよ。ブロックで {数|かぞ}えて かくにん しよう。",
+          visual: { kind: "svg", name: "number-blocks", params: { count: 7 }, caption: "1しゅうかん = 7にち" },
+        },
+        {
+          heading: "{聞|き}いて {答|こた}えよう",
+          body: "「What day is it？」は「{何曜日|なんようび}？」、「What month is it？」は「{何月|なんがつ}？」だよ。{今日|きょう}の {曜日|ようび}と {月|つき}を {英語|えいご}で {答|こた}えてみよう。",
+          visual: { kind: "emoji", value: "🤔📅", caption: "What day? / What month?" },
         },
       ],
     },
@@ -1446,18 +1456,23 @@ export const eigoG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{天気|てんき}の {英語|えいご}",
-          body: "{晴|は}れ=sunny、{雨|あめ}=rainy、{曇|くも}り=cloudy、{雪|ゆき}=snowy だよ。{今日|きょう}の {空|そら}は どれ かな？",
+          body: "{晴|は}れ=sunny、{雨|あめ}=rainy、{曇|くも}り=cloudy、{雪|ゆき}=snowy だよ。{空|そら}の {絵|え}と {言葉|ことば}を セットで おぼえよう。{今日|きょう}の {空|そら}は どれ かな？",
           visual: { kind: "emoji", value: "☀️🌧️☁️❄️", caption: "sunny / rainy / cloudy / snowy" },
         },
         {
+          heading: "{暑|あつ}い・{寒|さむ}い",
+          body: "あつい {日|ひ}は「hot（ホット）」、さむい {日|ひ}は「cold（コールド）」と {言|い}うよ。{夏|なつ}は hot、{冬|ふゆ}は cold だね。{反対|はんたい}の {言葉|ことば}を ペアで おぼえよう。",
+          visual: { kind: "emoji", value: "🥵🥶", caption: "hot ↔ cold" },
+        },
+        {
           heading: "{天気|てんき}を {聞|き}こう",
-          body: "「How's the weather？」は「{天気|てんき}は どう？」。「It's sunny.」で「{晴|は}れだよ」と {答|こた}えるよ。",
-          visual: { kind: "emoji", value: "🌤️", caption: "How's the weather？" },
+          body: "「How's the weather？」は「{天気|てんき}は どう？」と {聞|き}く {言葉|ことば}。「It's sunny.」で「{晴|は}れだよ」と {答|こた}えるよ。{聞|き}く→{答|こた}える の {順番|じゅんばん}で {練習|れんしゅう}しよう。",
+          visual: { kind: "emoji", value: "🌤️", caption: "How's the weather? → It's sunny." },
         },
         {
           heading: "{遊|あそ}びに {誘|さそ}おう",
-          body: "「Let's play！」は「{遊|あそ}ぼう！」。{晴|は}れの {日|ひ}は {外|そと}で {遊|あそ}ぶと {気持|きも}ちいいね。",
-          visual: { kind: "emoji", value: "⚽🙌", caption: "Let's play!" },
+          body: "「Let's play！」は「{遊|あそ}ぼう！」、「Let's go！」は「{行|い}こう！」だよ。{晴|は}れの {日|ひ}は「Let's play soccer！」で {友達|ともだち}を サッカーに {誘|さそ}えるね。",
+          visual: { kind: "emoji", value: "⚽🙌", caption: "Let's play soccer!" },
         },
       ],
     },
@@ -1475,18 +1490,23 @@ export const eigoG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "I want 〜.",
-          body: "「I want 〜.（アイ ウォント）」は「{私|わたし}は 〜が {欲|ほ}しい」だよ。{欲|ほ}しい {物|もの}を {伝|つた}えられるね。",
-          visual: { kind: "emoji", value: "🙋🎁", caption: "I want …" },
+          body: "「I want 〜.（アイ ウォント）」は「{私|わたし}は 〜が {欲|ほ}しい」だよ。〜の ところに {欲|ほ}しい {物|もの}を {入|い}れるよ。「I want an apple.」で「りんごが {欲|ほ}しい」だね。",
+          visual: { kind: "emoji", value: "🙋🍎", caption: "I want an apple." },
         },
         {
           heading: "{何|なに}が {欲|ほ}しい？",
-          body: "「What do you want？」は「{何|なに}が {欲|ほ}しい？」。「I want a ball.」で「ボールが {欲|ほ}しい」だよ。",
-          visual: { kind: "emoji", value: "⚽🤔", caption: "What do you want？" },
+          body: "「What do you want？」は「{何|なに}が {欲|ほ}しい？」と {聞|き}く {言葉|ことば}。{聞|き}かれたら「I want a ball.」のように {答|こた}えるよ。お{店|みせ}ごっこで {使|つか}ってみよう。",
+          visual: { kind: "emoji", value: "⚽🤔", caption: "What do you want? → I want a ball." },
+        },
+        {
+          heading: "いくつ {欲|ほ}しい？",
+          body: "{数|かず}も いっしょに {言|い}えるよ。two は 2、「I want two apples.」で「りんごが 2{個|こ} {欲|ほ}しい」だね。ブロックで {数|かぞ}えて {言|い}ってみよう。",
+          visual: { kind: "svg", name: "number-blocks", params: { count: 2 }, caption: "two = 2" },
         },
         {
           heading: "{丁寧|ていねい}に {頼|たの}もう",
-          body: "{最後|さいご}に「please（プリーズ）」を つけると {丁寧|ていねい}だよ。「An apple, please.」のように {言|い}えるね。",
-          visual: { kind: "emoji", value: "🙏", caption: "…, please." },
+          body: "{最後|さいご}に「please（プリーズ）」を つけると ていねいだよ。「An apple, please.」と {頼|たの}んで、もらったら「Thank you.」、{渡|わた}す {人|ひと}は「Here you are.」だね。",
+          visual: { kind: "emoji", value: "🙏", caption: "An apple, please. / Thank you." },
         },
       ],
     },
@@ -1504,17 +1524,22 @@ export const eigoG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{朝|あさ}の {日課|にっか}",
-          body: "「I get up.」{起|お}きる、「I eat breakfast.」{朝|あさ}ごはんを {食|た}べる、「I go to school.」{学校|がっこう}へ {行|い}く だよ。",
-          visual: { kind: "emoji", value: "🌅🍞🏫", caption: "get up / breakfast / school" },
+          body: "「I get up.」{起|お}きる、「I eat breakfast.」{朝|あさ}ごはんを {食|た}べる、「I go to school.」{学校|がっこう}へ {行|い}く だよ。{朝|あさ}に する ことを {順番|じゅんばん}に {言|い}ってみよう。",
+          visual: { kind: "emoji", value: "🌅🍞🏫", caption: "get up → breakfast → school" },
         },
         {
           heading: "{夜|よる}の {日課|にっか}",
-          body: "「I eat dinner.」{晩|ばん}ごはんを {食|た}べる、「I take a bath.」お{風呂|ふろ}に {入|はい}る、「I go to bed.」{寝|ね}る だよ。",
-          visual: { kind: "emoji", value: "🍛🛁🛌", caption: "dinner / bath / bed" },
+          body: "「I eat dinner.」{晩|ばん}ごはんを {食|た}べる、「I take a bath.」お{風呂|ふろ}に {入|はい}る、「I go to bed.」{寝|ね}る だよ。{夜|よる}に する ことも つなげて {言|い}えるね。",
+          visual: { kind: "emoji", value: "🍛🛁🛌", caption: "dinner → bath → bed" },
+        },
+        {
+          heading: "{時刻|じこく}と いっしょに",
+          body: "「at（アット）」の あとに {時刻|じこく}を つけると、「I get up at seven.」で「7{時|じ}に {起|お}きる」だよ。{自分|じぶん}が {起|お}きる {時間|じかん}を {言|い}ってみよう。",
+          visual: { kind: "svg", name: "clock", params: { hour: 7, minute: 0 }, caption: "at seven = 7:00" },
         },
         {
           heading: "{自分|じぶん}の {一日|いちにち}を {言|い}おう",
-          body: "{順番|じゅんばん}に つなげると、{自分|じぶん}の {一日|いちにち}を {英語|えいご}で {紹介|しょうかい}できるよ。やってみよう。",
+          body: "{朝|あさ}から {夜|よる}まで、した ことを {順番|じゅんばん}に つなげると、{自分|じぶん}の {一日|いちにち}を {英語|えいご}で {紹介|しょうかい}できるよ。「I get up. I go to school. …」と やってみよう。",
           visual: { kind: "emoji", value: "🗣️🕐", caption: "My day" },
         },
       ],
@@ -1533,17 +1558,22 @@ export const eigoG4Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{文房具|ぶんぼうぐ}の {英語|えいご}",
-          body: "{鉛筆|えんぴつ}=pencil、{消|け}しゴム=eraser、{物差|ものさ}し=ruler、ノート=notebook、ペン=pen だよ。",
+          body: "{鉛筆|えんぴつ}=pencil、{消|け}しゴム=eraser、{物差|ものさ}し=ruler、ノート=notebook、ペン=pen だよ。{筆箱|ふでばこ}の {中|なか}を {見|み}て、{英語|えいご}で {言|い}ってみよう。",
           visual: { kind: "emoji", value: "✏️🧽📓", caption: "pencil / eraser / notebook" },
         },
         {
           heading: "{食|た}べ{物|もの}の {英語|えいご}",
-          body: "ぱん=bread、{牛乳|ぎゅうにゅう}=milk、ごはん=rice、{卵|たまご}=egg だよ。{給食|きゅうしょく}で {探|さが}してみよう。",
+          body: "ぱん=bread、{牛乳|ぎゅうにゅう}=milk、ごはん=rice、{卵|たまご}=egg だよ。{給食|きゅうしょく}の トレーの {上|うえ}で {探|さが}してみると おぼえやすいね。",
           visual: { kind: "emoji", value: "🍞🥛🍚🥚", caption: "bread / milk / rice / egg" },
         },
         {
+          heading: "いくつ あるかな",
+          body: "{物|もの}の {数|かず}も {英語|えいご}で {言|い}えるよ。「I have two pencils.」で「{鉛筆|えんぴつ}を 2{本|ほん} {持|も}っている」だね。ブロックで {数|かぞ}えてみよう。",
+          visual: { kind: "svg", name: "number-blocks", params: { count: 2 }, caption: "two pencils" },
+        },
+        {
           heading: "{伝|つた}えて みよう",
-          body: "「I have a pen.」{持|も}っている、「I want bread.」{欲|ほ}しい のように、{単語|たんご}を {使|つか}って {言|い}えるね。",
+          body: "「I have a pen.」は「ペンを {持|も}っている」、「I want bread.」は「ぱんが {欲|ほ}しい」だよ。おぼえた {単語|たんご}を {文|ぶん}に {入|い}れて {言|い}ってみよう。",
           visual: { kind: "emoji", value: "🗣️", caption: "I have / I want" },
         },
       ],

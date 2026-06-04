@@ -1621,17 +1621,22 @@ export const eigoG5Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "はじめまして",
-          body: "はじめて あった {人|ひと}には「Nice to meet you.（ナイス トゥ ミート ユー）＝はじめまして」と いうよ。",
+          body: "はじめて あう {人|ひと}には、まず あいさつ。「Hello.（ハロー）＝やあ」や「Nice to meet you.（ナイス トゥ ミート ユー）＝はじめまして」と いうよ。にっこり わらって、あいての めを みて いうと、きもちが もっと つたわるね。",
           visual: { kind: "emoji", value: "🤝😊", caption: "Nice to meet you." },
         },
         {
-          heading: "{名前|なまえ}と {出身|しゅっしん}",
-          body: "「My name is 〜.」で {名前|なまえ}、「I'm from 〜.」で {出身|しゅっしん}を いえるよ。「I'm from Japan.」で「{日本|にほん} {出身|しゅっしん}」だね。",
-          visual: { kind: "emoji", value: "📛🗾", caption: "My name is … / I'm from …" },
+          heading: "{名前|なまえ}を つたえる",
+          body: "つぎは じぶんの {名前|なまえ}。「My name is Ken.（マイ ネイム イズ ケン）＝わたしの {名前|なまえ}は ケンです」と いうよ。「I'm Ken.」と みじかく いっても おなじ {意味|いみ}。「Please call me Ken.」なら「ケンと よんでね」だね。",
+          visual: { kind: "emoji", value: "🧒📛", caption: "My name is Ken." },
         },
         {
-          heading: "たんじょうびを いおう",
-          body: "「When is your birthday？」は「たんじょうびは いつ？」。「My birthday is 〜.」で こたえられるよ。",
+          heading: "{出身|しゅっしん}を いう",
+          body: "「I'm from 〜.（アイム フロム）＝わたしは 〜の {出身|しゅっしん}です」。「I'm from Japan.」なら「{日本|にほん}{出身|しゅっしん}」だよ。{町|まち}の {名前|なまえ}を いれて「I'm from Tokyo.」と いっても いいね。",
+          visual: { kind: "emoji", value: "🗾", caption: "I'm from Japan." },
+        },
+        {
+          heading: "たんじょうび・としを いおう",
+          body: "「When is your birthday？＝たんじょうびは いつ？」には「My birthday is May 5th.」のように こたえるよ。「How old are you？＝なんさい？」には「I'm eleven.＝11さいです」だね。さいごに「And you？＝あなたは？」と あいてにも きくと、はなしが つづくよ。",
           visual: { kind: "emoji", value: "🎂", caption: "When is your birthday？" },
         },
       ],
@@ -1650,18 +1655,23 @@ export const eigoG5Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "ローマじって なに？",
-          body: "{日本語|にほんご}の {音|おと}を アルファベットで あらわす かきかたが ローマじだよ。あ=a、か=ka、さ=sa のように きまっているよ。",
+          body: "{日本語|にほんご}の {音|おと}を アルファベットで あらわす かきかたが ローマじだよ。あ=a、か=ka、さ=sa のように、1つの {音|おと}を 1〜2{文字|もじ}で あらわすよ。ひらがなを アルファベットに きせかえる かんじだね。",
           visual: { kind: "emoji", value: "🔤", caption: "a ka sa ta na" },
         },
         {
+          heading: "くみあわせで つくる",
+          body: "ローマじは、k・s・t などの {文字|もじ}に a・i・u・e・o を くっつけて つくるよ。か=ka、き=ki、く=ku、け=ke、こ=ko の ように ならぶんだ。きそくが わかると、はじめて みる {言葉|ことば}も かけるね。",
+          visual: { kind: "emoji", value: "🧩", caption: "ka ki ku ke ko" },
+        },
+        {
           heading: "{名前|なまえ}を かいてみよう",
-          body: "「やま」=yama、「そら」=sora、「ねこ」=neko のように、{音|おと}を 2{文字|もじ}ずつ あてはめるよ。じぶんの {名前|なまえ}も かけるね。",
-          visual: { kind: "emoji", value: "✍️", caption: "yama / sora / neko" },
+          body: "「やま」=yama、「そら」=sora、「ねこ」=neko のように、{音|おと}を じゅんばんに あてはめるよ。じぶんの {名前|なまえ}「けん」=ken、「さくら」=sakura も かけるね。「ん」は n 1{文字|もじ}で かくよ。",
+          visual: { kind: "emoji", value: "✍️", caption: "yama / sora / ken" },
         },
         {
           heading: "{町|まち}で さがそう",
-          body: "{駅|えき}の かんばんや {道|みち}の ひょうしきにも ローマじが あるよ。TOKYO や Tanaka を さがしてみよう。",
-          visual: { kind: "emoji", value: "🪧", caption: "TOKYO" },
+          body: "{駅|えき}の かんばんや {道|みち}の ひょうしきにも ローマじが あるよ。TOKYO や Tanaka、しんごうの したの {地名|ちめい}を さがしてみよう。パスポートの {名前|なまえ}も ローマじで かくんだよ。",
+          visual: { kind: "emoji", value: "🪧", caption: "TOKYO / Tanaka" },
         },
       ],
     },
@@ -1679,17 +1689,22 @@ export const eigoG5Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "I can 〜.",
-          body: "「I can 〜.（アイ キャン）」は「わたしは 〜できる」だよ。「I can swim.」で「およげる」だね。",
+          body: "「I can 〜.（アイ キャン）＝わたしは 〜できる」だよ。can の あとに、swim（およぐ）・run（はしる）・sing（うたう）のような うごきの {言葉|ことば}を つづけるよ。「I can swim.」で「およげる」だね。",
           visual: { kind: "emoji", value: "💪🏊", caption: "I can swim." },
         },
         {
+          heading: "いろいろな できること",
+          body: "「I can play soccer.＝サッカーが できる」「I can ride a bike.＝じてんしゃに のれる」「I can cook.＝りょうりが できる」。can の うしろを かえるだけで、じぶんの とくいな ことを いろいろ いえるよ。",
+          visual: { kind: "emoji", value: "⚽🚲🍳", caption: "play soccer / ride a bike / cook" },
+        },
+        {
           heading: "できない ときは",
-          body: "「I can't 〜.（アイ キャント）」で「〜できない」。「I can't sing.」で「うたえない」だよ。",
-          visual: { kind: "emoji", value: "🚫🎤", caption: "I can't sing." },
+          body: "「I can't 〜.（アイ キャント）＝〜できない」。can't は can に not が くっついた かたちだよ。「I can't ski.」で「スキーが できない」。できる・できないを わけて いえるね。",
+          visual: { kind: "emoji", value: "🚫⛷️", caption: "I can't ski." },
         },
         {
           heading: "{相手|あいて}に きいてみよう",
-          body: "「Can you 〜？」は「〜できる？」。「Yes, I can.／No, I can't.」で こたえられるよ。",
+          body: "「Can you 〜？＝〜できる？」と あいてに きけるよ。できれば「Yes, I can.」、できなければ「No, I can't.」と こたえるよ。「Can you swim？」「Yes, I can!」のように キャッチボールしてみよう。",
           visual: { kind: "emoji", value: "🙋❓", caption: "Can you …？" },
         },
       ],
@@ -1708,18 +1723,23 @@ export const eigoG5Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{場所|ばしょ}の {単語|たんご}",
-          body: "{駅|えき}=station、{図書館|としょかん}=library、{公園|こうえん}=park、{病院|びょういん}=hospital、ゆうびんきょく=post office だよ。",
+          body: "まちの {場所|ばしょ}を {英語|えいご}で おぼえよう。{駅|えき}=station、{図書館|としょかん}=library、{公園|こうえん}=park、{病院|びょういん}=hospital、ゆうびんきょく=post office だよ。よく いく ところから おぼえると いいね。",
           visual: { kind: "emoji", value: "🚉📚🏥", caption: "station / library / hospital" },
         },
         {
           heading: "{道|みち}を たずねる",
-          body: "「Where is 〜？」は「〜は どこ？」。「Where is the station？」で「{駅|えき}は どこ？」だね。",
-          visual: { kind: "emoji", value: "❓🗺️", caption: "Where is …？" },
+          body: "しらない {人|ひと}には、まず「Excuse me.＝すみません」と こえを かけてから「Where is the station？＝{駅|えき}は どこ？」と きくよ。「Where is 〜？」は「〜は どこ？」。ていねいに きけると いいね。",
+          visual: { kind: "emoji", value: "🙋❓", caption: "Excuse me. Where is …？" },
         },
         {
           heading: "{道|みち}を おしえる",
-          body: "「Go straight.」まっすぐ、「Turn right.」{右|みぎ}へ、「Turn left.」{左|ひだり}へ で {案内|あんない}できるよ。",
+          body: "「Go straight.」まっすぐ、「Turn right.」{右|みぎ}へ まがる、「Turn left.」{左|ひだり}へ まがる。この 3つで たいていの {道|みち}は {案内|あんない}できるよ。{手|て}で むきを さししめすと、もっと わかりやすいね。",
           visual: { kind: "emoji", value: "⬆️➡️⬅️", caption: "straight / right / left" },
+        },
+        {
+          heading: "{場所|ばしょ}を つたえる",
+          body: "ちかづいたら「It's on your right.＝{右|みぎ}がわに あります」「It's on your left.＝{左|ひだり}がわに あります」と いうよ。「Turn right at the corner.＝かどで {右|みぎ}へ」のように、corner（かど）を つかうと もっと くわしく いえるね。",
+          visual: { kind: "emoji", value: "👉👈", caption: "on your right / left" },
         },
       ],
     },
@@ -1737,17 +1757,22 @@ export const eigoG5Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "ねだんを きく",
-          body: "「How much？（ハウ マッチ）」は「いくら？」。かいたい ものの ねだんを きく {言葉|ことば}だよ。",
+          body: "お{店|みせ}で かいたい ものを みつけたら、「How much？（ハウ マッチ）＝いくら？」と きくよ。「How much is this？＝これは いくら？」と いっても いいね。ねだんを きく {言葉|ことば}だよ。",
           visual: { kind: "emoji", value: "💰❓", caption: "How much？" },
         },
         {
           heading: "ねだんを こたえる",
-          body: "「It's 〜 yen.」で「〜えんです」。yen は えん だよ。「It's 500 yen.」で「500えん」だね。",
+          body: "「It's 〜 yen.＝〜えんです」で こたえるよ。yen は えん。「It's 500 yen.」で「500えん」だね。g3で ならった 1〜20の {数|かず}が ここで やくに たつよ。",
           visual: { kind: "emoji", value: "🪙", caption: "It's 500 yen." },
         },
         {
+          heading: "いくつ ほしい？",
+          body: "「How many？＝いくつ？」と きかれたら、ほしい {数|かず}を いうよ。「Two, please.＝2つ ください」のように ね。したの ブロックは 2つぶん。{数|かず}を ゆびで さしながら いうと つたわるよ。",
+          visual: { kind: "svg", name: "number-blocks", params: { count: 2 }, caption: "two, please" },
+        },
+        {
           heading: "かいものの やりとり",
-          body: "「I'll take it.」これを かいます、「Here you are.」はい どうぞ。さいごに「Thank you.」と いえると いいね。",
+          body: "きめたら「I'll take it.＝これを かいます」と いうよ。お{店|みせ}の {人|ひと}が「Here you are.＝はい どうぞ」と わたして くれるね。さいごに「Thank you.＝ありがとう」と いえると、きもちが いいよ。",
           visual: { kind: "emoji", value: "🛍️🤲", caption: "I'll take it. / Here you are." },
         },
       ],
@@ -1766,18 +1791,23 @@ export const eigoG5Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{国|くに}の {英語|えいご}",
-          body: "{日本|にほん}=Japan、アメリカ=America、イタリア=Italy、フランス=France、オーストラリア=Australia だよ。",
+          body: "{国|くに}の {名前|なまえ}を {英語|えいご}で おぼえよう。{日本|にほん}=Japan、アメリカ=America、イタリア=Italy、フランス=France、オーストラリア=Australia だよ。{地図|ちず}を みながら いうと おぼえやすいね。",
           visual: { kind: "emoji", value: "🇯🇵🇺🇸🇮🇹", caption: "Japan / America / Italy" },
         },
         {
           heading: "いきたい {国|くに}を いおう",
-          body: "「I want to go to 〜.」は「〜に いきたい」。「I want to go to Italy.」で「イタリアに いきたい」だね。",
+          body: "「I want to go to 〜.＝〜に いきたい」だよ。go to の あとに {国|くに}の {名前|なまえ}を いれるよ。「I want to go to Italy.」で「イタリアに いきたい」だね。",
           visual: { kind: "emoji", value: "✈️🌍", caption: "I want to go to …" },
         },
         {
           heading: "なぜ いきたい？",
-          body: "「I can see 〜.（〜が みられる）」や {有名|ゆうめい}な ものを そえると、もっと つたわるよ。",
-          visual: { kind: "emoji", value: "🗼🐨", caption: "France / Australia" },
+          body: "いきたい わけを そえると、もっと つたわるよ。「I can see the Eiffel Tower.＝エッフェルとうが みられる」や「I can eat pizza.＝ピザが たべられる」のように いってみよう。",
+          visual: { kind: "emoji", value: "🗼🍕", caption: "France / pizza" },
+        },
+        {
+          heading: "{世界|せかい}に めを むけよう",
+          body: "{国|くに}には それぞれ {有名|ゆうめい}な ものが あるよ。オーストラリア=Australia には コアラ、フランス=France には エッフェルとう。しらべると {世界|せかい}への {興味|きょうみ}が ひろがるね。",
+          visual: { kind: "emoji", value: "🐨🗼", caption: "Australia / France" },
         },
       ],
     },
@@ -1795,17 +1825,22 @@ export const eigoG5Contents: Record<string, UnitContent> = {
       steps: [
         {
           heading: "{教科|きょうか}の {英語|えいご}",
-          body: "{算数|さんすう}=math、{国語|こくご}=Japanese、{理科|りか}=science、{社会|しゃかい}=social studies、{英語|えいご}=English だよ。",
+          body: "{教科|きょうか}を {英語|えいご}で いってみよう。{算数|さんすう}=math、{国語|こくご}=Japanese、{理科|りか}=science、{社会|しゃかい}=social studies、{英語|えいご}=English だよ。",
           visual: { kind: "emoji", value: "🔢🔬📖", caption: "math / science / Japanese" },
         },
         {
+          heading: "もっと {教科|きょうか}",
+          body: "ほかにも {音楽|おんがく}=music、{図工|ずこう}=arts and crafts、{体育|たいいく}=P.E.、{家庭科|かていか}=home economics が あるよ。じぶんの じかんわりに ある {教科|きょうか}から おぼえると いいね。",
+          visual: { kind: "emoji", value: "🎵🎨⚽", caption: "music / arts / P.E." },
+        },
+        {
           heading: "すきな {教科|きょうか}を いおう",
-          body: "「What subject do you like？」は「どの {教科|きょうか}が すき？」。「I like music.」で こたえられるよ。",
-          visual: { kind: "emoji", value: "🎵❓", caption: "What subject do you like？" },
+          body: "「What subject do you like？＝どの {教科|きょうか}が すき？」と きかれたら、「I like science.＝{理科|りか}が すき」と こたえるよ。「Why？＝どうして？」には「It's fun.＝たのしいから」と いえるね。",
+          visual: { kind: "emoji", value: "📚❓", caption: "What subject do you like？" },
         },
         {
           heading: "じかんわりを いおう",
-          body: "「I have math on Monday.」のように、{曜日|ようび}（g4でならった days）と あわせて じかんわりを いえるよ。",
+          body: "「I have math on Monday.＝{月曜日|げつようび}は {算数|さんすう}が ある」のように、g4で ならった {曜日|ようび}（Monday・Tuesday…）と あわせると、きょうの じかんわりを {英語|えいご}で いえるよ。",
           visual: { kind: "emoji", value: "📅📚", caption: "math on Monday" },
         },
       ],
