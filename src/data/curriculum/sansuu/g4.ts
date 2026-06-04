@@ -2657,7 +2657,7 @@ export const sansuuG4Contents: Record<string, UnitContent> = {
         {
           heading: "（ ）は いちばんさき",
           body: "（ ）が あるときは、その なかを いちばんさきに {計算|けいさん}するよ。(2＋3)×4 なら、まず 2＋3＝5、つぎに 5×4＝20 だね。",
-          visual: { kind: "svg", name: "number-blocks", params: { left: 2, right: 3 }, caption: "(2＋3) を さきに ＝ 5" },
+          visual: { kind: "anim", name: "blocks-add", params: { left: 2, right: 3 }, caption: "(2＋3) を さきに ＝ 5" },
         },
         {
           heading: "ひとつの {式|しき}に まとめる",
@@ -2687,12 +2687,12 @@ export const sansuuG4Contents: Record<string, UnitContent> = {
         {
           heading: "0.1 が なんこ？",
           body: "{小数|しょうすう}は「0.1 が なんこ ぶんか」で かんがえると わかりやすいよ。0.1 が 7こ あつまれば 0.7、26こ なら 2.6 と あらわせるね。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 7 }, caption: "0.1が 7こ ＝ 0.7" },
+          visual: { kind: "anim", name: "count-up", params: { to: 7 }, caption: "0.1が 7こ ＝ 0.7" },
         },
         {
           heading: "くらいを そろえて {足|た}し{引|ひ}き",
           body: "{足|た}し{算|ざん}・{引|ひ}き{算|ざん}は、{小数点|しょうすうてん}（てん）を たてに そろえて {計算|けいさん}するよ。0.3 ＋ 0.4 は、0.1 が 3こ と 4こ で 7こ、だから 0.7 だね。",
-          visual: { kind: "svg", name: "number-blocks", params: { left: 3, right: 4 }, caption: "0.1が 3こ ＋ 4こ ＝ 0.7" },
+          visual: { kind: "anim", name: "blocks-add", params: { left: 3, right: 4 }, caption: "0.1が 3こ ＋ 4こ ＝ 0.7" },
         },
         {
           heading: "10こで くりあがる",
@@ -2808,7 +2808,7 @@ export const sansuuG4Contents: Record<string, UnitContent> = {
         {
           heading: "ますを かぞえよう",
           body: "{長方形|ちょうほうけい}の なかに 1cm²の ますが いくつ あるかを かぞえると {面積|めんせき}が わかるよ。たて 3こ・よこ 5こ なら、ぜんぶで 15こ ＝ 15cm²だね。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 15 }, caption: "1cm²が 15こ ＝ 15cm²" },
+          visual: { kind: "anim", name: "count-up", params: { to: 15 }, caption: "1cm²が 15こ ＝ 15cm²" },
         },
         {
           heading: "たて × よこ",

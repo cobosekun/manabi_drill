@@ -449,7 +449,7 @@ export const rikaG3Contents: Record<string, UnitContent> = {
         {
           heading: "たねから め が {出|で}る",
           body: "たねを つちに まいて みずを やると、しばらくして さいしょに「ふたば」が {出|で}てくるよ。ふたばは たねの {中|なか}に たたまれていた はっぱなんだ。そのあと、ふたばとは かたちの ちがう はが つぎつぎ {出|で}て、かずが ふえていくよ。",
-          visual: { kind: "emoji", value: "🌰→🌱→🌿", caption: "たね→め→は" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌰", "🌱", "🌿"] }, caption: "たね→め→は" },
         },
         {
           heading: "しょくぶつの からだ（ね・くき・は）",
@@ -464,12 +464,12 @@ export const rikaG3Contents: Record<string, UnitContent> = {
         {
           heading: "{花|はな}が さいて たねが できる",
           body: "じゅうぶん そだつと「つぼみ」が でき、それが ひらいて {花|はな}に なるよ。{花|はな}が しぼんだ あとには「み」が でき、その {中|なか}に つぎの「たね」が できるんだ。ホウセンカの みは じゅくすと はじけて たねを とばすよ。",
-          visual: { kind: "emoji", value: "🌸→🌰", caption: "{花|はな}→み→たね" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌸", "🍅", "🌰"] }, caption: "{花|はな}→み→たね" },
         },
         {
           heading: "いのちは めぐる",
           body: "できた たねを また まくと、つぎの しょくぶつが そだつよ。たね→め→は→{花|はな}→み（たね）と、いのちは ぐるぐる つながっているんだ。そだちを しらべる ときは、せの たかさを ものさしで はかったり、はの かずを かぞえて きろくすると よく わかるよ。",
-          visual: { kind: "emoji", value: "🌰→🌱→🌸→🌰", caption: "いのちの じゅんばん" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌰", "🌱", "🌸", "🌰"] }, caption: "いのちの じゅんばん" },
         },
       ],
     },
@@ -675,7 +675,7 @@ export const rikaG3Contents: Record<string, UnitContent> = {
         {
           heading: "あしは 6{本|ほん}・はねは むねに",
           body: "こん{虫|ちゅう}の あしは、ぜんぶで 6{本|ほん}。しかも みんな まん{中|なか}の「むね」から {出|で}ているよ。はね（おおくは 4まい）も むねに ついているんだ。だから「あしが 6{本|ほん}で からだが 3つ」なら こん{虫|ちゅう}の なかま、と わかるよ。",
-          visual: { kind: "emoji", value: "🦗", caption: "あしは むねから 6{本|ほん}" },
+          visual: { kind: "anim", name: "count-up", params: { to: 6, emoji: "🦵" }, caption: "あしは むねから 6{本|ほん}" },
         },
         {
           heading: "こん{虫|ちゅう}か どうか みわける",
@@ -685,12 +685,12 @@ export const rikaG3Contents: Record<string, UnitContent> = {
         {
           heading: "さなぎに なる そだちかた",
           body: "チョウや カブトムシは「たまご→よう{虫|ちゅう}→さなぎ→せい{虫|ちゅう}」の じゅんに そだつよ。さなぎの あいだは あまり うごかず、からだを せい{虫|ちゅう}の かたちに つくりかえているんだ。よう{虫|ちゅう}（あおむし）は はっぱを たべて {大|おお}きく なるよ。",
-          visual: { kind: "emoji", value: "🥚→🐛→🛡️→🦋", caption: "チョウの そだち" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🥚", "🐛", "🛡️", "🦋"] }, caption: "チョウの そだち" },
         },
         {
           heading: "さなぎに ならない そだちかた",
           body: "バッタや トンボ、セミは さなぎに ならないよ。「たまご→よう{虫|ちゅう}→せい{虫|ちゅう}」と、よう{虫|ちゅう}から じかに せい{虫|ちゅう}に なるんだ。おなじ こん{虫|ちゅう}でも、そだちかたに 2つの しゅるいが あるんだね。",
-          visual: { kind: "emoji", value: "🥚→🦗→🦗", caption: "さなぎを とばす そだち" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🥚", "🦗", "🦗"] }, caption: "さなぎを とばす そだち" },
         },
       ],
     },

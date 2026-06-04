@@ -2499,7 +2499,7 @@ export const sansuuG3Contents: Record<string, UnitContent> = {
         {
           heading: "1000より {大|おお}きい {数|かず}",
           body: "10えんが 10こで 100えんに なるよね。おなじように、1000が 10こ あつまると 10000（{一万|いちまん}）になるよ。くらいが 1つ {上|うえ}に ふえて、もっと {大|おお}きい {数|かず}が あらわせるんだ。",
-          visual: { kind: "emoji", value: "💴💴💴💴💴💴💴💴💴💴", caption: "1000が 10こで 10000（いちまん）" },
+          visual: { kind: "anim", name: "count-up", params: { to: 10, emoji: "💴" }, caption: "1000が 10こで 10000（いちまん）" },
         },
         {
           heading: "くらいの へやに わけて よむ",
@@ -2539,7 +2539,7 @@ export const sansuuG3Contents: Record<string, UnitContent> = {
         {
           heading: "くりあがり（10こで {上|うえ}へ）",
           body: "おなじ くらいで たして 10{以上|いじょう}に なったら、10の かたまりを 1つ {上|うえ}の くらいへ おくるよ。これが「くりあがり」。たとえば {一|いち}のくらいが 8＋5＝13なら、{一|いち}のくらいに 3を かいて、1を {十|じゅう}のくらいへ くりあげるんだ。",
-          visual: { kind: "svg", name: "number-blocks", params: { left: 8, right: 5 }, caption: "8＋5＝13 → 10の かたまり 1つと 3" },
+          visual: { kind: "anim", name: "blocks-add", params: { left: 8, right: 5 }, caption: "8＋5＝13 → 10の かたまり 1つと 3" },
         },
         {
           heading: "くりさがり（{上|うえ}から かりる）",
@@ -2684,7 +2684,7 @@ export const sansuuG3Contents: Record<string, UnitContent> = {
         {
           heading: "0.1の いくつぶんで かんがえる",
           body: "0.3は 0.1が 3こぶん、0.7は 0.1が 7こぶん だよ。{小数|しょうすう}は「0.1が なんこ あるか」で かんがえると わかりやすい。0.1が 10こ あつまると、ちょうど 1に なるね。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 3 }, caption: "0.1が 3こで 0.3" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "🟦" }, caption: "0.1が 3こで 0.3" },
         },
         {
           heading: "{小数|しょうすう}の {足|た}し{算|ざん}・{引|ひ}き{算|ざん}",
@@ -2839,12 +2839,12 @@ export const sansuuG3Contents: Record<string, UnitContent> = {
         {
           heading: "おわりの {時刻|じこく}を もとめる",
           body: "{出|で}かける {時刻|じこく}に、かかる {時間|じかん}を たすと、つく {時刻|じこく}が わかるよ。8じ20ぷんに でかけて 20ぷん あるくと、8じ40ぷんに つく。とけいの ながい はりを 20ぷんぶん すすめて かんがえると いいね。",
-          visual: { kind: "svg", name: "clock", params: { hour: 8, minute: 40 }, caption: "8じ20ぷん＋20ぷん＝8じ40ぷん" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 8, minute: 40, fromHour: 8, fromMinute: 20 }, caption: "8じ20ぷん＋20ぷん＝8じ40ぷん" },
         },
         {
           heading: "かかった {時間|じかん}を もとめる",
           body: "はじめの {時刻|じこく}と おわりの {時刻|じこく}が わかれば、かかった {時間|じかん}も もとめられるよ。3じに はじめて 3じ30ぷんに おわったら、かかった {時間|じかん}は 30ぷん。とけいの はりが どれだけ すすんだかを {見|み}ると わかるね。",
-          visual: { kind: "svg", name: "clock", params: { hour: 3, minute: 30 }, caption: "3じ→3じ30ぷんで 30ぷん" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 3, minute: 30, fromHour: 3, fromMinute: 0 }, caption: "3じ→3じ30ぷんで 30ぷん" },
         },
       ],
     },
