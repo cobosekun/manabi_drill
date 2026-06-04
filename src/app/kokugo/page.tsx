@@ -1,33 +1,25 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, Suspense } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { kanjiQuestions } from "@/data/kanji-questions";
 import { KanjiQuestion, QuestionProgress, QUESTIONS_PER_SESSION } from "@/types/question";
+import { ButtonState } from "@/types/drill";
+import { ProgressBar, ChoiceButton, ResultModal, RubyText } from "@/components/drill";
+import { shuffle } from "@/lib/shuffle";
+import { dailyKey, loadJSON, saveJSON } from "@/lib/storage";
 
-// ── localStorage ──
-
-function todayKey(): string {
-  const d = new Date();
-  return `kanji-drill-${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-}
+// ── localStorage（共通ヘルパ @/lib/storage に集約。キーは kanji-drill-YYYY-MM-DD で従来互換）──
 
 function loadProgress(): QuestionProgress[] {
-  if (typeof window === "undefined") return initProgress();
-  try {
-    const raw = localStorage.getItem(todayKey());
-    if (raw) {
-      const parsed = JSON.parse(raw) as QuestionProgress[];
-      if (parsed.length === kanjiQuestions.length) return parsed;
-    }
-  } catch { /* reset on corrupt */ }
+  const parsed = loadJSON<QuestionProgress[] | null>(dailyKey("kanji"), null);
+  if (parsed && parsed.length === kanjiQuestions.length) return parsed;
   return initProgress();
 }
 
 function saveProgress(progress: QuestionProgress[]): void {
-  if (typeof window === "undefined") return;
-  localStorage.setItem(todayKey(), JSON.stringify(progress));
+  saveJSON(dailyKey("kanji"), progress);
 }
 
 function initProgress(): QuestionProgress[] {
@@ -47,96 +39,6 @@ const questionTypeLabels: Record<string, string> = {
 // Components
 // ══════════════════════════════════════════
 
-// ── ProgressBar ──
-
-interface ProgressBarProps {
-  current: number;
-  total: number;
-  correctCount?: number;
-  size?: "sm" | "md" | "lg";
-}
-
-function ProgressBar({ current, total, correctCount = 0, size = "md" }: ProgressBarProps) {
-  const percentage = total > 0 ? Math.round((current / total) * 100) : 0;
-  const correctPercentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-  const heights = { sm: "h-2", md: "h-4", lg: "h-6" };
-
-  return (
-    <div className="w-full" role="progressbar" aria-valuenow={current} aria-valuemin={0} aria-valuemax={total} aria-label={`進捗: ${current}/${total}問`}>
-      <div className="flex justify-between items-center mb-2 text-sm">
-        <span className="font-bold text-sky-700">
-          <span className="text-lg text-violet-600">{current}</span>
-          <span className="text-sky-500"> / {total} もん</span>
-        </span>
-        {correctCount > 0 && (
-          <span className="text-emerald-600 font-bold flex items-center gap-1">
-            <span>⭐</span>{correctCount} せいかい
-          </span>
-        )}
-      </div>
-      <div className={`relative w-full bg-sky-100 rounded-full overflow-hidden shadow-inner ${heights[size]}`}>
-        {correctCount > 0 && (
-          <div
-            className="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full transition-all duration-500"
-            style={{ width: `${correctPercentage}%` }}
-          />
-        )}
-        <div
-          className="absolute inset-y-0 left-0 bg-gradient-to-r from-sky-400 to-violet-500 rounded-full transition-all duration-500"
-          style={{ width: `${percentage}%`, opacity: correctCount > 0 ? 0.7 : 1 }}
-        />
-      </div>
-    </div>
-  );
-}
-
-// ── ChoiceButton ──
-
-type ButtonState = "default" | "selected" | "correct" | "incorrect" | "disabled";
-
-interface ChoiceButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-  state?: ButtonState;
-  disabled?: boolean;
-}
-
-function ChoiceButton({ children, onClick, state = "default", disabled = false }: ChoiceButtonProps) {
-  const stateStyles: Record<ButtonState, string> = {
-    default: "bg-white text-sky-700 border-sky-300 hover:bg-sky-50 hover:border-sky-400",
-    selected: "bg-violet-100 text-violet-700 border-violet-400",
-    correct: "bg-emerald-100 text-emerald-700 border-emerald-400 animate-bounce-in",
-    incorrect: "bg-rose-100 text-rose-700 border-rose-400 animate-shake",
-    disabled: "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed opacity-60",
-  };
-  const currentState = disabled ? "disabled" : state;
-
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled || state === "correct" || state === "incorrect"}
-      aria-label={String(children)}
-      className={`relative w-full py-4 px-6 text-xl font-bold rounded-2xl transition-all duration-200 active:scale-95 shadow-md hover:shadow-lg ${stateStyles[currentState]}`}
-      style={{ borderWidth: "3px", borderStyle: "solid" }}
-    >
-      <span className="flex items-center justify-center gap-2">
-        {state === "correct" && <span className="text-2xl">⭕</span>}
-        {state === "incorrect" && <span className="text-2xl">❌</span>}
-        {children}
-      </span>
-      {state === "correct" && (
-        <>
-          <span className="absolute top-1 left-2 text-lg animate-sparkle">✨</span>
-          <span className="absolute top-2 right-3 text-sm animate-sparkle" style={{ animationDelay: "0.2s" }}>⭐</span>
-          <span className="absolute bottom-2 left-4 text-sm animate-sparkle" style={{ animationDelay: "0.4s" }}>✨</span>
-          <span className="absolute bottom-1 right-2 text-lg animate-sparkle" style={{ animationDelay: "0.3s" }}>🌟</span>
-        </>
-      )}
-    </button>
-  );
-}
-
 // ── QuestionCard ──
 
 interface QuestionCardProps {
@@ -150,11 +52,6 @@ interface QuestionCardProps {
 function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestions }: QuestionCardProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [answerState, setAnswerState] = useState<"unanswered" | "correct" | "incorrect">("unanswered");
-
-  useEffect(() => {
-    setSelectedAnswer(null);
-    setAnswerState("unanswered");
-  }, [question.id]);
 
   const handleSelectAnswer = (choice: string) => {
     if (answerState !== "unanswered") return;
@@ -189,9 +86,9 @@ function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestio
       )}
 
       <div className="text-center mb-6">
-        <p className="text-xl font-bold text-sky-800 leading-relaxed">{question.question}</p>
+        <p className="text-xl font-bold text-sky-800 leading-relaxed"><RubyText text={question.question} /></p>
         {question.hint && answerState === "unanswered" && (
-          <p className="text-sm text-sky-500 mt-2">💡 ヒント: {question.hint}</p>
+          <p className="text-sm text-sky-500 mt-2">💡 ヒント: <RubyText text={question.hint} /></p>
         )}
       </div>
 
@@ -202,6 +99,7 @@ function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestio
             onClick={() => handleSelectAnswer(choice)}
             state={getButtonState(choice)}
             disabled={answerState !== "unanswered"}
+            theme="sky"
           >
             {choice}
           </ChoiceButton>
@@ -240,70 +138,6 @@ function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestio
           )}
         </button>
       )}
-    </div>
-  );
-}
-
-// ── ResultModal ──
-
-interface ResultModalProps {
-  isOpen: boolean;
-  correctCount: number;
-  totalCount: number;
-  onRetry: () => void;
-  onClose: () => void;
-}
-
-function ResultModal({ isOpen, correctCount, totalCount, onRetry, onClose }: ResultModalProps) {
-  if (!isOpen) return null;
-  const percentage = Math.round((correctCount / totalCount) * 100);
-
-  const getResult = () => {
-    if (percentage === 100) return { emoji: "👑", message: "パーフェクト！すごい！", color: "text-yellow-500" };
-    if (percentage >= 80) return { emoji: "🌟", message: "とてもよくできました！", color: "text-emerald-500" };
-    if (percentage >= 60) return { emoji: "😊", message: "よくがんばりました！", color: "text-sky-500" };
-    if (percentage >= 40) return { emoji: "📚", message: "もうすこしがんばろう！", color: "text-violet-500" };
-    return { emoji: "💪", message: "またちょうせんしよう！", color: "text-rose-500" };
-  };
-
-  const result = getResult();
-  const starCount = Math.ceil(percentage / 20);
-  const stars = Array.from({ length: 5 }, (_, i) => i < starCount);
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={onClose} role="dialog" aria-label="ドリルのけっか">
-      <div className="bg-white rounded-3xl shadow-2xl p-6 max-w-md w-full animate-bounce-in" onClick={(e) => e.stopPropagation()}>
-        <div className="text-center mb-4">
-          <span className="text-6xl block animate-float">{result.emoji}</span>
-        </div>
-        <h2 className={`text-2xl font-bold text-center mb-4 ${result.color}`}>{result.message}</h2>
-
-        <div className="bg-gradient-to-br from-sky-50 to-violet-50 rounded-2xl p-6 mb-6">
-          <div className="text-center">
-            <p className="text-sky-600 font-bold mb-2">けっか</p>
-            <p className="text-5xl font-bold">
-              <span className="text-emerald-500">{correctCount}</span>
-              <span className="text-sky-400 text-3xl"> / </span>
-              <span className="text-sky-600">{totalCount}</span>
-            </p>
-            <p className="text-lg text-sky-500 mt-2">{percentage}% せいかい</p>
-          </div>
-          <div className="flex justify-center gap-2 mt-4">
-            {stars.map((filled, i) => (
-              <span key={i} className={`text-3xl ${filled ? "text-yellow-400 animate-sparkle" : "text-gray-200"}`} style={{ animationDelay: `${i * 0.1}s` }}>★</span>
-            ))}
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <button type="button" onClick={onRetry} aria-label="もういちどチャレンジ" className="w-full py-4 px-6 bg-gradient-to-r from-violet-500 to-violet-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-95 transition-all">
-            🔄 もういちどチャレンジ
-          </button>
-          <button type="button" onClick={onClose} aria-label="トップへもどる" className="w-full py-3 px-6 bg-gray-100 text-gray-600 text-lg font-bold rounded-2xl hover:bg-gray-200 transform hover:scale-[1.02] active:scale-95 transition-all">
-            🏠 トップへもどる
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
@@ -465,23 +299,17 @@ function PrintPage({ onBack }: PrintPageProps) {
   const [showAnswers, setShowAnswers] = useState(false);
   const [practiceCount, setPracticeCount] = useState(3);
   const [isRandom, setIsRandom] = useState(false);
-  const [shuffleKey, setShuffleKey] = useState(0);
+  const [randomized, setRandomized] = useState<KanjiQuestion[]>([]);
   const questionsPerPage = 8;
 
-  const shuffleArray = (arr: KanjiQuestion[]): KanjiQuestion[] => {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  };
+  const baseQuestions = kanjiQuestions.slice(0, 80);
+  const filteredQuestions = isRandom && randomized.length > 0 ? randomized : baseQuestions;
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const filteredQuestions = React.useMemo(
-    () => isRandom ? shuffleArray(kanjiQuestions.slice(0, 80)) : kanjiQuestions.slice(0, 80),
-    [isRandom, shuffleKey]
-  );
+  const handleRandomToggle = (checked: boolean) => {
+    setIsRandom(checked);
+    if (checked) setRandomized(shuffle(baseQuestions));
+  };
+  const handleShuffle = () => setRandomized(shuffle(baseQuestions));
 
   const pages: KanjiQuestion[][] = [];
   for (let i = 0; i < filteredQuestions.length; i += questionsPerPage) {
@@ -489,7 +317,6 @@ function PrintPage({ onBack }: PrintPageProps) {
   }
 
   const handlePrint = () => window.print();
-  const handleShuffle = () => setShuffleKey((k) => k + 1);
 
   return (
     <>
@@ -549,7 +376,7 @@ function PrintPage({ onBack }: PrintPageProps) {
             <div className="mb-6">
               <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl">
                 <label className="flex items-center gap-3 cursor-pointer flex-1">
-                  <input type="checkbox" checked={isRandom} onChange={(e) => setIsRandom(e.target.checked)} className="w-5 h-5 rounded border-sky-300 text-sky-500 focus:ring-sky-400" />
+                  <input type="checkbox" checked={isRandom} onChange={(e) => handleRandomToggle(e.target.checked)} className="w-5 h-5 rounded border-sky-300 text-sky-500 focus:ring-sky-400" />
                   <span className="text-sky-700 font-bold">ランダムにしゅつだい</span>
                 </label>
                 {isRandom && (
@@ -615,15 +442,13 @@ function KanjiDrillContent() {
 
   const shuffleQuestions = useCallback(() => {
     const indices = kanjiQuestions.map((_, i) => i);
-    for (let i = indices.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-    return indices.slice(0, QUESTIONS_PER_SESSION);
+    return shuffle(indices).slice(0, QUESTIONS_PER_SESSION);
   }, []);
 
-  // Hydrate from localStorage
+  // Hydrate from localStorage（localStorage と Math.random はクライアント専用のため、
+  // SSR と初期描画を一致させる目的で mount 後に同期する。set-state-in-effect は意図的。）
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProgress(loadProgress());
     setQuestionOrder(shuffleQuestions());
     setHydrated(true);
@@ -698,7 +523,7 @@ function KanjiDrillContent() {
 
           <div className="bg-gradient-to-br from-sky-50 to-violet-50 rounded-2xl p-6 mb-8">
             <h3 className="text-lg font-bold text-sky-700 mb-4">きょうのしんちょく</h3>
-            <ProgressBar current={attemptedCount} total={kanjiQuestions.length} correctCount={correctCount} size="lg" />
+            <ProgressBar current={attemptedCount} total={kanjiQuestions.length} correctCount={correctCount} size="lg" theme="sky" />
             <div className="grid grid-cols-3 gap-2 mt-4 text-center">
               <div className="bg-white/80 rounded-xl p-2">
                 <p className="text-2xl font-bold text-sky-600">{kanjiQuestions.length}</p>
@@ -744,11 +569,12 @@ function KanjiDrillContent() {
           </button>
 
           <div className="mb-6">
-            <ProgressBar current={currentQuestionIndex + 1} total={questionOrder.length} correctCount={sessionCorrectCount} size="md" />
+            <ProgressBar current={currentQuestionIndex + 1} total={questionOrder.length} correctCount={sessionCorrectCount} size="md" theme="sky" />
           </div>
 
           {currentQuestion && (
             <QuestionCard
+              key={currentQuestion.id}
               question={currentQuestion}
               onAnswer={handleAnswer}
               onNext={handleNext}
@@ -763,6 +589,7 @@ function KanjiDrillContent() {
             totalCount={questionOrder.length}
             onRetry={handleRetry}
             onClose={() => { setPage("home"); setIsResultModalOpen(false); }}
+            theme="sky"
           />
         </div>
       </div>
@@ -783,6 +610,7 @@ function KanjiDrillContent() {
             </button>
             {selectedQuestion && (
               <QuestionCard
+                key={selectedQuestion.id}
                 question={selectedQuestion}
                 onAnswer={handleAnswer}
                 onNext={handleNext}
@@ -805,7 +633,7 @@ function KanjiDrillContent() {
           <h1 className="text-2xl font-bold text-sky-700 text-center mb-6">80もんいちらん</h1>
 
           <div className="bg-white rounded-2xl shadow-md p-4 mb-6">
-            <ProgressBar current={attemptedCount} total={kanjiQuestions.length} correctCount={correctCount} size="md" />
+            <ProgressBar current={attemptedCount} total={kanjiQuestions.length} correctCount={correctCount} size="md" theme="sky" />
           </div>
 
           <div className="bg-white rounded-2xl shadow-md p-4 mb-6">

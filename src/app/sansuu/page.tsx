@@ -1,35 +1,64 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, useSyncExternalStore, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { generateMathQuestions, generateSingleQuestion } from "@/data/math-questions";
 import { MathQuestion } from "@/types/math-question";
+import { ButtonState } from "@/types/drill";
+import { ProgressBar, ChoiceButton, ResultModal } from "@/components/drill";
+import { dailyKey, loadJSON, saveJSON } from "@/lib/storage";
+
+// このページのテーマ（共通基盤レイヤの配色キー）
+const THEME = "orange" as const;
 
 // ── localStorage (デイリー統計) ──
+// 共通の storage ヘルパ（dailyKey / loadJSON / saveJSON）上に薄く乗せる。
+// キー名は従来どおり `math-drill-YYYY-MM-DD`（dailyKey("math") と同一）で後方互換。
 
 interface DailyStats {
   totalAttempted: number;
   totalCorrect: number;
 }
 
-function todayKey(): string {
-  const d = new Date();
-  return `math-drill-${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const STATS_DEFAULT: DailyStats = { totalAttempted: 0, totalCorrect: 0 };
+const STATS_EVENT = "math-daily-stats-update";
+
+// localStorage を外部ストアとして購読（mount 後の setState を避け、SSR 安全＆ハイドレーション安全に）。
+function subscribeStats(callback: () => void): () => void {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener(STATS_EVENT, callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    window.removeEventListener(STATS_EVENT, callback);
+    window.removeEventListener("storage", callback);
+  };
 }
 
-function loadDailyStats(): DailyStats {
-  if (typeof window === "undefined") return { totalAttempted: 0, totalCorrect: 0 };
-  try {
-    const raw = localStorage.getItem(todayKey());
-    if (raw) return JSON.parse(raw) as DailyStats;
-  } catch { /* reset on corrupt */ }
-  return { totalAttempted: 0, totalCorrect: 0 };
+// getSnapshot は安定した参照を返す必要があるため、値が変わらない限り同じオブジェクトを返す。
+let statsCacheKey = "";
+let statsCacheValue: DailyStats = STATS_DEFAULT;
+function getStatsSnapshot(): DailyStats {
+  const key = dailyKey("math");
+  const next = loadJSON<DailyStats>(key, STATS_DEFAULT);
+  if (
+    key !== statsCacheKey ||
+    next.totalAttempted !== statsCacheValue.totalAttempted ||
+    next.totalCorrect !== statsCacheValue.totalCorrect
+  ) {
+    statsCacheKey = key;
+    statsCacheValue = next;
+  }
+  return statsCacheValue;
+}
+
+function getStatsServerSnapshot(): DailyStats {
+  return STATS_DEFAULT;
 }
 
 function saveDailyStats(stats: DailyStats): void {
-  if (typeof window === "undefined") return;
-  localStorage.setItem(todayKey(), JSON.stringify(stats));
+  saveJSON(dailyKey("math"), stats);
+  if (typeof window !== "undefined") window.dispatchEvent(new Event(STATS_EVENT));
 }
 
 // ── Labels ──
@@ -40,98 +69,9 @@ const typeLabels: Record<string, string> = {
 };
 
 // ══════════════════════════════════════════
-// Components
+// Page-specific Components
+// （ProgressBar / ChoiceButton / ResultModal は共通基盤レイヤへ移管済み）
 // ══════════════════════════════════════════
-
-// ── ProgressBar ──
-
-interface ProgressBarProps {
-  current: number;
-  total: number;
-  correctCount?: number;
-  size?: "sm" | "md" | "lg";
-}
-
-function ProgressBar({ current, total, correctCount = 0, size = "md" }: ProgressBarProps) {
-  const percentage = total > 0 ? Math.round((current / total) * 100) : 0;
-  const correctPercentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-  const heights = { sm: "h-2", md: "h-4", lg: "h-6" };
-
-  return (
-    <div className="w-full" role="progressbar" aria-valuenow={current} aria-valuemin={0} aria-valuemax={total} aria-label={`進捗: ${current}/${total}問`}>
-      <div className="flex justify-between items-center mb-2 text-sm">
-        <span className="font-bold text-orange-700">
-          <span className="text-lg text-pink-600">{current}</span>
-          <span className="text-orange-500"> / {total} もん</span>
-        </span>
-        {correctCount > 0 && (
-          <span className="text-emerald-600 font-bold flex items-center gap-1">
-            <span>⭐</span>{correctCount} せいかい
-          </span>
-        )}
-      </div>
-      <div className={`relative w-full bg-orange-100 rounded-full overflow-hidden shadow-inner ${heights[size]}`}>
-        {correctCount > 0 && (
-          <div
-            className="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full transition-all duration-500"
-            style={{ width: `${correctPercentage}%` }}
-          />
-        )}
-        <div
-          className="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full transition-all duration-500"
-          style={{ width: `${percentage}%`, opacity: correctCount > 0 ? 0.7 : 1 }}
-        />
-      </div>
-    </div>
-  );
-}
-
-// ── ChoiceButton ──
-
-type ButtonState = "default" | "selected" | "correct" | "incorrect" | "disabled";
-
-interface ChoiceButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-  state?: ButtonState;
-  disabled?: boolean;
-}
-
-function ChoiceButton({ children, onClick, state = "default", disabled = false }: ChoiceButtonProps) {
-  const stateStyles: Record<ButtonState, string> = {
-    default: "bg-white text-orange-700 border-orange-300 hover:bg-orange-50 hover:border-orange-400",
-    selected: "bg-pink-100 text-pink-700 border-pink-400",
-    correct: "bg-emerald-100 text-emerald-700 border-emerald-400 animate-bounce-in",
-    incorrect: "bg-rose-100 text-rose-700 border-rose-400 animate-shake",
-    disabled: "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed opacity-60",
-  };
-  const currentState = disabled ? "disabled" : state;
-
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled || state === "correct" || state === "incorrect"}
-      aria-label={String(children)}
-      className={`relative w-full py-4 px-6 text-2xl font-bold rounded-2xl transition-all duration-200 active:scale-95 shadow-md hover:shadow-lg ${stateStyles[currentState]}`}
-      style={{ borderWidth: "3px", borderStyle: "solid" }}
-    >
-      <span className="flex items-center justify-center gap-2">
-        {state === "correct" && <span className="text-2xl">⭕</span>}
-        {state === "incorrect" && <span className="text-2xl">❌</span>}
-        {children}
-      </span>
-      {state === "correct" && (
-        <>
-          <span className="absolute top-1 left-2 text-lg animate-sparkle">✨</span>
-          <span className="absolute top-2 right-3 text-sm animate-sparkle" style={{ animationDelay: "0.2s" }}>⭐</span>
-          <span className="absolute bottom-2 left-4 text-sm animate-sparkle" style={{ animationDelay: "0.4s" }}>✨</span>
-          <span className="absolute bottom-1 right-2 text-lg animate-sparkle" style={{ animationDelay: "0.3s" }}>🌟</span>
-        </>
-      )}
-    </button>
-  );
-}
 
 // ── QuestionCard ──
 
@@ -147,10 +87,14 @@ function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestio
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [answerState, setAnswerState] = useState<"unanswered" | "correct" | "incorrect">("unanswered");
 
-  useEffect(() => {
+  // 問題が切り替わったら状態をリセット（prop 変化時の state 調整パターン。
+  // effect での同期 setState を避けるためレンダー中に行う）。
+  const [prevQuestionId, setPrevQuestionId] = useState(question.id);
+  if (question.id !== prevQuestionId) {
+    setPrevQuestionId(question.id);
     setSelectedAnswer(null);
     setAnswerState("unanswered");
-  }, [question.id]);
+  }
 
   const handleSelectAnswer = (choice: number) => {
     if (answerState !== "unanswered") return;
@@ -193,6 +137,7 @@ function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestio
             onClick={() => handleSelectAnswer(choice)}
             state={getButtonState(choice)}
             disabled={answerState !== "unanswered"}
+            theme={THEME}
           >
             {choice}
           </ChoiceButton>
@@ -227,70 +172,6 @@ function QuestionCard({ question, onAnswer, onNext, questionNumber, totalQuestio
           <span className="flex items-center justify-center gap-2">つぎのもんだい →</span>
         </button>
       )}
-    </div>
-  );
-}
-
-// ── ResultModal ──
-
-interface ResultModalProps {
-  isOpen: boolean;
-  correctCount: number;
-  totalCount: number;
-  onRetry: () => void;
-  onClose: () => void;
-}
-
-function ResultModal({ isOpen, correctCount, totalCount, onRetry, onClose }: ResultModalProps) {
-  if (!isOpen) return null;
-  const percentage = Math.round((correctCount / totalCount) * 100);
-
-  const getResult = () => {
-    if (percentage === 100) return { emoji: "👑", message: "パーフェクト！すごい！", color: "text-yellow-500" };
-    if (percentage >= 80) return { emoji: "🌟", message: "とてもよくできました！", color: "text-emerald-500" };
-    if (percentage >= 60) return { emoji: "😊", message: "よくがんばりました！", color: "text-orange-500" };
-    if (percentage >= 40) return { emoji: "📚", message: "もうすこしがんばろう！", color: "text-pink-500" };
-    return { emoji: "💪", message: "またちょうせんしよう！", color: "text-rose-500" };
-  };
-
-  const result = getResult();
-  const starCount = Math.ceil(percentage / 20);
-  const stars = Array.from({ length: 5 }, (_, i) => i < starCount);
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={onClose} role="dialog" aria-label="ドリルのけっか">
-      <div className="bg-white rounded-3xl shadow-2xl p-6 max-w-md w-full animate-bounce-in" onClick={(e) => e.stopPropagation()}>
-        <div className="text-center mb-4">
-          <span className="text-6xl block animate-float">{result.emoji}</span>
-        </div>
-        <h2 className={`text-2xl font-bold text-center mb-4 ${result.color}`}>{result.message}</h2>
-
-        <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl p-6 mb-6">
-          <div className="text-center">
-            <p className="text-orange-600 font-bold mb-2">けっか</p>
-            <p className="text-5xl font-bold">
-              <span className="text-emerald-500">{correctCount}</span>
-              <span className="text-orange-400 text-3xl"> / </span>
-              <span className="text-orange-600">{totalCount}</span>
-            </p>
-            <p className="text-lg text-orange-500 mt-2">{percentage}% せいかい</p>
-          </div>
-          <div className="flex justify-center gap-2 mt-4">
-            {stars.map((filled, i) => (
-              <span key={i} className={`text-3xl ${filled ? "text-yellow-400 animate-sparkle" : "text-gray-200"}`} style={{ animationDelay: `${i * 0.1}s` }}>★</span>
-            ))}
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <button type="button" onClick={onRetry} aria-label="もういちどチャレンジ" className="w-full py-4 px-6 bg-gradient-to-r from-pink-500 to-pink-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-95 transition-all">
-            🔄 もういちどチャレンジ
-          </button>
-          <button type="button" onClick={onClose} aria-label="トップへもどる" className="w-full py-3 px-6 bg-gray-100 text-gray-600 text-lg font-bold rounded-2xl hover:bg-gray-200 transform hover:scale-[1.02] active:scale-95 transition-all">
-            🏠 トップへもどる
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
@@ -517,17 +398,7 @@ function MathDrillContent() {
   const [showSessionResult, setShowSessionResult] = useState(false);
   const [listQuestions, setListQuestions] = useState<MathQuestion[]>([]);
   const [selectedListIndex, setSelectedListIndex] = useState<number | null>(null);
-  const [hydrated, setHydrated] = useState(false);
-  const [dailyStats, setDailyStats] = useState<DailyStats>({ totalAttempted: 0, totalCorrect: 0 });
-
-  useEffect(() => {
-    setDailyStats(loadDailyStats());
-    setHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (hydrated) saveDailyStats(dailyStats);
-  }, [dailyStats, hydrated]);
+  const dailyStats = useSyncExternalStore(subscribeStats, getStatsSnapshot, getStatsServerSnapshot);
 
   const handleAnswer = (isCorrect: boolean) => {
     setSessionTotal((prev) => prev + 1);
@@ -553,10 +424,10 @@ function MathDrillContent() {
 
   const handleFinishQuiz = () => {
     if (sessionTotal > 0) {
-      setDailyStats((prev) => ({
-        totalAttempted: prev.totalAttempted + sessionTotal,
-        totalCorrect: prev.totalCorrect + sessionCorrectCount,
-      }));
+      saveDailyStats({
+        totalAttempted: dailyStats.totalAttempted + sessionTotal,
+        totalCorrect: dailyStats.totalCorrect + sessionCorrectCount,
+      });
       setShowSessionResult(true);
     } else {
       setPage("home");
@@ -602,7 +473,7 @@ function MathDrillContent() {
             <h3 className="text-lg font-bold text-orange-700 mb-4">きょうのきろく</h3>
             {dailyStats.totalAttempted > 0 ? (
               <>
-                <ProgressBar current={dailyStats.totalCorrect} total={dailyStats.totalAttempted} correctCount={dailyStats.totalCorrect} size="lg" />
+                <ProgressBar current={dailyStats.totalCorrect} total={dailyStats.totalAttempted} correctCount={dailyStats.totalCorrect} size="lg" theme={THEME} />
                 <div className="grid grid-cols-2 gap-2 mt-4 text-center">
                   <div className="bg-white/80 rounded-xl p-2">
                     <p className="text-2xl font-bold text-pink-600">{dailyStats.totalAttempted}</p>
@@ -672,6 +543,7 @@ function MathDrillContent() {
             totalCount={sessionTotal}
             onRetry={handleRetryFromResult}
             onClose={handleCloseResult}
+            theme={THEME}
           />
         </div>
       </div>

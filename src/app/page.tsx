@@ -1,104 +1,147 @@
 "use client";
 
-import Link from "next/link";
+// ══════════════════════════════════════════
+// トップページ（slot7 再設計）
+// 全教科グリッド → 教科tapで学年えらび → /select/[subject]/[grade] へ。
+// ロードマップ(/roadmap)への導線も用意。子どもが一人で迷わず使えるよう
+// 大きなタップ領域・高コントラスト・ひらがなナビ・教科カラー(theme)で構成。
+// 表示テキストは必ず <RubyText> 経由（データの {漢字|よみ} 記法をルビ表示）。
+// 共有API @/lib/curriculum-query（slot5実装）のシグネチャ前提で import。
+// ══════════════════════════════════════════
 
-const subjects = [
-  {
-    href: "/kokugo",
-    emoji: "📖",
-    title: "こくご",
-    subtitle: "かんじドリル",
-    description: "小1のかんじ80字をれんしゅう！",
-    gradient: "from-sky-400 to-indigo-500",
-    bgLight: "from-sky-50 to-indigo-50",
-    borderColor: "border-sky-200",
-    hoverBorder: "hover:border-sky-400",
-    textColor: "text-sky-700",
-  },
-  {
-    href: "/sansuu",
-    emoji: "🔢",
-    title: "さんすう",
-    subtitle: "たしざん＆ひきざん",
-    description: "小1のけいさんをランダムにれんしゅう！",
-    gradient: "from-orange-400 to-pink-500",
-    bgLight: "from-orange-50 to-pink-50",
-    borderColor: "border-orange-200",
-    hoverBorder: "hover:border-orange-400",
-    textColor: "text-orange-700",
-  },
-  {
-    href: "/clock",
-    emoji: "🕐",
-    title: "とけい",
-    subtitle: "とけいドリル",
-    description: "なんじなんぷん？じかんのけいさんをれんしゅう！",
-    gradient: "from-amber-400 to-yellow-400",
-    bgLight: "from-amber-50 to-yellow-50",
-    borderColor: "border-amber-200",
-    hoverBorder: "hover:border-amber-400",
-    textColor: "text-amber-700",
-  },
-];
+import { useState } from "react";
+import Link from "next/link";
+import type { Subject, Grade } from "@/types/curriculum";
+import { getSubjects, getGrades } from "@/lib/curriculum-query";
+import { getTheme } from "@/lib/theme";
+import { RubyText } from "@/components/drill/RubyText";
 
 export default function HomePage() {
+  const subjects = getSubjects();
+  // 選択中の教科。null のあいだは教科グリッド、選ぶと学年えらびを表示。
+  const [selected, setSelected] = useState<Subject | null>(null);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 flex flex-col items-center justify-center p-4">
-      <div className="max-w-lg w-full text-center">
-        <div className="mb-10">
-          <div className="text-6xl mb-4 animate-float">🎒</div>
-          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 mb-2">
-            小1ドリル
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 flex flex-col items-center p-4 sm:p-6">
+      <div className="max-w-3xl w-full">
+        {/* ── ヘッダー ── */}
+        <header className="text-center mt-6 mb-8">
+          <div className="text-6xl mb-3 animate-float">🎒</div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">
+            <RubyText text="まなびドリル" />
           </h1>
-          <p className="text-orange-400 text-lg">きょうかをえらんでね！</p>
+          <p className="text-orange-500 text-lg mt-2">
+            {selected ? (
+              <RubyText text="なんねんせい？" />
+            ) : (
+              <RubyText text="きょうかを えらんでね！" />
+            )}
+          </p>
+        </header>
+
+        {selected === null ? (
+          /* ── 教科グリッド ── */
+          <section aria-label="きょうか">
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {subjects.map((subject) => {
+                const theme = getTheme(subject.theme);
+                return (
+                  <li key={subject.id}>
+                    <button
+                      type="button"
+                      onClick={() => setSelected(subject)}
+                      className={`w-full min-h-36 rounded-3xl p-5 flex flex-col items-center justify-center gap-2 text-white shadow-lg ring-4 ring-white transition-transform hover:scale-105 active:scale-95 ${theme.primaryButton}`}
+                    >
+                      <span className="text-5xl" aria-hidden>
+                        {subject.emoji}
+                      </span>
+                      <span className="text-xl font-bold drop-shadow-sm">
+                        <RubyText text={subject.name} />
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ) : (
+          /* ── 学年えらび ── */
+          <GradePicker subject={selected} onBack={() => setSelected(null)} />
+        )}
+
+        {/* ── ロードマップ導線（常時表示） ── */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/roadmap"
+            className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 text-lg font-bold text-indigo-600 shadow-md ring-2 ring-indigo-200 transition-transform hover:scale-105 active:scale-95"
+          >
+            <span className="text-2xl" aria-hidden>
+              🗺️
+            </span>
+            <RubyText text="まなびの{地図|ちず}を みる" />
+          </Link>
         </div>
-
-        <div className="space-y-4">
-          {subjects.map((subject) => (
-            <Link
-              key={subject.href}
-              href={subject.href}
-              className={`block bg-white rounded-3xl shadow-lg border-3 ${subject.borderColor} ${subject.hoverBorder} hover:shadow-xl transform hover:scale-[1.02] active:scale-95 transition-all overflow-hidden`}
-            >
-              <div
-                className={`bg-gradient-to-r ${subject.gradient} px-6 py-3 flex items-center gap-3`}
-              >
-                <span className="text-4xl">{subject.emoji}</span>
-                <div className="text-left">
-                  <h2 className="text-2xl font-bold text-white">
-                    {subject.title}
-                  </h2>
-                  <p className="text-white/80 text-sm">{subject.subtitle}</p>
-                </div>
-                <span className="ml-auto text-white text-2xl">→</span>
-              </div>
-              <div className={`bg-gradient-to-br ${subject.bgLight} px-6 py-4`}>
-                <p className={`${subject.textColor} font-bold`}>
-                  {subject.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <Link
-          href="/print"
-          className="mt-8 block bg-white/60 rounded-2xl p-5 hover:bg-white/80 transform hover:scale-[1.02] active:scale-95 transition-all"
-        >
-          <div className="flex items-center justify-center gap-3">
-            <span className="text-3xl">🖨️</span>
-            <div className="text-left">
-              <h2 className="text-lg font-bold text-orange-500">プリント</h2>
-              <p className="text-orange-400 text-sm">いんさつしてかみでれんしゅう！</p>
-            </div>
-            <span className="ml-auto text-orange-400 text-xl">→</span>
-          </div>
-        </Link>
-
-        <p className="mt-8 text-orange-300 text-sm">
-          がんばってれんしゅうしよう！ 💪
-        </p>
       </div>
     </div>
+  );
+}
+
+// ── 学年えらび（選んだ教科の開講学年だけ出す）──
+function GradePicker({
+  subject,
+  onBack,
+}: {
+  subject: Subject;
+  onBack: () => void;
+}) {
+  const theme = getTheme(subject.theme);
+  const grades: Grade[] = getGrades(subject.id);
+
+  return (
+    <section aria-label="がくねん">
+      {/* 選択中の教科の見出し */}
+      <div
+        className={`mb-6 rounded-3xl p-5 flex items-center justify-center gap-3 text-white shadow-md ${theme.primaryButton}`}
+      >
+        <span className="text-4xl" aria-hidden>
+          {subject.emoji}
+        </span>
+        <span className="text-2xl font-bold">
+          <RubyText text={subject.name} />
+        </span>
+      </div>
+
+      <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {grades.map((grade) => (
+          <li key={grade}>
+            <Link
+              href={`/select/${subject.id}/${grade}`}
+              className={`w-full min-h-28 rounded-3xl p-4 flex flex-col items-center justify-center gap-1 bg-white shadow-md ring-2 ring-white transition-transform hover:scale-105 active:scale-95 ${theme.softGradient}`}
+            >
+              <span className={`text-4xl font-extrabold ${theme.strongText}`}>
+                {grade}
+              </span>
+              <span className={`text-base font-bold ${theme.accentText}`}>
+                <RubyText text="ねんせい" />
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      {/* もどる導線 */}
+      <div className="mt-8 flex justify-center">
+        <button
+          type="button"
+          onClick={onBack}
+          className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-lg font-bold text-gray-600 shadow-md ring-2 ring-gray-200 transition-transform hover:scale-105 active:scale-95"
+        >
+          <span className="text-xl" aria-hidden>
+            ←
+          </span>
+          <RubyText text="きょうかえらびに もどる" />
+        </button>
+      </div>
+    </section>
   );
 }

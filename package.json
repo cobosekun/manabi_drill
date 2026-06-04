@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "validate": "tsx scripts/validate-curriculum.ts",
+    "check": "tsc --noEmit && npm run lint && npm run validate"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -21,6 +23,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
+    "tsx": "^4.22.4",
     "typescript": "^5"
   }
 }
