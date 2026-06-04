@@ -2194,7 +2194,7 @@ export const kokugoG1Contents: Record<string, UnitContent> = {
         {
           heading: "ひらがなって なに？",
           body: "ひらがなは、ことばを かく ときに つかう {文字|もじ}だよ。「あ・い・う・え・お」から はじまって、ぜんぶで 46こ あるんだ。この 46こを おぼえると、すきな ことばが かけるように なるよ。",
-          visual: { kind: "emoji", value: "あ い う え お", caption: "ぜんぶで 46こ" },
+          visual: { kind: "anim", name: "count-up", params: { to: 46 }, caption: "ぜんぶで 46こ" },
         },
         {
           heading: "ひとつの じに ひとつの おと",

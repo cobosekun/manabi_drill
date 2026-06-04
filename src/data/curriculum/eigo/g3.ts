@@ -1432,7 +1432,7 @@ export const eigoG3Contents: Record<string, UnitContent> = {
         {
           heading: "{順番|じゅんばん}を {覚|おぼ}えよう",
           body: "A・B・C・D・E… と {順番|じゅんばん}が きまっているよ。だから B の {次|つぎ}は C、Y の {次|つぎ}は Z だね。「ABCの {歌|うた}」に のせて {歌|うた}うと、{順番|じゅんばん}が するする {覚|おぼ}えられるよ。{最初|さいしょ}は A B C、{最後|さいご}は X Y Z だよ。",
-          visual: { kind: "emoji", value: "🎵🔡", caption: "ABCの{歌|うた}（A→Z）" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["A", "B", "C", "D", "E"] }, caption: "ABCの{歌|うた}（A→Z）" },
         },
         {
           heading: "{大文字|おおもじ}と {小文字|こもじ}",
