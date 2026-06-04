@@ -348,12 +348,12 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
         {
           heading: "{数|かず}を {数|かぞ}えてみよう",
           body: "{物|もの}を {一|ひと}つずつ {指|ゆび}で {触|さわ}りながら「1、2、3…」と {声|こえ}に {出|だ}して {数|かぞ}えてみよう。{最後|さいご}に {言|い}った {数|かず}が、ぜんぶの {数|かず}だよ。りんごを {数|かぞ}えて さいごが「3」だったら、りんごは 3こ あるってこと。{急|いそ}がず ひとつずつ {指|さ}すのが こつだよ。",
-          visual: { kind: "emoji", value: "🍎🍎🍎", caption: "1、2、3…りんごは 3こ" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "🍎" }, caption: "1、2、3…りんごは 3こ" },
         },
         {
           heading: "1から10まで {順番|じゅんばん}に",
           body: "{数|かず}には {順番|じゅんばん}が あるよ。1、2、3、4、5、6、7、8、9、10。ブロックを {左|ひだり}から {一|ひと}つずつ {並|なら}べていくと、{数|かず}が {増|ふ}えていくのが {目|め}で {見|み}えるね。{指|ゆび}で {押|お}さえながら、{逆|ぎゃく}に 10、9、8…と もどる {数|かぞ}えかたも やってみよう。",
-          visual: { kind: "svg", name: "number-blocks", params: { count: 10 }, caption: "1から10まで ならべたブロック" },
+          visual: { kind: "anim", name: "count-up", params: { to: 10 }, caption: "1から10まで ならべたブロック" },
         },
         {
           heading: "なにも ないと「0（ゼロ）」",
@@ -382,17 +382,17 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
         {
           heading: "{足|た}し{算|ざん}って なに？",
           body: "{二|ふた}つの {数|かず}を「{合|あ}わせて ひとつにする」ことを {足|た}し{算|ざん}と {言|い}うよ。{合|あ}わせるときは「＋（プラス）」、{答|こた}えの {前|まえ}には「＝（イコール）」を {書|か}くよ。いちごが 2こ あって、もう 1こ もらったら、{合|あ}わせて 3こ。これを「2 ＋ 1 ＝ 3」と {書|か}くんだ。",
-          visual: { kind: "emoji", value: "🍓🍓 ＋ 🍓 ＝ 🍓🍓🍓", caption: "2 ＋ 1 ＝ 3" },
+          visual: { kind: "anim", name: "blocks-add", params: { left: 2, right: 1 }, caption: "2 ＋ 1 ＝ 3" },
         },
         {
           heading: "ブロックで {合|あ}わせよう",
           body: "{左|ひだり}に 3こ、{右|みぎ}に 2この ブロックを {置|お}いて、{両方|りょうほう}を {寄|よ}せてみよう。{一|ひと}つに まとめてから {数|かぞ}えなおすと 5こ。{物|もの}を {寄|よ}せて {数|かぞ}えると、{足|た}し{算|ざん}の {答|こた}えが わかるよ。「3 ＋ 2 ＝ 5」だね。",
-          visual: { kind: "svg", name: "number-blocks", params: { left: 3, right: 2 }, caption: "3 ＋ 2 ＝ 5" },
+          visual: { kind: "anim", name: "blocks-add", params: { left: 3, right: 2 }, caption: "3 ＋ 2 ＝ 5" },
         },
         {
           heading: "{後|あと}から {数|かぞ}えると {速|はや}い",
           body: "{大|おお}きいほうの {数|かず}から {続|つづ}けて {数|かぞ}えると {速|はや}いよ。「4 ＋ 3」なら、4を {覚|おぼ}えておいて「5、6、7」と 3つ {進|すす}めば {答|こた}えは 7。ぜんぶ 1から {数|かぞ}えなおさなくても いいんだ。{指|ゆび}を 3{本|ぼん} {立|た}てて {進|すす}むと {数|かぞ}えやすいよ。",
-          visual: { kind: "emoji", value: "4 →5 →6 →7", caption: "4から 3つ すすんで 7" },
+          visual: { kind: "anim", name: "count-up", params: { from: 4, to: 7 }, caption: "4から 3つ すすんで 7" },
         },
         {
           heading: "{順番|じゅんばん}を かえても {同|おな}じ",
@@ -416,12 +416,12 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
         {
           heading: "{引|ひ}き{算|ざん}って なに？",
           body: "ある {数|かず}から「{取|と}って {減|へ}らす」ことを {引|ひ}き{算|ざん}と {言|い}うよ。{減|へ}らすときは「−（マイナス）」を {使|つか}うよ。クッキーが 5こ あって 2こ {食|た}べたら、{残|のこ}りは 3こ。これを「5 − 2 ＝ 3」と {書|か}くんだ。",
-          visual: { kind: "emoji", value: "🍪🍪🍪🍪🍪 − 🍪🍪 ＝ 🍪🍪🍪", caption: "5 − 2 ＝ 3" },
+          visual: { kind: "anim", name: "blocks-remove", params: { total: 5, remove: 2 }, caption: "5 − 2 ＝ 3" },
         },
         {
           heading: "ブロックで {減|へ}らそう",
           body: "7この ブロックを {並|なら}べて、そこから 3こ {手|て}で {取|と}りのけてみよう。{残|のこ}ったブロックを {数|かぞ}えると 4こ。{取|と}ったあとに {残|のこ}っている {数|かず}が {引|ひ}き{算|ざん}の {答|こた}えだよ。「7 − 3 ＝ 4」だね。",
-          visual: { kind: "svg", name: "number-blocks", params: { total: 7, remove: 3 }, caption: "7 − 3 ＝ 4" },
+          visual: { kind: "anim", name: "blocks-remove", params: { total: 7, remove: 3 }, caption: "7 − 3 ＝ 4" },
         },
         {
           heading: "ちがいを {比|くら}べる {引|ひ}き{算|ざん}",
@@ -489,17 +489,17 @@ export const sansuuG1Contents: Record<string, UnitContent> = {
         {
           heading: "{短|みじか}い{針|はり}で「{何|なん}{時|じ}」を {読|よ}む",
           body: "まず {短|みじか}い{針|はり}が さしている {数字|すうじ}を {見|み}よう。{長|なが}い{針|はり}が 12を さしているとき、{短|みじか}い{針|はり}の {数字|すうじ}が そのまま「◯{時|じ} ちょうど」だよ。{短|みじか}い{針|はり}が 3、{長|なが}い{針|はり}が 12なら「3{時|じ}」だね。",
-          visual: { kind: "svg", name: "clock", params: { hour: 3, minute: 0 }, caption: "3{時|じ} ちょうど" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 3, minute: 0 }, caption: "3{時|じ} ちょうど" },
         },
         {
           heading: "{長|なが}い{針|はり}が 6なら「30{分|ぷん}」",
           body: "{長|なが}い{針|はり}が ちょうど 6を さすと「30{分|ぷん}（はん）」だよ。このとき {短|みじか}い{針|はり}は {数字|すうじ}と {数字|すうじ}の あいだに きているね。{短|みじか}い{針|はり}が 8の すこし {先|さき}、{長|なが}い{針|はり}が 6なら「8{時|じ}30{分|ぷん}」と {読|よ}むよ。",
-          visual: { kind: "svg", name: "clock", params: { hour: 8, minute: 30 }, caption: "8{時|じ}30{分|ぷん}（はん）" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 8, minute: 30 }, caption: "8{時|じ}30{分|ぷん}（はん）" },
         },
         {
           heading: "{長|なが}い{針|はり}が 3なら「15{分|ふん}」",
           body: "{長|なが}い{針|はり}は {右|みぎ}まわりに {進|すす}むよ。1めもりで 5{分|ふん}、3を さすと 5、10、15で「15{分|ふん}」だね。12に もどると つぎの {時間|じかん}に なるんだ。{短|みじか}い{針|はり}が 6の すこし {先|さき}、{長|なが}い{針|はり}が 3なら「6{時|じ}15{分|ふん}」だよ。",
-          visual: { kind: "svg", name: "clock", params: { hour: 6, minute: 15 }, caption: "6{時|じ}15{分|ふん}" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 6, minute: 15 }, caption: "6{時|じ}15{分|ふん}" },
         },
       ],
     },

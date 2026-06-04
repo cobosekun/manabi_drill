@@ -364,7 +364,7 @@ export const sansuuG2Contents: Record<string, UnitContent> = {
         {
           heading: "{一|いち}の{位|くらい}から {足|た}す",
           body: "{足|た}し{算|ざん}は いつも {右|みぎ}の {一|いち}の{位|くらい}から。32＋25なら、まず 2＋5＝7（{一|いち}の{位|くらい}）、{次|つぎ}に 3＋2＝5（{十|じゅう}の{位|くらい}）。{答|こた}えは 57だよ。あめ 32こと 25こを {合|あ}わせる かんじだね。",
-          visual: { kind: "svg", name: "number-blocks", params: { left: 32, right: 25 }, caption: "32と25を{合|あ}わせて57" },
+          visual: { kind: "anim", name: "blocks-add", params: { left: 32, right: 25 }, caption: "32と25を{合|あ}わせて57" },
         },
         {
           heading: "{繰|く}り{上|あ}がりの しくみ",
@@ -420,7 +420,7 @@ export const sansuuG2Contents: Record<string, UnitContent> = {
         {
           heading: "{一|いち}の{位|くらい}から {引|ひ}く",
           body: "{引|ひ}き{算|ざん}も {右|みぎ}の {一|いち}の{位|くらい}から。57−24なら、{一|いち}の{位|くらい} 7−4＝3、{次|つぎ}に {十|じゅう}の{位|くらい} 5−2＝3。{答|こた}えは 33だよ。あめ 57こから 24こ {取|と}りのける かんじだね。",
-          visual: { kind: "svg", name: "number-blocks", params: { total: 57, remove: 24 }, caption: "57から24を{取|と}ると33" },
+          visual: { kind: "anim", name: "blocks-remove", params: { total: 57, remove: 24 }, caption: "57から24を{取|と}ると33" },
         },
         {
           heading: "{繰|く}り{下|さ}がりの しくみ",
@@ -1317,7 +1317,7 @@ export const sansuuG2Contents: Record<string, UnitContent> = {
         {
           heading: "1{時間|じかん}＝60{分|ぷん}",
           body: "{長|なが}い{針|はり}が ぐるっと 1{周|しゅう}すると 60{分|ぷん}。これが 1{時間|じかん}だよ。だから 9{時|じ}から10{時|じ}までは 1{時間|じかん}、1{時間|じかん}30{分|ぷん}は 90{分|ぷん}だね。30{分|ぷん}は 1{時間|じかん}の ちょうど {半分|はんぶん}だよ。",
-          visual: { kind: "svg", name: "clock", params: { hour: 10, minute: 0 }, caption: "9{時|じ}→10{時|じ}で1{時間|じかん}（60{分|ぷん}）" },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 10, minute: 0, fromHour: 9, fromMinute: 0 }, caption: "9{時|じ}→10{時|じ}で1{時間|じかん}（60{分|ぷん}）" },
         },
         {
           heading: "{午前|ごぜん}と {午後|ごご}",
