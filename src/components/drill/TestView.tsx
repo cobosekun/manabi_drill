@@ -16,7 +16,7 @@ import { getSubject, getUnit, getUnitContent } from "@/lib/curriculum-query";
 import { getGenerator } from "@/lib/generators";
 import { getTheme } from "@/lib/theme";
 import { loadJSON, saveJSON } from "@/lib/storage";
-import { RubyText } from "@/components/drill/RubyText";
+import { RubyText, rubyToPlainText } from "@/components/drill/RubyText";
 import { ChoiceButton } from "@/components/drill/ChoiceButton";
 import { ProgressBar } from "@/components/drill/ProgressBar";
 import { BackLink } from "@/components/drill/BackLink";
@@ -489,7 +489,7 @@ function OrderingAnswer({
             type="button"
             onClick={() => tap(i)}
             disabled={answered || used.has(i)}
-            aria-label={item}
+            aria-label={rubyToPlainText(item)}
             className={`px-4 py-3 rounded-xl font-bold border-2 active:scale-95 transition-all ${
               used.has(i) ? "bg-gray-100 text-gray-300 border-gray-200" : `${theme.choiceDefault}`
             }`}
@@ -565,7 +565,7 @@ function MatchingAnswer({
                 type="button"
                 onClick={() => choose(li, ri)}
                 disabled={answered}
-                aria-label={rightItem}
+                aria-label={rubyToPlainText(rightItem)}
                 className={`px-3 py-2 rounded-lg text-sm font-bold border-2 active:scale-95 transition-all ${
                   pairs[li] === ri ? theme.choiceSelected : theme.choiceDefault
                 }`}

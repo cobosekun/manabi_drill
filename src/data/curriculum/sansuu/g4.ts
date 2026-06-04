@@ -1117,7 +1117,7 @@ const fractionQuestions: ChoiceQuestion[] = [
     prompt: "4/7 − 2/7 ＝ ？",
     explanation: "{分母|ぶんぼ}が おなじなので {分子|ぶんし}だけ ひくよ。4 − 2 ＝ 2 で 2/7 だよ。",
     format: "choice",
-    choices: ["2/7", "2/0", "6/7", "2/14"],
+    choices: ["2/7", "2/5", "6/7", "2/14"],
     answer: "2/7",
   },
   {
@@ -1171,7 +1171,7 @@ const fractionQuestions: ChoiceQuestion[] = [
     prompt: "6/7 − 3/7 ＝ ？",
     explanation: "{分母|ぶんぼ}が おなじなので {分子|ぶんし}だけ ひくよ。6 − 3 ＝ 3 で 3/7 だよ。",
     format: "choice",
-    choices: ["3/7", "9/7", "3/14", "3/0"],
+    choices: ["3/7", "9/7", "3/14", "3/5"],
     answer: "3/7",
   },
   {
@@ -1198,7 +1198,7 @@ const fractionQuestions: ChoiceQuestion[] = [
     prompt: "2/3 ＋ 2/3 ＝ ？",
     explanation: "{分子|ぶんし}だけ たすよ。2 ＋ 2 ＝ 4 で 4/3（{仮分数|かぶんすう}）だよ。",
     format: "choice",
-    choices: ["4/3", "4/6", "2/3", "4/0"],
+    choices: ["4/3", "4/6", "2/3", "4/9"],
     answer: "4/3",
   },
   {
@@ -1243,7 +1243,7 @@ const fractionQuestions: ChoiceQuestion[] = [
     prompt: "4/6 ＋ 1/6 ＝ ？",
     explanation: "{分子|ぶんし}だけ たすよ。4 ＋ 1 ＝ 5 で 5/6 だよ。",
     format: "choice",
-    choices: ["5/6", "5/12", "3/6", "5/0"],
+    choices: ["5/6", "5/12", "3/6", "5/9"],
     answer: "5/6",
   },
   {
@@ -1279,7 +1279,7 @@ const fractionQuestions: ChoiceQuestion[] = [
     prompt: "7/8 − 5/8 ＝ ？",
     explanation: "{分子|ぶんし}だけ ひくよ。7 − 5 ＝ 2 で 2/8 だよ。",
     format: "choice",
-    choices: ["2/8", "12/8", "2/16", "2/0"],
+    choices: ["2/8", "12/8", "2/16", "2/5"],
     answer: "2/8",
   },
 ];

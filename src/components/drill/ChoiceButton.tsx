@@ -38,7 +38,9 @@ export function ChoiceButton({
   // 選択肢が文字列のときはルビ記法を解釈する（{漢字|よみ}）。
   // ノード（数式 JSX 等）はそのまま描画して既存の見た目を壊さない。
   const isString = typeof children === "string";
-  const label = isString ? rubyToPlainText(children) : String(children);
+  // 文字列はルビを除いた読み上げ用テキスト。非文字列(数式JSX等)は String() で
+  // "[object Object]" になるのを避け、aria-label を付けない(子の内容を読み上げに委ねる)。
+  const label = isString ? rubyToPlainText(children) : undefined;
 
   return (
     <button

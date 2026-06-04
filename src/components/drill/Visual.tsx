@@ -137,7 +137,9 @@ function useEntered(reduced: boolean): boolean {
     const id = setTimeout(() => setEntered(true), 40);
     return () => clearTimeout(id);
   }, [reduced]);
-  return entered;
+  // reduced は hydration 後に false→true へ更新され得るが useState 初期値は追従しない。
+  // 描画段で reduced を直接反映し、reduced ユーザーには必ず最終状態を見せる。
+  return reduced || entered;
 }
 
 /** anim 判別共用体を name で出し分ける（網羅性は never でチェック）。 */
@@ -180,11 +182,13 @@ function CountUp({ to, from = 0, emoji }: AnimParamsMap["count-up"]) {
     return () => cancelAnimationFrame(raf);
   }, [to, from, reduced]);
 
+  // reduced は hydration 後に true へ更新され得るため描画段で最終値 to を直接反映。
+  const shown = reduced ? to : n;
   // emoji 指定時は数に合わせて並べる（多すぎは折り返し・上限20で安全に）
-  const emojiCount = emoji ? Math.min(n, 20) : 0;
+  const emojiCount = emoji ? Math.min(shown, 20) : 0;
   return (
     <div className="flex flex-col items-center gap-1">
-      <div className="text-6xl font-extrabold text-sky-600 tabular-nums leading-none">{n}</div>
+      <div className="text-6xl font-extrabold text-sky-600 tabular-nums leading-none">{shown}</div>
       {emoji && (
         <div className="flex flex-wrap justify-center gap-0.5 text-2xl max-w-[16rem]" aria-hidden>
           {Array.from({ length: emojiCount }, (_, i) => (
@@ -267,7 +271,9 @@ function ClockTick({
     return () => cancelAnimationFrame(raf);
   }, [startTotal, endTotal, reduced]);
 
-  return <ClockSvg hour={Math.floor(cur / 60) % 12} minute={cur % 60} size={size} />;
+  // reduced は hydration 後に true へ更新され得るため描画段で最終時刻を直接反映。
+  const shown = reduced ? endTotal : cur;
+  return <ClockSvg hour={Math.floor(shown / 60) % 12} minute={shown % 60} size={size} />;
 }
 
 // ── grow: 段階絵文字を大きくしながら順に見せる（育つ） ──
@@ -283,15 +289,17 @@ function Grow({ stages }: AnimParamsMap["grow"]) {
     return () => clearTimeout(t);
   }, [idx, list.length, reduced]);
 
+  // reduced は hydration 後に true へ更新され得るため描画段で最終段階を直接反映。
+  const shownIdx = reduced ? list.length - 1 : idx;
   // 段階が進むほど大きく（font-size を transition でなめらかに）
-  const sizeRem = 2.5 + idx * 1.4;
+  const sizeRem = 2.5 + shownIdx * 1.4;
   return (
     <span
       className="transition-all duration-500 ease-out leading-none"
       style={{ fontSize: `${sizeRem}rem` }}
       aria-hidden
     >
-      {list[idx]}
+      {list[shownIdx]}
     </span>
   );
 }

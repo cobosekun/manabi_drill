@@ -3377,7 +3377,7 @@ export const kokugoG4Contents: Record<string, UnitContent> = {
         {
           heading: "4{年生|ねんせい}は 202{字|じ}",
           body: "4{年生|ねんせい}では あたらしく 202{字|じ}の かんじを ならうよ。「愛・健康・観察・成功」のように、すこし むずかしい {言葉|ことば}も かんじで かけるように なるんだ。まいにち 2〜3{字|じ}ずつ おぼえれば、1{年|ねん}で ぜんぶ おぼえられるよ。",
-          visual: { kind: "emoji", value: "📖✏️", caption: "202{字|じ}に ちょうせん" },
+          visual: { kind: "anim", name: "count-up", params: { to: 202 }, caption: "202{字|じ}に ちょうせん" },
         },
         {
           heading: "{音|おん}よみと {訓|くん}よみ",

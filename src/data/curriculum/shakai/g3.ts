@@ -1412,7 +1412,7 @@ export const shakaiG3Contents: Record<string, UnitContent> = {
         {
           heading: "{農家|のうか}の しごと",
           body: "{農家|のうか}の {人|ひと}は、やさい・くだもの・{米|こめ}を そだてて いるよ。{米|こめ}づくりは はるに なえを うえる「{田|た}うえ」、あきに かりとる「{稲|いね}かり」と、きせつで しごとが かわるんだ。{広|ひろ}い {畑|はたけ}は トラクターで たがやし、さむい きせつは あたたかい ビニールハウスで そだてる くふうも あるよ。",
-          visual: { kind: "emoji", value: "🚜🌾", caption: "きせつで そだてる" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌱", "🌿", "🌾"] }, caption: "きせつで そだてる" },
         },
         {
           heading: "{工場|こうじょう}の しごと",
@@ -1485,7 +1485,7 @@ export const shakaiG3Contents: Record<string, UnitContent> = {
         {
           heading: "{今|いま}の {道具|どうぐ}と くらべよう",
           body: "{今|いま}は {電気|でんき}や すいどうの おかげで、ボタンを おす だけで べんりに できるよ。かまど→すいはんき、{井戸|いど}→じゃぐち、せんたく{板|いた}→せんたくき、と かわったんだ。むかしの 「{火|ひ}を たく」を きかいが かわりに して くれるので、らくに はやく できるね。",
-          visual: { kind: "emoji", value: "🍚🚿🧺", caption: "{昔|むかし}→{今|いま}" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🔥", "🍚"] }, caption: "{昔|むかし}→{今|いま}" },
         },
         {
           heading: "なぜ べんりに なった？",

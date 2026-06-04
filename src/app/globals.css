@@ -44,6 +44,21 @@ body {
 .animate-sparkle { animation: sparkle 1.5s ease-in-out infinite; }
 .animate-float { animation: float 3s ease-in-out infinite; }
 
+/* prefers-reduced-motion 尊重: 動きに敏感な利用者には演出アニメ(祝賀/揺れ/きらめき/浮遊)を止める。 */
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce-in,
+  .animate-shake,
+  .animate-sparkle,
+  .animate-float {
+    animation: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
 /* ── Print ── */
 .print-only { display: none; }
 
