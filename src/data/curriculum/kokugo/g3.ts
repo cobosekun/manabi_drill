@@ -3334,7 +3334,7 @@ export const kokugoG3Contents: Record<string, UnitContent> = {
         {
           heading: "かきじゅんを たいせつに",
           body: "かんじには かく じゅんばん（かきじゅん）が あるよ。うえから した、ひだりから みぎ が きほん。{正|ただ}しい じゅんで かくと、きれいで おぼえやすい {字|じ}に なるんだ。",
-          visual: { kind: "emoji", value: "✏️ ① → ② → ③", caption: "うえから・ひだりから かく" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["1かくめ", "2かくめ", "3かくめ"] }, caption: "うえから・ひだりから かく" },
         },
       ],
     },
@@ -3465,7 +3465,7 @@ export const kokugoG3Contents: Record<string, UnitContent> = {
         {
           heading: "はじめ・なか・おわり",
           body: "せつめい{文|ぶん}は おおきく「はじめ」「なか」「おわり」に わけられるよ。「はじめ」は わだい、「なか」は くわしい せつめい、「おわり」は まとめ が くる ことが おおい。",
-          visual: { kind: "emoji", value: "🟢 はじめ → 🟡 なか → 🔴 おわり", caption: "3つの まとまり" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["はじめ", "なか", "おわり"] }, caption: "3つの まとまり" },
         },
         {
           heading: "わけると よみやすい",

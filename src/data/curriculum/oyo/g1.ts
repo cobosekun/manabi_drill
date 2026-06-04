@@ -634,13 +634,13 @@ export const oyoG1Contents: Record<string, UnitContent> = {
           // ② 図・操作で体感
           heading: "ブロックを ならべよう",
           body: "〇△〇△〇△… と ブロックを ならべて みよう。つぎに くるのは なにかな？ ゆびで さして いってみよう。",
-          visual: { kind: "emoji", value: "⚪🔺⚪🔺", caption: "つぎは なに？" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["⚪", "⚪🔺", "⚪🔺⚪", "⚪🔺⚪🔺"] }, caption: "つぎは なに？" },
         },
         {
           // ③ きまり発見
           heading: "「ふえる」きまり",
           body: "1, 2, 3, 4 … は 1ずつ ふえる ならび。2, 4, 6, 8 … は 2ずつ ふえるよ。きまりが わかれば つぎが よめるね。",
-          visual: { kind: "emoji", value: "➕1➕1", caption: "1ずつ ふえる" },
+          visual: { kind: "anim", name: "count-up", params: { from: 1, to: 4 }, caption: "1ずつ ふえる" },
         },
         {
           // ④ やってみる
@@ -844,7 +844,7 @@ export const oyoG1Contents: Record<string, UnitContent> = {
           // ① 身近な具体
           heading: "あさの じゅんばん",
           body: "あさ おきたら「{顔|かお}を あらう→ごはんを{食|た}べる→{歯|は}を みがく」と じゅんばんが あるね。やる ことには「てじゅん」が あるよ。",
-          visual: { kind: "emoji", value: "🧼🍙🪥", caption: "じゅんばんが ある" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🧼", "🧼🍙", "🧼🍙🪥"] }, caption: "じゅんばんが ある" },
         },
         {
           // ② 図・操作で体感

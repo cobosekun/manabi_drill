@@ -1409,7 +1409,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         {
           heading: "よく {使|つか}う {過|す}ぎた {形|かたち}",
           body: "「went（{行|い}った）」「ate（{食|た}べた）」「saw（{見|み}た）」「enjoyed（{楽|たの}しんだ）」を {覚|おぼ}えよう。",
-          visual: { kind: "emoji", value: "🍦🎬🏞️", caption: "went / ate / saw" },
+          visual: { kind: "anim", name: "count-up", params: { to: 4, emoji: "📝" }, caption: "よく {使|つか}う {過|す}ぎた {形|かたち}は 4つ" },
         },
         {
           heading: "was で {気持|きも}ちを いおう",
@@ -1433,7 +1433,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         {
           heading: "{夏休|なつやす}みの {話|はなし}",
           body: "「My summer vacation（{私|わたし}の {夏休|なつやす}み）」を テーマに、したことを {発表|はっぴょう}するよ。",
-          visual: { kind: "emoji", value: "🏖️", caption: "summer vacation" },
+          visual: { kind: "anim", name: "count-up", params: { to: 5, emoji: "📸" }, caption: "{思|おも}い{出|で}が ふえる" },
         },
         {
           heading: "どこへ {行|い}った？ {何|なに}を した？",
@@ -1467,12 +1467,12 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         {
           heading: "ひんどの {言葉|ことば}",
           body: "always（いつも）・usually（たいてい）・sometimes（ときどき）を {覚|おぼ}えよう。",
-          visual: { kind: "emoji", value: "🔁🕐", caption: "always / usually / sometimes" },
+          visual: { kind: "anim", name: "count-up", params: { to: 3, emoji: "📊" }, caption: "ひんどの {言葉|ことば}は 3つ" },
         },
         {
           heading: "{一日|いちにち}と {合|あ}わせて",
           body: "「I always get up at six.（いつも 6{時|じ}に {起|お}きる）」のように、{生活|せいかつ}と {合|あ}わせて {言|い}えるよ。",
-          visual: { kind: "emoji", value: "⏰🌅", caption: "I always get up at six." },
+          visual: { kind: "anim", name: "clock-tick", params: { hour: 6, minute: 0, fromHour: 5, fromMinute: 30 }, caption: "I always get up at six." },
         },
       ],
     },
@@ -1491,7 +1491,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         {
           heading: "{世界|せかい}の {国|くに}",
           body: "Australia（オーストラリア）・Italy（イタリア）・America（アメリカ）など、{国|くに}の {名前|なまえ}を {知|し}ろう。",
-          visual: { kind: "emoji", value: "🌍", caption: "world countries" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🏠", "🗾", "🌏"] }, caption: "{世界|せかい}へ ひろがる" },
         },
         {
           heading: "その {国|くに}の {文化|ぶんか}",
@@ -1520,7 +1520,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         {
           heading: "I want to be 〜.",
           body: "「I want to be a 〜.（〜に なりたい）」で {将来|しょうらい}の {夢|ゆめ}を {言|い}えるよ。",
-          visual: { kind: "emoji", value: "🌟", caption: "I want to be …" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🌱", "🎓", "🌟"] }, caption: "{夢|ゆめ}が {育|そだ}つ" },
         },
         {
           heading: "{仕事|しごと}の {言葉|ことば}",
@@ -1549,7 +1549,7 @@ export const eigoG6Contents: Record<string, UnitContent> = {
         {
           heading: "{中学校|ちゅうがっこう}へ",
           body: "「junior high school（{中学校|ちゅうがっこう}）」で したいことを {英語|えいご}で {言|い}えるように なろう。",
-          visual: { kind: "emoji", value: "🏫", caption: "junior high school" },
+          visual: { kind: "anim", name: "grow", params: { stages: ["🎒", "🏫", "🎓"] }, caption: "{大|おお}きく なって {中学校|ちゅうがっこう}へ" },
         },
         {
           heading: "{入|はい}りたい {部活|ぶかつ}",
