@@ -93,10 +93,38 @@ export type SvgVisual = {
   [K in SvgName]: { kind: "svg"; name: K; params: SvgParamsMap[K]; caption?: string };
 }[SvgName];
 
+// ── アニメ（概念理解を助ける軽量 CSS/状態アニメ） ───────────────
+// svg と同じく「name 別に params を型で縛る」判別共用体。静止の svg とは
+// kind を分けて後方互換（既存 svg/emoji/image/none は一切変わらない）。
+// prefers-reduced-motion 時は Visual.tsx 側で最終状態を静止表示する。
+// 新しいアニメを足すときは AnimParamsMap に1行追加するだけ（量産で効く）。
+
+/** anim名 → params型 の対応表。 */
+export interface AnimParamsMap {
+  /** 数が from(既定0)→to へ数えあがる。emoji 指定でその絵も to 個まで増える */
+  "count-up": { to: number; from?: number; emoji?: string };
+  /** 左右のブロックが合流＝たしざん（left ＋ right → 合計が ふわっと出る） */
+  "blocks-add": { left: number; right: number };
+  /** 全体から remove 個が消える＝ひきざん（total − remove → のこりが出る） */
+  "blocks-remove": { total: number; remove: number };
+  /** 針が from→to へ動く時計（from 省略時は 12時ちょうどから） */
+  "clock-tick": { hour: number; minute: number; fromHour?: number; fromMinute?: number };
+  /** だんだん育つ（種→芽→…）。stages 省略時は植物の既定段階を大きくしながら見せる */
+  grow: { stages?: string[] };
+}
+
+export type AnimName = keyof AnimParamsMap;
+
+/** name と params を型レベルで一致させた anim ビジュアル */
+export type AnimVisual = {
+  [K in AnimName]: { kind: "anim"; name: K; params: AnimParamsMap[K]; caption?: string };
+}[AnimName];
+
 export type VisualSpec =
   | { kind: "none" }
   | { kind: "emoji"; value: string; caption?: string }
   | SvgVisual
+  | AnimVisual
   | { kind: "image"; src: string; alt: string };
 
 export interface LearnStep {
