@@ -4,8 +4,8 @@ import { RubyText } from "@/components/drill/RubyText";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "小1ドリル — こくご＆さんすう",
-  description: "小学1年生の漢字・たしざん・ひきざんを楽しく練習するドリルアプリ",
+  title: "まなびドリル — 小学生のがくしゅうドリル",
+  description: "小学1〜6年生の さんすう・こくご・えいご・りか・しゃかい などを楽しく練習できる学習ドリルアプリ",
 };
 
 export default function RootLayout({
