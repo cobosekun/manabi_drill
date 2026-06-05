@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { BotIdClient } from "botid/client";
-import { RubyText } from "@/components/drill/RubyText";
 import "./globals.css";
 
 // BotID で保護するエンドポイント（フィードバック投稿の bot 対策）。
@@ -9,9 +7,13 @@ const protectedRoutes = [{ path: "/api/feedback", method: "POST" }];
 
 export const metadata: Metadata = {
   title: "まなびドリル — 小学生のがくしゅうドリル",
-  description: "小学1〜6年生の さんすう・こくご・えいご・りか・しゃかい などを楽しく練習できる学習ドリルアプリ",
+  description:
+    "小学1〜6年生の さんすう・こくご・えいご・りか・しゃかい などを楽しく練習できる学習ドリルアプリ",
 };
 
+// ルートレイアウトは html/body と全体共通要素（BotID）のみを持つ。
+// ヘッダー/フッターは route group ごとのレイアウトに分離する：
+//   (kids) … 子ども向けクローム  /  (site) … 保護者(大人)向けクローム
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,52 +24,7 @@ export default function RootLayout({
       <head>
         <BotIdClient protect={protectedRoutes} />
       </head>
-      <body className="antialiased">
-        {/* 全ページ共通の子ども向けヘッダ（おうち＝トップへ戻る大きなタップ領域）。 */}
-        <header className="sticky top-0 z-50 border-b-4 border-amber-200 bg-white/95 backdrop-blur">
-          <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
-            <Link
-              href="/"
-              aria-label="おうちにもどる"
-              className="flex min-h-14 items-center gap-2 rounded-2xl bg-amber-100 px-5 py-3 text-2xl font-bold text-amber-900 shadow-sm transition active:scale-95 hover:bg-amber-200"
-            >
-              <span aria-hidden="true" className="text-3xl leading-none">
-                🏠
-              </span>
-              <RubyText text="おうち" />
-            </Link>
-            {/* 保護者向け紹介ページ（LP）への控えめな導線。 */}
-            <Link
-              href="/about"
-              className="flex min-h-11 items-center rounded-full px-4 py-2 text-sm font-bold text-amber-800/80 transition hover:bg-amber-100 active:scale-95"
-            >
-              おうちの方へ
-            </Link>
-          </div>
-        </header>
-        {children}
-        {/* 全ページ共通フッタ。フィードバック導線を常に見える場所に置く。 */}
-        <footer className="mt-8 border-t-2 border-amber-100 bg-white/60 px-4 py-6">
-          <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 text-sm sm:flex-row sm:justify-between">
-            <p className="font-bold text-amber-800/70">まなびドリル</p>
-            <nav className="flex items-center gap-4">
-              <Link
-                href="/about"
-                className="font-bold text-amber-800/70 transition hover:text-amber-900"
-              >
-                おうちの方へ
-              </Link>
-              <Link
-                href="/feedback"
-                className="inline-flex items-center gap-1 rounded-full bg-orange-100 px-4 py-2 font-bold text-orange-600 transition hover:bg-orange-200 active:scale-95"
-              >
-                <span aria-hidden>💬</span>
-                フィードバックはこちら
-              </Link>
-            </nav>
-          </div>
-        </footer>
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
