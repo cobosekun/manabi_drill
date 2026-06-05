@@ -2,10 +2,11 @@
 // /about — 保護者向け紹介ページ（マーケLP）
 // 子ども向けの利用フロー(/)は触らず、端末を渡す前の「保護者」に
 // 価値・安心（登録不要・無料・データ収集なし）・対応範囲を伝える。
-// 主CTAは「アプリをはじめる」→ / （登録もメール収集もしない）。
+// 主CTAは「アプリを始める」→ / （登録もメール収集もしない）。
 // 数値・対応学年・教科は src/data（curriculum）から実データで生成し、
 // 実態にない実績・お客様の声・ロゴは載せない（誇張しない）。
-// デザインは保護者(大人)向け：落ち着いた配色・抑えた装飾・標準的な日本語。
+// デザインは保護者(大人)向け：落ち着いた配色・抑えた装飾・漢字主体の日本語。
+// （固有名詞「まなびドリル」と外来語・助詞等の仮名標準語は除き、漢字化する）
 // サーバーコンポーネント（SEO/OGP重視・クライアントJS不要）。
 // ══════════════════════════════════════════
 
@@ -18,17 +19,31 @@ import { rubyToPlainText } from "@/components/drill/RubyText";
 export const metadata: Metadata = {
   title: "まなびドリル｜小学生のための無料・登録不要の学習ドリル",
   description:
-    "小学1〜6年生が、さんすう・こくご・英語・りか・しゃかいなど9教科を、ひとりでも繰り返し練習できる無料の学習ドリル。登録不要・データ収集なし・端末内だけに進捗を保存。漢字にはふりがな付き。",
+    "小学1〜6年生が、算数・国語・英語・理科・社会など9教科を、一人でも繰り返し練習できる無料の学習ドリル。登録不要・データ収集なし・端末内だけに進捗を保存。漢字には振り仮名付き。",
+};
+
+// 大人向けページ用の教科名（漢字表記）。データ側の表示名は子ども向けに
+// かな主体（さんすう/こくご 等）のため、この面では漢字名で上書きする。
+const SUBJECT_NAME_JA: Record<string, string> = {
+  sansuu: "算数",
+  kokugo: "国語",
+  eigo: "英語",
+  rika: "理科",
+  shakai: "社会",
+  seikatsu: "生活",
+  kyoyo: "教養",
+  oyo: "応用",
+  it: "情報",
 };
 
 // 教科ごとの保護者向けの短い説明（実態に沿った範囲で）。
 const SUBJECT_BLURB: Record<string, string> = {
-  sansuu: "たし算・ひき算から、かけ算・わり算・分数まで",
-  kokugo: "漢字・語彙・文章読解（漢字にはふりがな付き）",
-  eigo: "アルファベット・単語・基礎的な英語にふれる",
+  sansuu: "足し算・引き算から、掛け算・割り算・分数まで",
+  kokugo: "漢字・語彙・文章読解（漢字には振り仮名付き）",
+  eigo: "アルファベット・単語・基礎的な英語に触れる",
   rika: "自然・生き物・身近な現象を観察して学ぶ",
-  shakai: "暮らし・地図・歴史など社会のしくみを知る",
-  seikatsu: "身のまわりの発見から学ぶ楽しさを育てる",
+  shakai: "暮らし・地図・歴史など社会の仕組みを知る",
+  seikatsu: "身の回りの発見から学ぶ楽しさを育てる",
   kyoyo: "幅広い教養で世界への興味を広げる",
   oyo: "思考力を鍛える、やや発展的な問題",
   it: "コンピュータ・情報との付き合い方の基礎",
@@ -48,20 +63,20 @@ export default function AboutPage() {
             小学1〜6年生・全{subjectCount}教科・無料
           </p>
           <h1 className="mx-auto mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
-            子どもが自分のペースで続けられる、
+            子供が自分のペースで続けられる、
             <br className="hidden sm:block" />
             シンプルな学習ドリル
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
-            まなびドリルは、小学生がひとりでも取り組める Web
-            学習ドリルです。アカウント登録もログインも不要で、すべて無料。さんすう・こくご・英語など{subjectCount}教科を、学年に合わせて繰り返し練習できます。
+            まなびドリルは、小学生が一人でも取り組める Web
+            学習ドリルです。アカウント登録もログインも不要で、全て無料。算数・国語・英語など{subjectCount}教科を、学年に合わせて繰り返し練習できます。
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/"
               className="inline-flex min-h-12 items-center justify-center rounded-lg bg-amber-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-700"
             >
-              アプリをはじめる
+              アプリを始める
             </Link>
             <a
               href="#features"
@@ -104,16 +119,16 @@ export default function AboutPage() {
           <ul className="mt-12 grid gap-6 sm:grid-cols-3">
             {[
               {
-                title: "丸つけの負担",
-                text: "紙のドリルは採点や答え合わせに、毎回どうしても手間がかかります。",
+                title: "丸付けの負担",
+                text: "紙のドリルは採点や答え合わせに、毎回どうしても手間が掛かります。",
               },
               {
                 title: "反復のしづらさ",
                 text: "同じ問題ばかりになりがちで、繰り返し練習の準備が大変です。",
               },
               {
-                title: "ひとりだと続かない",
-                text: "保護者が付き添えないと、子どもだけでは学習が進みにくいことも。",
+                title: "一人だと続かない",
+                text: "保護者が付き添えないと、子供だけでは学習が進みにくいことも。",
               },
             ].map((p) => (
               <li
@@ -142,15 +157,15 @@ export default function AboutPage() {
             {[
               {
                 title: "即時フィードバック",
-                body: "解答するとすぐに正誤がわかります。間違いにその場で気づき、理解しながら進められます。",
+                body: "解答するとすぐに正誤が分かります。間違いにその場で気付き、理解しながら進められます。",
               },
               {
                 title: "「学ぶ」→「テスト」の2段階",
-                body: "各単元にやさしい解説を用意。内容を理解してから問題に取り組めます。",
+                body: "各単元に易しい解説を用意。内容を理解してから問題に取り組めます。",
               },
               {
-                title: "漢字にふりがな",
-                body: "まだ読めない漢字にも読みがなを表示。低学年の子どももひとりで操作できます。",
+                title: "漢字に振り仮名",
+                body: "まだ読めない漢字にも読み仮名を表示。低学年の子供も一人で操作できます。",
               },
               {
                 title: "学習の進捗を可視化",
@@ -185,12 +200,13 @@ export default function AboutPage() {
             全{subjectCount}教科に対応
           </h2>
           <p className="mt-3 text-center text-slate-500">
-            学年に合わせて、ちょうどよい単元から始められます。
+            学年に合わせて、ちょうど良い単元から始められます。
           </p>
           <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {subjects.map((subject) => {
               const grades = getGrades(subject.id);
-              const name = rubyToPlainText(subject.name);
+              const name =
+                SUBJECT_NAME_JA[subject.id] ?? rubyToPlainText(subject.name);
               const gradeLabel =
                 grades.length > 0
                   ? `${grades[0]}〜${grades[grades.length - 1]}年`
@@ -229,7 +245,7 @@ export default function AboutPage() {
               {
                 step: "01",
                 title: "教科と学年を選ぶ",
-                body: "トップ画面で教科を選び、お子さまの学年を選択します。",
+                body: "トップ画面で教科を選び、お子様の学年を選択します。",
               },
               {
                 step: "02",
@@ -266,7 +282,7 @@ export default function AboutPage() {
               安心してお使いいただけます
             </h2>
             <p className="mt-3 text-slate-400">
-              子どもが使うものだからこそ、データの扱いはシンプルにしています。
+              子供が使うものだからこそ、データの扱いはシンプルにしています。
             </p>
           </div>
           <ul className="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-2">
@@ -301,8 +317,8 @@ export default function AboutPage() {
           <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
             {[
               {
-                q: "料金はかかりますか？",
-                a: "いいえ。すべての教科・単元を無料でご利用いただけます。課金や有料プランはありません。",
+                q: "料金は掛かりますか？",
+                a: "いいえ。全ての教科・単元を無料でご利用いただけます。課金や有料プランはありません。",
               },
               {
                 q: "アカウント登録は必要ですか？",
@@ -353,7 +369,7 @@ export default function AboutPage() {
             href="/"
             className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-amber-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-700"
           >
-            アプリをはじめる
+            アプリを始める
           </Link>
         </div>
       </section>

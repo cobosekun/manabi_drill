@@ -10,18 +10,18 @@ export default function KidsLayout({
 }>) {
   return (
     <>
-      {/* 全ページ共通の子ども向けヘッダ（おうち＝トップへ戻る大きなタップ領域）。 */}
+      {/* 全ページ共通の子ども向けヘッダ（HOME＝トップへ戻る大きなタップ領域）。 */}
       <header className="sticky top-0 z-50 border-b-4 border-amber-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
           <Link
             href="/"
-            aria-label="おうちにもどる"
+            aria-label="HOMEにもどる"
             className="flex min-h-14 items-center gap-2 rounded-2xl bg-amber-100 px-5 py-3 text-2xl font-bold text-amber-900 shadow-sm transition active:scale-95 hover:bg-amber-200"
           >
             <span aria-hidden="true" className="text-3xl leading-none">
               🏠
             </span>
-            <RubyText text="おうち" />
+            <RubyText text="HOME" />
           </Link>
           {/* 保護者向け紹介ページ（LP）への控えめな導線。 */}
           <Link
