@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className="antialiased">
         {/* 全ページ共通の子ども向けヘッダ（おうち＝トップへ戻る大きなタップ領域）。 */}
         <header className="sticky top-0 z-50 border-b-4 border-amber-200 bg-white/95 backdrop-blur">
-          <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-3">
+          <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
             <Link
               href="/"
               aria-label="おうちにもどる"
@@ -28,6 +28,13 @@ export default function RootLayout({
                 🏠
               </span>
               <RubyText text="おうち" />
+            </Link>
+            {/* 保護者向け紹介ページ（LP）への控えめな導線。 */}
+            <Link
+              href="/about"
+              className="flex min-h-11 items-center rounded-full px-4 py-2 text-sm font-bold text-amber-800/80 transition hover:bg-amber-100 active:scale-95"
+            >
+              おうちの方へ
             </Link>
           </div>
         </header>
