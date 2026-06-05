@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BotIdClient } from "botid/client";
 import { RubyText } from "@/components/drill/RubyText";
 import "./globals.css";
+
+// BotID で保護するエンドポイント（フィードバック投稿の bot 対策）。
+const protectedRoutes = [{ path: "/api/feedback", method: "POST" }];
 
 export const metadata: Metadata = {
   title: "まなびドリル — 小学生のがくしゅうドリル",
@@ -15,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <BotIdClient protect={protectedRoutes} />
+      </head>
       <body className="antialiased">
         {/* 全ページ共通の子ども向けヘッダ（おうち＝トップへ戻る大きなタップ領域）。 */}
         <header className="sticky top-0 z-50 border-b-4 border-amber-200 bg-white/95 backdrop-blur">
@@ -39,6 +46,27 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        {/* 全ページ共通フッタ。フィードバック導線を常に見える場所に置く。 */}
+        <footer className="mt-8 border-t-2 border-amber-100 bg-white/60 px-4 py-6">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 text-sm sm:flex-row sm:justify-between">
+            <p className="font-bold text-amber-800/70">まなびドリル</p>
+            <nav className="flex items-center gap-4">
+              <Link
+                href="/about"
+                className="font-bold text-amber-800/70 transition hover:text-amber-900"
+              >
+                おうちの方へ
+              </Link>
+              <Link
+                href="/feedback"
+                className="inline-flex items-center gap-1 rounded-full bg-orange-100 px-4 py-2 font-bold text-orange-600 transition hover:bg-orange-200 active:scale-95"
+              >
+                <span aria-hidden>💬</span>
+                フィードバックはこちら
+              </Link>
+            </nav>
+          </div>
+        </footer>
       </body>
     </html>
   );
