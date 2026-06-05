@@ -1,11 +1,11 @@
 // ══════════════════════════════════════════
-// /about — 保護者向けランディングページ（マーケLP）
-// 子ども向けの利用フロー(/)は触らず、端末を渡す前の「おうちの方」に
+// /about — 保護者向け紹介ページ（マーケLP）
+// 子ども向けの利用フロー(/)は触らず、端末を渡す前の「保護者」に
 // 価値・安心（登録不要・無料・データ収集なし）・対応範囲を伝える。
 // 主CTAは「アプリをはじめる」→ / （登録もメール収集もしない）。
 // 数値・対応学年・教科は src/data（curriculum）から実データで生成し、
 // 実態にない実績・お客様の声・ロゴは載せない（誇張しない）。
-// 既存のデザイン言語（暖色グラデ・角丸・絵文字・theme色）に揃える。
+// デザインは保護者(大人)向け：落ち着いた配色・抑えた装飾・標準的な日本語。
 // サーバーコンポーネント（SEO/OGP重視・クライアントJS不要）。
 // ══════════════════════════════════════════
 
@@ -13,26 +13,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getSubjects, getGrades } from "@/lib/curriculum-query";
 import { curriculum } from "@/data/curriculum";
-import { getTheme } from "@/lib/theme";
 import { rubyToPlainText } from "@/components/drill/RubyText";
 
 export const metadata: Metadata = {
   title: "まなびドリル｜小学生のための無料・登録不要の学習ドリル",
   description:
-    "小学1〜6年生が、さんすう・こくご・英語・りか・しゃかいなど9教科を、一人で楽しく繰り返し練習できる無料の学習ドリル。登録不要・データ収集なし・端末内だけに進捗を保存。漢字にはふりがな付き。",
+    "小学1〜6年生が、さんすう・こくご・英語・りか・しゃかいなど9教科を、ひとりでも繰り返し練習できる無料の学習ドリル。登録不要・データ収集なし・端末内だけに進捗を保存。漢字にはふりがな付き。",
 };
 
 // 教科ごとの保護者向けの短い説明（実態に沿った範囲で）。
 const SUBJECT_BLURB: Record<string, string> = {
   sansuu: "たし算・ひき算から、かけ算・わり算・分数まで",
-  kokugo: "漢字・ことば・文章の読み取り（漢字はふりがな付き）",
-  eigo: "アルファベット・単語・かんたんな英語にふれる",
-  rika: "しぜん・生きもの・身近なふしぎを観察して学ぶ",
-  shakai: "くらし・地図・歴史など社会のしくみを知る",
-  seikatsu: "身のまわりの発見から「学ぶ楽しさ」をはぐくむ",
-  kyoyo: "はば広い教養・雑学で世界への興味を広げる",
-  oyo: "考える力をきたえる、ちょっと歯ごたえのある問題",
-  it: "コンピュータ・情報とのつきあい方のきほん",
+  kokugo: "漢字・語彙・文章読解（漢字にはふりがな付き）",
+  eigo: "アルファベット・単語・基礎的な英語にふれる",
+  rika: "自然・生き物・身近な現象を観察して学ぶ",
+  shakai: "暮らし・地図・歴史など社会のしくみを知る",
+  seikatsu: "身のまわりの発見から学ぶ楽しさを育てる",
+  kyoyo: "幅広い教養で世界への興味を広げる",
+  oyo: "思考力を鍛える、やや発展的な問題",
+  it: "コンピュータ・情報との付き合い方の基礎",
 };
 
 export default function AboutPage() {
@@ -41,178 +40,155 @@ export default function AboutPage() {
   const subjectCount = subjects.length;
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50">
-      <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
-        {/* ── Hero ── */}
-        <section className="text-center">
-          <div className="mb-4 text-7xl animate-float" aria-hidden>
-            🎒
-          </div>
-          <p className="mb-3 inline-block rounded-full bg-white/80 px-4 py-1 text-sm font-bold text-orange-500 ring-2 ring-orange-100">
-            小学1〜6年生・全{subjectCount}教科・ぜんぶ無料
+    <main className="min-h-screen bg-white text-slate-800">
+      {/* ── Hero ── */}
+      <section className="border-b border-slate-100 bg-gradient-to-b from-amber-50/40 to-white">
+        <div className="mx-auto w-full max-w-5xl px-6 py-20 text-center sm:py-28">
+          <p className="inline-block rounded-full border border-amber-200 bg-white px-4 py-1.5 text-sm font-medium text-amber-700">
+            小学1〜6年生・全{subjectCount}教科・無料
           </p>
-          <h1 className="text-3xl font-extrabold leading-tight text-gray-800 sm:text-5xl">
-            おうちで、一人でも。
-            <br />
-            <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-              楽しく続く学習ドリル
-            </span>
+          <h1 className="mx-auto mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+            子どもが自分のペースで続けられる、
+            <br className="hidden sm:block" />
+            シンプルな学習ドリル
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-gray-600">
-            「まなびドリル」は、小学生が自分のペースで くりかえし練習できる
-            Web アプリです。
-            <strong className="font-bold text-gray-800">
-              登録もログインも不要。完全無料
-            </strong>
-            。端末を渡すだけで、子どもが一人で「まなぶ→テスト」を進められます。
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
+            まなびドリルは、小学生がひとりでも取り組める Web
+            学習ドリルです。アカウント登録もログインも不要で、すべて無料。さんすう・こくご・英語など{subjectCount}教科を、学年に合わせて繰り返し練習できます。
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/"
-              className="inline-flex min-h-14 items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-8 py-4 text-xl font-bold text-white shadow-lg ring-4 ring-white transition-transform hover:scale-105 active:scale-95"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg bg-amber-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-700"
             >
-              <span aria-hidden>▶</span>
               アプリをはじめる
             </Link>
             <a
-              href="#how"
-              className="inline-flex min-h-14 items-center gap-2 rounded-full bg-white px-7 py-4 text-lg font-bold text-orange-500 shadow-md ring-2 ring-orange-200 transition-transform hover:scale-105 active:scale-95"
+              href="#features"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-7 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-50"
             >
-              つかい方を見る
+              特長を見る
             </a>
           </div>
-          <p className="mt-4 text-sm text-gray-500">
-            ※ インストール不要・ブラウザですぐ使えます
+          <p className="mt-4 text-sm text-slate-400">
+            インストール不要・ブラウザですぐにご利用いただけます
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* ── 数値バー（実データ＝誇張なし）── */}
-        <section
-          aria-label="このアプリの規模"
-          className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4"
-        >
+      {/* ── 数値（実データ＝誇張なし）── */}
+      <section className="border-b border-slate-100">
+        <div className="mx-auto grid w-full max-w-5xl grid-cols-2 divide-x divide-slate-100 px-6 sm:grid-cols-4">
           {[
             { n: `${subjectCount}`, label: "教科" },
-            { n: "1〜6", label: "学年" },
-            { n: `${unitCount}`, label: "単元（ユニット）" },
-            { n: "¥0", label: "ずっと無料" },
+            { n: "1〜6", label: "対応学年" },
+            { n: `${unitCount}`, label: "単元" },
+            { n: "無料", label: "利用料金" },
           ].map((s) => (
-            <div
-              key={s.label}
-              className="rounded-3xl bg-white p-5 text-center shadow-md ring-2 ring-white"
-            >
-              <div className="text-3xl font-extrabold text-orange-500 sm:text-4xl">
+            <div key={s.label} className="px-2 py-8 text-center">
+              <div className="text-3xl font-bold text-slate-900 sm:text-4xl">
                 {s.n}
               </div>
-              <div className="mt-1 text-sm font-bold text-gray-500">
-                {s.label}
-              </div>
+              <div className="mt-1 text-sm text-slate-500">{s.label}</div>
             </div>
           ))}
-        </section>
+        </div>
+      </section>
 
-        {/* ── Problem ── */}
-        <section className="mt-16">
-          <h2 className="text-center text-2xl font-extrabold text-gray-800 sm:text-3xl">
-            こんなお悩み、ありませんか？
+      {/* ── Problem ── */}
+      <section className="bg-slate-50">
+        <div className="mx-auto w-full max-w-5xl px-6 py-20">
+          <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            こんな場面はありませんか
           </h2>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+          <ul className="mt-12 grid gap-6 sm:grid-cols-3">
             {[
               {
-                emoji: "📝",
-                text: "紙のドリルは、採点や丸つけが毎回たいへん。",
+                title: "丸つけの負担",
+                text: "紙のドリルは採点や答え合わせに、毎回どうしても手間がかかります。",
               },
               {
-                emoji: "🔁",
-                text: "同じ問題ばかりで、くりかえし練習がしづらい。",
+                title: "反復のしづらさ",
+                text: "同じ問題ばかりになりがちで、繰り返し練習の準備が大変です。",
               },
               {
-                emoji: "🙋",
-                text: "子どもが一人だと、なかなか進められない。",
+                title: "ひとりだと続かない",
+                text: "保護者が付き添えないと、子どもだけでは学習が進みにくいことも。",
               },
             ].map((p) => (
               <li
-                key={p.text}
-                className="rounded-3xl bg-white/80 p-6 text-center shadow-sm ring-2 ring-white"
+                key={p.title}
+                className="rounded-xl border border-slate-200 bg-white p-6"
               >
-                <div className="text-4xl" aria-hidden>
-                  {p.emoji}
-                </div>
-                <p className="mt-3 text-base leading-relaxed text-gray-600">
+                <h3 className="text-base font-semibold text-slate-900">
+                  {p.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {p.text}
                 </p>
               </li>
             ))}
           </ul>
-        </section>
+        </div>
+      </section>
 
-        {/* ── 特長（Value / Features）── */}
-        <section className="mt-16">
-          <h2 className="text-center text-2xl font-extrabold text-gray-800 sm:text-3xl">
+      {/* ── 特長（Value / Features）── */}
+      <section id="features" className="scroll-mt-20">
+        <div className="mx-auto w-full max-w-5xl px-6 py-20">
+          <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             まなびドリルの特長
           </h2>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                emoji: "✅",
-                title: "その場で○×・即時フィードバック",
-                body: "答えたらすぐに正解・不正解がわかるから、まちがいに気づいてすぐ直せます。",
+                title: "即時フィードバック",
+                body: "解答するとすぐに正誤がわかります。間違いにその場で気づき、理解しながら進められます。",
               },
               {
-                emoji: "📚",
-                title: "「まなぶ」→「テスト」の2ステップ",
-                body: "各単元にやさしい解説があり、理解してから問題に挑戦できます。",
+                title: "「学ぶ」→「テスト」の2段階",
+                body: "各単元にやさしい解説を用意。内容を理解してから問題に取り組めます。",
               },
               {
-                emoji: "🈂️",
-                title: "漢字にふりがな・ひらがな主体のUI",
-                body: "まだ読めない漢字にも読みがなが付き、小さな子でも一人で操作できます。",
+                title: "漢字にふりがな",
+                body: "まだ読めない漢字にも読みがなを表示。低学年の子どももひとりで操作できます。",
               },
               {
-                emoji: "🗺️",
-                title: "まなびの地図で進みが見える",
-                body: "どこまで進んだかが地図でわかるので、達成感が続きます。",
+                title: "学習の進捗を可視化",
+                body: "どこまで進んだかを「学びの地図」で確認でき、達成感が続きます。",
               },
               {
-                emoji: "🖨️",
                 title: "印刷してオフラインでも",
-                body: "プリントして紙でも練習可能。デジタルと紙を使い分けられます。",
+                body: "プリント機能で紙の練習にも対応。デジタルと紙を使い分けられます。",
               },
               {
-                emoji: "📱",
                 title: "スマホ・タブレット対応",
-                body: "大きなボタンと見やすい配色で、タッチ操作に最適化しています。",
+                body: "見やすい配色と十分な大きさのボタンで、タッチ操作に最適化しています。",
               },
             ].map((f) => (
-              <div
-                key={f.title}
-                className="rounded-3xl bg-white p-6 shadow-md ring-2 ring-white"
-              >
-                <div className="text-4xl" aria-hidden>
-                  {f.emoji}
-                </div>
-                <h3 className="mt-3 text-lg font-bold text-gray-800">
+              <div key={f.title} className="bg-white p-6">
+                <h3 className="text-base font-semibold text-slate-900">
                   {f.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {f.body}
                 </p>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── 教科一覧（実データ）── */}
-        <section className="mt-16">
-          <h2 className="text-center text-2xl font-extrabold text-gray-800 sm:text-3xl">
-            ぜんぶで{subjectCount}教科
+      {/* ── 教科一覧（実データ）── */}
+      <section className="bg-slate-50">
+        <div className="mx-auto w-full max-w-5xl px-6 py-20">
+          <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            全{subjectCount}教科に対応
           </h2>
-          <p className="mt-2 text-center text-gray-500">
+          <p className="mt-3 text-center text-slate-500">
             学年に合わせて、ちょうどよい単元から始められます。
           </p>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {subjects.map((subject) => {
-              const theme = getTheme(subject.theme);
               const grades = getGrades(subject.id);
               const name = rubyToPlainText(subject.name);
               const gradeLabel =
@@ -222,130 +198,119 @@ export default function AboutPage() {
               return (
                 <li
                   key={subject.id}
-                  className={`rounded-3xl p-5 shadow-md ring-2 ring-white ${theme.softGradient}`}
+                  className="rounded-xl border border-slate-200 bg-white p-5"
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="text-4xl" aria-hidden>
-                      {subject.emoji}
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-base font-semibold text-slate-900">
+                      {name}
+                    </h3>
+                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-500">
+                      {gradeLabel}
                     </span>
-                    <div>
-                      <div className={`text-lg font-extrabold ${theme.strongText}`}>
-                        {name}
-                      </div>
-                      <div className={`text-xs font-bold ${theme.accentText}`}>
-                        {gradeLabel}
-                      </div>
-                    </div>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
                     {SUBJECT_BLURB[subject.id] ?? ""}
                   </p>
                 </li>
               );
             })}
           </ul>
-        </section>
+        </div>
+      </section>
 
-        {/* ── How it works ── */}
-        <section id="how" className="mt-16 scroll-mt-20">
-          <h2 className="text-center text-2xl font-extrabold text-gray-800 sm:text-3xl">
-            つかい方は3ステップ
+      {/* ── How it works ── */}
+      <section>
+        <div className="mx-auto w-full max-w-5xl px-6 py-20">
+          <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            使い方は3ステップ
           </h2>
-          <ol className="mt-8 grid gap-5 sm:grid-cols-3">
+          <ol className="mt-12 grid gap-8 sm:grid-cols-3">
             {[
               {
-                step: "1",
-                emoji: "🎯",
-                title: "教科と学年をえらぶ",
-                body: "トップで好きな教科をタップし、学年を選びます。",
+                step: "01",
+                title: "教科と学年を選ぶ",
+                body: "トップ画面で教科を選び、お子さまの学年を選択します。",
               },
               {
-                step: "2",
-                emoji: "📖",
-                title: "「まなぶ」で理解する",
-                body: "イラストやアニメ付きの解説で、ポイントを確認。",
+                step: "02",
+                title: "「学ぶ」で理解する",
+                body: "図やアニメーション付きの解説で、要点を確認します。",
               },
               {
-                step: "3",
-                emoji: "✏️",
-                title: "「テスト」で力だめし",
-                body: "問題に挑戦して、その場で答え合わせ。くりかえし練習。",
+                step: "03",
+                title: "「テスト」で確かめる",
+                body: "問題に取り組み、その場で答え合わせ。繰り返し練習できます。",
               },
             ].map((s) => (
-              <li
-                key={s.step}
-                className="relative rounded-3xl bg-white p-6 text-center shadow-md ring-2 ring-white"
-              >
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-4 py-1 text-sm font-bold text-white shadow">
-                  STEP {s.step}
+              <li key={s.step}>
+                <div className="text-sm font-semibold text-amber-600">
+                  {s.step}
                 </div>
-                <div className="mt-3 text-5xl" aria-hidden>
-                  {s.emoji}
-                </div>
-                <h3 className="mt-3 text-lg font-bold text-gray-800">
+                <h3 className="mt-2 text-lg font-semibold text-slate-900">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {s.body}
                 </p>
               </li>
             ))}
           </ol>
-        </section>
+        </div>
+      </section>
 
-        {/* ── 安心（保護者向けプライバシー）── */}
-        <section className="mt-16 rounded-3xl bg-white p-8 shadow-md ring-2 ring-white sm:p-10">
+      {/* ── 安心（保護者向けプライバシー）── */}
+      <section className="bg-slate-900 text-slate-100">
+        <div className="mx-auto w-full max-w-5xl px-6 py-20">
           <div className="text-center">
-            <div className="text-5xl" aria-hidden>
-              🔒
-            </div>
-            <h2 className="mt-3 text-2xl font-extrabold text-gray-800 sm:text-3xl">
-              安心して使えます
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              安心してお使いいただけます
             </h2>
-            <p className="mt-2 text-gray-500">
-              子どもが使うものだから、データの扱いはシンプルにしています。
+            <p className="mt-3 text-slate-400">
+              子どもが使うものだからこそ、データの扱いはシンプルにしています。
             </p>
           </div>
-          <ul className="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-2">
+          <ul className="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-2">
             {[
               "アカウント登録・ログインは不要です",
-              "個人情報やメールアドレスを集めません",
-              "進捗はお使いの端末（ブラウザ）の中だけに保存され、サーバーには送りません",
+              "個人情報やメールアドレスを収集しません",
+              "進捗はご利用の端末（ブラウザ）内にのみ保存し、サーバーへは送信しません",
               "広告は表示しません",
             ].map((t) => (
               <li
                 key={t}
-                className="flex items-start gap-3 rounded-2xl bg-green-50 p-4 ring-2 ring-green-100"
+                className="flex items-start gap-3 rounded-lg border border-slate-700 bg-slate-800/60 p-4"
               >
-                <span className="text-xl text-green-600" aria-hidden>
-                  ✔
+                <span className="mt-0.5 text-amber-400" aria-hidden>
+                  ✓
                 </span>
-                <span className="text-sm leading-relaxed text-gray-700">
+                <span className="text-sm leading-relaxed text-slate-200">
                   {t}
                 </span>
               </li>
             ))}
           </ul>
-        </section>
+        </div>
+      </section>
 
-        {/* ── FAQ ── */}
-        <section className="mt-16">
-          <h2 className="text-center text-2xl font-extrabold text-gray-800 sm:text-3xl">
-            よくある質問
+      {/* ── FAQ ── */}
+      <section>
+        <div className="mx-auto w-full max-w-3xl px-6 py-20">
+          <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            よくあるご質問
           </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-4">
+          <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
             {[
               {
                 q: "料金はかかりますか？",
-                a: "いいえ。すべての教科・単元を無料で使えます。課金や有料プランはありません。",
+                a: "いいえ。すべての教科・単元を無料でご利用いただけます。課金や有料プランはありません。",
               },
               {
                 q: "アカウント登録は必要ですか？",
-                a: "不要です。ページを開けばすぐに練習を始められます。",
+                a: "不要です。ページを開けばすぐに学習を始められます。",
               },
               {
                 q: "進捗はどこに保存されますか？",
-                a: "お使いの端末のブラウザ内（localStorage）にのみ保存します。サーバーへの送信や同期は行いません。そのため、ブラウザのデータを消したり別の端末で開くと進捗は引き継がれません。",
+                a: "ご利用の端末のブラウザ内（localStorage）にのみ保存します。サーバーへの送信や端末間の同期は行いません。そのため、ブラウザのデータを削除したり別の端末で開いた場合、進捗は引き継がれません。",
               },
               {
                 q: "対応している学年・教科は？",
@@ -353,58 +318,45 @@ export default function AboutPage() {
               },
               {
                 q: "オフラインでも使えますか？",
-                a: "練習の中心はオンラインのアプリですが、印刷ページからプリントすれば紙でもオフライン練習ができます。",
+                a: "学習の中心はオンラインのアプリですが、印刷ページからプリントすれば紙でのオフライン学習も可能です。",
               },
             ].map((item) => (
-              <details
-                key={item.q}
-                className="group rounded-2xl bg-white p-5 shadow-sm ring-2 ring-white"
-              >
-                <summary className="flex cursor-pointer items-center justify-between gap-3 text-base font-bold text-gray-800 marker:content-none">
+              <details key={item.q} className="group py-5">
+                <summary className="flex cursor-pointer items-center justify-between gap-3 text-base font-medium text-slate-900 marker:content-none">
                   <span>{item.q}</span>
                   <span
-                    className="text-orange-400 transition-transform group-open:rotate-45"
+                    className="text-slate-400 transition-transform group-open:rotate-45"
                     aria-hidden
                   >
                     ＋
                   </span>
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {item.a}
                 </p>
               </details>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── Final CTA ── */}
-        <section className="mt-16 rounded-3xl bg-gradient-to-r from-orange-500 to-pink-500 p-10 text-center text-white shadow-lg">
-          <div className="text-5xl" aria-hidden>
-            🎒
-          </div>
-          <h2 className="mt-3 text-2xl font-extrabold sm:text-3xl">
-            さっそく、はじめてみましょう
+      {/* ── Final CTA ── */}
+      <section className="border-t border-slate-100 bg-amber-50/50">
+        <div className="mx-auto w-full max-w-5xl px-6 py-20 text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            まずは試してみてください
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-white/90">
-            登録なし・無料で、今すぐ練習をスタートできます。
+          <p className="mx-auto mt-3 max-w-xl text-slate-600">
+            登録なし・無料で、今すぐ学習を始められます。
           </p>
           <Link
             href="/"
-            className="mt-7 inline-flex min-h-14 items-center gap-2 rounded-full bg-white px-9 py-4 text-xl font-bold text-orange-500 shadow-md transition-transform hover:scale-105 active:scale-95"
+            className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-amber-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-700"
           >
-            <span aria-hidden>▶</span>
             アプリをはじめる
           </Link>
-        </section>
-
-        {/* ── Footer ── */}
-        <footer className="mt-14 border-t-2 border-orange-100 pt-8 text-center text-sm text-gray-400">
-          <p className="font-bold text-gray-500">まなびドリル</p>
-          <p className="mt-1">
-            小学生のための、無料・登録不要の学習ドリル
-          </p>
-        </footer>
-      </div>
+        </div>
+      </section>
     </main>
   );
 }
