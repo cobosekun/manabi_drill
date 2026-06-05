@@ -63,9 +63,7 @@ export default function AboutPage() {
             小学1〜6年生・全{subjectCount}教科・無料
           </p>
           <h1 className="mx-auto mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
-            子供が自分のペースで続けられる、
-            <br className="hidden sm:block" />
-            シンプルな学習ドリル
+            子供が自分のペースで続けられる、シンプルな学習ドリル
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
             まなびドリルは、小学生が一人でも取り組める Web
