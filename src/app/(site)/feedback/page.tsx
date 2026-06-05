@@ -6,19 +6,20 @@
 // クライアントでも 2 つ仕込む:
 //   - ハニーポット: 画面外の隠しフィールド website（人間は触れない）
 //   - 送信タイミング: マウント時刻 ts を一緒に送る（極端に速い投稿を弾くため）
-// 既存のデザイン言語（暖色グラデ・角丸・大きなタップ領域）に合わせる。
+// デザインは保護者(大人)向け：白基調・slate文字・amber差し色・漢字主体（/about と統一）。
+// ※ CATEGORIES は API(/api/feedback) 側の検証値と一致させること。
 // ══════════════════════════════════════════
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-const CATEGORIES = ["ふぐあい", "ようぼう", "かんそう", "そのほか"] as const;
+const CATEGORIES = ["不具合", "要望", "感想", "その他"] as const;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 export default function FeedbackPage() {
   const tsRef = useRef<number>(0);
-  const [category, setCategory] = useState<(typeof CATEGORIES)[number]>("かんそう");
+  const [category, setCategory] = useState<(typeof CATEGORIES)[number]>("感想");
   const [message, setMessage] = useState("");
   const [contact, setContact] = useState("");
   const [website, setWebsite] = useState(""); // ハニーポット
@@ -62,61 +63,53 @@ export default function FeedbackPage() {
       }
     } catch {
       setStatus("error");
-      setErrorMsg("通信に失敗しました。時間をおいて もう一度お試しください。");
+      setErrorMsg("通信に失敗しました。時間を置いてもう一度お試しください。");
     }
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50">
-      <div className="mx-auto w-full max-w-xl px-4 py-10 sm:px-6 sm:py-14">
-        <div className="text-center">
-          <div className="text-6xl" aria-hidden>
-            💬
-          </div>
-          <h1 className="mt-3 text-2xl font-extrabold text-gray-800 sm:text-3xl">
-            フィードバックはこちら
+    <main className="bg-white text-slate-800">
+      <div className="mx-auto w-full max-w-xl px-6 py-16">
+        <header>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            フィードバック
           </h1>
-          <p className="mt-2 text-gray-600">
-            お気づきの点・ごようぼう・かんそうを お聞かせください。
-            <br className="hidden sm:block" />
-            いただいた内容は今後の改善に活用します。
+          <p className="mt-3 leading-relaxed text-slate-600">
+            お気付きの点・ご要望・ご感想をお聞かせください。いただいた内容は今後の改善に活用します。
           </p>
-        </div>
+        </header>
 
         {status === "sent" ? (
-          <div className="mt-8 rounded-3xl bg-white p-8 text-center shadow-md ring-2 ring-white">
-            <div className="text-5xl" aria-hidden>
-              🎉
+          <div className="mt-10 rounded-xl border border-slate-200 bg-white p-8 text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-2xl text-emerald-600">
+              ✓
             </div>
-            <h2 className="mt-3 text-xl font-bold text-emerald-600">
-              送信しました！
+            <h2 className="mt-4 text-lg font-semibold text-slate-900">
+              送信しました
             </h2>
-            <p className="mt-2 text-gray-600">
-              ありがとうございます。とても はげみになります。
+            <p className="mt-2 text-sm text-slate-600">
+              ありがとうございます。今後の改善の励みになります。
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="rounded-full bg-white px-6 py-3 font-bold text-orange-500 shadow ring-2 ring-orange-200 transition active:scale-95 hover:bg-orange-50"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
               >
-                つづけて送る
+                続けて送る
               </button>
               <Link
                 href="/"
-                className="rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-6 py-3 font-bold text-white shadow transition active:scale-95 hover:scale-105"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-amber-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-700"
               >
                 ホームへ
               </Link>
             </div>
           </div>
         ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="mt-8 space-y-5 rounded-3xl bg-white p-6 shadow-md ring-2 ring-white sm:p-8"
-          >
+          <form onSubmit={handleSubmit} className="mt-10 space-y-6">
             {/* ハニーポット（画面外・スクリーンリーダーからも隠す） */}
-            <div aria-hidden className="absolute left-[-9999px] top-[-9999px]" >
+            <div aria-hidden className="absolute left-[-9999px] top-[-9999px]">
               <label>
                 Website
                 <input
@@ -129,10 +122,10 @@ export default function FeedbackPage() {
               </label>
             </div>
 
-            {/* カテゴリ */}
+            {/* 種類 */}
             <div>
-              <label className="mb-2 block text-sm font-bold text-gray-700">
-                しゅるい
+              <label className="mb-2 block text-sm font-medium text-slate-700">
+                種類
               </label>
               <div className="flex flex-wrap gap-2">
                 {CATEGORIES.map((c) => (
@@ -140,10 +133,11 @@ export default function FeedbackPage() {
                     key={c}
                     type="button"
                     onClick={() => setCategory(c)}
-                    className={`rounded-full px-4 py-2 text-sm font-bold transition active:scale-95 ${
+                    aria-pressed={category === c}
+                    className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
                       category === c
-                        ? "bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow"
-                        : "bg-orange-50 text-orange-500 ring-2 ring-orange-100 hover:bg-orange-100"
+                        ? "bg-amber-600 text-white"
+                        : "border border-slate-300 bg-white text-slate-600 hover:bg-slate-50"
                     }`}
                   >
                     {c}
@@ -156,7 +150,7 @@ export default function FeedbackPage() {
             <div>
               <label
                 htmlFor="fb-message"
-                className="mb-2 block text-sm font-bold text-gray-700"
+                className="mb-2 block text-sm font-medium text-slate-700"
               >
                 メッセージ <span className="text-rose-500">*</span>
               </label>
@@ -167,10 +161,10 @@ export default function FeedbackPage() {
                 rows={6}
                 maxLength={2000}
                 required
-                placeholder="例）◯◯の問題のこたえが まちがっているようです／△△の教科をふやしてほしい など"
-                className="w-full resize-y rounded-2xl border-4 border-gray-200 p-4 text-base outline-none focus:border-orange-400"
+                placeholder="例）◯◯の問題の答えが間違っているようです／△△の教科を増やしてほしい など"
+                className="w-full resize-y rounded-lg border border-slate-300 p-3 text-base text-slate-800 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
               />
-              <p className="mt-1 text-right text-xs text-gray-400">
+              <p className="mt-1 text-right text-xs text-slate-400">
                 {message.length} / 2000
               </p>
             </div>
@@ -179,9 +173,9 @@ export default function FeedbackPage() {
             <div>
               <label
                 htmlFor="fb-contact"
-                className="mb-2 block text-sm font-bold text-gray-700"
+                className="mb-2 block text-sm font-medium text-slate-700"
               >
-                お返事用の連絡先（任意・メールアドレスなど）
+                返信先（任意・メールアドレスなど）
               </label>
               <input
                 id="fb-contact"
@@ -190,15 +184,15 @@ export default function FeedbackPage() {
                 onChange={(e) => setContact(e.target.value)}
                 maxLength={200}
                 autoComplete="email"
-                placeholder="返信が不要なら 空のままでOK"
-                className="w-full rounded-2xl border-4 border-gray-200 p-3 text-base outline-none focus:border-orange-400"
+                placeholder="返信が不要な場合は空欄のままで構いません"
+                className="w-full rounded-lg border border-slate-300 p-3 text-base text-slate-800 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
               />
             </div>
 
             {status === "error" && (
               <p
                 role="alert"
-                className="rounded-2xl bg-rose-50 p-3 text-sm font-bold text-rose-600 ring-2 ring-rose-100"
+                className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm font-medium text-rose-600"
               >
                 {errorMsg}
               </p>
@@ -207,14 +201,13 @@ export default function FeedbackPage() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-8 py-4 text-lg font-bold text-white shadow-lg ring-4 ring-white transition active:scale-95 hover:scale-[1.02] disabled:opacity-60"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-amber-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-700 disabled:opacity-60"
             >
               {status === "sending" ? "送信中…" : "送信する"}
             </button>
 
-            <p className="text-center text-xs text-gray-400">
-              ※ 迷惑メール対策のため、送信に少し条件があります。うまくいかない場合は
-              時間をおいてお試しください。
+            <p className="text-xs leading-relaxed text-slate-400">
+              ※ 迷惑メール対策のため、送信に一定の条件を設けています。うまく送信できない場合は、時間を置いてお試しください。
             </p>
           </form>
         )}
@@ -225,15 +218,15 @@ export default function FeedbackPage() {
 
 function errorTextFor(httpStatus: number, code?: string): string {
   if (httpStatus === 429 || code === "rate_limited") {
-    return "送信が続いたため、一時的に制限されています。少し時間をおいてください。";
+    return "送信が続いたため、一時的に制限されています。少し時間を置いてください。";
   }
   if (code === "not_configured") {
-    return "ただいま送信機能の準備中です。お手数ですが時間をおいてお試しください。";
+    return "現在、送信機能を準備中です。お手数ですが時間を置いてお試しください。";
   }
   if (code === "empty") return "メッセージを入力してください。";
   if (code === "too_long") return "入力が長すぎます。短くしてお試しください。";
   if (code === "timing") {
-    return "送信に失敗しました。ページを開き直して もう一度お試しください。";
+    return "送信に失敗しました。ページを開き直してもう一度お試しください。";
   }
-  return "送信に失敗しました。時間をおいて もう一度お試しください。";
+  return "送信に失敗しました。時間を置いてもう一度お試しください。";
 }

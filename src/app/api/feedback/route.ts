@@ -25,7 +25,8 @@ const RATE_WINDOW_MS = 60_000; // レート制限の時間窓
 const RATE_MAX = 3; // 窓内の最大送信回数/IP
 const MAX_MESSAGE_LEN = 2_000;
 const MAX_CONTACT_LEN = 200;
-const CATEGORIES = ["ふぐあい", "ようぼう", "かんそう", "そのほか"] as const;
+// クライアント(/feedback)の選択肢と一致させること。
+const CATEGORIES = ["不具合", "要望", "感想", "その他"] as const;
 
 // ── レート制限（warm instance 内のメモリ。完全ではないが「ある程度」を満たす）──
 const hits = new Map<string, number[]>();
@@ -98,7 +99,7 @@ export async function POST(req: NextRequest) {
     typeof data.category === "string" &&
     (CATEGORIES as readonly string[]).includes(data.category)
       ? data.category
-      : "そのほか";
+      : "その他";
 
   if (message.length === 0) {
     return NextResponse.json({ ok: false, error: "empty" }, { status: 400 });
