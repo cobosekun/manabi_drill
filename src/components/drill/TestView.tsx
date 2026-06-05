@@ -311,6 +311,15 @@ function ChoiceAnswer({
 }) {
   const [selected, setSelected] = useState<string | null>(null);
 
+  // 選択肢の表示順をシャッフル（データは正解を先頭に並べているため、
+  // そのまま出すと常に左上が正解になってしまう）。QuestionBody は問題ごとに
+  // key=idx で再マウントされるので、各問題につき一度だけ並べ替える。
+  // 正誤判定は値比較（choice === answer）なので表示順を変えても安全。
+  const displayChoices = React.useMemo(
+    () => shuffle(question.choices),
+    [question.choices],
+  );
+
   function pick(choice: string) {
     if (answered) return;
     setSelected(choice);
@@ -326,7 +335,7 @@ function ChoiceAnswer({
 
   return (
     <div className="grid grid-cols-2 gap-3">
-      {question.choices.map((choice, i) => (
+      {displayChoices.map((choice, i) => (
         <ChoiceButton
           key={`${question.id}-${i}`}
           onClick={() => pick(choice)}
