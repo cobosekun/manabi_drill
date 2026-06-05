@@ -2,69 +2,54 @@
 
 // ══════════════════════════════════════════
 // /feedback — フィードバック投稿フォーム（「フィードバックはこちら」の宛先）
-// /api/feedback に JSON を POST。迷惑メール対策はサーバ側で多層実施するが、
-// クライアントでも 2 つ仕込む:
-//   - ハニーポット: 画面外の隠しフィールド website（人間は触れない）
-//   - 送信タイミング: マウント時刻 ts を一緒に送る（極端に速い投稿を弾くため）
+// メール送信は端末のメーラーに委ねる（mailto:）。サーバ送信・API キー・bot 対策
+// は持たない（no-backend 方針）。送信ボタンを押すと、入力内容を件名・本文に
+// 差し込んだ状態でメール作成画面が開く。
 // デザインは保護者(大人)向け：白基調・slate文字・amber差し色・漢字主体（/about と統一）。
-// ※ CATEGORIES は API(/api/feedback) 側の検証値と一致させること。
 // ══════════════════════════════════════════
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
+
+// 受信先メールアドレス（公開しても問題ない問い合わせ用アドレス）。
+const FEEDBACK_TO = "kce.hello@gmail.com";
 
 const CATEGORIES = ["不具合", "要望", "感想", "その他"] as const;
 
-type Status = "idle" | "sending" | "sent" | "error";
+type Status = "idle" | "opened";
 
 export default function FeedbackPage() {
-  const tsRef = useRef<number>(0);
   const [category, setCategory] = useState<(typeof CATEGORIES)[number]>("感想");
   const [message, setMessage] = useState("");
   const [contact, setContact] = useState("");
-  const [website, setWebsite] = useState(""); // ハニーポット
+  const [error, setError] = useState("");
+  // メーラーを開いた後は、フォールバック（直接送付先）を案内する画面に切り替える。
   const [status, setStatus] = useState<Status>("idle");
-  const [errorMsg, setErrorMsg] = useState("");
 
-  useEffect(() => {
-    tsRef.current = Date.now();
-  }, []);
+  function buildMailto(): string {
+    const subject = `[まなびドリル] フィードバック（${category}）`;
+    const body = [
+      `カテゴリ: ${category}`,
+      `連絡先: ${contact.trim() || "（なし）"}`,
+      "",
+      "── 内容 ──",
+      message.trim(),
+    ].join("\n");
+    return `mailto:${FEEDBACK_TO}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+  }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (status === "sending") return;
     if (message.trim() === "") {
-      setErrorMsg("メッセージを入力してください。");
-      setStatus("error");
+      setError("メッセージを入力してください。");
       return;
     }
-    setStatus("sending");
-    setErrorMsg("");
-    try {
-      const res = await fetch("/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          category,
-          message: message.trim(),
-          contact: contact.trim(),
-          website, // 空であるべき
-          ts: tsRef.current,
-        }),
-      });
-      const json = await res.json().catch(() => ({}));
-      if (res.ok && json.ok) {
-        setStatus("sent");
-        setMessage("");
-        setContact("");
-      } else {
-        setStatus("error");
-        setErrorMsg(errorTextFor(res.status, json?.error));
-      }
-    } catch {
-      setStatus("error");
-      setErrorMsg("通信に失敗しました。時間を置いてもう一度お試しください。");
-    }
+    setError("");
+    // 端末のメール作成画面を開く（内容を差し込み済み）。
+    window.location.href = buildMailto();
+    setStatus("opened");
   }
 
   return (
@@ -79,16 +64,21 @@ export default function FeedbackPage() {
           </p>
         </header>
 
-        {status === "sent" ? (
+        {status === "opened" ? (
           <div className="mt-10 rounded-xl border border-slate-200 bg-white p-8 text-center">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-2xl text-emerald-600">
-              ✓
+              ✉
             </div>
             <h2 className="mt-4 text-lg font-semibold text-slate-900">
-              送信しました
+              メール作成画面を開きました
             </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              ありがとうございます。今後の改善の励みになります。
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              ご利用のメールソフトに切り替わります。そのまま送信してください。
+              <br />
+              画面が開かない場合は、お手数ですが下記のアドレス宛に直接お送りください。
+            </p>
+            <p className="mt-4 select-all rounded-lg bg-slate-50 px-4 py-2 font-mono text-sm text-slate-800">
+              {FEEDBACK_TO}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <button
@@ -96,7 +86,7 @@ export default function FeedbackPage() {
                 onClick={() => setStatus("idle")}
                 className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
               >
-                続けて送る
+                入力に戻る
               </button>
               <Link
                 href="/"
@@ -108,20 +98,6 @@ export default function FeedbackPage() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-10 space-y-6">
-            {/* ハニーポット（画面外・スクリーンリーダーからも隠す） */}
-            <div aria-hidden className="absolute left-[-9999px] top-[-9999px]">
-              <label>
-                Website
-                <input
-                  type="text"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                />
-              </label>
-            </div>
-
             {/* 種類 */}
             <div>
               <label className="mb-2 block text-sm font-medium text-slate-700">
@@ -189,44 +165,28 @@ export default function FeedbackPage() {
               />
             </div>
 
-            {status === "error" && (
+            {error && (
               <p
                 role="alert"
                 className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm font-medium text-rose-600"
               >
-                {errorMsg}
+                {error}
               </p>
             )}
 
             <button
               type="submit"
-              disabled={status === "sending"}
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-amber-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-700 disabled:opacity-60"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-amber-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-700"
             >
-              {status === "sending" ? "送信中…" : "送信する"}
+              メールで送る
             </button>
 
             <p className="text-xs leading-relaxed text-slate-400">
-              ※ 迷惑メール対策のため、送信に一定の条件を設けています。うまく送信できない場合は、時間を置いてお試しください。
+              ※ ボタンを押すと、ご利用のメールソフトに内容を差し込んだ状態で送信画面が開きます。内容を確認してそのまま送信してください。
             </p>
           </form>
         )}
       </div>
     </main>
   );
-}
-
-function errorTextFor(httpStatus: number, code?: string): string {
-  if (httpStatus === 429 || code === "rate_limited") {
-    return "送信が続いたため、一時的に制限されています。少し時間を置いてください。";
-  }
-  if (code === "not_configured") {
-    return "現在、送信機能を準備中です。お手数ですが時間を置いてお試しください。";
-  }
-  if (code === "empty") return "メッセージを入力してください。";
-  if (code === "too_long") return "入力が長すぎます。短くしてお試しください。";
-  if (code === "timing") {
-    return "送信に失敗しました。ページを開き直してもう一度お試しください。";
-  }
-  return "送信に失敗しました。時間を置いてもう一度お試しください。";
 }
